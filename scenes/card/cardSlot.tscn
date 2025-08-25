@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctpdonyuipdam"]
+
+[ext_resource type="Script" uid="uid://blcaayrmmwalb" path="res://scripts/CardSlot.cs" id="1_kebyr"]
+
+[node name="Slot" type="CenterContainer"]
+custom_minimum_size = Vector2(50, 59)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kebyr")
