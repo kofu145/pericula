@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://crui1r41ywu27"]
+
+[ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_xfvoa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
+bg_color = Color(0.151276, 0.151276, 0.151276, 1)
+expand_margin_left = 12.0
+expand_margin_top = 4.0
+expand_margin_right = 12.0
+expand_margin_bottom = 4.0
+
+[node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xfvoa")
+shopChoices = NodePath("HBoxContainer/PanelContainer/ShopChoices")
+shopCardScene = ExtResource("1_lx5au")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 21.0
+offset_right = 118.0
+offset_bottom = 627.0
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfvoa")
+
+[node name="ShopChoices" type="VBoxContainer" parent="HBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 12
+alignment = 1
