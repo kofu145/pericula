@@ -65,6 +65,10 @@ public partial class DeckListView : Control
 		_visuals.Clear();
 	}
 
+	/// <summary>
+	/// Populates the deck view with the given list of cardDatas.
+	/// </summary>
+	/// <param name="deck"> list of cards to populate the view with</param>
 	public void Populate(List<CardData> deck)
 	{
 		Clear();
