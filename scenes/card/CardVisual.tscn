@@ -5,8 +5,17 @@
 
 [node name="CardVisual" type="NinePatchRect"]
 custom_minimum_size = Vector2(50, 59)
-offset_right = 50.0
-offset_bottom = 59.0
+anchors_preset = -1
+anchor_left = 0.022
+anchor_top = 0.046
+anchor_right = 0.022
+anchor_bottom = 0.046
+offset_left = -25.344
+offset_top = -29.808
+offset_right = 24.656
+offset_bottom = 29.192
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_enx36")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 16

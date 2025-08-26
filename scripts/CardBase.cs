@@ -3,6 +3,8 @@ using System;
 
 public partial class CardBase : Control
 {
+	[Export] private float HoverScale = 1.2f;
+
 	// public events
 	public event Action<CardBase> OnLeftClicked;
 	public event Action<CardBase> OnRightClicked;
@@ -25,8 +27,16 @@ public partial class CardBase : Control
 		_originalPosition = Position;
 
 		// Invoke events
-		MouseEntered += () => OnHoverEntered?.Invoke(this);
-		MouseExited += () => OnHoverExited?.Invoke(this);
+		MouseEntered += () =>
+		{
+			OnHoverEntered?.Invoke(this);
+			Scale = new Vector2(HoverScale, HoverScale);
+		};
+		MouseExited += () =>
+		{
+			OnHoverExited?.Invoke(this);
+			Scale = new Vector2(1, 1);
+		};
 	}
 
 	public override void _GuiInput(InputEvent e)
