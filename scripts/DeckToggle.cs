@@ -3,7 +3,6 @@ using System;
 
 public partial class DeckToggle : TextureButton
 {
-
 	// UI refs
 	[Export] private TextureButton ViewDeckButton;
 	[Export] private DeckListView DeckPanel;
