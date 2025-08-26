@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://djkgyuhdqygsw"]
+
+[ext_resource type="Script" uid="uid://ohvegxjxbqxu" path="res://scripts/CardBase.cs" id="1_s5r67"]
+[ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="2_3dwn4"]
+[ext_resource type="Script" uid="uid://di1yqf4q41ly7" path="res://scripts/CardVisual.cs" id="3_4cxr5"]
+
+[node name="Card" type="NinePatchRect" node_paths=PackedStringArray("Visual")]
+custom_minimum_size = Vector2(50, 59)
+anchors_preset = -1
+anchor_left = 0.022
+anchor_top = 0.046
+anchor_right = 0.022
+anchor_bottom = 0.046
+offset_left = -25.344
+offset_top = -29.808
+offset_right = 24.656
+offset_bottom = 29.192
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 29)
+size_flags_stretch_ratio = 0.0
+mouse_filter = 0
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+script = ExtResource("1_s5r67")
+Visual = NodePath("Visual")
+
+[node name="Visual" type="NinePatchRect" parent="." node_paths=PackedStringArray("NameLabel", "Base")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3dwn4")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+script = ExtResource("3_4cxr5")
+NameLabel = NodePath("CardName")
+Base = NodePath("..")
+
+[node name="CardName" type="Label" parent="Visual"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 49.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "NAME"

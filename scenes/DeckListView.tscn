@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://4bvri2crpxyv"]
+[gd_scene load_steps=4 format=3 uid="uid://4bvri2crpxyv"]
 
 [ext_resource type="Script" uid="uid://lah3ed6n3ssj" path="res://scripts/DeckListView.cs" id="1_ce1bn"]
-[ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/CardBase.tscn" id="2_jmkb4"]
-[ext_resource type="PackedScene" uid="uid://bdy4kydxykuqg" path="res://scenes/card/CardVisual.tscn" id="3_ydxu1"]
+[ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/Card.tscn" id="2_jmkb4"]
 [ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="4_ydxu1"]
 
-[node name="DeckListView" type="Panel" node_paths=PackedStringArray("Scroll", "Grid", "visualContainer")]
+[node name="DeckListView" type="Panel" node_paths=PackedStringArray("Scroll", "Grid")]
 clip_contents = true
 offset_right = 1120.0
 offset_bottom = 616.0
@@ -13,10 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ce1bn")
 CardScene = ExtResource("2_jmkb4")
-CardVisualScene = ExtResource("3_ydxu1")
 Scroll = NodePath("MarginContainer/ScrollContainer")
 Grid = NodePath("MarginContainer/ScrollContainer/GridContainer")
-visualContainer = NodePath("MarginContainer/CardVisualContainer")
 CardSize = Vector2i(50, 59)
 HGap = 16
 VGap = 16
