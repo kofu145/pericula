@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="1_vgvuc"]
 
 [node name="ShopCard" type="Control" node_paths=PackedStringArray("labelId")]
-custom_minimum_size = Vector2(50, 59)
+custom_minimum_size = Vector2(100, 118)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 50.0

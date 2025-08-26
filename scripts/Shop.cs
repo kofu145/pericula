@@ -1,16 +1,21 @@
 using Godot;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+
 
 public partial class Shop : Control
 {
-    [Export] VBoxContainer shopChoices;
+    [Export] HBoxContainer shopChoices;
     [Export] PackedScene shopCardScene;
     [Export] int choicesAvailable = 5;
+
+    
 
     public override void _Ready()
     {
         base._Ready();
-        Initialize();
+        Reroll();
     }
 
     public void Initialize()
@@ -27,7 +32,7 @@ public partial class Shop : Control
     {
         foreach (ShopCard card in shopChoices.GetChildren())
         {
-            card.RemoveFromShop();
+            card.QueueFree();
         }
     }
 
@@ -43,5 +48,10 @@ public partial class Shop : Control
     {
         Clear();
         Initialize();
+    }
+
+    public void EndShopPhase()
+    {
+        SceneManager.ChangeSceneToFile("scenes/combat/combat.tscn");
     }
 }

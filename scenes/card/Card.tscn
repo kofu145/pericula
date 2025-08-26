@@ -44,6 +44,7 @@ NameLabel = NodePath("CardName")
 Base = NodePath("..")
 
 [node name="CardName" type="Label" parent="Visual"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 49.0

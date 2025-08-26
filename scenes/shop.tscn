@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://crui1r41ywu27"]
 
-[ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="1_lx5au"]
-[ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_xfvoa"]
-[ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="3_1l46r"]
+[ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_t4md6"]
+[ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="2_cimqq"]
+[ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="3_yltc6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0.151276, 0.151276, 0.151276, 1)
@@ -18,40 +18,56 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xfvoa")
-shopChoices = NodePath("HBoxContainer/PanelContainer/ShopChoices")
-shopCardScene = ExtResource("1_lx5au")
+script = ExtResource("1_t4md6")
+shopChoices = NodePath("PanelContainer/ShopChoices")
+shopCardScene = ExtResource("2_cimqq")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 21.0
-offset_right = 118.0
-offset_bottom = 627.0
+[node name="ToBattleButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -15.5
+offset_right = -25.0
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 8
+focus_mode = 0
+text = "To Battle >>"
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
-layout_mode = 2
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 43.0
+offset_right = 500.0
+offset_bottom = 161.0
+grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfvoa")
 
-[node name="ShopChoices" type="VBoxContainer" parent="HBoxContainer/PanelContainer"]
-custom_minimum_size = Vector2(50, 0)
+[node name="ShopChoices" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="RerollButton" type="Button" parent="."]
 layout_mode = 2
-offset_left = 15.0
-offset_top = 588.0
-offset_right = 69.0
-offset_bottom = 619.0
+offset_left = 981.0
+offset_top = 106.0
+offset_right = 1076.0
+offset_bottom = 143.0
 grow_vertical = 0
 size_flags_vertical = 8
 focus_mode = 0
 text = "Reroll"
 
-[node name="DeckListView" parent="." instance=ExtResource("3_1l46r")]
+[node name="DeckListView" parent="." instance=ExtResource("3_yltc6")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -63,8 +79,6 @@ offset_left = -560.0
 offset_top = -308.0
 offset_right = 560.0
 offset_bottom = 308.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="DeckViewButton" type="Button" parent="."]
 layout_mode = 0
@@ -76,5 +90,6 @@ size_flags_vertical = 8
 focus_mode = 0
 text = "View Deck"
 
-[connection signal="pressed" from="Button" to="." method="Reroll"]
+[connection signal="pressed" from="ToBattleButton" to="." method="EndShopPhase"]
+[connection signal="pressed" from="RerollButton" to="." method="Reroll"]
 [connection signal="pressed" from="DeckViewButton" to="DeckListView" method="ToggleDeckView"]
