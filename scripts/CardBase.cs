@@ -19,14 +19,12 @@ public partial class CardBase : Control
 	// runtime references
 	private bool _dragging;
 	private Vector2 _grabOffset;
-	private Vector2 _originalPosition;
 
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		MouseFilter = MouseFilterEnum.Stop;
-		_originalPosition = Position;
 
 		// Invoke events
 		MouseEntered += () =>
@@ -62,7 +60,7 @@ public partial class CardBase : Control
 				OnEndDrag?.Invoke(this);
 
 				_dragging = false;
-				if (EnableDefaultDrag) Position = _originalPosition;
+				if (EnableDefaultDrag) Position = Vector2.Zero;
 				AcceptEvent();
 			}
 		}
