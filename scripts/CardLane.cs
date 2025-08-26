@@ -7,7 +7,6 @@ public partial class CardLane : Node
 	// scene refs
 	[Export] private PackedScene SlotScene;
 	[Export] private PackedScene CardScene;
-	[Export] private PackedScene CardVisual;
 
 	[Export] private HBoxContainer lane;
 
@@ -17,7 +16,6 @@ public partial class CardLane : Node
 	// runtime refs
 	private List<CardSlot> _slots = new();
 	private List<CardBase> _cards = new();
-	private List<CardVisual> _visuals = new();
 
 	public void BindSide(LaneSide s) => side = s;
 
@@ -56,13 +54,11 @@ public partial class CardLane : Node
 	{
 		foreach (var c in _cards) c.QueueFree();
 		foreach (var s in _slots) s.QueueFree();
-		foreach (var v in _visuals) v.QueueFree();
 		_cards.Clear();
 		_slots.Clear();
-		_visuals.Clear();
 	}
 
-	public void RevealAtIndex(int index) => _visuals[index].ShowInfo();
+	public void RevealAtIndex(int index) => _cards[index].Reveal();
 
 
 	private void BeginDrag(CardBase c)
@@ -86,7 +82,6 @@ public partial class CardLane : Node
 		ShiftOthers(currentIndex, desired);
 
 		MoveInList(_cards, currentIndex, desired);
-		MoveInList(_visuals, currentIndex, desired);
 
 	}
 

@@ -31,6 +31,8 @@ public partial class CardBase : Control
 		if (Visual != null) Visual.Initialize(data, FollowSpeed, ScaleSpeed);
 	}
 
+	public void Reveal() => Visual?.ShowInfo();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
