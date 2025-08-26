@@ -9,8 +9,6 @@
 clip_contents = true
 offset_right = 1120.0
 offset_bottom = 616.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_ce1bn")
 CardScene = ExtResource("2_jmkb4")
 CardVisualScene = ExtResource("3_ydxu1")

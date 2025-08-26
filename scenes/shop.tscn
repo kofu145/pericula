@@ -67,6 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="DeckViewButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1040.0
 offset_top = 593.0
 offset_right = 1127.0
@@ -76,4 +77,4 @@ focus_mode = 0
 text = "View Deck"
 
 [connection signal="pressed" from="Button" to="." method="Reroll"]
-[connection signal="pressed" from="DeckViewButton" to="DeckListView" method="UpdateColumns"]
+[connection signal="pressed" from="DeckViewButton" to="DeckListView" method="ToggleDeckView"]

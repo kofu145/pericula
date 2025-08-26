@@ -88,4 +88,28 @@ public partial class DeckListView : Control
 
 		cardVisual.Initialize(cardBase, data);
 	}
+
+	public void ToggleDeckView()
+	{
+		if (Visible)
+		{
+			CloseDeckView();
+		}
+		else
+		{
+			OpenDeckView();
+		}
+
+		Visible = !Visible;
+	}
+
+	private void OpenDeckView()
+	{
+
+	}
+
+	private void CloseDeckView()
+	{
+
+	}
 }
