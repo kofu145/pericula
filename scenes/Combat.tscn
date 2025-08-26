@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://008615xmv6ya"]
+[gd_scene load_steps=9 format=3 uid="uid://c4hr0e855ng1k"]
 
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/CombatController.cs" id="1_mak3c"]
 [ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="2_3q7sh"]
 [ext_resource type="Script" uid="uid://bqexeu4nwqnrs" path="res://scripts/combat/CombatEntityController.cs" id="3_spaix"]
-[ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/card/CardLane.tscn" id="4_t74xm"]
+[ext_resource type="PackedScene" uid="uid://chql0nnkhffha" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="5_felwx"]
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="6_acsaf"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="7_x8jxt"]
@@ -25,24 +25,24 @@ follow_viewport_enabled = true
 [node name="EnemyController" type="Node2D" parent="Canvas" node_paths=PackedStringArray("lane")]
 script = ExtResource("3_spaix")
 owner = 1
-lane = NodePath("EnemyCardLane")
+lane = NodePath(".")
 
-[node name="EnemyCardLane" parent="Canvas/EnemyController" instance=ExtResource("4_t74xm")]
-offset_left = -166.0
-offset_top = -147.0
-offset_right = 174.0
-offset_bottom = -88.0
+[node name="EnemyCardLane" parent="Canvas/EnemyController" instance=ExtResource("4_mak3c")]
+offset_left = -193.0
+offset_top = -142.0
+offset_right = 195.0
+offset_bottom = -78.0
 side = 1
 
 [node name="PlayerController" type="Node2D" parent="Canvas" node_paths=PackedStringArray("lane")]
 script = ExtResource("3_spaix")
-lane = NodePath("PlayerCardLane")
+lane = NodePath(".")
 
-[node name="PlayerCardLane" parent="Canvas/PlayerController" instance=ExtResource("4_t74xm")]
-offset_left = -166.0
-offset_top = -22.0
-offset_right = 174.0
-offset_bottom = 37.0
+[node name="PlayerCardLane" parent="Canvas/PlayerController" instance=ExtResource("4_mak3c")]
+offset_left = -190.0
+offset_top = -37.0
+offset_right = 198.0
+offset_bottom = 27.0
 
 [node name="DeckListView" parent="Canvas" instance=ExtResource("5_felwx")]
 visible = false
@@ -99,7 +99,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "View Deck"
 
 [node name="Chips" type="Sprite2D" parent="Canvas"]
-position = Vector2(203, -117)
+position = Vector2(228, -124)
 texture = ExtResource("7_x8jxt")
 
 [node name="ChipsCount" type="Label" parent="Canvas/Chips"]
