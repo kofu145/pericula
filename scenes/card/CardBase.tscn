@@ -39,5 +39,4 @@ offset_right = 50.0
 offset_bottom = 59.0
 grow_horizontal = 1
 grow_vertical = 1
-pivot_offset = Vector2(25, 29)
 Base = NodePath("..")

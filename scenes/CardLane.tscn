@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbwoqka80h84c"]
+[gd_scene load_steps=5 format=3 uid="uid://cbwoqka80h84c"]
 
 [ext_resource type="Script" uid="uid://ce3eacidxas64" path="res://scripts/CardLane.cs" id="1_motnv"]
 [ext_resource type="PackedScene" uid="uid://ctpdonyuipdam" path="res://scenes/card/cardSlot.tscn" id="1_r27dx"]
 [ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/CardBase.tscn" id="3_n0i63"]
 [ext_resource type="PackedScene" uid="uid://bdy4kydxykuqg" path="res://scenes/card/CardVisual.tscn" id="4_motnv"]
-[ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="5_n0i63"]
 
 [node name="CardLane" type="Panel" node_paths=PackedStringArray("lane", "visualContainer")]
 offset_right = 388.0
@@ -13,9 +12,8 @@ script = ExtResource("1_motnv")
 SlotScene = ExtResource("1_r27dx")
 CardScene = ExtResource("3_n0i63")
 CardVisual = ExtResource("4_motnv")
-inspectorCard = ExtResource("5_n0i63")
 lane = NodePath("HBoxContainer")
-visualContainer = NodePath("CardVisualContainer")
+visualContainer = NodePath("")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(340, 0)
@@ -28,8 +26,3 @@ grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 alignment = 1
-
-[node name="CardVisualContainer" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_left = -49.0
-offset_bottom = 64.0

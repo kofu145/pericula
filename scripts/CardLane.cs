@@ -10,8 +10,6 @@ public partial class CardLane : Node
 	[Export] private PackedScene CardVisual;
 
 	[Export] private HBoxContainer lane;
-	[Export] private Container visualContainer;
-
 
 	// Permissions
 	[Export] private LaneSide side;

@@ -6,12 +6,10 @@ public partial class DeckListView : Control
 {
 	// Scene refs
 	[Export] private PackedScene CardScene;
-	[Export] private PackedScene CardVisualScene;
 
 	// UI refs
 	[Export] private ScrollContainer Scroll;
 	[Export] private GridContainer Grid;
-	[Export] private Control visualContainer;
 
 	// Layout config
 	[Export] private Vector2I CardSize = new(260, 360); // pixel size of each card cell
