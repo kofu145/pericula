@@ -11,7 +11,7 @@ public partial class CardLane : Node
 	[Export] private HBoxContainer lane;
 
 	// Permissions
-	[Export] private LaneSide side;
+	private LaneSide side;
 
 	// runtime refs
 	private List<CardSlot> _slots = new();
@@ -23,7 +23,6 @@ public partial class CardLane : Node
 	{
 		ClearLane();
 	}
-
 
 	public void SpawnCard(CardData data)
 	{
@@ -60,7 +59,6 @@ public partial class CardLane : Node
 
 	public void RevealAtIndex(int index) => _cards[index].Reveal();
 
-
 	private void BeginDrag(CardBase c)
 	{
 		int index = IndexOf(c);
@@ -82,7 +80,6 @@ public partial class CardLane : Node
 		ShiftOthers(currentIndex, desired);
 
 		MoveInList(_cards, currentIndex, desired);
-
 	}
 
 	private void EndDrag(CardBase c)
