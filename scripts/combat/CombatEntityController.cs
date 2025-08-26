@@ -8,14 +8,12 @@ public partial class CombatEntityController : Node
 	[Export] private LaneSide owner = LaneSide.Player;
 	[Export] private CardLane lane;
 
-	public LaneSide Owner => owner;
-
 	private Deck _deck;
 
 	public void Initialize(IEnumerable<CardData> startingDeck)
 	{
 		_deck = new Deck(startingDeck);
-
+		lane.BindSide(owner);
 	}
 
 	public void StartRound(int n)

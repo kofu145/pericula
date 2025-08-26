@@ -2,10 +2,6 @@ using Godot;
 
 public partial class CardVisual : Control
 {
-	// visual config
-	[Export] private float FollowSpeed = 12f;
-	[Export] private float ScaleSpeed = 12f;
-
 	// UI refs
 	[Export] private Label NameLabel;
 
@@ -13,6 +9,8 @@ public partial class CardVisual : Control
 	[Export] Control Base;
 
 	private Vector2 offsetPos;
+	private float FollowSpeed = 0;
+	private float ScaleSpeed = 0;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -34,12 +32,15 @@ public partial class CardVisual : Control
 		Scale = Scale.Lerp(Base.Scale, ts);
 	}
 
-	public void Initialize(CardBase cardBase, CardData data = null)
+	public void Initialize(CardData data = null, float FollowSpeed = 0, float ScaleSpeed = 0)
 	{
-		Base = cardBase;
 		if (data == null) return;
-		offsetPos = cardBase.Position;
+
+		offsetPos = Base.Position;
 		NameLabel.Text = data.DisplayName;
+
+		this.FollowSpeed = FollowSpeed;
+		this.ScaleSpeed = ScaleSpeed;
 	}
 
 	public void RebasePos(Vector2 newPos)

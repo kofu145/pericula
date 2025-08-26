@@ -3,7 +3,13 @@ using System;
 
 public partial class CardBase : Control
 {
-	[Export] private float HoverScale = 1.2f;
+	// visual config
+	[Export] private float HoverScale = 1.2f;	
+	[Export] private float FollowSpeed = 12f;
+	[Export] private float ScaleSpeed = 12f;
+
+	[Export] private CardVisual Visual;
+
 	public bool EnableHoverScale { get; set; } = true;
 	public bool EnableDefaultDrag { get; set; } = true;
 
@@ -20,6 +26,10 @@ public partial class CardBase : Control
 	private bool _dragging;
 	private Vector2 _grabOffset;
 
+	public void Initialize(CardData data)
+	{
+		if (Visual != null) Visual.Initialize(data, FollowSpeed, ScaleSpeed);
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

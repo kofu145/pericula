@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ohvegxjxbqxu" path="res://scripts/CardBase.cs" id="1_3tjoi"]
 [ext_resource type="PackedScene" uid="uid://bdy4kydxykuqg" path="res://scenes/card/CardVisual.tscn" id="2_q51u1"]
 
-[node name="CardBase" type="NinePatchRect"]
+[node name="CardBase" type="NinePatchRect" node_paths=PackedStringArray("Visual")]
 custom_minimum_size = Vector2(50, 59)
 anchors_preset = -1
 anchor_left = 0.022
@@ -16,6 +16,7 @@ offset_right = 24.656
 offset_bottom = 29.192
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(25, 29)
 size_flags_stretch_ratio = 0.0
 mouse_filter = 0
 patch_margin_left = 16
@@ -23,6 +24,7 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 script = ExtResource("1_3tjoi")
+Visual = NodePath("CardVisual")
 
 [node name="CardVisual" parent="." node_paths=PackedStringArray("Base") instance=ExtResource("2_q51u1")]
 layout_mode = 0
@@ -37,4 +39,5 @@ offset_right = 50.0
 offset_bottom = 59.0
 grow_horizontal = 1
 grow_vertical = 1
+pivot_offset = Vector2(25, 29)
 Base = NodePath("..")

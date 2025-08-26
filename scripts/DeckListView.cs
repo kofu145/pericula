@@ -24,7 +24,6 @@ public partial class DeckListView : Control
 
 	// runtime refs
 	private List<CardBase> _cards = new();
-	private List<CardVisual> _visuals = new();
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -60,9 +59,7 @@ public partial class DeckListView : Control
 	public void Clear()
 	{
 		foreach (var c in _cards) c.QueueFree();
-		foreach (var c in _visuals) c.QueueFree();
 		_cards.Clear();
-		_visuals.Clear();
 	}
 
 	/// <summary>
@@ -82,11 +79,7 @@ public partial class DeckListView : Control
 		Grid.AddChild(cardBase);
 		_cards.Add(cardBase);
 
-		var cardVisual = CardVisualScene.Instantiate<CardVisual>();
-		visualContainer.AddChild(cardVisual);
-		_visuals.Add(cardVisual);
-
-		cardVisual.Initialize(cardBase, data);
+		cardBase.Initialize(data);
 	}
 
 	public void ToggleDeckView()

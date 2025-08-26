@@ -14,14 +14,14 @@ public partial class CardLane : Node
 
 
 	// Permissions
-	[Export] private LaneSide side = LaneSide.Player;
+	[Export] private LaneSide side;
 
 	// runtime refs
 	private List<CardSlot> _slots = new();
 	private List<CardBase> _cards = new();
 	private List<CardVisual> _visuals = new();
 
-
+	public void BindSide(LaneSide s) => side = s;
 
 	public void EndRound()
 	{
@@ -39,11 +39,7 @@ public partial class CardLane : Node
 		slot.AddChild(cardBase);
 		_cards.Add(cardBase);
 
-		var cardVisual = CardVisual.Instantiate<CardVisual>();
-		visualContainer.AddChild(cardVisual);
-		_visuals.Add(cardVisual);
-
-		cardVisual.Initialize(cardBase, data);
+		cardBase.Initialize(data);
 
 		if (side == LaneSide.Player)
 		{
@@ -53,9 +49,8 @@ public partial class CardLane : Node
 		}
 		else
 		{
-			// start facedown
-			cardVisual.HideInfo();
 			cardBase.EnableDefaultDrag = false;
+			cardBase.EnableHoverScale = false;
 		}
 	}
 
