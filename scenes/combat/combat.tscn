@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://008615xmv6ya"]
+[gd_scene load_steps=9 format=3 uid="uid://008615xmv6ya"]
 
 [ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/CardLane.tscn" id="1_6aonj"]
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/CombatController.cs" id="1_jgg25"]
@@ -7,11 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="3_ltalu"]
 [ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="3_pqpfu"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="5_4voa6"]
+[ext_resource type="Script" uid="uid://q6lik1u45kyf" path="res://scripts/combat/BetController.cs" id="8_uakg0"]
 
-[node name="combatRoot" type="Node2D" node_paths=PackedStringArray("player", "enemy")]
+[node name="combatRoot" type="Node2D" node_paths=PackedStringArray("player", "enemy", "betController")]
 script = ExtResource("1_jgg25")
 player = NodePath("Canvas/PlayerController")
 enemy = NodePath("Canvas/EnemyController")
+betController = NodePath("Canvas/ActionBar")
 testCardData = ExtResource("3_pqpfu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -38,9 +40,9 @@ lane = NodePath("PlayerCardLane")
 
 [node name="PlayerCardLane" parent="Canvas/PlayerController" instance=ExtResource("1_6aonj")]
 offset_left = -166.0
-offset_top = 84.0
+offset_top = -22.0
 offset_right = 174.0
-offset_bottom = 143.0
+offset_bottom = 37.0
 
 [node name="DeckListView" parent="Canvas" instance=ExtResource("2_pqpfu")]
 visible = false
@@ -51,6 +53,28 @@ offset_bottom = 156.0
 grow_horizontal = 1
 grow_vertical = 1
 dummyCardCount = 40
+
+[node name="BET Phase" type="TextureButton" parent="Canvas"]
+z_index = 12
+offset_left = 184.0
+offset_top = 120.0
+offset_right = 270.0
+offset_bottom = 152.0
+texture_normal = ExtResource("3_ltalu")
+texture_pressed = ExtResource("3_ltalu")
+texture_hover = ExtResource("3_ltalu")
+texture_disabled = ExtResource("3_ltalu")
+texture_focused = ExtResource("3_ltalu")
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Canvas/BET Phase"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "BET Phase"
 
 [node name="ViewDeckButton" type="TextureButton" parent="Canvas"]
 z_index = 12
@@ -85,4 +109,108 @@ offset_right = 62.0
 offset_bottom = 11.0
 text = "100"
 
+[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "currentPotLabel", "amountSpinBox")]
+script = ExtResource("8_uakg0")
+raiseButton = NodePath("RaiseButton")
+callButton = NodePath("CallButton")
+checkButton = NodePath("CheckButton")
+foldButton = NodePath("FoldButton")
+currentPotLabel = NodePath("../Chips/ChipsCount")
+amountSpinBox = NodePath("SpinBox")
+
+[node name="RaiseButton" type="TextureButton" parent="Canvas/ActionBar"]
+z_index = 12
+offset_left = -98.0
+offset_top = 70.0
+offset_right = -12.0
+offset_bottom = 102.0
+texture_normal = ExtResource("3_ltalu")
+texture_pressed = ExtResource("3_ltalu")
+texture_hover = ExtResource("3_ltalu")
+texture_disabled = ExtResource("3_ltalu")
+texture_focused = ExtResource("3_ltalu")
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Canvas/ActionBar/RaiseButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Raise"
+
+[node name="CallButton" type="TextureButton" parent="Canvas/ActionBar"]
+z_index = 12
+offset_left = 18.0
+offset_top = 70.0
+offset_right = 104.0
+offset_bottom = 102.0
+texture_normal = ExtResource("3_ltalu")
+texture_pressed = ExtResource("3_ltalu")
+texture_hover = ExtResource("3_ltalu")
+texture_disabled = ExtResource("3_ltalu")
+texture_focused = ExtResource("3_ltalu")
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Canvas/ActionBar/CallButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Call"
+
+[node name="FoldButton" type="TextureButton" parent="Canvas/ActionBar"]
+z_index = 12
+offset_left = -98.0
+offset_top = 110.0
+offset_right = -12.0
+offset_bottom = 142.0
+texture_normal = ExtResource("3_ltalu")
+texture_pressed = ExtResource("3_ltalu")
+texture_hover = ExtResource("3_ltalu")
+texture_disabled = ExtResource("3_ltalu")
+texture_focused = ExtResource("3_ltalu")
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Canvas/ActionBar/FoldButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Fold"
+
+[node name="CheckButton" type="TextureButton" parent="Canvas/ActionBar"]
+z_index = 12
+offset_left = 18.0
+offset_top = 110.0
+offset_right = 104.0
+offset_bottom = 142.0
+texture_normal = ExtResource("3_ltalu")
+texture_pressed = ExtResource("3_ltalu")
+texture_hover = ExtResource("3_ltalu")
+texture_disabled = ExtResource("3_ltalu")
+texture_focused = ExtResource("3_ltalu")
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Canvas/ActionBar/CheckButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Check"
+
+[node name="SpinBox" type="SpinBox" parent="Canvas/ActionBar"]
+offset_left = -204.0
+offset_top = 71.0
+offset_right = -117.438
+offset_bottom = 102.0
+
+[connection signal="pressed" from="Canvas/BET Phase" to="." method="StartBetPhase"]
 [connection signal="pressed" from="Canvas/ViewDeckButton" to="Canvas/DeckListView" method="ToggleDeckView"]

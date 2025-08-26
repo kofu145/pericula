@@ -2,18 +2,17 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public enum RoundPhase { PreRound, Betting, Combat }
+public enum RoundPhase { PreRound, Betting, Showdown }
 public partial class CombatController : Node2D
 {
 	[Export] private int startingDraw = 5;
 
-	// Lanes
+	// Scene refs
 	[Export] private CombatEntityController player;
 	[Export] private CombatEntityController enemy;
+	[Export] private BetController betController;
 
-	// UI Refs
-	[Export] private Button StartBettingButton;
-
+	// test data
 	[Export] public CardData testCardData;
 
 	// runtime refs
@@ -26,13 +25,15 @@ public partial class CombatController : Node2D
 		player.Initialize(dummyDeck);
 		enemy.Initialize(dummyDeck);
 
+		betController.OnBetPhaseEnd += EndBetPhase;
+
 		StartCombatEncounter();
 	}
 
 	public void StartCombatEncounter()
 	{
 		// StartBettingButton.Pressed += OnClickStartBetting;
-		EnterPreRound();
+		StartPrePhase();
 	}
 
 	private void OnClickStartBetting()
@@ -40,7 +41,7 @@ public partial class CombatController : Node2D
 
 	}
 
-	private void EnterPreRound()
+	private void StartPrePhase()
 	{
 		currentPhase = RoundPhase.PreRound;
 
@@ -49,4 +50,20 @@ public partial class CombatController : Node2D
 		enemy.StartRound(startingDraw);
 	}
 
+	public void StartBetPhase()
+	{
+		currentPhase = RoundPhase.Betting;
+		betController.BeginPhase();
+	}
+
+	private void EndBetPhase()
+	{
+		// check if either side has folded
+		// StartShowdownPhase(); if nobody folded
+	}
+
+	private void StartShowdownPhase()
+	{
+		currentPhase = RoundPhase.Showdown;
+	}
 }
