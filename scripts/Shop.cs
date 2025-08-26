@@ -52,6 +52,6 @@ public partial class Shop : Control
 
     public void EndShopPhase()
     {
-        SceneManager.ChangeSceneToFile("scenes/combat/combat.tscn");
+        SceneManager.ChangeSceneToFile("scenes/Combat.tscn");
     }
 }
