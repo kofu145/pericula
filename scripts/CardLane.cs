@@ -11,7 +11,7 @@ public partial class CardLane : Node
 	[Export] private HBoxContainer lane;
 
 	// Permissions
-	private LaneSide side;
+	private LaneSide side = LaneSide.Player;
 
 	// runtime refs
 	private List<CardSlot> _slots = new();
