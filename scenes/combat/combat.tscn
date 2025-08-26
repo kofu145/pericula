@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://008615xmv6ya"]
+[gd_scene load_steps=9 format=3 uid="uid://008615xmv6ya"]
 
 [ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/CardLane.tscn" id="1_6aonj"]
+[ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/CombatController.cs" id="1_jgg25"]
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="2_pqpfu"]
+[ext_resource type="Script" uid="uid://bqexeu4nwqnrs" path="res://scripts/combat/CombatEntityController.cs" id="3_ijgaf"]
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="3_ltalu"]
+[ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="3_pqpfu"]
+[ext_resource type="Script" uid="uid://dctlk7ktgalmc" path="res://scripts/DeckToggle.cs" id="4_4voa6"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="5_4voa6"]
 
-[node name="combatRoot" type="Node2D"]
+[node name="combatRoot" type="Node2D" node_paths=PackedStringArray("player", "enemy")]
+script = ExtResource("1_jgg25")
+player = NodePath("Canvas/PlayerController")
+enemy = NodePath("Canvas/EnemyController")
+testCardData = ExtResource("3_pqpfu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -13,14 +21,23 @@ zoom = Vector2(2, 2)
 [node name="Canvas" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="EnemyCardLane" parent="Canvas" instance=ExtResource("1_6aonj")]
+[node name="EnemyController" type="Node2D" parent="Canvas" node_paths=PackedStringArray("lane")]
+script = ExtResource("3_ijgaf")
+owner = 1
+lane = NodePath("EnemyCardLane")
+
+[node name="EnemyCardLane" parent="Canvas/EnemyController" instance=ExtResource("1_6aonj")]
 offset_left = -166.0
 offset_top = -147.0
 offset_right = 174.0
 offset_bottom = -88.0
 side = 1
 
-[node name="PlayerCardLane" parent="Canvas" instance=ExtResource("1_6aonj")]
+[node name="PlayerController" type="Node2D" parent="Canvas" node_paths=PackedStringArray("lane")]
+script = ExtResource("3_ijgaf")
+lane = NodePath("PlayerCardLane")
+
+[node name="PlayerCardLane" parent="Canvas/PlayerController" instance=ExtResource("1_6aonj")]
 offset_left = -166.0
 offset_top = 84.0
 offset_right = 174.0
@@ -32,9 +49,11 @@ offset_left = -284.0
 offset_top = -155.0
 offset_right = 282.0
 offset_bottom = 156.0
+grow_horizontal = 1
+grow_vertical = 1
 dummyCardCount = 40
 
-[node name="ViewDeckButton" type="TextureButton" parent="Canvas"]
+[node name="ViewDeckButton" type="TextureButton" parent="Canvas" node_paths=PackedStringArray("ViewDeckButton", "DeckPanel", "DeckOverlay")]
 z_index = 12
 offset_left = -279.0
 offset_top = 120.0
@@ -46,6 +65,10 @@ texture_hover = ExtResource("3_ltalu")
 texture_disabled = ExtResource("3_ltalu")
 texture_focused = ExtResource("3_ltalu")
 stretch_mode = 0
+script = ExtResource("4_4voa6")
+ViewDeckButton = NodePath(".")
+DeckPanel = NodePath("../DeckListView")
+DeckOverlay = NodePath("../DeckListView")
 
 [node name="Text" type="Label" parent="Canvas/ViewDeckButton"]
 layout_mode = 0
@@ -66,5 +89,3 @@ offset_top = -12.0
 offset_right = 62.0
 offset_bottom = 11.0
 text = "100"
-
-[connection signal="pressed" from="Canvas/ViewDeckButton" to="Canvas/DeckListView" method="ToggleDeckView"]

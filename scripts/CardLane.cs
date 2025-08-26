@@ -2,35 +2,32 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public enum LaneSide { Player, Enemy }
-
 public partial class CardLane : Node
 {
 	// scene refs
 	[Export] private PackedScene SlotScene;
 	[Export] private PackedScene CardScene;
 	[Export] private PackedScene CardVisual;
-	[Export] private CardData inspectorCard;
 
 	[Export] private HBoxContainer lane;
 	[Export] private Container visualContainer;
 
-	[Export] private int startingDraw = 5;
 
 	// Permissions
 	[Export] private LaneSide side = LaneSide.Player;
 
+	// runtime refs
 	private List<CardSlot> _slots = new();
 	private List<CardBase> _cards = new();
+	private List<CardVisual> _visuals = new();
 
 
-	public override void _Ready()
+
+	public void EndRound()
 	{
-		 for (int i = 0; i < startingDraw; i++)
-		 {
-			 SpawnCard(inspectorCard);
-		 }
+		ClearLane();
 	}
+
 
 	public void SpawnCard(CardData data)
 	{
@@ -41,11 +38,12 @@ public partial class CardLane : Node
 		var cardBase = CardScene.Instantiate<CardBase>();
 		slot.AddChild(cardBase);
 		_cards.Add(cardBase);
-		cardBase.GetNode<CardVisual>("CardVisual").Initialize(cardBase, data);
 
-		//visualContainer.AddChild(cardVisual);
+		var cardVisual = CardVisual.Instantiate<CardVisual>();
+		visualContainer.AddChild(cardVisual);
+		_visuals.Add(cardVisual);
 
-		//cardVisual.Initialize(cardBase, data);
+		cardVisual.Initialize(cardBase, data);
 
 		if (side == LaneSide.Player)
 		{
@@ -56,11 +54,22 @@ public partial class CardLane : Node
 		else
 		{
 			// start facedown
+			cardVisual.HideInfo();
 			cardBase.EnableDefaultDrag = false;
 		}
 	}
 
-	//public void RevealAtIndex(int index) => _visuals[index].ShowInfo();
+	private void ClearLane()
+	{
+		foreach (var c in _cards) c.QueueFree();
+		foreach (var s in _slots) s.QueueFree();
+		foreach (var v in _visuals) v.QueueFree();
+		_cards.Clear();
+		_slots.Clear();
+		_visuals.Clear();
+	}
+
+	public void RevealAtIndex(int index) => _visuals[index].ShowInfo();
 
 
 	private void BeginDrag(CardBase c)
@@ -84,7 +93,7 @@ public partial class CardLane : Node
 		ShiftOthers(currentIndex, desired);
 
 		MoveInList(_cards, currentIndex, desired);
-		//MoveInList(_visuals, currentIndex, desired);
+		MoveInList(_visuals, currentIndex, desired);
 
 	}
 
@@ -140,9 +149,7 @@ public partial class CardLane : Node
 			for (int i = from + 1; i <= to; i++)
 			{
 				var w = _cards[i];
-				var pos = w.Position;
 				w.Reparent(_slots[i - 1]);
-				//w.GetNode<CardVisual>("CardVisual").RebasePos(pos);
 			}
 		}
 		else
@@ -151,9 +158,7 @@ public partial class CardLane : Node
 			for (int i = from - 1; i >= to; i--)
 			{
 				var w = _cards[i];
-				var pos = w.Position;
 				w.Reparent(_slots[i + 1]);
-				//w.GetNode<CardVisual>("CardVisual").RebasePos(pos);
 			}
 		}
 	}
