@@ -23,11 +23,25 @@ public partial class Shop : Control
         }
     }
 
+    public void Clear()
+    {
+        foreach (ShopCard card in shopChoices.GetChildren())
+        {
+            card.RemoveFromShop();
+        }
+    }
+
     public void CreateOffer(int id)
     {
         ShopCard card = shopCardScene.Instantiate<ShopCard>();
         card.AssignUpgrade(id);
 
         shopChoices.AddChild(card);
+    }
+
+    public void Reroll()
+    {
+        Clear();
+        Initialize();
     }
 }
