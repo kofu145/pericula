@@ -2,9 +2,16 @@ using Godot;
 
 public partial class CardVisual : Control
 {
-	private Control Base;
+	// visual config
 	[Export] private float FollowSpeed = 12f;
 	[Export] private float ScaleSpeed = 12f;
+
+	// UI refs
+	[Export] private Label NameLabel;
+
+	// runtime refs
+	private Control Base;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -24,8 +31,11 @@ public partial class CardVisual : Control
 		Scale = Scale.Lerp(Base.Scale, ts);
 	}
 
-	public void Initialize(CardBase cardBase)
+	public void Initialize(CardBase cardBase, CardData data = null)
 	{
 		Base = cardBase;
+		if (data == null) return;
+
+		NameLabel.Text = data.DisplayName;
 	}
 }

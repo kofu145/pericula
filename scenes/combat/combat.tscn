@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://008615xmv6ya"]
+
+[ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/CardLane.tscn" id="1_6aonj"]
+[ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="2_pqpfu"]
+[ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="3_pqpfu"]
+
+[node name="combatRoot" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="CardLane" parent="Canvas" instance=ExtResource("1_6aonj")]
+visible = false
+offset_left = -166.0
+offset_top = 73.0
+offset_right = 174.0
+offset_bottom = 132.0
+
+[node name="DeckListView" parent="Canvas" instance=ExtResource("2_pqpfu")]
+offset_left = -244.0
+offset_top = -146.0
+offset_right = -904.0
+offset_bottom = -517.0
+inspectorCard = ExtResource("3_pqpfu")
+dummyCardCount = 100

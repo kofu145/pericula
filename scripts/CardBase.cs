@@ -4,6 +4,8 @@ using System;
 public partial class CardBase : Control
 {
 	[Export] private float HoverScale = 1.2f;
+	public bool EnableHoverScale { get; set; } = true;
+	public bool EnableDefaultDrag { get; set; } = true;
 
 	// public events
 	public event Action<CardBase> OnLeftClicked;
@@ -30,12 +32,12 @@ public partial class CardBase : Control
 		MouseEntered += () =>
 		{
 			OnHoverEntered?.Invoke(this);
-			Scale = new Vector2(HoverScale, HoverScale);
+			if (EnableHoverScale) Scale = new Vector2(HoverScale, HoverScale);
 		};
 		MouseExited += () =>
 		{
 			OnHoverExited?.Invoke(this);
-			Scale = new Vector2(1, 1);
+			if (EnableHoverScale) Scale = new Vector2(1, 1);
 		};
 	}
 
@@ -60,7 +62,7 @@ public partial class CardBase : Control
 				OnEndDrag?.Invoke(this);
 
 				_dragging = false;
-				Position = _originalPosition;
+				if (EnableDefaultDrag) Position = _originalPosition;
 				AcceptEvent();
 			}
 		}
@@ -69,7 +71,7 @@ public partial class CardBase : Control
 		{
 			OnDragging?.Invoke(this);
 
-			GlobalPosition = GetGlobalMousePosition() - _grabOffset;
+			if (EnableDefaultDrag) GlobalPosition = GetGlobalMousePosition() - _grabOffset;
 			AcceptEvent();
 		}
 	}
