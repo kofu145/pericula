@@ -2,8 +2,6 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public enum LaneSide { Player, Enemy }
-
 public partial class CardLane : Node
 {
 	// scene refs
@@ -14,23 +12,22 @@ public partial class CardLane : Node
 	[Export] private HBoxContainer lane;
 	[Export] private Container visualContainer;
 
-	[Export] private int startingDraw = 5;
 
 	// Permissions
 	[Export] private LaneSide side = LaneSide.Player;
 
+	// runtime refs
 	private List<CardSlot> _slots = new();
 	private List<CardBase> _cards = new();
 	private List<CardVisual> _visuals = new();
 
 
-	public override void _Ready()
+
+	public void EndRound()
 	{
-		// for (int i = 0; i < startingDraw; i++)
-		// {
-			// SpawnCard();
-		// }
+		ClearLane();
 	}
+
 
 	public void SpawnCard(CardData data)
 	{
@@ -60,6 +57,16 @@ public partial class CardLane : Node
 			cardVisual.HideInfo();
 			cardBase.EnableDefaultDrag = false;
 		}
+	}
+
+	private void ClearLane()
+	{
+		foreach (var c in _cards) c.QueueFree();
+		foreach (var s in _slots) s.QueueFree();
+		foreach (var v in _visuals) v.QueueFree();
+		_cards.Clear();
+		_slots.Clear();
+		_visuals.Clear();
 	}
 
 	public void RevealAtIndex(int index) => _visuals[index].ShowInfo();
