@@ -10,6 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Pericula"
+config/name="pericula"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="pericula"

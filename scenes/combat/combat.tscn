@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://008615xmv6ya"]
+
+[ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/CardLane.tscn" id="1_6aonj"]
+[ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="2_pqpfu"]
+[ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="3_ltalu"]
+[ext_resource type="Script" uid="uid://dctlk7ktgalmc" path="res://scripts/DeckToggle.cs" id="4_4voa6"]
+[ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="5_4voa6"]
+
+[node name="combatRoot" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="EnemyCardLane" parent="Canvas" instance=ExtResource("1_6aonj")]
+offset_left = -168.0
+offset_top = -123.0
+offset_right = 172.0
+offset_bottom = -64.0
+side = 1
+
+[node name="PlayerCardLane" parent="Canvas" instance=ExtResource("1_6aonj")]
+offset_left = -166.0
+offset_top = -30.0
+offset_right = 174.0
+offset_bottom = 29.0
+
+[node name="DeckListView" parent="Canvas" instance=ExtResource("2_pqpfu")]
+visible = false
+offset_left = -284.0
+offset_top = -155.0
+offset_right = 282.0
+offset_bottom = 156.0
+grow_horizontal = 1
+grow_vertical = 1
+dummyCardCount = 40
+
+[node name="ViewDeckButton" type="TextureButton" parent="Canvas" node_paths=PackedStringArray("ViewDeckButton", "DeckPanel", "DeckOverlay")]
+z_index = 12
+offset_left = -279.0
+offset_top = 120.0
+offset_right = -193.0
+offset_bottom = 152.0
+texture_normal = ExtResource("3_ltalu")
+texture_pressed = ExtResource("3_ltalu")
+texture_hover = ExtResource("3_ltalu")
+texture_disabled = ExtResource("3_ltalu")
+texture_focused = ExtResource("3_ltalu")
+stretch_mode = 0
+script = ExtResource("4_4voa6")
+ViewDeckButton = NodePath(".")
+DeckPanel = NodePath("../DeckListView")
+DeckOverlay = NodePath("../DeckListView")
+
+[node name="Text" type="Label" parent="Canvas/ViewDeckButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "View Deck"
+
+[node name="Chips" type="Sprite2D" parent="Canvas"]
+position = Vector2(203, -117)
+texture = ExtResource("5_4voa6")
+
+[node name="ChipsCount" type="Label" parent="Canvas/Chips"]
+offset_left = 22.0
+offset_top = -12.0
+offset_right = 62.0
+offset_bottom = 11.0
+text = "100"
