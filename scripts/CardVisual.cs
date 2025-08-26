@@ -38,4 +38,17 @@ public partial class CardVisual : Control
 
 		NameLabel.Text = data.DisplayName;
 	}
+
+	public void HideInfo()
+	{
+
+	}
+
+	/// <summary>
+	/// Reveal the card's info (flip card face up)
+	/// </summary>
+	public void ShowInfo()
+	{
+
+	}
 }

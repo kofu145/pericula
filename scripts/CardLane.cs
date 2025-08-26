@@ -2,6 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+public enum LaneSide { Player, Enemy }
+
 public partial class CardLane : Node
 {
 	// scene refs
@@ -13,6 +15,9 @@ public partial class CardLane : Node
 	[Export] private Container visualContainer;
 
 	[Export] private int startingDraw = 5;
+
+	// Permissions
+	[Export] private LaneSide side = LaneSide.Player;
 
 	private List<CardSlot> _slots = new();
 	private List<CardBase> _cards = new();
@@ -43,9 +48,18 @@ public partial class CardLane : Node
 
 		cardVisual.Initialize(cardBase);
 
-		cardBase.OnStartDrag += BeginDrag;
-		cardBase.OnDragging += Drag;
-		cardBase.OnEndDrag += EndDrag;
+		if (side == LaneSide.Player)
+		{
+			cardBase.OnStartDrag += BeginDrag;
+			cardBase.OnDragging += Drag;
+			cardBase.OnEndDrag += EndDrag;
+		}
+		else
+		{
+			// start facedown
+			cardVisual.HideInfo();
+			cardBase.EnableDefaultDrag = false;
+		}
 	}
 
 
