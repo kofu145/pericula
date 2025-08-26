@@ -26,13 +26,13 @@ public partial class CardLane : Node
 
 	public override void _Ready()
 	{
-		for (int i = 0; i < startingDraw; i++)
-		{
-			SpawnCard();
-		}
+		// for (int i = 0; i < startingDraw; i++)
+		// {
+			// SpawnCard();
+		// }
 	}
 
-	public void SpawnCard()
+	public void SpawnCard(CardData data)
 	{
 		var slot = SlotScene.Instantiate<CardSlot>();
 		lane.AddChild(slot);
@@ -46,7 +46,7 @@ public partial class CardLane : Node
 		visualContainer.AddChild(cardVisual);
 		_visuals.Add(cardVisual);
 
-		cardVisual.Initialize(cardBase);
+		cardVisual.Initialize(cardBase, data);
 
 		if (side == LaneSide.Player)
 		{
@@ -61,6 +61,8 @@ public partial class CardLane : Node
 			cardBase.EnableDefaultDrag = false;
 		}
 	}
+
+	public void RevealAtIndex(int index) => _visuals[index].ShowInfo();
 
 
 	private void BeginDrag(CardBase c)
