@@ -10,12 +10,14 @@ public partial class Shop : Control
     [Export] PackedScene shopCardScene;
     [Export] int choicesAvailable = 5;
 
-    
+    int Gold;
 
     public override void _Ready()
     {
         base._Ready();
         Reroll();
+
+        Gold = 10;
     }
 
     public void Initialize()
