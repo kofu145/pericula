@@ -12,6 +12,8 @@ public partial class CardVisual : Control
 	// runtime refs
 	[Export] Control Base;
 
+	private Vector2 offsetPos;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -25,7 +27,8 @@ public partial class CardVisual : Control
 
 		var target = Base.GlobalPosition;
 		float t = 1f - Mathf.Exp(-FollowSpeed * (float)delta);
-		GlobalPosition = GlobalPosition.Lerp(target, t);
+		GlobalPosition = offsetPos.Lerp(target, t);
+		offsetPos = GlobalPosition;
 
 		float ts = 1f - Mathf.Exp(-ScaleSpeed * (float)delta);
 		Scale = Scale.Lerp(Base.Scale, ts);
@@ -35,8 +38,13 @@ public partial class CardVisual : Control
 	{
 		Base = cardBase;
 		if (data == null) return;
-
+		offsetPos = cardBase.Position;
 		NameLabel.Text = data.DisplayName;
+	}
+
+	public void RebasePos(Vector2 newPos)
+	{
+		Base.GlobalPosition = newPos;
 	}
 
 	public void HideInfo()

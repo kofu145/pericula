@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdy4kydxykuqg"]
+[gd_scene load_steps=3 format=3 uid="uid://bdy4kydxykuqg"]
 
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="1_enx36"]
 [ext_resource type="Script" uid="uid://di1yqf4q41ly7" path="res://scripts/CardVisual.cs" id="2_n2pnx"]
-[ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/CardBase.tscn" id="3_l5ci3"]
 
 [node name="CardVisual" type="NinePatchRect" node_paths=PackedStringArray("NameLabel", "Base")]
 custom_minimum_size = Vector2(50, 59)
@@ -25,7 +24,7 @@ patch_margin_right = 16
 patch_margin_bottom = 16
 script = ExtResource("2_n2pnx")
 NameLabel = NodePath("NameLabel")
-Base = NodePath("CardBase")
+Base = NodePath("")
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 0
@@ -36,6 +35,3 @@ offset_bottom = 25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "NAME"
-
-[node name="CardBase" parent="." instance=ExtResource("3_l5ci3")]
-layout_mode = 1
