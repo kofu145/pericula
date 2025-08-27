@@ -429,7 +429,15 @@ public partial class BetController : Node
         enemyPut += spend;
         pot += spend;
 
-        betOpen = currentBet > 0;        
+        betOpen = currentBet > 0;
+
+        // Back to player to respond
+        if (lastEnemyAction == BetAction.AllIn && enemyPut == playerPut)
+        {
+            EndPhase();
+            return;
+        }
+        
         turn = Turn.Player;
         UpdateButtons();
         UpdateChipLabel();
