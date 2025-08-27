@@ -4,7 +4,7 @@ using System;
 public partial class CardBase : Control
 {
 	// visual config
-	[Export] private float HoverScale = 1.2f;	
+	[Export] private float HoverScale = 1.2f;
 	[Export] private float FollowSpeed = 12f;
 	[Export] private float ScaleSpeed = 12f;
 
