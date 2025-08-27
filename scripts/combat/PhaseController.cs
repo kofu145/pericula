@@ -12,6 +12,8 @@ public partial class PhaseController : Node2D
     // minimum starting bet, will be increased by singleton instance as run progresses
 	[Export] private int currentMinimumBuyIn = 10;
 
+	[Export] private int enemyChips = 100; 
+
 	// Scene refs
 	[Export] private CombatEntityController player;
 	[Export] private CombatEntityController enemy;
@@ -66,7 +68,7 @@ public partial class PhaseController : Node2D
 	public void StartBetPhase()
 	{
 		currentPhase = RoundPhase.Betting;
-		betController.BeginPhase(currentMinimumBuyIn);
+		betController.BeginPhase(currentMinimumBuyIn, enemyChips);
 	}
 
 	private void EndBetPhase()
@@ -89,6 +91,7 @@ public partial class PhaseController : Node2D
 			BetAction.Call => $"call {called}",
 			BetAction.Raise => $"raise {raised}",
 			BetAction.CallAndRaise => $"call {called}  raise {raised}",
+			BetAction.AllIn => $"ALL-IN {called}",
 			_ => ""
 		};
 
@@ -111,7 +114,10 @@ public partial class PhaseController : Node2D
 			playerChipsLabel.Text = $"Chips: {amount}";
 
 		else if (entity == "enemy" && enemyChipsLabel != null)
+		{
 			enemyChipsLabel.Text = $"Chips: {amount}";
+			enemyChips = amount;
+		}
 
 		else if (entity == "pot" && potLabel != null)
 		{
