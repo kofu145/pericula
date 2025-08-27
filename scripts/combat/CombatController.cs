@@ -10,6 +10,8 @@ public partial class CombatController : Node
 	[Export] private CardLane enemyLane;
 
 	private Godot.Collections.Array<Callable> actionQueue = new();
+	private Godot.Collections.Array<Callable> animationQueue = new();
+	private Godot.Collections.Array<EffectParam> queueParams = new();
 	private BattleState battleState = new();
 
 	public override void _Ready()
@@ -52,12 +54,64 @@ public partial class CombatController : Node
 
 	public void ShowdownHandler()
 	{
-		var currLane = battleState.currentTurn == Turn.Player ? playerLane : enemyLane;
-		currLane.RemoveCardAtIndex(2);
+		initLane(true);
+		initLane(false);
+		EventBus.Instance.RefreshBattleLoop += BattleRefreshHandler;
+		doBattle();
+		//currLane.RemoveCardAtIndex(2);
 		//actionQueue.Add(new Callable(this, MethodName.UpdateLanes));
 	}
 
-	private void UpdateLanes()
+	public void BattleRefreshHandler()
+	{
+		updateLane(true);
+		updateLane(false);
+		flipTurn();
+		if (playerLane.CardCount <= 0)
+		{
+			// playerlost
+			//EndRound();
+		}
+		else if (enemyLane.CardCount <= 0)
+		{
+			// player won 
+			//EndRound();
+		}
+		else
+			doBattle();
+	}
+
+	private void doBattle()
+	{
+
+		var currLane = battleState.currentTurn == Turn.Player ? playerLane : enemyLane;
+		foreach (var eff in currLane.GetCardAtIndex(0).OnUse)
+		{
+			//GD.Print("called in onuse!");
+
+			var effectParam = new EffectParam();
+			effectParam.Initialize(battleState, currLane.GetCardAtIndex(0));
+
+			eff.OnUse(effectParam);
+			eff.OnEnqueue(effectParam);
+			GD.Print("waiting?");
+		}
+
+	}
+
+	private void buildQueue()
+	{
+
+	}
+
+	private void flipTurn()
+	{
+		if (battleState.currentTurn == Turn.Player)
+			battleState.currentTurn = Turn.Enemy;
+		else if (battleState.currentTurn == Turn.Enemy)
+			battleState.currentTurn = Turn.Player;
+	}
+
 	{
 
 	}
