@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c4hr0e855ng1k"]
 
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/PhaseController.cs" id="1_mak3c"]
-[ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="2_3q7sh"]
+[ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="2_mak3c"]
 [ext_resource type="Script" uid="uid://bqexeu4nwqnrs" path="res://scripts/combat/CombatEntityController.cs" id="3_spaix"]
 [ext_resource type="PackedScene" uid="uid://chql0nnkhffha" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="5_felwx"]
@@ -15,7 +15,7 @@ player = NodePath("Canvas/PlayerController")
 enemy = NodePath("Canvas/EnemyController")
 betController = NodePath("Canvas/ActionBar")
 actionLabel = NodePath("Canvas/EnemyActionLabel")
-testCardData = ExtResource("2_3q7sh")
+testCardData = ExtResource("2_mak3c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -90,21 +90,26 @@ horizontal_alignment = 1
 
 [node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "currentPotLabel", "raise1xButton", "raise2xButton", "raise5xButton")]
 script = ExtResource("8_132iy")
-raiseButton = NodePath("RaiseButton")
-callButton = NodePath("CallButton")
-checkButton = NodePath("CheckButton")
-foldButton = NodePath("FoldButton")
+raiseButton = NodePath("HBoxContainer/RaiseButton")
+callButton = NodePath("HBoxContainer/CallButton")
+checkButton = NodePath("HBoxContainer/CheckButton")
+foldButton = NodePath("HBoxContainer/FoldButton")
 currentPotLabel = NodePath("../Chips/ChipsCount")
-raise1xButton = NodePath("1xRaise")
-raise2xButton = NodePath("2xRaise")
-raise5xButton = NodePath("5xRaise")
+raise1xButton = NodePath("HBoxContainer/1xRaise")
+raise2xButton = NodePath("HBoxContainer/2xRaise")
+raise5xButton = NodePath("HBoxContainer/5xRaise")
 
-[node name="RaiseButton" type="TextureButton" parent="Canvas/ActionBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/ActionBar"]
+offset_left = -362.0
+offset_top = 40.0
+offset_right = 362.0
+offset_bottom = 72.0
+alignment = 1
+
+[node name="RaiseButton" type="TextureButton" parent="Canvas/ActionBar/HBoxContainer"]
 z_index = 12
-offset_left = -98.0
-offset_top = 70.0
-offset_right = -12.0
-offset_bottom = 102.0
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
 texture_normal = ExtResource("6_acsaf")
 texture_pressed = ExtResource("6_acsaf")
 texture_hover = ExtResource("6_acsaf")
@@ -112,23 +117,22 @@ texture_disabled = ExtResource("6_acsaf")
 texture_focused = ExtResource("6_acsaf")
 stretch_mode = 0
 
-[node name="Text" type="Label" parent="Canvas/ActionBar/RaiseButton"]
+[node name="Text" type="Label" parent="Canvas/ActionBar/HBoxContainer/RaiseButton"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 4.0
-offset_right = 82.0
-offset_bottom = 27.0
+offset_right = 98.0
+offset_bottom = 28.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Match and Raise"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CallButton" type="TextureButton" parent="Canvas/ActionBar"]
+[node name="CallButton" type="TextureButton" parent="Canvas/ActionBar/HBoxContainer"]
 z_index = 12
-offset_left = 18.0
-offset_top = 70.0
-offset_right = 104.0
-offset_bottom = 102.0
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
 texture_normal = ExtResource("6_acsaf")
 texture_pressed = ExtResource("6_acsaf")
 texture_hover = ExtResource("6_acsaf")
@@ -136,7 +140,7 @@ texture_disabled = ExtResource("6_acsaf")
 texture_focused = ExtResource("6_acsaf")
 stretch_mode = 0
 
-[node name="Text" type="Label" parent="Canvas/ActionBar/CallButton"]
+[node name="Text" type="Label" parent="Canvas/ActionBar/HBoxContainer/CallButton"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 4.0
@@ -146,12 +150,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Call"
 horizontal_alignment = 1
 
-[node name="FoldButton" type="TextureButton" parent="Canvas/ActionBar"]
+[node name="FoldButton" type="TextureButton" parent="Canvas/ActionBar/HBoxContainer"]
 z_index = 12
-offset_left = -98.0
-offset_top = 110.0
-offset_right = -12.0
-offset_bottom = 142.0
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
 texture_normal = ExtResource("6_acsaf")
 texture_pressed = ExtResource("6_acsaf")
 texture_hover = ExtResource("6_acsaf")
@@ -159,7 +161,7 @@ texture_disabled = ExtResource("6_acsaf")
 texture_focused = ExtResource("6_acsaf")
 stretch_mode = 0
 
-[node name="Text" type="Label" parent="Canvas/ActionBar/FoldButton"]
+[node name="Text" type="Label" parent="Canvas/ActionBar/HBoxContainer/FoldButton"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 4.0
@@ -169,12 +171,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Fold"
 horizontal_alignment = 1
 
-[node name="CheckButton" type="TextureButton" parent="Canvas/ActionBar"]
+[node name="CheckButton" type="TextureButton" parent="Canvas/ActionBar/HBoxContainer"]
 z_index = 12
-offset_left = 18.0
-offset_top = 110.0
-offset_right = 104.0
-offset_bottom = 142.0
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
 texture_normal = ExtResource("6_acsaf")
 texture_pressed = ExtResource("6_acsaf")
 texture_hover = ExtResource("6_acsaf")
@@ -182,7 +182,7 @@ texture_disabled = ExtResource("6_acsaf")
 texture_focused = ExtResource("6_acsaf")
 stretch_mode = 0
 
-[node name="Text" type="Label" parent="Canvas/ActionBar/CheckButton"]
+[node name="Text" type="Label" parent="Canvas/ActionBar/HBoxContainer/CheckButton"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 4.0
@@ -192,12 +192,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Check"
 horizontal_alignment = 1
 
-[node name="1xRaise" type="TextureButton" parent="Canvas/ActionBar"]
+[node name="1xRaise" type="TextureButton" parent="Canvas/ActionBar/HBoxContainer"]
 z_index = 12
-offset_left = -150.0
-offset_top = 34.0
-offset_right = -64.0
-offset_bottom = 66.0
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
 texture_normal = ExtResource("6_acsaf")
 texture_pressed = ExtResource("6_acsaf")
 texture_hover = ExtResource("6_acsaf")
@@ -205,7 +203,7 @@ texture_disabled = ExtResource("6_acsaf")
 texture_focused = ExtResource("6_acsaf")
 stretch_mode = 0
 
-[node name="Text" type="Label" parent="Canvas/ActionBar/1xRaise"]
+[node name="Text" type="Label" parent="Canvas/ActionBar/HBoxContainer/1xRaise"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 4.0
@@ -215,12 +213,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "1x"
 horizontal_alignment = 1
 
-[node name="2xRaise" type="TextureButton" parent="Canvas/ActionBar"]
+[node name="2xRaise" type="TextureButton" parent="Canvas/ActionBar/HBoxContainer"]
 z_index = 12
-offset_left = -43.0
-offset_top = 34.0
-offset_right = 43.0
-offset_bottom = 66.0
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
 texture_normal = ExtResource("6_acsaf")
 texture_pressed = ExtResource("6_acsaf")
 texture_hover = ExtResource("6_acsaf")
@@ -228,7 +224,7 @@ texture_disabled = ExtResource("6_acsaf")
 texture_focused = ExtResource("6_acsaf")
 stretch_mode = 0
 
-[node name="Text" type="Label" parent="Canvas/ActionBar/2xRaise"]
+[node name="Text" type="Label" parent="Canvas/ActionBar/HBoxContainer/2xRaise"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 4.0
@@ -238,12 +234,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "2x"
 horizontal_alignment = 1
 
-[node name="5xRaise" type="TextureButton" parent="Canvas/ActionBar"]
+[node name="5xRaise" type="TextureButton" parent="Canvas/ActionBar/HBoxContainer"]
 z_index = 12
-offset_left = 52.0
-offset_top = 34.0
-offset_right = 138.0
-offset_bottom = 66.0
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
 texture_normal = ExtResource("6_acsaf")
 texture_pressed = ExtResource("6_acsaf")
 texture_hover = ExtResource("6_acsaf")
@@ -251,7 +245,7 @@ texture_disabled = ExtResource("6_acsaf")
 texture_focused = ExtResource("6_acsaf")
 stretch_mode = 0
 
-[node name="Text" type="Label" parent="Canvas/ActionBar/5xRaise"]
+[node name="Text" type="Label" parent="Canvas/ActionBar/HBoxContainer/5xRaise"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 4.0
