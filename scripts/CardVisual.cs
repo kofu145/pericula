@@ -16,6 +16,7 @@ public partial class CardVisual : Control
 	public override void _Ready()
 	{
 		MouseFilter = MouseFilterEnum.Ignore;
+		PivotOffset = Size / 2;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

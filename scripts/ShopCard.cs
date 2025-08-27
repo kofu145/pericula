@@ -13,9 +13,12 @@ public partial class ShopCard : Control
 	bool _isHovering = false;
 
 	static List<int> Deck = new List<int>(); //TODO: Replace with deck once singleton deck is made
+	ChipManager Chips;
+	Shop shop;
 
 	public override void _Ready()
 	{
+		Chips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
 		base._Ready();
 		PivotOffset = Size / 2;
 	}
@@ -25,9 +28,11 @@ public partial class ShopCard : Control
 		base._PhysicsProcess(delta);
 	}
 
-	public void AssignUpgrade(int id)
+	public void Initialize(int id, Shop shop)
 	{
 		_cardID = id;
+		this.shop = shop;
+
 		// TODO: Assign icon, text, etc.
 		labelId.Text = id.ToString();
 	}
@@ -43,11 +48,23 @@ public partial class ShopCard : Control
 
 	private void OnPressed()
 	{
-		if (_disabled) return;
+		if (_disabled) {
+			return;
+		} 
+		else if (Chips.Balance >= _cardID)
+		{
+			Buy();
+		}
+	}
 
+	private void Buy()
+	{
+		Chips.Deduct(_cardID);
 		Deck.Add(_cardID);
 		GD.Print(_cardID + " was selected!");
 		GD.Print("Current Deck: " + string.Join(", ", Deck));
+
+		shop.UpdateChipCount();
 		RemoveFromShop();
 	}
 

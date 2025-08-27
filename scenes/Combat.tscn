@@ -3,19 +3,22 @@
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/PhaseController.cs" id="1_mak3c"]
 [ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="2_mak3c"]
 [ext_resource type="Script" uid="uid://bqexeu4nwqnrs" path="res://scripts/combat/CombatEntityController.cs" id="3_spaix"]
-[ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
+[ext_resource type="PackedScene" uid="uid://chql0nnkhffha" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="5_felwx"]
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="6_acsaf"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="7_x8jxt"]
 [ext_resource type="Script" uid="uid://q6lik1u45kyf" path="res://scripts/combat/BetController.cs" id="8_132iy"]
 
-[node name="combatRoot" type="Node2D" node_paths=PackedStringArray("player", "enemy", "betController", "actionLabel")]
+[node name="root" type="Node2D" node_paths=PackedStringArray("player", "enemy", "betController", "actionLabel", "playerChipsLabel", "enemyChipsLabel", "potLabel")]
 script = ExtResource("1_mak3c")
-testCardData = ExtResource("2_mak3c")
 player = NodePath("Canvas/PlayerController")
 enemy = NodePath("Canvas/EnemyController")
 betController = NodePath("Canvas/ActionBar")
 actionLabel = NodePath("Canvas/EnemyActionLabel")
+playerChipsLabel = NodePath("Canvas/PlayerChips/PlayerChipsCount")
+enemyChipsLabel = NodePath("Canvas/EnemyChips/EnemyChipsCount")
+potLabel = NodePath("Canvas/Pot/PotChipsCount")
+testCardData = ExtResource("2_mak3c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -66,11 +69,35 @@ offset_bottom = 27.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "BET Phase"
 
-[node name="Chips" type="Sprite2D" parent="Canvas"]
+[node name="Pot" type="Sprite2D" parent="Canvas"]
 position = Vector2(220, -125)
 texture = ExtResource("7_x8jxt")
 
-[node name="ChipsCount" type="Label" parent="Canvas/Chips"]
+[node name="PotChipsCount" type="Label" parent="Canvas/Pot"]
+offset_left = -12.0
+offset_top = 17.0
+offset_right = 28.0
+offset_bottom = 40.0
+text = "100"
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerChips" type="Sprite2D" parent="Canvas"]
+position = Vector2(-258, -15)
+texture = ExtResource("7_x8jxt")
+
+[node name="PlayerChipsCount" type="Label" parent="Canvas/PlayerChips"]
+offset_left = -12.0
+offset_top = 17.0
+offset_right = 28.0
+offset_bottom = 40.0
+text = "100"
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyChips" type="Sprite2D" parent="Canvas"]
+position = Vector2(-261, -123)
+texture = ExtResource("7_x8jxt")
+
+[node name="EnemyChipsCount" type="Label" parent="Canvas/EnemyChips"]
 offset_left = -12.0
 offset_top = 17.0
 offset_right = 28.0
@@ -88,13 +115,15 @@ theme_override_font_sizes/font_size = 24
 text = "Enemy Action"
 horizontal_alignment = 1
 
-[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "currentPotLabel")]
+[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "raise1xButton", "raise2xButton", "raise5xButton")]
 script = ExtResource("8_132iy")
 raiseButton = NodePath("HBoxContainer/RaiseButton")
 callButton = NodePath("HBoxContainer/CallButton")
 checkButton = NodePath("HBoxContainer/CheckButton")
 foldButton = NodePath("HBoxContainer/FoldButton")
-currentPotLabel = NodePath("../Chips/ChipsCount")
+raise1xButton = NodePath("HBoxContainer/1xRaise")
+raise2xButton = NodePath("HBoxContainer/2xRaise")
+raise5xButton = NodePath("HBoxContainer/5xRaise")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Canvas/ActionBar"]
 offset_left = -362.0

@@ -9,15 +9,18 @@ public partial class Shop : Control
     [Export] HBoxContainer shopChoices;
     [Export] PackedScene shopCardScene;
     [Export] int choicesAvailable = 5;
+    [Export] RichTextLabel chipCount;
 
-    int Gold;
+    ChipManager Chips;
+
+    const int REROLL_COST = 2;
 
     public override void _Ready()
     {
+        Chips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
+        Chips.AddChips(100);
         base._Ready();
-        Reroll();
-
-        Gold = 10;
+        Initialize();
     }
 
     public void Initialize()
@@ -25,7 +28,7 @@ public partial class Shop : Control
         int _upgradeID;
         for (int i = 0; i < choicesAvailable; i++)
         {
-            _upgradeID = GD.RandRange(0, 100); // TODO: update w/ ids in-game
+            _upgradeID = GD.RandRange(0, 10); // TODO: update w/ ids in-game
             CreateOffer(_upgradeID);
         }
     }
@@ -41,15 +44,30 @@ public partial class Shop : Control
     public void CreateOffer(int id)
     {
         ShopCard card = shopCardScene.Instantiate<ShopCard>();
-        card.AssignUpgrade(id);
+        card.Initialize(id, this);
 
         shopChoices.AddChild(card);
     }
 
     public void Reroll()
     {
-        Clear();
-        Initialize();
+        if (Chips.Balance < REROLL_COST)
+        {
+            GD.Print("Not enough chips to reroll!");
+            return;
+        }
+        else
+        {
+            Chips.Deduct(REROLL_COST);
+            UpdateChipCount();
+            Clear();
+            Initialize();
+        }
+    }
+
+    public void UpdateChipCount()
+    {
+        chipCount.Text = Chips.Balance.ToString();
     }
 
     public void EndShopPhase()
