@@ -6,11 +6,15 @@ public enum RoundPhase { PreRound, Betting, Showdown }
 public partial class CombatController : Node2D
 {
 	[Export] private int startingDraw = 5;
+	[Export] private float displayDuration = 1.5f;
 
 	// Scene refs
 	[Export] private CombatEntityController player;
 	[Export] private CombatEntityController enemy;
 	[Export] private BetController betController;
+
+	// UI refs
+	[Export] private Label actionLabel;
 
 	// test data
 	[Export] public CardData testCardData;
@@ -26,19 +30,14 @@ public partial class CombatController : Node2D
 		enemy.Initialize(dummyDeck);
 
 		betController.OnBetPhaseEnd += EndBetPhase;
+		betController.OnEnemyAction += DisplayEnemyAction;
 
 		StartCombatEncounter();
 	}
 
 	public void StartCombatEncounter()
 	{
-		// StartBettingButton.Pressed += OnClickStartBetting;
 		StartPrePhase();
-	}
-
-	private void OnClickStartBetting()
-	{
-
 	}
 
 	private void StartPrePhase()
@@ -65,5 +64,30 @@ public partial class CombatController : Node2D
 	private void StartShowdownPhase()
 	{
 		currentPhase = RoundPhase.Showdown;
+	}
+
+	private void DisplayEnemyAction(BetAction action, int called, int raised)
+	{
+		string text = action switch
+		{
+			BetAction.Check => "check",
+			BetAction.Fold => "fold",
+			BetAction.Call => $"call {called}",
+			BetAction.Raise => $"raise {raised}",
+			BetAction.CallAndRaise => $"call {called}  raise {raised}",
+			_ => ""
+		};
+
+		ShowActionLabel(text, displayDuration);
+	}
+
+	private async void ShowActionLabel(string text, float duration)
+	{
+		actionLabel.Text = text;
+		actionLabel.Visible = true;
+
+		await ToSignal(GetTree().CreateTimer(duration), "timeout");
+
+		actionLabel.Visible = false;
 	}
 }

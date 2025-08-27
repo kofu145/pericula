@@ -9,11 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="7_x8jxt"]
 [ext_resource type="Script" uid="uid://q6lik1u45kyf" path="res://scripts/combat/BetController.cs" id="8_132iy"]
 
-[node name="combatRoot" type="Node2D" node_paths=PackedStringArray("player", "enemy", "betController")]
+[node name="combatRoot" type="Node2D" node_paths=PackedStringArray("player", "enemy", "betController", "actionLabel")]
 script = ExtResource("1_mak3c")
 player = NodePath("Canvas/PlayerController")
 enemy = NodePath("Canvas/EnemyController")
 betController = NodePath("Canvas/ActionBar")
+actionLabel = NodePath("Canvas/EnemyActionLabel")
 testCardData = ExtResource("2_3q7sh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -66,26 +67,37 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "BET Phase"
 
 [node name="Chips" type="Sprite2D" parent="Canvas"]
-position = Vector2(228, -124)
+position = Vector2(220, -125)
 texture = ExtResource("7_x8jxt")
 
 [node name="ChipsCount" type="Label" parent="Canvas/Chips"]
-offset_left = 22.0
-offset_top = -12.0
-offset_right = 62.0
-offset_bottom = 11.0
+offset_left = -12.0
+offset_top = 17.0
+offset_right = 28.0
+offset_bottom = 40.0
 text = "100"
+metadata/_edit_use_anchors_ = true
 
-[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "currentPotLabel", "amountSpinBox")]
+[node name="EnemyActionLabel" type="Label" parent="Canvas"]
+visible = false
+offset_left = -106.0
+offset_top = -75.0
+offset_right = 107.0
+offset_bottom = -41.0
+theme_override_font_sizes/font_size = 24
+text = "Enemy Action"
+horizontal_alignment = 1
+
+[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "currentPotLabel", "raise1xButton", "raise2xButton", "raise5xButton")]
 script = ExtResource("8_132iy")
 raiseButton = NodePath("RaiseButton")
 callButton = NodePath("CallButton")
 checkButton = NodePath("CheckButton")
 foldButton = NodePath("FoldButton")
 currentPotLabel = NodePath("../Chips/ChipsCount")
-amountSpinBox = NodePath("SpinBox")
-openBetBase = 20
-raisePercentStep = 0.3
+raise1xButton = NodePath("1xRaise")
+raise2xButton = NodePath("2xRaise")
+raise5xButton = NodePath("5xRaise")
 
 [node name="RaiseButton" type="TextureButton" parent="Canvas/ActionBar"]
 z_index = 12
@@ -107,7 +119,9 @@ offset_top = 4.0
 offset_right = 82.0
 offset_bottom = 27.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Raise"
+theme_override_font_sizes/font_size = 10
+text = "Match and Raise"
+horizontal_alignment = 1
 
 [node name="CallButton" type="TextureButton" parent="Canvas/ActionBar"]
 z_index = 12
@@ -130,6 +144,7 @@ offset_right = 82.0
 offset_bottom = 27.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Call"
+horizontal_alignment = 1
 
 [node name="FoldButton" type="TextureButton" parent="Canvas/ActionBar"]
 z_index = 12
@@ -152,6 +167,7 @@ offset_right = 82.0
 offset_bottom = 27.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Fold"
+horizontal_alignment = 1
 
 [node name="CheckButton" type="TextureButton" parent="Canvas/ActionBar"]
 z_index = 12
@@ -174,12 +190,76 @@ offset_right = 82.0
 offset_bottom = 27.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Check"
+horizontal_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="Canvas/ActionBar"]
-offset_left = -204.0
-offset_top = 71.0
-offset_right = -117.438
-offset_bottom = 102.0
+[node name="1xRaise" type="TextureButton" parent="Canvas/ActionBar"]
+z_index = 12
+offset_left = -150.0
+offset_top = 34.0
+offset_right = -64.0
+offset_bottom = 66.0
+texture_normal = ExtResource("6_acsaf")
+texture_pressed = ExtResource("6_acsaf")
+texture_hover = ExtResource("6_acsaf")
+texture_disabled = ExtResource("6_acsaf")
+texture_focused = ExtResource("6_acsaf")
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Canvas/ActionBar/1xRaise"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1x"
+horizontal_alignment = 1
+
+[node name="2xRaise" type="TextureButton" parent="Canvas/ActionBar"]
+z_index = 12
+offset_left = -43.0
+offset_top = 34.0
+offset_right = 43.0
+offset_bottom = 66.0
+texture_normal = ExtResource("6_acsaf")
+texture_pressed = ExtResource("6_acsaf")
+texture_hover = ExtResource("6_acsaf")
+texture_disabled = ExtResource("6_acsaf")
+texture_focused = ExtResource("6_acsaf")
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Canvas/ActionBar/2xRaise"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "2x"
+horizontal_alignment = 1
+
+[node name="5xRaise" type="TextureButton" parent="Canvas/ActionBar"]
+z_index = 12
+offset_left = 52.0
+offset_top = 34.0
+offset_right = 138.0
+offset_bottom = 66.0
+texture_normal = ExtResource("6_acsaf")
+texture_pressed = ExtResource("6_acsaf")
+texture_hover = ExtResource("6_acsaf")
+texture_disabled = ExtResource("6_acsaf")
+texture_focused = ExtResource("6_acsaf")
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Canvas/ActionBar/5xRaise"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 82.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "5x"
+horizontal_alignment = 1
 
 [node name="DeckListView" parent="Canvas" instance=ExtResource("5_felwx")]
 visible = false
