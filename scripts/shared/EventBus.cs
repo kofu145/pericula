@@ -8,4 +8,17 @@ public partial class EventBus : Node
 	{
 		Instance = this;
 	}
+
+	//[Signal]
+	public delegate void EventHandler();
+
+	//public event EventHandler OnDamage;
+
+	public event Action BasicAttackAnimEvent;
+
+	public void EnqueueAttackAnimation()
+	{
+		BasicAttackAnimEvent?.Invoke();
+	}
+
 }
