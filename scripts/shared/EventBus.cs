@@ -14,11 +14,11 @@ public partial class EventBus : Node
 
 	//public event EventHandler OnDamage;
 
-	public event Action BasicAttackAnimEvent;
+	public event Action RefreshBattleLoop;
 
-	public void EnqueueAttackAnimation()
+	public void RefreshBattle()
 	{
-		BasicAttackAnimEvent?.Invoke();
+		RefreshBattleLoop?.Invoke();
 	}
 
 }
