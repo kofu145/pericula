@@ -11,14 +11,14 @@ public partial class ShopCard : Control
 	const float TWEEN_INTENSITY = 1.25f;
 	const float TWEEN_DURATION = 0.25f;
 	bool _isHovering = false;
-
-	static List<int> Deck = new List<int>(); //TODO: Replace with deck once singleton deck is made
 	ChipManager Chips;
+	DeckManager Deck;
 	Shop shop;
 
 	public override void _Ready()
 	{
 		Chips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
+		Deck = GetNode<DeckManager>("/root/GlobalManager/DeckManager");
 		base._Ready();
 		PivotOffset = Size / 2;
 	}
@@ -60,7 +60,7 @@ public partial class ShopCard : Control
 	private void Buy()
 	{
 		Chips.Deduct(_cardID);
-		Deck.Add(_cardID);
+		Deck.AddCardByID(_cardID);
 		GD.Print(_cardID + " was selected!");
 		GD.Print("Current Deck: " + string.Join(", ", Deck));
 
