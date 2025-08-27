@@ -6,6 +6,7 @@ public partial class DeckManager : Node
     public static readonly int seed = 100000;
 
     [Export]
+    public readonly Deck PlayerDeck;
 
     [Export]
     public Deck EnemyDeck;
@@ -31,4 +32,22 @@ public partial class DeckManager : Node
         Shuffle(false);
     }
 
+    /// <summary>
+    /// Must be called before the start of any round.
+    /// </summary>
+    public void Initialize()
+    {
+        initialized = true;
+        playerBattleDeck = PlayerDeck.Cards.Duplicate(true);
+        enemyBattleDeck = EnemyDeck.Cards.Duplicate(true);
+    }
+
+    public void FinishAndReset()
+    {
+        playerBattleDeck.Clear();
+        enemyBattleDeck.Clear();
+        playerDisc.Clear();
+        enemyDisc.Clear();
+        initialized = false;
+    }
 }
