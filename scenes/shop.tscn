@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://crui1r41ywu27"]
+[gd_scene load_steps=10 format=3 uid="uid://crui1r41ywu27"]
 
 [ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_t4md6"]
 [ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="2_cimqq"]
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="3_yltc6"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="4_8r1wq"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="4_cimqq"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="5_ajxib"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0.151276, 0.151276, 0.151276, 1)
@@ -11,6 +13,26 @@ expand_margin_left = 12.0
 expand_margin_top = 4.0
 expand_margin_right = 12.0
 expand_margin_bottom = 4.0
+
+[sub_resource type="Resource" id="Resource_y6sft"]
+resource_local_to_scene = true
+script = ExtResource("4_8r1wq")
+Damage = 5
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_m4ofw"]
+resource_local_to_scene = true
+script = ExtResource("5_ajxib")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_y6sft")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices", "chipCount")]
 layout_mode = 3
@@ -98,6 +120,7 @@ offset_left = -560.0
 offset_top = -308.0
 offset_right = 560.0
 offset_bottom = 308.0
+inspectorCard = SubResource("Resource_m4ofw")
 
 [node name="DeckViewButton" type="Button" parent="."]
 layout_mode = 0
