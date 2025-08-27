@@ -112,8 +112,43 @@ public partial class CombatController : Node
 			battleState.currentTurn = Turn.Player;
 	}
 
+	private void action(Callable call, bool isAnimation)
 	{
 
+	}
+
+	private void initLane(bool player)
+	{
+		var targetLane = player ? playerLane : enemyLane;
+		for (int i = 0; i < targetLane.CardCount; i++)
+		{
+			foreach (var effect in targetLane.GetCardAtIndex(i).Passives)
+			{
+				var effectParam = new EffectParam();
+				effectParam.Initialize(battleState, targetLane.GetCardAtIndex(i));
+				effect.Initialize(effectParam);
+			}
+		}
+	}
+
+	private void updateLane(bool player)
+	{
+		List<CardData> toRemove = new();
+		var targetLane = player ? playerLane : enemyLane;
+		for (int i = 0; i < targetLane.CardCount; i++)
+		{
+			GD.Print($"Turn is player: {player} idx: {i} HP is {targetLane.GetCardAtIndex(i).HP}");
+			if (targetLane.GetCardAtIndex(i).HP <= 0)
+			{
+				GD.Print($"got a to remove at idx {i}");
+				toRemove.Add(targetLane.GetCardAtIndex(i));
+			}
+
+		}
+		foreach (var remCard in toRemove)
+		{
+			targetLane.RemoveCard(remCard);
+		}
 	}
 
 	private void Hide(Button button)
