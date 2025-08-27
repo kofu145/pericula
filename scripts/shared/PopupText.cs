@@ -17,7 +17,7 @@ public partial class PopupText : Node
 		ShowText(at, number.ToString());
 	}
 
-	public void ShowText(Vector2 at, string text)
+	public async void ShowText(Vector2 at, string text)
 	{
 		var popup = PopupTextScene.Instantiate<Label>();
 		popup.GlobalPosition = at;
@@ -31,23 +31,35 @@ public partial class PopupText : Node
 		tween.TweenProperty(
 			popup,
 			"position:y",
-			popup.Position.Y - 40,
-			.25).SetEase(Tween.EaseType.Out);
+			popup.Position.Y - 30,
+			0.25f
+		).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.InOut);
+		tween.TweenProperty(
+			popup,
+			"position:x",
+			popup.Position.X + DeckManager.Instance.RndGen.Next(-20, 20),
+			0.5f
+		).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.InOut);
 		tween.TweenProperty(
 			popup,
 			"position:y",
 			popup.Position.Y,
-			.5).SetEase(Tween.EaseType.In).SetDelay(.25);
-		tween.TweenProperty(
-			popup,
-			"position:x",
-			popup.Position.X + DeckManager.Instance.RndGen.Next(-30, 30),
-			.25).SetEase(Tween.EaseType.Out);
+			0.5f
+		).SetEase(Tween.EaseType.Out).SetDelay(0.25f);
+
 		tween.TweenProperty(
 			popup,
 			"scale",
-			Vector2.One * 0.25f,
-			.25).SetEase(Tween.EaseType.In).SetDelay(.5);
-		tween.TweenCallback(Callable.From(popup.QueueFree)).SetDelay(.7);
+			new Vector2(1.1f, 1.1f),
+			0.25f
+		).SetEase(Tween.EaseType.Out);
+		tween.TweenProperty(
+			popup,
+			"scale",
+			Vector2.Zero,
+			0.5f
+		).SetEase(Tween.EaseType.Out).SetDelay(0.25f);
+
+		await ToSignal(tween, "finished");
 	}
 }
