@@ -41,28 +41,32 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mak3c")
 combatManager = NodePath("CombatController")
-betController = NodePath("Canvas/BetController")
-actionLabel = NodePath("Canvas/EnemyActionLabel")
-playerChipsLabel = NodePath("Canvas/PlayerChips/Count")
-enemyChipsLabel = NodePath("Canvas/EnemyChips/Count")
-potLabel = NodePath("Canvas/Pot/Count")
+betController = NodePath("BetController")
+actionLabel = NodePath("EnemyActionLabel")
+playerChipsLabel = NodePath("PlayerChips/Count")
+enemyChipsLabel = NodePath("EnemyChips/Count")
+potLabel = NodePath("Pot/Count")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="Canvas" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+[node name="CombatController" type="Node" parent="." node_paths=PackedStringArray("ShowdownButton", "playerLane", "enemyLane")]
+script = ExtResource("8_mak3c")
+ShowdownButton = NodePath("../ShowdownButton")
+playerLane = NodePath("../PlayerCardLane")
+enemyLane = NodePath("../EnemyCardLane")
 
-[node name="BetPhaseButton" type="TextureButton" parent="Canvas"]
+[node name="BetPhaseButton" type="TextureButton" parent="."]
 z_index = 12
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -222.0
+offset_left = -226.0
 offset_top = -114.0
-offset_right = -50.0
+offset_right = -54.0
 offset_bottom = -50.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -74,7 +78,7 @@ texture_disabled = ExtResource("6_acsaf")
 texture_focused = ExtResource("6_acsaf")
 stretch_mode = 0
 
-[node name="Text" type="Label" parent="Canvas/BetPhaseButton"]
+[node name="Text" type="Label" parent="BetPhaseButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -91,62 +95,65 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "BET Phase"
 
-[node name="EnemyActionLabel" type="Label" parent="Canvas"]
+[node name="EnemyActionLabel" type="Label" parent="."]
 visible = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -106.5
-offset_top = -117.0
-offset_right = 106.5
-offset_bottom = -83.0
+offset_left = -122.5
+offset_top = -125.0
+offset_right = 114.5
+offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "Enemy Action"
 horizontal_alignment = 1
 
-[node name="EnemyCardLane" parent="Canvas" instance=ExtResource("4_mak3c")]
+[node name="EnemyCardLane" parent="." instance=ExtResource("4_mak3c")]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -388.0
+offset_left = -392.0
 offset_top = -264.0
-offset_right = 388.0
+offset_right = 384.0
 offset_bottom = -136.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerCardLane" parent="Canvas" instance=ExtResource("4_mak3c")]
+[node name="PlayerCardLane" parent="." instance=ExtResource("4_mak3c")]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -388.0
+offset_left = -392.0
 offset_top = -64.0
-offset_right = 388.0
+offset_right = 384.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EnemyChips" type="Control" parent="Canvas"]
+[node name="EnemyChips" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 96.0
+offset_left = 92.0
 offset_top = 101.0
-offset_right = 96.0
+offset_right = 92.0
 offset_bottom = 101.0
 
-[node name="Icon" type="Sprite2D" parent="Canvas/EnemyChips"]
+[node name="Icon" type="Sprite2D" parent="EnemyChips"]
 scale = Vector2(2, 2)
 texture = ExtResource("7_x8jxt")
 
-[node name="Count" type="Label" parent="Canvas/EnemyChips"]
+[node name="Count" type="Label" parent="EnemyChips"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -160,14 +167,16 @@ theme_override_font_sizes/font_size = 36
 text = "Chips: 100"
 horizontal_alignment = 1
 
-[node name="BetController" type="Control" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "allInButton", "raise1xButton", "raise2xButton", "raise5xButton")]
-layout_mode = 3
+[node name="BetController" type="Control" parent="." node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "allInButton", "raise1xButton", "raise2xButton", "raise5xButton")]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -4.0
 offset_top = -188.0
+offset_right = -4.0
 offset_bottom = -188.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -181,7 +190,7 @@ raise1xButton = NodePath("HBoxContainer/1x")
 raise2xButton = NodePath("HBoxContainer/2x")
 raise5xButton = NodePath("HBoxContainer/5x")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/BetController"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BetController"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -196,67 +205,67 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Raise" type="Button" parent="Canvas/BetController/HBoxContainer"]
+[node name="Raise" type="Button" parent="BetController/HBoxContainer"]
 custom_minimum_size = Vector2(100, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Match & Raise"
 
-[node name="Call" type="Button" parent="Canvas/BetController/HBoxContainer"]
+[node name="Call" type="Button" parent="BetController/HBoxContainer"]
 custom_minimum_size = Vector2(100, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Call"
 
-[node name="Fold" type="Button" parent="Canvas/BetController/HBoxContainer"]
+[node name="Fold" type="Button" parent="BetController/HBoxContainer"]
 custom_minimum_size = Vector2(100, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Fold"
 
-[node name="Check" type="Button" parent="Canvas/BetController/HBoxContainer"]
+[node name="Check" type="Button" parent="BetController/HBoxContainer"]
 custom_minimum_size = Vector2(100, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Check"
 
-[node name="1x" type="Button" parent="Canvas/BetController/HBoxContainer"]
+[node name="1x" type="Button" parent="BetController/HBoxContainer"]
 custom_minimum_size = Vector2(100, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1x"
 
-[node name="2x" type="Button" parent="Canvas/BetController/HBoxContainer"]
+[node name="2x" type="Button" parent="BetController/HBoxContainer"]
 custom_minimum_size = Vector2(100, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "2x"
 
-[node name="5x" type="Button" parent="Canvas/BetController/HBoxContainer"]
+[node name="5x" type="Button" parent="BetController/HBoxContainer"]
 custom_minimum_size = Vector2(100, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "5x"
 
-[node name="AllIn" type="Button" parent="Canvas/BetController/HBoxContainer"]
+[node name="AllIn" type="Button" parent="BetController/HBoxContainer"]
 custom_minimum_size = Vector2(100, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "ALL IN!!"
 
-[node name="PlayerChips" type="Control" parent="Canvas"]
+[node name="PlayerChips" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 96.0
+offset_left = 92.0
 offset_top = 310.0
-offset_right = 96.0
+offset_right = 92.0
 offset_bottom = 310.0
 
-[node name="Icon" type="Sprite2D" parent="Canvas/PlayerChips"]
+[node name="Icon" type="Sprite2D" parent="PlayerChips"]
 scale = Vector2(2, 2)
 texture = ExtResource("7_x8jxt")
 
-[node name="Count" type="Label" parent="Canvas/PlayerChips"]
+[node name="Count" type="Label" parent="PlayerChips"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -270,19 +279,19 @@ theme_override_font_sizes/font_size = 36
 text = "Chips: 100"
 horizontal_alignment = 1
 
-[node name="Pot" type="Control" parent="Canvas"]
+[node name="Pot" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1058.0
+offset_left = 1054.0
 offset_top = 56.0
-offset_right = 1058.0
+offset_right = 1054.0
 offset_bottom = 56.0
 
-[node name="Icon" type="Sprite2D" parent="Canvas/Pot"]
+[node name="Icon" type="Sprite2D" parent="Pot"]
 scale = Vector2(2, 2)
 texture = ExtResource("7_x8jxt")
 
-[node name="Count" type="Label" parent="Canvas/Pot"]
+[node name="Count" type="Label" parent="Pot"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -296,44 +305,47 @@ theme_override_font_sizes/font_size = 36
 text = "100"
 horizontal_alignment = 1
 
-[node name="ShowdownButton" type="Button" parent="Canvas"]
+[node name="ShowdownButton" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -93.0
+offset_left = -97.0
 offset_top = -142.0
-offset_right = 93.0
+offset_right = 89.0
 offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "SHOWDOWN"
 
-[node name="DeckListView" parent="Canvas" instance=ExtResource("5_felwx")]
+[node name="DeckListView" parent="." instance=ExtResource("5_felwx")]
 visible = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -560.0
+offset_left = -564.0
 offset_top = -308.0
-offset_right = 560.0
+offset_right = 556.0
 offset_bottom = 308.0
 CardSize = Vector2i(100, 118)
 inspectorCard = SubResource("Resource_spaix")
 dummyCardCount = 100
 
-[node name="ViewDeckButton" type="TextureButton" parent="Canvas"]
+[node name="ViewDeckButton" type="TextureButton" parent="."]
 z_index = 12
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
+offset_left = 46.0
 offset_top = -114.0
-offset_right = 222.0
+offset_right = 218.0
 offset_bottom = -50.0
 grow_vertical = 0
 texture_normal = ExtResource("6_acsaf")
@@ -343,7 +355,7 @@ texture_disabled = ExtResource("6_acsaf")
 texture_focused = ExtResource("6_acsaf")
 stretch_mode = 0
 
-[node name="Text" type="Label" parent="Canvas/ViewDeckButton"]
+[node name="Text" type="Label" parent="ViewDeckButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -362,11 +374,5 @@ text = "View Deck"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CombatController" type="Node" parent="." node_paths=PackedStringArray("ShowdownButton", "playerLane", "enemyLane")]
-script = ExtResource("8_mak3c")
-ShowdownButton = NodePath("../Canvas/ShowdownButton")
-playerLane = NodePath("../Canvas/PlayerCardLane")
-enemyLane = NodePath("../Canvas/EnemyCardLane")
-
-[connection signal="pressed" from="Canvas/BetPhaseButton" to="." method="StartBetPhase"]
-[connection signal="pressed" from="Canvas/ViewDeckButton" to="Canvas/DeckListView" method="ToggleDeckView"]
+[connection signal="pressed" from="BetPhaseButton" to="." method="StartBetPhase"]
+[connection signal="pressed" from="ViewDeckButton" to="DeckListView" method="ToggleDeckView"]
