@@ -7,6 +7,8 @@ public partial class PhaseController : Node2D
 {
 	[Export] private int startingDraw = 5;
 	[Export] private float displayDuration = 1.5f;
+	// TODO: temp implementation
+	[Export] private int startingChips = 100;
 
 	// Scene refs
 	[Export] private CombatEntityController player;
@@ -15,12 +17,16 @@ public partial class PhaseController : Node2D
 
 	// UI refs
 	[Export] private Label actionLabel;
+	[Export] private Label playerChipsLabel;
+	[Export] private Label enemyChipsLabel;
+	[Export] private Label potLabel;
 
 	// test data
 	[Export] public CardData testCardData;
 
 	// runtime refs
-	private RoundPhase currentPhase = RoundPhase.PreRound;
+	private RoundPhase currentPhase;
+	private ChipManager playerChips;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -31,6 +37,11 @@ public partial class PhaseController : Node2D
 
 		betController.OnBetPhaseEnd += EndBetPhase;
 		betController.OnEnemyAction += DisplayEnemyAction;
+		betController.OnChipsChanged += DisplayChips;
+
+		playerChips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
+		// TODO: temp implementation
+		playerChips.AddChips(startingChips);
 
 		StartCombatEncounter();
 	}
@@ -89,5 +100,17 @@ public partial class PhaseController : Node2D
 		await ToSignal(GetTree().CreateTimer(duration), "timeout");
 
 		actionLabel.Visible = false;
+	}
+
+	private void DisplayChips(string entity, int amount)
+	{
+		if (entity == "player" && playerChipsLabel != null)
+			playerChipsLabel.Text = $"Chips: {amount}";
+
+		else if (entity == "enemy" && enemyChipsLabel != null)
+			enemyChipsLabel.Text = $"Chips: {amount}";
+			
+		else if (entity == "pot" && potLabel != null)
+			potLabel.Text = $"Pot: {amount}";
 	}
 }

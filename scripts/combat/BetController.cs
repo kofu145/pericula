@@ -12,7 +12,6 @@ public partial class BetController : Node
     [Export] private TextureButton callButton;
     [Export] private TextureButton checkButton;
     [Export] private TextureButton foldButton;
-    [Export] private Label currentPotLabel;
 
     [Export] private TextureButton raise1xButton;
     [Export] private TextureButton raise2xButton;
@@ -23,11 +22,14 @@ public partial class BetController : Node
     [Export] private int minimumBuyIn = 10;
 
     // public events
-    public Action<BetAction, int, int> OnEnemyAction;
-    // parameters: (action, toCallAmount, raiseAmount)
-    public Action OnBetPhaseEnd;
-    // parameters: (endedWithFold, foldedByPlayer)
+    public Action<BetAction, int, int> OnEnemyAction; // parameters: (action, toCallAmount, raiseAmount)
+    public Action OnBetPhaseEnd; // parameters: (endedWithFold, foldedByPlayer)
+    public Action<string, int> OnChipsChanged; // parameters: (entityName, newChipAmount)
 
+    // names for event
+    private string playerName = "player";
+    private string enemyName = "enemy";
+    private string potName = "pot";
 
     // states
     private Turn turn = Turn.None;
@@ -48,11 +50,16 @@ public partial class BetController : Node
     private bool endedWithFold = false;
     private bool foldedByPlayer = false;
 
+    private ChipManager playerChips;
+
 
     // temp implementation
     private RandomNumberGenerator rng;
     public override void _Ready()
     {
+        playerChips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
+
+        // wire button handlers
         if (raiseButton != null) raiseButton.Pressed += OnClickPlayerRaise;
         if (callButton != null) callButton.Pressed += OnClickPlayerCall;
         if (checkButton != null) checkButton.Pressed += OnClickPlayerCheck;
@@ -75,7 +82,7 @@ public partial class BetController : Node
         }
 
         HideAll();
-        UpdatePotLabel();
+        UpdateChipLabel();
     }
     public void BeginPhase()
     {
@@ -102,7 +109,7 @@ public partial class BetController : Node
         HideAll();
         Show(checkButton);
         Show(raiseButton);
-        UpdatePotLabel();
+        UpdateChipLabel();
     }
 
 
@@ -128,6 +135,7 @@ public partial class BetController : Node
         int spend = toCall + raiseAmount;
 
         // TODO: Apply 'spend' to player singleton currency
+        playerChips.Deduct(spend);
         playerPut += spend;
         pot += spend;
 
@@ -139,7 +147,7 @@ public partial class BetController : Node
         turn = Turn.Enemy;
 
         UpdateButtons();
-        UpdatePotLabel();
+        UpdateChipLabel();
         EnemyAct();
     }
 
@@ -151,6 +159,7 @@ public partial class BetController : Node
         if (toCall <= 0) return;
 
         // TODO: Apply 'toCall' to player singleton currency
+        playerChips.Deduct(toCall);
 
         playerPut += toCall;
         pot += toCall;
@@ -180,7 +189,7 @@ public partial class BetController : Node
 
         turn = Turn.Enemy;
         UpdateButtons();
-        UpdatePotLabel();
+        UpdateChipLabel();
         EnemyAct();
     }
 
@@ -225,7 +234,7 @@ public partial class BetController : Node
                 int amount = EnemyPickRaiseAmount();
                 ApplyEnemyRaise(amount);
             }
-            UpdatePotLabel();
+            UpdateChipLabel();
             return;
         }
 
@@ -287,7 +296,7 @@ public partial class BetController : Node
         // Back to player to respond
         turn = Turn.Player;
         UpdateButtons();
-        UpdatePotLabel();
+        UpdateChipLabel();
     }
 
     // ============ UI & Helpers =============
@@ -296,7 +305,7 @@ public partial class BetController : Node
         turn = Turn.None;
         choosingRaiseAmount = false;
         HideAll();
-        UpdatePotLabel();
+        UpdateChipLabel();
         OnBetPhaseEnd?.Invoke();
         GD.Print("Phase is over");
     }
@@ -360,9 +369,10 @@ public partial class BetController : Node
         button.Disabled = false;
     }
 
-    private void UpdatePotLabel()
+    private void UpdateChipLabel()
     {
-        if (currentPotLabel == null) return;
-        currentPotLabel.Text = $"Pot: {pot}";
+        OnChipsChanged?.Invoke(playerName, playerChips.Balance);
+        OnChipsChanged?.Invoke(enemyName, -enemyPut); // TODO: Replace with enemy chips
+        OnChipsChanged?.Invoke(potName, pot);
     }
 }
