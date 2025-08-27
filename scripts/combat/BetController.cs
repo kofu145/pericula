@@ -45,6 +45,8 @@ public partial class BetController : Node
     private int enemyPut = 0;
     private int pot = 0;            // total for both sides
 
+    private int enemyBalance = 0;
+
     private bool choosingRaiseAmount = false;
 
     private bool endedWithFold = false;
@@ -57,13 +59,12 @@ public partial class BetController : Node
     private RandomNumberGenerator rng;
 
     // ====================================
-    private int PlayerBalance => playerChips.Balance;
-    private int ToCall => Math.Max(0, currentBet - playerPut);
-    private int AffordableRaise => Math.Max(0, PlayerBalance - ToCall);
-    private bool CanCall => ToCall > 0 && PlayerBalance >= ToCall;
-    private bool CanOpenRaise => !betOpen && PlayerBalance >= minimumBuyIn;
-    private bool CanRaiseOverCall => betOpen && AffordableRaise >= minimumBuyIn;
-    private bool ShouldShowAllIn => PlayerBalance > 0 && ToCall != PlayerBalance;
+    private int PlayerBalance => playerChips.Balance;                               // player's current chip balance
+    private int ToCall => Math.Max(0, currentBet - playerPut);                      // the amount to call the enemy's bet
+    private int AffordableRaise => Math.Max(0, PlayerBalance - ToCall);             // the remaining balance the player has after calling
+    private bool CanCall => ToCall > 0 && PlayerBalance >= ToCall;                  // player has enough chips to call the enemy's bet
+    private bool CanOpenRaise => !betOpen && PlayerBalance >= minimumBuyIn;         // player has enough chips to raise (at least minimumBuyIn) 
+    private bool CanRaiseOverCall => betOpen && AffordableRaise >= minimumBuyIn;    // player has enough chips to call the enemy's bet and raise (at least minimumBuyIn) 
     // ====================================
 
 
@@ -81,13 +82,14 @@ public partial class BetController : Node
         HideAll();
         UpdateChipLabel();
     }
-    public void BeginPhase(int minBuyIn)
+    public void BeginPhase(int minBuyIn, int enemyChips)
     {
         // temp implementation of rng
         rng = new();
         rng.Randomize();
 
         minimumBuyIn = minBuyIn;
+        this.enemyBalance = enemyChips;
 
         if (raise1xButton != null)
         {
@@ -207,7 +209,6 @@ public partial class BetController : Node
         int spend = Math.Min(toCall, PlayerBalance);
         if (spend <= 0) return;
 
-        // TODO: Apply 'toCall' to player singleton currency
         if (!playerChips.Deduct(spend)) return;
 
         playerPut += spend;
@@ -261,10 +262,11 @@ public partial class BetController : Node
 
         // balance = Math.Min(balance, enemyBalance);   // TODO: Update with enemy balance
 
+        if (!playerChips.Deduct(balance)) return;
         pot += balance;
         currentBet = Math.Max(playerPut + balance, enemyPut);
+        playerPut += balance;
 
-        if (!playerChips.Deduct(balance)) return;
 
         lastPlayerAction = BetAction.AllIn;
 
@@ -284,16 +286,29 @@ public partial class BetController : Node
         {
             // player went all in, enemy must Call or Fold
             // TODO: Replace with AI logic and not random logic
-            var choice = rng.RandiRange(0, 1); // 0 = Check, 1 = Raise
+            var choice = rng.RandiRange(0, 1); // 0 = call, 1 = fold
 
             if (choice == 0)   // call
             {
                 int toCall = Math.Max(0, currentBet - enemyPut);
-                OnEnemyAction?.Invoke(BetAction.Call, toCall, 0);
 
+                if (toCall >= enemyBalance)
+                {
+                    // all in
+                    toCall = enemyBalance;
+                    lastEnemyAction = BetAction.AllIn;
+                    OnEnemyAction?.Invoke(BetAction.AllIn, toCall, 0);
+                }
+                else
+                {
+                    // regular call
+                    lastEnemyAction = BetAction.Call;
+                    OnEnemyAction?.Invoke(BetAction.Call, toCall, 0);
+                }
+
+                enemyBalance -= toCall;
                 pot += toCall;
                 enemyPut += toCall;
-                // TODO: update enemy currency
 
             }
             else if (choice == 1)  // fold
@@ -343,12 +358,24 @@ public partial class BetController : Node
         var r = rng.RandiRange(0, 2); // 0=Call, 1=Raise, 2=Fold
         if (r == 0)
         {
-            lastEnemyAction = BetAction.Call;
-
             int toCall = Math.Max(0, currentBet - enemyPut);
-            OnEnemyAction?.Invoke(BetAction.Call, toCall, 0);
             // TODO: Apply 'toCall' to enemy currency
 
+            if (toCall >= enemyBalance)
+            {
+                // all in
+                toCall = enemyBalance;
+                lastEnemyAction = BetAction.AllIn;
+                OnEnemyAction?.Invoke(BetAction.AllIn, toCall, 0);
+            }
+            else
+            {
+                // regular call
+                lastEnemyAction = BetAction.Call;
+                OnEnemyAction?.Invoke(BetAction.Call, toCall, 0);
+            }
+
+            enemyBalance -= toCall;
             enemyPut += toCall;
             pot += toCall;
 
@@ -375,7 +402,8 @@ public partial class BetController : Node
     {
         int[] mults = { 1, 2, 5 };
         int m = mults[rng.RandiRange(0, mults.Length - 1)];
-        return Math.Min(minimumBuyIn * m, PlayerBalance);
+        int cap = Math.Min(enemyBalance, PlayerBalance);
+        return Math.Min(minimumBuyIn * m, cap);
     }
 
     private void ApplyEnemyRaise(int amount)
@@ -383,16 +411,33 @@ public partial class BetController : Node
         int toCall = Math.Max(0, currentBet - enemyPut);
         int spend = toCall + amount;
 
-        // TODO: apply changes to enemy currency
-        currentBet += amount;
+        if (spend >= enemyBalance)
+        {
+            // all in
+            spend = enemyBalance;
+            lastEnemyAction = BetAction.AllIn;
+            OnEnemyAction?.Invoke(lastEnemyAction, spend, 0);
+        }
+        else
+        {
+            lastEnemyAction = toCall > 0 ? BetAction.CallAndRaise : BetAction.Raise;
+            OnEnemyAction?.Invoke(lastEnemyAction, toCall, amount);
+        }
+
+        enemyBalance -= spend;
+        currentBet += Math.Max(0, spend - toCall);
         enemyPut += spend;
         pot += spend;
 
         betOpen = currentBet > 0;
-        lastEnemyAction = toCall > 0 ? BetAction.CallAndRaise : BetAction.Raise;
-        OnEnemyAction?.Invoke(lastEnemyAction, toCall, amount);
 
         // Back to player to respond
+        if (lastEnemyAction == BetAction.AllIn)
+        {
+            EndPhase();
+            return;
+        }
+        
         turn = Turn.Player;
         UpdateButtons();
         UpdateChipLabel();
@@ -407,8 +452,14 @@ public partial class BetController : Node
 
         if (endedWithFold)
         {
-            if (!foldedByPlayer) playerChips.AddChips(pot);
-            // else  TODO: give pot to enemy
+            if (!foldedByPlayer)
+            {
+                playerChips.AddChips(pot);
+            }
+            else
+            {
+                enemyBalance += pot;
+            }
         }
 
         UpdateChipLabel();
@@ -487,7 +538,7 @@ public partial class BetController : Node
     private void UpdateChipLabel()
     {
         OnChipsChanged?.Invoke(playerName, playerChips.Balance);
-        OnChipsChanged?.Invoke(enemyName, -enemyPut); // TODO: Replace with enemy chips
+        OnChipsChanged?.Invoke(enemyName, enemyBalance); // TODO: Replace with enemy chips
         OnChipsChanged?.Invoke(potName, pot);
     }
 }
