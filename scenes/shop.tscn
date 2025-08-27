@@ -39,7 +39,7 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_vertical = 8
 focus_mode = 0
-text = "To Battle >>"
+text = "Next Battle >>"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
