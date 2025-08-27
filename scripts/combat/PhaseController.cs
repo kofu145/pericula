@@ -5,116 +5,112 @@ using System.Collections.Generic;
 public enum RoundPhase { PreRound, Betting, Showdown }
 public partial class PhaseController : Node2D
 {
-	[Export] private int startingDraw = 5;
-	[Export] private float displayDuration = 1.5f;
-	// TODO: temp implementation
-	[Export] private int startingChips = 100;
+    [Export] private int startingDraw = 5;
+    [Export] private float displayDuration = 1.5f;
+    // TODO: temp implementation
+    [Export] private int startingChips = 100;
 
-	// Scene refs
-	[Export] private CombatEntityController player;
-	[Export] private CombatEntityController enemy;
-	[Export] private BetController betController;
+    // Scene refs
+    [Export] private CombatController CombatManager;
+    [Export] private BetController betController;
 
-	// UI refs
-	[Export] private Label actionLabel;
-	[Export] private Label playerChipsLabel;
-	[Export] private Label enemyChipsLabel;
-	[Export] private Label potLabel;
+    // UI refs
+    [Export] private Label actionLabel;
+    [Export] private Label playerChipsLabel;
+    [Export] private Label enemyChipsLabel;
+    [Export] private Label potLabel;
 
-	// test data
-	[Export] public CardData testCardData;
+    // test data
+    [Export] public CardData testCardData;
 
-	// runtime refs
-	private RoundPhase currentPhase;
-	private int currentPot = 0;
-	private ChipManager playerChips;		// awarded to the winner after showdown
+    // runtime refs
+    private RoundPhase currentPhase;
+    private int currentPot = 0;
+    private ChipManager playerChips;        // awarded to the winner after showdown
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		var dummyDeck = new List<CardData>() { testCardData, testCardData, testCardData, testCardData, testCardData };
-		player.Initialize(dummyDeck);
-		enemy.Initialize(dummyDeck);
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        var dummyDeck = new List<CardData>() { testCardData, testCardData, testCardData, testCardData, testCardData };
 
-		betController.OnBetPhaseEnd += EndBetPhase;
-		betController.OnEnemyAction += DisplayEnemyAction;
-		betController.OnChipsChanged += DisplayChips;
+        betController.OnBetPhaseEnd += EndBetPhase;
+        betController.OnEnemyAction += DisplayEnemyAction;
+        betController.OnChipsChanged += DisplayChips;
 
-		playerChips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
-		// TODO: temp implementation
-		playerChips.AddChips(startingChips);
+        playerChips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
+        // TODO: temp implementation
+        playerChips.AddChips(startingChips);
 
-		StartCombatEncounter();
-	}
+        StartCombatEncounter();
+    }
 
-	public void StartCombatEncounter()
-	{
-		StartPrePhase();
-	}
+    public void StartCombatEncounter()
+    {
+        StartPrePhase();
+    }
 
-	private void StartPrePhase()
-	{
-		currentPhase = RoundPhase.PreRound;
+    private void StartPrePhase()
+    {
+        currentPhase = RoundPhase.PreRound;
 
-		// draw starting hand for each lane
-		player.StartRound(startingDraw);
-		enemy.StartRound(startingDraw);
-	}
+        // draw starting hand for each lane
+        CombatManager.StartRound(startingDraw);
+    }
 
-	public void StartBetPhase()
-	{
-		currentPhase = RoundPhase.Betting;
-		betController.BeginPhase();
-	}
+    public void StartBetPhase()
+    {
+        currentPhase = RoundPhase.Betting;
+        betController.BeginPhase();
+    }
 
-	private void EndBetPhase()
-	{
-		// check if either side has folded
-		// StartShowdownPhase(); if nobody folded
-	}
+    private void EndBetPhase()
+    {
+        // check if either side has folded
+        // StartShowdownPhase(); if nobody folded
+    }
 
-	private void StartShowdownPhase()
-	{
-		currentPhase = RoundPhase.Showdown;
-	}
+    private void StartShowdownPhase()
+    {
+        currentPhase = RoundPhase.Showdown;
+    }
 
-	private void DisplayEnemyAction(BetAction action, int called, int raised)
-	{
-		string text = action switch
-		{
-			BetAction.Check => "check",
-			BetAction.Fold => "fold",
-			BetAction.Call => $"call {called}",
-			BetAction.Raise => $"raise {raised}",
-			BetAction.CallAndRaise => $"call {called}  raise {raised}",
-			_ => ""
-		};
+    private void DisplayEnemyAction(BetAction action, int called, int raised)
+    {
+        string text = action switch
+        {
+            BetAction.Check => "check",
+            BetAction.Fold => "fold",
+            BetAction.Call => $"call {called}",
+            BetAction.Raise => $"raise {raised}",
+            BetAction.CallAndRaise => $"call {called}  raise {raised}",
+            _ => ""
+        };
 
-		ShowActionLabel(text, displayDuration);
-	}
+        ShowActionLabel(text, displayDuration);
+    }
 
-	private async void ShowActionLabel(string text, float duration)
-	{
-		actionLabel.Text = text;
-		actionLabel.Visible = true;
+    private async void ShowActionLabel(string text, float duration)
+    {
+        actionLabel.Text = text;
+        actionLabel.Visible = true;
 
-		await ToSignal(GetTree().CreateTimer(duration), "timeout");
+        await ToSignal(GetTree().CreateTimer(duration), "timeout");
 
-		actionLabel.Visible = false;
-	}
+        actionLabel.Visible = false;
+    }
 
-	private void DisplayChips(string entity, int amount)
-	{
-		if (entity == "player" && playerChipsLabel != null)
-			playerChipsLabel.Text = $"Chips: {amount}";
+    private void DisplayChips(string entity, int amount)
+    {
+        if (entity == "player" && playerChipsLabel != null)
+            playerChipsLabel.Text = $"Chips: {amount}";
 
-		else if (entity == "enemy" && enemyChipsLabel != null)
-			enemyChipsLabel.Text = $"Chips: {amount}";
+        else if (entity == "enemy" && enemyChipsLabel != null)
+            enemyChipsLabel.Text = $"Chips: {amount}";
 
-		else if (entity == "pot" && potLabel != null)
-		{
-			potLabel.Text = $"Pot: {amount}";
-			currentPot = amount;
-		}
-	}
+        else if (entity == "pot" && potLabel != null)
+        {
+            potLabel.Text = $"Pot: {amount}";
+            currentPot = amount;
+        }
+    }
 }
