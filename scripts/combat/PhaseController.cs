@@ -15,8 +15,7 @@ public partial class PhaseController : Node2D
     [Export] private int enemyChips = 100;
 
     // Scene refs
-    [Export] private CombatEntityController player;
-    [Export] private CombatEntityController enemy;
+    [Export] private CombatController combatManager;
     [Export] private BetController betController;
 
     // UI refs
@@ -36,9 +35,7 @@ public partial class PhaseController : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        var dummyDeck = new List<CardData>() { testCardData, testCardData, testCardData, testCardData, testCardData };
-        player.Initialize(dummyDeck);
-        enemy.Initialize(dummyDeck);
+        combatManager.Initialize();
 
         betController.OnBetPhaseEnd += EndBetPhase;
         betController.OnEnemyAction += DisplayEnemyAction;
@@ -61,8 +58,7 @@ public partial class PhaseController : Node2D
         currentPhase = RoundPhase.PreRound;
 
         // draw starting hand for each lane
-        player.StartRound(startingDraw);
-        enemy.StartRound(startingDraw);
+        combatManager.StartRound(startingDraw);
     }
 
     public void StartBetPhase()
