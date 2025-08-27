@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4hr0e855ng1k"]
+[gd_scene load_steps=13 format=3 uid="uid://c4hr0e855ng1k"]
 
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/PhaseController.cs" id="1_mak3c"]
 [ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="2_mak3c"]
@@ -8,6 +8,28 @@
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="7_x8jxt"]
 [ext_resource type="Script" uid="uid://q6lik1u45kyf" path="res://scripts/combat/BetController.cs" id="8_132iy"]
 [ext_resource type="Script" uid="uid://bqexeu4nwqnrs" path="res://scripts/combat/CombatController.cs" id="8_mak3c"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="8_spaix"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="9_t74xm"]
+
+[sub_resource type="Resource" id="Resource_felwx"]
+resource_local_to_scene = true
+script = ExtResource("8_spaix")
+Damage = 5
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_acsaf"]
+resource_local_to_scene = true
+script = ExtResource("9_t74xm")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_felwx")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [node name="root" type="Node2D" node_paths=PackedStringArray("combatManager", "betController", "actionLabel", "playerChipsLabel", "enemyChipsLabel", "potLabel")]
 script = ExtResource("1_mak3c")
@@ -23,6 +45,7 @@ testCardData = ExtResource("2_mak3c")
 zoom = Vector2(2, 2)
 
 [node name="Canvas" type="CanvasLayer" parent="."]
+layer = 0
 follow_viewport_enabled = true
 
 [node name="EnemyController" type="Node2D" parent="Canvas"]
@@ -305,6 +328,7 @@ offset_right = 282.0
 offset_bottom = 156.0
 grow_horizontal = 1
 grow_vertical = 1
+inspectorCard = SubResource("Resource_acsaf")
 dummyCardCount = 40
 
 [node name="ViewDeckButton" type="TextureButton" parent="Canvas"]
