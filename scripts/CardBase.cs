@@ -10,6 +10,7 @@ public partial class CardBase : Control
 
 	[Export] public CardVisual Visual;
 	[Export] public CardData Data;
+	[Export] public CardDescription Description;
 	[Export] public AnimationPlayer animation;
 
 	public bool EnableHoverScale { get; set; } = true;
@@ -39,6 +40,7 @@ public partial class CardBase : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		PivotOffset = Size / 2;
 		MouseFilter = MouseFilterEnum.Stop;
 
 		// Invoke events
@@ -46,11 +48,18 @@ public partial class CardBase : Control
 		{
 			OnHoverEntered?.Invoke(this);
 			if (EnableHoverScale) Scale = new Vector2(HoverScale, HoverScale);
+
+			// Show card description
+			Description.Display();
+			ZIndex = 10;
 		};
 		MouseExited += () =>
 		{
 			OnHoverExited?.Invoke(this);
 			if (EnableHoverScale) Scale = new Vector2(1, 1);
+
+			Description.Hide();
+			ZIndex = 0;
 		};
 	}
 
