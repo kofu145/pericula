@@ -13,7 +13,7 @@ public partial class CardLane : Node
 	public int CardCount => _cards.Count;
 
 	// Permissions
-	private LaneSide side = LaneSide.Player;
+	[Export] private LaneSide side = LaneSide.Player;
 
 	// runtime refs
 	private List<CardSlot> _slots = new();
