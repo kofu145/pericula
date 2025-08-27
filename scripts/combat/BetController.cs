@@ -429,7 +429,7 @@ public partial class BetController : Node
         enemyPut += spend;
         pot += spend;
 
-        betOpen = currentBet > 0;
+        betOpen = currentBet > 0;        
         turn = Turn.Player;
         UpdateButtons();
         UpdateChipLabel();
