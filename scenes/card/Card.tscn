@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="2_3dwn4"]
 [ext_resource type="Script" uid="uid://di1yqf4q41ly7" path="res://scripts/CardVisual.cs" id="3_4cxr5"]
 
-[sub_resource type="Animation" id="Animation_s5r67"]
-resource_name = "MoveUpAction"
-length = 0.8
+[sub_resource type="Animation" id="Animation_4cxr5"]
+resource_name = "MoveDownAction"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -14,10 +14,26 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.366667, 0.8),
-"transitions": PackedFloat32Array(0.217638, 1, 0.138696, 8.87654),
+"times": PackedFloat32Array(0, 0.1665, 0.3, 0.5661),
+"transitions": PackedFloat32Array(0.112657, 12.996, 0.138696, 8.87654),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, -20), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 30), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s5r67"]
+resource_name = "MoveUpAction"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1665, 0.2997, 0.5661),
+"transitions": PackedFloat32Array(0.112657, 12.996, 0.138696, 8.87654),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, -30), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_3dwn4"]
@@ -35,21 +51,6 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4cxr5"]
-resource_name = "MoveDownAction"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.366667, 0.8),
-"transitions": PackedFloat32Array(0.217638, 1, 0.138696, 8.87654),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 20), Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u4wdl"]
 _data = {
 &"MoveDownAction": SubResource("Animation_4cxr5"),
@@ -57,7 +58,7 @@ _data = {
 &"RESET": SubResource("Animation_3dwn4")
 }
 
-[node name="Card" type="NinePatchRect" node_paths=PackedStringArray("Visual")]
+[node name="Card" type="NinePatchRect" node_paths=PackedStringArray("Visual", "animation")]
 custom_minimum_size = Vector2(50, 59)
 anchors_preset = -1
 anchor_left = 0.022
@@ -79,6 +80,7 @@ patch_margin_right = 16
 patch_margin_bottom = 16
 script = ExtResource("1_s5r67")
 Visual = NodePath("Visual")
+animation = NodePath("Visual/AnimationPlayer")
 
 [node name="Visual" type="NinePatchRect" parent="." node_paths=PackedStringArray("NameLabel", "Base")]
 layout_mode = 1
@@ -106,7 +108,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "NAME"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_u4wdl")
 }
