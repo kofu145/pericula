@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciekrtm1jxre6"]
+[gd_scene load_steps=5 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
