@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dha6a5my3cgt6"]
+
+[node name="DmgNumber" type="Label"]
+offset_left = -44.0
+offset_top = -35.0
+offset_right = 42.0
+offset_bottom = 34.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "100"

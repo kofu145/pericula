@@ -1,10 +1,163 @@
-[gd_scene load_steps=6 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=23 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
-[ext_resource type="Resource" uid="uid://x1s3hs3wqykm" path="res://resources/decks/TestDeck.tres" id="3_4mif7"]
 [ext_resource type="Script" uid="uid://bse2d7muju74w" path="res://scripts/shared/EventBus.cs" id="3_8tji2"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_e58k3"]
 [ext_resource type="Script" uid="uid://cnyblma4mqw1o" path="res://scripts/shared/SceneManager.cs" id="4_e58k3"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="4_l76sc"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="5_bgvav"]
+[ext_resource type="Script" uid="uid://c32rujon2uc3t" path="res://scripts/shared/DamageNumbers.cs" id="8_bgvav"]
+[ext_resource type="PackedScene" uid="uid://dha6a5my3cgt6" path="res://scenes/DmgNumber.tscn" id="9_s02d4"]
+
+[sub_resource type="Resource" id="Resource_mjdb7"]
+resource_local_to_scene = true
+script = ExtResource("3_e58k3")
+Damage = 5
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_upxyf"]
+resource_local_to_scene = true
+script = ExtResource("4_l76sc")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
+
+[sub_resource type="Resource" id="Resource_5j4nb"]
+resource_local_to_scene = true
+script = ExtResource("4_l76sc")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
+
+[sub_resource type="Resource" id="Resource_kohqt"]
+resource_local_to_scene = true
+script = ExtResource("4_l76sc")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
+
+[sub_resource type="Resource" id="Resource_kgvsl"]
+resource_local_to_scene = true
+script = ExtResource("4_l76sc")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
+
+[sub_resource type="Resource" id="Resource_s02d4"]
+resource_local_to_scene = true
+script = ExtResource("4_l76sc")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
+
+[sub_resource type="Resource" id="Resource_e58k3"]
+resource_local_to_scene = true
+script = ExtResource("5_bgvav")
+Cards = Array[Object]([SubResource("Resource_upxyf"), SubResource("Resource_5j4nb"), SubResource("Resource_kohqt"), SubResource("Resource_kgvsl"), SubResource("Resource_s02d4")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"
+
+[sub_resource type="Resource" id="Resource_15u53"]
+resource_local_to_scene = true
+script = ExtResource("4_l76sc")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
+
+[sub_resource type="Resource" id="Resource_2mo7f"]
+resource_local_to_scene = true
+script = ExtResource("4_l76sc")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
+
+[sub_resource type="Resource" id="Resource_xvcie"]
+resource_local_to_scene = true
+script = ExtResource("4_l76sc")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
+
+[sub_resource type="Resource" id="Resource_islkc"]
+resource_local_to_scene = true
+script = ExtResource("4_l76sc")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
+
+[sub_resource type="Resource" id="Resource_ijwxy"]
+resource_local_to_scene = true
+script = ExtResource("4_l76sc")
+DisplayName = "CARD"
+HP = 6
+MaxHP = 0
+BaseAttack = 0
+Attack = 3
+id = 0
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
+
+[sub_resource type="Resource" id="Resource_l76sc"]
+resource_local_to_scene = true
+script = ExtResource("5_bgvav")
+Cards = Array[Object]([SubResource("Resource_15u53"), SubResource("Resource_2mo7f"), SubResource("Resource_xvcie"), SubResource("Resource_islkc"), SubResource("Resource_ijwxy")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"
 
 [node name="GlobalManager" type="Node2D"]
 
@@ -13,8 +166,8 @@ script = ExtResource("1_kacr6")
 
 [node name="DeckManager" type="Node" parent="."]
 script = ExtResource("2_kacr6")
-PlayerDeck = ExtResource("3_4mif7")
-EnemyDeck = ExtResource("3_4mif7")
+PlayerDeck = SubResource("Resource_e58k3")
+EnemyDeck = SubResource("Resource_l76sc")
 
 [node name="EventBus" type="Node" parent="."]
 script = ExtResource("3_8tji2")
@@ -23,3 +176,7 @@ script = ExtResource("3_8tji2")
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("4_e58k3")
+
+[node name="DamageNum" type="Node" parent="."]
+script = ExtResource("8_bgvav")
+DamageNumberScene = ExtResource("9_s02d4")
