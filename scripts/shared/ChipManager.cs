@@ -5,7 +5,12 @@ public partial class ChipManager : Node
 {
     [Export] private int balance;
     public int Balance => balance;
+    public static ChipManager Instance { get; private set; }
 
+    public override void _Ready()
+    {
+        Instance = this;
+    }
     // encapsulating the below is not strictly necessary, but 
     // may come in handy when potentially setting through events
     // (for instance, tracking whenever a player is deducted) for future
