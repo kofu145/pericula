@@ -10,15 +10,11 @@ public partial class Shop : Control
 	[Export] PackedScene shopCardScene;
 	[Export] int choicesAvailable = 5;
 	[Export] RichTextLabel chipCount;
-
-	ChipManager Chips;
-
 	const int REROLL_COST = 2;
 
 	public override void _Ready()
 	{
-		Chips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
-		Chips.AddChips(100);
+		ChipManager.Instance.AddChips(100);
 		base._Ready();
 		Initialize();
 	}
@@ -51,14 +47,14 @@ public partial class Shop : Control
 
 	public void Reroll()
 	{
-		if (Chips.Balance < REROLL_COST)
+		if (ChipManager.Instance.Balance < REROLL_COST)
 		{
 			GD.Print("Not enough chips to reroll!");
 			return;
 		}
 		else
 		{
-			Chips.Deduct(REROLL_COST);
+			ChipManager.Instance.Deduct(REROLL_COST);
 			UpdateChipCount();
 			Clear();
 			Initialize();
@@ -67,7 +63,7 @@ public partial class Shop : Control
 
 	public void UpdateChipCount()
 	{
-		chipCount.Text = Chips.Balance.ToString();
+		chipCount.Text = ChipManager.Instance.Balance.ToString();
 	}
 
 	public void EndShopPhase()

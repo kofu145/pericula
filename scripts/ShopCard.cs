@@ -11,14 +11,10 @@ public partial class ShopCard : Control
 	const float TWEEN_INTENSITY = 1.25f;
 	const float TWEEN_DURATION = 0.25f;
 	bool _isHovering = false;
-	ChipManager Chips;
-	DeckManager Deck;
 	Shop shop;
 
 	public override void _Ready()
 	{
-		Chips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
-		Deck = GetNode<DeckManager>("/root/GlobalManager/DeckManager");
 		base._Ready();
 		PivotOffset = Size / 2;
 	}
@@ -52,7 +48,7 @@ public partial class ShopCard : Control
 		{
 			return;
 		}
-		else if (Chips.Balance >= _cardID)
+		else if (ChipManager.Instance.Balance >= _cardID)
 		{
 			Buy();
 		}
@@ -60,10 +56,10 @@ public partial class ShopCard : Control
 
 	private void Buy()
 	{
-		Chips.Deduct(_cardID);
-		Deck.AddCardByID(_cardID);
+		ChipManager.Instance.Deduct(_cardID);
+		DeckManager.Instance.AddCardByID(_cardID);
 		GD.Print(_cardID + " was selected!");
-		GD.Print("Current Deck: " + string.Join(", ", Deck));
+		GD.Print("Current Deck: " + string.Join(", ", DeckManager.Instance.PlayerDeck));
 
 		shop.UpdateChipCount();
 		RemoveFromShop();
