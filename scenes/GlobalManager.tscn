@@ -172,11 +172,9 @@ EnemyDeck = SubResource("Resource_l76sc")
 [node name="EventBus" type="Node" parent="."]
 script = ExtResource("3_8tji2")
 
-[node name="SceneManager" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("4_e58k3")
-
 [node name="DamageNum" type="Node" parent="."]
 script = ExtResource("8_bgvav")
 DamageNumberScene = ExtResource("9_s02d4")
+
+[node name="SceneManager" type="Node" parent="."]
+script = ExtResource("4_e58k3")

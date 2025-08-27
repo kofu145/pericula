@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class SceneManager : Control
+public partial class SceneManager : Node
 {
 	public static bool ChangingScenes = false;
 	public static string CurrentScene;
