@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=3 format=3 uid="uid://x1s3hs3wqykm"]
+
+[ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="1_kh3b8"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
+
+[resource]
+script = ExtResource("1_qu2sd")
+Cards = Array[Object]([ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8"), ExtResource("1_kh3b8")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"
