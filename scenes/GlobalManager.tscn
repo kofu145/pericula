@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=6 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
+[ext_resource type="Resource" uid="uid://x1s3hs3wqykm" path="res://resources/decks/TestDeck.tres" id="3_4mif7"]
 [ext_resource type="Script" uid="uid://bse2d7muju74w" path="res://scripts/shared/EventBus.cs" id="3_8tji2"]
 [ext_resource type="Script" uid="uid://cnyblma4mqw1o" path="res://scripts/shared/SceneManager.cs" id="4_e58k3"]
 
@@ -12,6 +13,8 @@ script = ExtResource("1_kacr6")
 
 [node name="DeckManager" type="Node" parent="."]
 script = ExtResource("2_kacr6")
+PlayerDeck = ExtResource("3_4mif7")
+EnemyDeck = ExtResource("3_4mif7")
 
 [node name="EventBus" type="Node" parent="."]
 script = ExtResource("3_8tji2")
