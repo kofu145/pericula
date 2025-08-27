@@ -77,8 +77,8 @@ public partial class ShopCard : Control
 
 	public void RemoveFromShop()
 	{
+		OnMouseExited();
 		_disabled = true;
 		Modulate = new Color(0.4f, 0.4f, 0.4f);
-		StartTween(this, "scale", Vector2.One, TWEEN_DURATION);
 	}
 }
