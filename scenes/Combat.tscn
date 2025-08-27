@@ -109,12 +109,13 @@ theme_override_font_sizes/font_size = 24
 text = "Enemy Action"
 horizontal_alignment = 1
 
-[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "raise1xButton", "raise2xButton", "raise5xButton")]
+[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "allInButton", "raise1xButton", "raise2xButton", "raise5xButton")]
 script = ExtResource("8_132iy")
 raiseButton = NodePath("HBoxContainer/RaiseButton")
 callButton = NodePath("HBoxContainer/CallButton")
 checkButton = NodePath("HBoxContainer/CheckButton")
 foldButton = NodePath("HBoxContainer/FoldButton")
+allInButton = NodePath("HBoxContainer/AllIn")
 raise1xButton = NodePath("HBoxContainer/1xRaise")
 raise2xButton = NodePath("HBoxContainer/2xRaise")
 raise5xButton = NodePath("HBoxContainer/5xRaise")

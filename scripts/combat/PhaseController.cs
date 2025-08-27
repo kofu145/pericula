@@ -55,6 +55,8 @@ public partial class PhaseController : Node2D
 
     private void StartPrePhase()
     {
+		if (!playerChips.Deduct(currentMinimumBuyIn)) return;   // Need a way to handle this
+		enemyChips -= currentMinimumBuyIn;
         currentPhase = RoundPhase.PreRound;
 
         // draw starting hand for each lane
