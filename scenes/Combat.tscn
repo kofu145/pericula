@@ -11,7 +11,7 @@
 
 [node name="root" type="Node2D" node_paths=PackedStringArray("combatManager", "betController", "actionLabel", "playerChipsLabel", "enemyChipsLabel", "potLabel")]
 script = ExtResource("1_mak3c")
-combatManager = NodePath("Node")
+combatManager = NodePath("CombatController")
 betController = NodePath("Canvas/ActionBar")
 actionLabel = NodePath("Canvas/EnemyActionLabel")
 playerChipsLabel = NodePath("Canvas/PlayerChips/PlayerChipsCount")
@@ -109,12 +109,13 @@ theme_override_font_sizes/font_size = 24
 text = "Enemy Action"
 horizontal_alignment = 1
 
-[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "raise1xButton", "raise2xButton", "raise5xButton")]
+[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "allInButton", "raise1xButton", "raise2xButton", "raise5xButton")]
 script = ExtResource("8_132iy")
 raiseButton = NodePath("HBoxContainer/RaiseButton")
 callButton = NodePath("HBoxContainer/CallButton")
 checkButton = NodePath("HBoxContainer/CheckButton")
 foldButton = NodePath("HBoxContainer/FoldButton")
+allInButton = NodePath("HBoxContainer/AllIn")
 raise1xButton = NodePath("HBoxContainer/1xRaise")
 raise2xButton = NodePath("HBoxContainer/2xRaise")
 raise5xButton = NodePath("HBoxContainer/5xRaise")
@@ -328,8 +329,18 @@ offset_bottom = 27.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "View Deck"
 
-[node name="Node" type="Node" parent="."]
+[node name="CombatController" type="Node" parent="." node_paths=PackedStringArray("ShowdownButton", "playerLane", "enemyLane")]
 script = ExtResource("8_mak3c")
+ShowdownButton = NodePath("../Button")
+playerLane = NodePath("../Canvas/PlayerController/PlayerCardLane")
+enemyLane = NodePath("../Canvas/EnemyController/EnemyCardLane")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -48.0
+offset_top = 98.0
+offset_right = 45.0
+offset_bottom = 129.0
+text = "Showdown"
 
 [connection signal="pressed" from="Canvas/BET Phase" to="." method="StartBetPhase"]
 [connection signal="pressed" from="Canvas/ViewDeckButton" to="Canvas/DeckListView" method="ToggleDeckView"]
