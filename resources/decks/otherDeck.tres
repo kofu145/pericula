@@ -1,19 +1,19 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=10 format=3 uid="uid://x1s3hs3wqykm"]
+[gd_resource type="Resource" script_class="Deck" load_steps=10 format=3 uid="uid://bwt0lm0awbt3m"]
 
-[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_gsb5v"]
-[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
-[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_an4hp"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_75hqf"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_kus6q"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_q6ld1"]
 
 [sub_resource type="Resource" id="Resource_mjdb7"]
 resource_local_to_scene = true
-script = ExtResource("1_gsb5v")
+script = ExtResource("1_75hqf")
 Damage = 5
 name = ""
 metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 
-[sub_resource type="Resource" id="Resource_gsb5v"]
+[sub_resource type="Resource" id="Resource_15u53"]
 resource_local_to_scene = true
-script = ExtResource("2_an4hp")
+script = ExtResource("2_q6ld1")
 DisplayName = "CARD"
 HP = 6
 MaxHP = 0
@@ -24,9 +24,9 @@ OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
-[sub_resource type="Resource" id="Resource_an4hp"]
+[sub_resource type="Resource" id="Resource_2mo7f"]
 resource_local_to_scene = true
-script = ExtResource("2_an4hp")
+script = ExtResource("2_q6ld1")
 DisplayName = "CARD"
 HP = 6
 MaxHP = 0
@@ -37,9 +37,9 @@ OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
-[sub_resource type="Resource" id="Resource_kohqt"]
+[sub_resource type="Resource" id="Resource_xvcie"]
 resource_local_to_scene = true
-script = ExtResource("2_an4hp")
+script = ExtResource("2_q6ld1")
 DisplayName = "CARD"
 HP = 6
 MaxHP = 0
@@ -50,9 +50,9 @@ OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
-[sub_resource type="Resource" id="Resource_kgvsl"]
+[sub_resource type="Resource" id="Resource_islkc"]
 resource_local_to_scene = true
-script = ExtResource("2_an4hp")
+script = ExtResource("2_q6ld1")
 DisplayName = "CARD"
 HP = 6
 MaxHP = 0
@@ -63,9 +63,9 @@ OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
-[sub_resource type="Resource" id="Resource_s02d4"]
+[sub_resource type="Resource" id="Resource_ijwxy"]
 resource_local_to_scene = true
-script = ExtResource("2_an4hp")
+script = ExtResource("2_q6ld1")
 DisplayName = "CARD"
 HP = 6
 MaxHP = 0
@@ -77,6 +77,7 @@ Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [resource]
-script = ExtResource("1_qu2sd")
-Cards = Array[Object]([SubResource("Resource_gsb5v"), SubResource("Resource_an4hp"), SubResource("Resource_kohqt"), SubResource("Resource_kgvsl"), SubResource("Resource_s02d4")])
+resource_local_to_scene = true
+script = ExtResource("1_kus6q")
+Cards = Array[Object]([SubResource("Resource_15u53"), SubResource("Resource_2mo7f"), SubResource("Resource_xvcie"), SubResource("Resource_islkc"), SubResource("Resource_ijwxy")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
