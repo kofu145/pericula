@@ -70,6 +70,10 @@ public partial class DeckManager : Node
         }
 
     }
+
+    // public void Discard(CardData c) => _discard.Add(c);
+    // public void DiscardRange(IEnumerable<CardData> cards) => _discard.AddRange(cards);
+
     public void FinishAndReset()
     {
         playerBattleDeck.Clear();
@@ -78,4 +82,34 @@ public partial class DeckManager : Node
         enemyDisc.Clear();
         initialized = false;
     }
+
+    /// <summary>
+    /// Recycles respective discard pile back into respective deck. 
+    /// </summary>
+    private void RecycleDiscardIntoDraw(bool isPlayer)
+    {
+        var targetDeck = isPlayer ? playerBattleDeck : enemyBattleDeck;
+        var targetDisc = isPlayer ? playerDisc : enemyDisc;
+
+        targetDeck.AddRange(targetDisc);
+        targetDisc.Clear();
+        Shuffle(isPlayer);
+    }
+
+    /// <summary>
+    /// Carryover shuffle method from previous implementation - shuffles a respective deck.
+    /// </summary>
+    /// <param name="isPlayer">Determines which deck to shuffle - true: player, false: enemy.</param>
+    private void Shuffle(bool isPlayer)
+    {
+        if (!initialized) return;
+        var targetDeck = isPlayer ? playerBattleDeck : enemyBattleDeck;
+        for (int i = 0; i < targetDeck.Count; i++)
+        {
+            int j = RndGen.Next(i + 1);
+            (targetDeck[i], targetDeck[j]) = (targetDeck[j], targetDeck[i]);
+        }
+    }
+
+
 }
