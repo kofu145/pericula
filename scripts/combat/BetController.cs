@@ -437,7 +437,7 @@ public partial class BetController : Node
             EndPhase();
             return;
         }
-        
+
         turn = Turn.Player;
         UpdateButtons();
         UpdateChipLabel();
