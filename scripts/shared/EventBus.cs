@@ -3,9 +3,9 @@ using System;
 
 public partial class EventBus : Node
 {
-    public static EventBus Instance { get; private set; }
-    public override void _Ready()
-    {
-        Instance = this;
-    }
+	public static EventBus Instance { get; private set; }
+	public override void _Ready()
+	{
+		Instance = this;
+	}
 }
