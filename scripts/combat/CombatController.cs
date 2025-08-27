@@ -54,10 +54,10 @@ public partial class CombatController : Node
 
 	public void ShowdownHandler()
 	{
-		initLane(true);
-		initLane(false);
+		InitLane(true);
+		InitLane(false);
 		EventBus.Instance.RefreshBattleLoop += BattleRefreshHandler;
-		doBattle();
+		DoBattle();
 		//currLane.RemoveCardAtIndex(2);
 		//actionQueue.Add(new Callable(this, MethodName.UpdateLanes));
 	}
@@ -66,7 +66,7 @@ public partial class CombatController : Node
 	{
 		updateLane(true);
 		updateLane(false);
-		flipTurn();
+		FlipTurn();
 		if (playerLane.CardCount <= 0)
 		{
 			// playerlost
@@ -78,12 +78,11 @@ public partial class CombatController : Node
 			//EndRound();
 		}
 		else
-			doBattle();
+			DoBattle();
 	}
 
-	private void doBattle()
+	private void DoBattle()
 	{
-
 		var currLane = battleState.currentTurn == Turn.Player ? playerLane : enemyLane;
 		foreach (var eff in currLane.GetCardAtIndex(0).OnUse)
 		{
@@ -99,12 +98,12 @@ public partial class CombatController : Node
 
 	}
 
-	private void buildQueue()
+	private void BuildQueue()
 	{
 
 	}
 
-	private void flipTurn()
+	private void FlipTurn()
 	{
 		if (battleState.currentTurn == Turn.Player)
 			battleState.currentTurn = Turn.Enemy;
@@ -112,12 +111,12 @@ public partial class CombatController : Node
 			battleState.currentTurn = Turn.Player;
 	}
 
-	private void action(Callable call, bool isAnimation)
+	private void Action(Callable call, bool isAnimation)
 	{
 
 	}
 
-	private void initLane(bool player)
+	private void InitLane(bool player)
 	{
 		var targetLane = player ? playerLane : enemyLane;
 		for (int i = 0; i < targetLane.CardCount; i++)
@@ -133,7 +132,7 @@ public partial class CombatController : Node
 
 	private void updateLane(bool player)
 	{
-		List<CardData> toRemove = new();
+		List<CardData> toRemove = [];
 		var targetLane = player ? playerLane : enemyLane;
 		for (int i = 0; i < targetLane.CardCount; i++)
 		{
