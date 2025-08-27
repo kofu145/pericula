@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 public enum RoundPhase { PreRound, Betting, Showdown }
-public partial class CombatController : Node2D
+public partial class PhaseController : Node2D
 {
 	[Export] private int startingDraw = 5;
 	[Export] private float displayDuration = 1.5f;
