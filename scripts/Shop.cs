@@ -68,6 +68,6 @@ public partial class Shop : Control
 
 	public void EndShopPhase()
 	{
-		SceneManager.ChangeSceneToFile("scenes/Combat.tscn");
+		SceneManager.ChangeSceneToFile("Combat");
 	}
 }

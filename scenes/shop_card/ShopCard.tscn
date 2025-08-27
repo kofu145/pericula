@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bki587v31okuf"]
+[gd_scene load_steps=4 format=3 uid="uid://bki587v31okuf"]
 
 [ext_resource type="Script" uid="uid://d2ajyw3o0u05g" path="res://scripts/ShopCard.cs" id="1_m5bcj"]
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="1_vgvuc"]
+[ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="3_hscbs"]
 
-[node name="ShopCard" type="Control" node_paths=PackedStringArray("labelId")]
+[node name="ShopCard" type="Control" node_paths=PackedStringArray("labelId", "description")]
 custom_minimum_size = Vector2(100, 118)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 50.0
-offset_bottom = 59.0
+offset_right = 100.0
+offset_bottom = 118.0
 script = ExtResource("1_m5bcj")
 labelId = NodePath("CardBorder/CardID")
+description = NodePath("CardDescription")
 
 [node name="CardBorder" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -43,6 +45,13 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "1"
 horizontal_alignment = 1
+
+[node name="CardDescription" parent="." instance=ExtResource("3_hscbs")]
+visible = false
+offset_left = -26.0
+offset_top = 122.0
+offset_right = 124.0
+offset_bottom = 122.0
 
 [connection signal="gui_input" from="." to="." method="OnInput"]
 [connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]

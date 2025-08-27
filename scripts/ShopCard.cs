@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public partial class ShopCard : Control
 {
 	[Export] RichTextLabel labelId; // For testing purposes, to be removed
+	[Export] CardDescription description;
 	int _cardID;
 	bool _disabled = false;
 
@@ -80,6 +81,7 @@ public partial class ShopCard : Control
 		if (_disabled) return;
 		ZIndex = 100;
 		StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION);
+		description.Display();
 	}
 
 	public void OnMouseExited()
@@ -87,6 +89,7 @@ public partial class ShopCard : Control
 		if (_disabled) return;
 		ZIndex = 0;
 		StartTween(this, "scale", Vector2.One, TWEEN_DURATION);
+		description.Hide();
 	}
 
 	public void RemoveFromShop()

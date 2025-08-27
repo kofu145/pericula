@@ -13,15 +13,19 @@ public partial class SceneManager : Node
 		Instance = this;
 	}
 
+	/// <summary>
+	/// Switches to a new scene. Scene must be located in scenes folder.
+	/// </summary>
 	public static void ChangeSceneToFile(string target)
 	{
-		if (ResourceLoader.Exists(target))
+		string absolutePath = $"scenes/{target}.tscn";
+		if (ResourceLoader.Exists(absolutePath))
 		{
-			Instance.ChangeSceneHelper(target);
+			Instance.ChangeSceneHelper(absolutePath);
 		}
 		else
 		{
-			GD.PrintErr($"Scene file '{target}' does not exist.");
+			GD.PrintErr($"Scene file '{absolutePath}' does not exist.");
 		}
 	}
 
