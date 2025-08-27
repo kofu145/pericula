@@ -9,6 +9,8 @@ public partial class PhaseController : Node2D
 	[Export] private float displayDuration = 1.5f;
 	// TODO: temp implementation
 	[Export] private int startingChips = 100;
+    // minimum starting bet, will be increased by singleton instance as run progresses
+	[Export] private int currentMinimumBuyIn = 10;
 
 	// Scene refs
 	[Export] private CombatEntityController player;
@@ -64,7 +66,7 @@ public partial class PhaseController : Node2D
 	public void StartBetPhase()
 	{
 		currentPhase = RoundPhase.Betting;
-		betController.BeginPhase();
+		betController.BeginPhase(currentMinimumBuyIn);
 	}
 
 	private void EndBetPhase()
