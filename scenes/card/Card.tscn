@@ -1,8 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://djkgyuhdqygsw"]
+[gd_scene load_steps=8 format=3 uid="uid://djkgyuhdqygsw"]
 
 [ext_resource type="Script" uid="uid://ohvegxjxbqxu" path="res://scripts/CardBase.cs" id="1_s5r67"]
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="2_3dwn4"]
 [ext_resource type="Script" uid="uid://di1yqf4q41ly7" path="res://scripts/CardVisual.cs" id="3_4cxr5"]
+
+[sub_resource type="Animation" id="Animation_s5r67"]
+resource_name = "MoveUpAction"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.366667, 0.8),
+"transitions": PackedFloat32Array(0.217638, 1, 0.138696, 8.87654),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, -20), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3dwn4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4cxr5"]
+resource_name = "MoveDownAction"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.366667, 0.8),
+"transitions": PackedFloat32Array(0.217638, 1, 0.138696, 8.87654),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 20), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u4wdl"]
+_data = {
+&"MoveDownAction": SubResource("Animation_4cxr5"),
+&"MoveUpAction": SubResource("Animation_s5r67"),
+&"RESET": SubResource("Animation_3dwn4")
+}
 
 [node name="Card" type="NinePatchRect" node_paths=PackedStringArray("Visual")]
 custom_minimum_size = Vector2(50, 59)
@@ -52,3 +105,8 @@ offset_bottom = 25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "NAME"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u4wdl")
+}
