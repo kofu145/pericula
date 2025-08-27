@@ -126,6 +126,7 @@ offset_right = 384.0
 offset_bottom = -136.0
 grow_horizontal = 2
 grow_vertical = 2
+side = 1
 
 [node name="PlayerCardLane" parent="." instance=ExtResource("4_mak3c")]
 layout_mode = 1
