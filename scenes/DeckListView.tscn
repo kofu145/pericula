@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://4bvri2crpxyv"]
+[gd_scene load_steps=5 format=3 uid="uid://4bvri2crpxyv"]
 
 [ext_resource type="Script" uid="uid://lah3ed6n3ssj" path="res://scripts/DeckListView.cs" id="1_ce1bn"]
 [ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/Card.tscn" id="2_jmkb4"]
+[ext_resource type="Script" uid="uid://y83lgcbhai6o" path="res://scripts/combat/BattleState.cs" id="4_jrmyk"]
 [ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="4_ydxu1"]
 
 [node name="DeckListView" type="Panel" node_paths=PackedStringArray("Scroll", "Grid")]
@@ -44,3 +45,4 @@ columns = 7
 [node name="CardVisualContainer" type="CenterContainer" parent="MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
+script = ExtResource("4_jrmyk")
