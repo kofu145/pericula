@@ -26,7 +26,8 @@ public partial class PhaseController : Node2D
 
 	// runtime refs
 	private RoundPhase currentPhase;
-	private ChipManager playerChips;
+	private int currentPot = 0;
+	private ChipManager playerChips;		// awarded to the winner after showdown
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -109,8 +110,11 @@ public partial class PhaseController : Node2D
 
 		else if (entity == "enemy" && enemyChipsLabel != null)
 			enemyChipsLabel.Text = $"Chips: {amount}";
-			
+
 		else if (entity == "pot" && potLabel != null)
+		{
 			potLabel.Text = $"Pot: {amount}";
+			currentPot = amount;
+		}
 	}
 }

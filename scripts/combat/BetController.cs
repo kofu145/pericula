@@ -23,7 +23,7 @@ public partial class BetController : Node
 
     // public events
     public Action<BetAction, int, int> OnEnemyAction; // parameters: (action, toCallAmount, raiseAmount)
-    public Action OnBetPhaseEnd; // parameters: (endedWithFold, foldedByPlayer)
+    public Action OnBetPhaseEnd; 
     public Action<string, int> OnChipsChanged; // parameters: (entityName, newChipAmount)
 
     // names for event
@@ -200,7 +200,6 @@ public partial class BetController : Node
         lastPlayerAction = BetAction.Fold;
         endedWithFold = true;
         foldedByPlayer = true;
-
         EndPhase();
     }
 
@@ -260,7 +259,7 @@ public partial class BetController : Node
             int amount = EnemyPickRaiseAmount();
             ApplyEnemyRaise(amount);
         }
-        else
+        else    // if fold
         {
             lastEnemyAction = BetAction.Fold;
             OnEnemyAction?.Invoke(BetAction.Fold, 0, 0);
@@ -305,7 +304,15 @@ public partial class BetController : Node
         turn = Turn.None;
         choosingRaiseAmount = false;
         HideAll();
+
+        if (endedWithFold)
+        {
+            if (!foldedByPlayer) playerChips.AddChips(pot);
+            // else  TODO: give pot to enemy
+        }
+
         UpdateChipLabel();
+
         OnBetPhaseEnd?.Invoke();
         GD.Print("Phase is over");
     }
