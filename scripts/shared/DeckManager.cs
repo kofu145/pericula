@@ -42,6 +42,34 @@ public partial class DeckManager : Node
         enemyBattleDeck = EnemyDeck.Cards.Duplicate(true);
     }
 
+    /// <summary>
+    /// Adds a random assortment of n cards to <seealso cref="Hand"/>.
+    /// </summary>
+    /// <param name="n">The number of cards to draw.</param>
+    /// <param name="isPlayer">The corresponding deck to draw from - true is player, false is enemy.</param>
+	public void Draw(int n, bool isPlayer)
+    {
+        if (!initialized) return;
+        var targetList = isPlayer ? Hand : EnemyHand;
+        var targetDeck = isPlayer ? playerBattleDeck : enemyBattleDeck;
+        var targetDisc = isPlayer ? playerDisc : enemyDisc;
+
+        for (int i = 0; i < n; i++)
+        {
+
+            if (targetDeck.Count == 0)
+            {
+                if (targetDisc.Count == 0) break;
+                RecycleDiscardIntoDraw(isPlayer);
+            }
+
+            var lastIndex = targetDeck.Count - 1;
+            var c = targetDeck[lastIndex];
+            targetDeck.RemoveAt(lastIndex);
+            targetList.Add(c);
+        }
+
+    }
     public void FinishAndReset()
     {
         playerBattleDeck.Clear();
