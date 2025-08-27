@@ -20,7 +20,7 @@ public partial class Shop : Control
         Chips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
         Chips.AddChips(100);
         base._Ready();
-        Reroll();
+        Initialize();
     }
 
     public void Initialize()
