@@ -42,6 +42,32 @@ public partial class DeckManager : Node
         enemyBattleDeck = EnemyDeck.Cards.Duplicate(true);
     }
 
+    public void AddCardByID(int id)
+    {
+        // need to add lookup table
+        // PlayerDeck.Cards.Add();
+    }
+
+    public bool RemoveCardWithID(int id)
+    {
+        int idxToRemove = -1;
+        for (int i = 0; i < PlayerDeck.Cards.Count; i++)
+        {
+            if (PlayerDeck.Cards[i].id == id)
+                idxToRemove = id;
+        }
+        if (idxToRemove == -1)
+            return false;
+
+        PlayerDeck.Cards.RemoveAt(idxToRemove);
+        return true;
+    }
+
+    public void ChangeEnemyDeck(string respath)
+    {
+        // impl
+    }
+
     /// <summary>
     /// Adds a random assortment of n cards to <seealso cref="Hand"/>.
     /// </summary>
