@@ -6,7 +6,7 @@ public partial class EffectTemplate : Resource
 {
 
 	[Export] public string name;
-	public virtual void OnEnqueue(EffectParam param) { }
+	public async virtual void OnEnqueue(EffectParam param) { }
 
 	public virtual void OnUse(EffectParam param) { }
 
