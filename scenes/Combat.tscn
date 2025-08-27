@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/PhaseController.cs" id="1_mak3c"]
 [ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="2_mak3c"]
 [ext_resource type="Script" uid="uid://bqexeu4nwqnrs" path="res://scripts/combat/CombatEntityController.cs" id="3_spaix"]
-[ext_resource type="PackedScene" uid="uid://chql0nnkhffha" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
+[ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="5_felwx"]
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="6_acsaf"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="7_x8jxt"]
@@ -11,11 +11,11 @@
 
 [node name="combatRoot" type="Node2D" node_paths=PackedStringArray("player", "enemy", "betController", "actionLabel")]
 script = ExtResource("1_mak3c")
+testCardData = ExtResource("2_mak3c")
 player = NodePath("Canvas/PlayerController")
 enemy = NodePath("Canvas/EnemyController")
 betController = NodePath("Canvas/ActionBar")
 actionLabel = NodePath("Canvas/EnemyActionLabel")
-testCardData = ExtResource("2_mak3c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -88,16 +88,13 @@ theme_override_font_sizes/font_size = 24
 text = "Enemy Action"
 horizontal_alignment = 1
 
-[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "currentPotLabel", "raise1xButton", "raise2xButton", "raise5xButton")]
+[node name="ActionBar" type="Node2D" parent="Canvas" node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "currentPotLabel")]
 script = ExtResource("8_132iy")
 raiseButton = NodePath("HBoxContainer/RaiseButton")
 callButton = NodePath("HBoxContainer/CallButton")
 checkButton = NodePath("HBoxContainer/CheckButton")
 foldButton = NodePath("HBoxContainer/FoldButton")
 currentPotLabel = NodePath("../Chips/ChipsCount")
-raise1xButton = NodePath("HBoxContainer/1xRaise")
-raise2xButton = NodePath("HBoxContainer/2xRaise")
-raise5xButton = NodePath("HBoxContainer/5xRaise")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Canvas/ActionBar"]
 offset_left = -362.0
