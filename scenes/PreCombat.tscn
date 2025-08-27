@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdnquf255b8dn"]
 
-[ext_resource type="PackedScene" uid="uid://bqqs350nnamat" path="res://scenes/pre_combat/stage_card.tscn" id="1_fdsa5"]
+[ext_resource type="PackedScene" uid="uid://bqqs350nnamat" path="res://scenes/pre_combat/PreStagePanel.tscn" id="1_fdsa5"]
 
 [node name="PreCombat" type="Control"]
 layout_mode = 3

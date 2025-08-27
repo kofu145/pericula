@@ -48,16 +48,16 @@ chipCount = NodePath("Chips/Count")
 
 [node name="ToBattleButton" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -35.5
-offset_right = -12.0
-offset_bottom = 35.5
-grow_horizontal = 0
+offset_left = -59.0
+offset_top = -154.0
+offset_right = 59.0
+offset_bottom = -83.0
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 focus_mode = 0
@@ -65,14 +65,17 @@ text = "Next Battle >>"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -500.0
-offset_top = 43.0
+offset_top = -59.0
 offset_right = 500.0
-offset_bottom = 161.0
+offset_bottom = 59.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfvoa")
 
 [node name="ShopChoices" type="HBoxContainer" parent="PanelContainer"]
@@ -82,14 +85,17 @@ alignment = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -500.0
-offset_top = 203.0
-offset_right = -100.0
-offset_bottom = 321.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 106.0
+offset_right = 200.0
+offset_bottom = 224.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfvoa")
 
 [node name="DeckManipChoices" type="HBoxContainer" parent="PanelContainer2"]
@@ -99,17 +105,16 @@ alignment = 1
 
 [node name="RerollButton" type="Button" parent="."]
 layout_mode = 2
-offset_left = 906.0
-offset_top = 64.0
-offset_right = 1076.0
-offset_bottom = 143.0
+offset_left = 899.0
+offset_top = 280.0
+offset_right = 1069.0
+offset_bottom = 359.0
 grow_vertical = 0
 size_flags_vertical = 8
 focus_mode = 0
 text = "Reroll (2)"
 
 [node name="DeckListView" parent="." instance=ExtResource("3_yltc6")]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

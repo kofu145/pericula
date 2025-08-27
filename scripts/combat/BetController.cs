@@ -8,15 +8,15 @@ public enum BetAction { None, Check, Raise, Call, Fold, CallAndRaise, AllIn }
 public partial class BetController : Node
 {
 	// UI refs
-	[Export] private TextureButton raiseButton;
-	[Export] private TextureButton callButton;
-	[Export] private TextureButton checkButton;
-	[Export] private TextureButton foldButton;
-	[Export] private TextureButton allInButton;
+	[Export] private Button raiseButton;
+	[Export] private Button callButton;
+	[Export] private Button checkButton;
+	[Export] private Button foldButton;
+	[Export] private Button allInButton;
 
-	[Export] private TextureButton raise1xButton;
-	[Export] private TextureButton raise2xButton;
-	[Export] private TextureButton raise5xButton;
+	[Export] private Button raise1xButton;
+	[Export] private Button raise2xButton;
+	[Export] private Button raise5xButton;
 
 	// Config
 	private int minimumBuyIn;
@@ -94,17 +94,17 @@ public partial class BetController : Node
 		if (raise1xButton != null)
 		{
 			raise1xButton.Pressed += () => OnClickPlayerRaiseAmount(1);
-			raise1xButton.GetNode<Label>("Text").Text = $"$ {minimumBuyIn}";
+			raise1xButton.Text = $"$ {minimumBuyIn}";
 		}
 		if (raise2xButton != null)
 		{
 			raise2xButton.Pressed += () => OnClickPlayerRaiseAmount(2);
-			raise2xButton.GetNode<Label>("Text").Text = $"$ {minimumBuyIn * 2}";
+			raise2xButton.Text = $"$ {minimumBuyIn * 2}";
 		}
 		if (raise5xButton != null)
 		{
 			raise5xButton.Pressed += () => OnClickPlayerRaiseAmount(5);
-			raise5xButton.GetNode<Label>("Text").Text = $"$ {minimumBuyIn * 5}";
+			raise5xButton.Text = $"$ {minimumBuyIn * 5}";
 		}
 
 		// reset states for new bet
@@ -471,15 +471,12 @@ public partial class BetController : Node
 	private void UpdateButtons()
 	{
 		HideAll();
-
-
 		switch (turn)
 		{
 			case Turn.Player:
 				if (allInButton != null)
 				{
-					var text = allInButton.GetNode<Label>("Text");
-					if (text != null) text.Text = $"All-In ($ {PlayerBalance})";
+					allInButton.Text = $"All-In ($ {PlayerBalance})";
 					Show(allInButton);
 				}
 				if (choosingRaiseAmount)
@@ -521,14 +518,14 @@ public partial class BetController : Node
 		Hide(raise5xButton);
 	}
 
-	private void Hide(TextureButton button)
+	private void Hide(Button button)
 	{
 		if (button == null) return;
 		button.Visible = false;
 		button.Disabled = true;
 	}
 
-	private void Show(TextureButton button)
+	private void Show(Button button)
 	{
 		if (button == null) return;
 		button.Visible = true;
