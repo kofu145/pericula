@@ -1,14 +1,14 @@
 using System;
+using Godot;
 
-public class EffectParam
+public partial class EffectParam : Node
 {
 	public BattleState State;
 	public CardData Target;
 	public CardData Self;
-	public EffectParam(BattleState state, CardData target, CardData self)
+	public void Initialize(BattleState state, CardData self)
 	{
 		State = state;
-		Target = target;
 		Self = self;
 	}
 }
