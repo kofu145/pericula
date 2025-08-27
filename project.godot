@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="pericula"
-run/main_scene="uid://c4hr0e855ng1k"
+run/main_scene="uid://q282sw2f6odl"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://scripts/SceneManager.cs"
+GlobalManager="*res://scenes/GlobalManager.tscn"
 
 [dotnet]
 
