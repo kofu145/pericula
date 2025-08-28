@@ -74,6 +74,7 @@ public partial class PhaseController : Node
 
 		combatManager.OnShowdownEndPlayerWin += EndShowdownPhase;
 
+		// add listeners to update enemy and player chips UI
 		playerChips = ChipManager.Instance;
 		playerChips.OnChipsChanged += DisplayPlayerChips;
 
@@ -82,6 +83,12 @@ public partial class PhaseController : Node
 
 		// TODO: temp implementation
 		playerChips.AddChips(startingChips);
+		
+		// force update when scene is first loaded
+		DisplayPot(0);
+		DisplayPlayerChips(playerChips.Balance);
+		DisplayEnemyChips(enemyChips.Balance);
+
 
 		StartCombatEncounter();
 	}
