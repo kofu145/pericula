@@ -18,7 +18,11 @@ public partial class PreStagePanel : PanelContainer
 
         if (id > StageManager.Instance.CurrentStageID)
         {
-            Disable();
+            DisableAsLocked();
+        }
+        else if (id < StageManager.Instance.CurrentStageID)
+        {
+            DisableAsCompleted();
         }
     }
 
@@ -27,10 +31,22 @@ public partial class PreStagePanel : PanelContainer
         StageManager.Instance.BeginStage();
     }
 
+    public void DisableAsCompleted()
+    {
+        Disable();
+        startRoundButton.Text = "DEFEATED";
+    }
+
+    public void DisableAsLocked()
+    {
+        Disable();
+        stageName.Text = "???";
+    }
+
     public void Disable()
     {
         Modulate = new Color(0.5f, 0.5f, 0.5f);
         startRoundButton.Disabled = true;
-        stageName.Text = "???";
+        
     }
 }

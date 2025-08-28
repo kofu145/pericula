@@ -247,4 +247,17 @@ public partial class PhaseController : Node
 	{
 		playerChipsLabel.Text = $"Chips: {amount}";
 	}
+
+	protected override void Dispose(bool disposing)
+    {
+		betController.OnBetPhaseEnd -= EndBetPhase;
+		betController.OnEnemyAction -= DisplayEnemyAction;
+		betController.OnChipsChanged -= DisplayPot;
+
+		combatManager.OnShowdownEndPlayerWin -= EndShowdownPhase;
+
+		enemyChips.OnChipsChanged = null;
+        ChipManager.Instance.OnChipsChanged = null;
+        base.Dispose(disposing);
+    }
 }
