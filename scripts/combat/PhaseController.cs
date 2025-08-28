@@ -178,6 +178,7 @@ public partial class PhaseController : Node
 
 	private void EndEncounter()
 	{
+		DeckManager.Instance.FinishAndReset();
 		if (PlayerLost)
 		{
 			// player lost
