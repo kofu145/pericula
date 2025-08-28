@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=27 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="5_bgvav"]
 [ext_resource type="Script" uid="uid://ckq7qoxv60uo8" path="res://scripts/shared/PopupText.cs" id="7_l76sc"]
 [ext_resource type="PackedScene" uid="uid://dha6a5my3cgt6" path="res://scenes/PopupText.tscn" id="9_s02d4"]
+[ext_resource type="Shader" uid="uid://d3717vds76o65" path="res://scripts/shaders/DiamondTransition.gdshader" id="10_ivlop"]
 [ext_resource type="Script" uid="uid://cyyjmmxcnipyo" path="res://scripts/shared/StageManager.cs" id="10_s02d4"]
+[ext_resource type="Script" uid="uid://krak4fxo5k5x" path="res://scripts/shared/CardLookup.cs" id="12_7a67w"]
 
 [sub_resource type="Resource" id="Resource_mjdb7"]
 resource_local_to_scene = true
@@ -22,6 +24,9 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 MaxHP = 0
 BaseAttack = 0
@@ -35,6 +40,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 MaxHP = 0
 BaseAttack = 0
@@ -48,6 +56,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 MaxHP = 0
 BaseAttack = 0
@@ -61,6 +72,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 MaxHP = 0
 BaseAttack = 0
@@ -74,6 +88,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 MaxHP = 0
 BaseAttack = 0
@@ -93,6 +110,9 @@ metadata/_custom_type_script = "uid://dnh88quxuv4le"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 MaxHP = 0
 BaseAttack = 0
@@ -106,6 +126,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 MaxHP = 0
 BaseAttack = 0
@@ -119,6 +142,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 MaxHP = 0
 BaseAttack = 0
@@ -132,6 +158,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 MaxHP = 0
 BaseAttack = 0
@@ -145,6 +174,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 MaxHP = 0
 BaseAttack = 0
@@ -159,6 +191,11 @@ resource_local_to_scene = true
 script = ExtResource("5_bgvav")
 Cards = Array[Object]([SubResource("Resource_15u53"), SubResource("Resource_2mo7f"), SubResource("Resource_xvcie"), SubResource("Resource_islkc"), SubResource("Resource_ijwxy")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7a67w"]
+shader = ExtResource("10_ivlop")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 32.0
 
 [node name="GlobalManager" type="Node2D"]
 
@@ -177,8 +214,25 @@ script = ExtResource("3_8tji2")
 script = ExtResource("7_l76sc")
 PopupTextScene = ExtResource("9_s02d4")
 
-[node name="SceneManager" type="Node" parent="."]
+[node name="SceneManager" type="Node" parent="." node_paths=PackedStringArray("SceneTransitionAnimationRect")]
 script = ExtResource("4_e58k3")
+SceneTransitionAnimationRect = NodePath("CanvasLayer/SceneTransitionRect")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SceneManager"]
+layer = 127
+
+[node name="SceneTransitionRect" type="ColorRect" parent="SceneManager/CanvasLayer"]
+material = SubResource("ShaderMaterial_7a67w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="StageManager" type="Node" parent="."]
 script = ExtResource("10_s02d4")
+
+[node name="CardLookup" type="Node" parent="."]
+script = ExtResource("12_7a67w")

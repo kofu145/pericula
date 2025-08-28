@@ -37,4 +37,14 @@ public partial class ChipManager : Node
 		balance += amount;
 		OnChipsChanged?.Invoke(balance);
 	}
+
+	/// <summary>
+	/// Method to deduct from total balance. 
+	/// With this method, the balance can be negative.
+	/// </summary>
+	public void BorrowChips(int amount)
+	{
+		balance -= amount;
+		OnChipsChanged?.Invoke(balance);
+	}
 }

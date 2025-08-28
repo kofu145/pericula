@@ -60,6 +60,7 @@ public partial class CombatController : Node
 		playerLane.EndRound();
 		enemyLane.EndRound();
 
+		DeckManager.Instance.FinishAndReset();
 	}
 
 	public void ShowdownHandler()

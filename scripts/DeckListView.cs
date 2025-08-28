@@ -17,8 +17,8 @@ public partial class DeckListView : Control
 	[Export] private int VGap = 24;
 
 	// Dummy data for inspector testing
-	[Export] private CardData inspectorCard;
-	[Export] private int dummyCardCount = 10;
+	// [Export] private CardData inspectorCard;
+	// [Export] private int dummyCardCount = 10;
 
 	// runtime refs
 	private List<CardBase> _cards = new();
@@ -36,9 +36,9 @@ public partial class DeckListView : Control
 		CallDeferred(nameof(UpdateColumns));
 
 		// TEMP: populate with dummy cards
-		var dummyDeck = new List<CardData>();
-		for (int i = 0; i < dummyCardCount; i++) dummyDeck.Add(inspectorCard);
-		Populate(dummyDeck);
+		// var dummyDeck = new List<CardData>();
+		// for (int i = 0; i < dummyCardCount; i++) dummyDeck.Add(inspectorCard);
+		Populate(DeckManager.Instance.PlayerDeck);
 	}
 
 	private void UpdateColumns()
@@ -64,10 +64,10 @@ public partial class DeckListView : Control
 	/// Populates the deck view with the given list of cardDatas.
 	/// </summary>
 	/// <param name="deck"> list of cards to populate the view with</param>
-	public void Populate(List<CardData> deck)
+	public void Populate(Deck deck)
 	{
 		Clear();
-		foreach (var data in deck) SpawnCard(data);
+		foreach (var data in deck.Cards) SpawnCard(data);
 	}
 
 	private void SpawnCard(CardData data)

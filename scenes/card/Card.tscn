@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://djkgyuhdqygsw"]
+[gd_scene load_steps=10 format=3 uid="uid://djkgyuhdqygsw"]
 
 [ext_resource type="Script" uid="uid://ohvegxjxbqxu" path="res://scripts/CardBase.cs" id="1_s5r67"]
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="2_3dwn4"]
+[ext_resource type="Resource" uid="uid://blfaij2oatyeq" path="res://resources/cardData/spade_pawn.tres" id="2_4cxr5"]
 [ext_resource type="Script" uid="uid://di1yqf4q41ly7" path="res://scripts/CardVisual.cs" id="3_4cxr5"]
 [ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="4_3dwn4"]
 
@@ -69,7 +70,8 @@ pivot_offset = Vector2(50, 59)
 size_flags_stretch_ratio = 0.0
 script = ExtResource("1_s5r67")
 Visual = NodePath("Visual")
-Description = NodePath("Visual/CardDescription")
+Data = ExtResource("2_4cxr5")
+Description = NodePath("Visual/CanvasLayer/CardDescription")
 animation = NodePath("Visual/AnimationPlayer")
 
 [node name="Visual" type="NinePatchRect" parent="." node_paths=PackedStringArray("NameLabel", "Base")]
@@ -77,6 +79,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(50, 59)
@@ -110,17 +114,44 @@ libraries = {
 &"": SubResource("AnimationLibrary_u4wdl")
 }
 
-[node name="CardDescription" parent="Visual" instance=ExtResource("4_3dwn4")]
-layout_mode = 1
+[node name="Health" type="Label" parent="Visual"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 83.0
+offset_right = 98.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack" type="Label" parent="Visual"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 83.0
+offset_right = 25.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Visual"]
+follow_viewport_enabled = true
+
+[node name="CardDescription" parent="Visual/CanvasLayer" node_paths=PackedStringArray("cardVisual") instance=ExtResource("4_3dwn4")]
+custom_minimum_size = Vector2(250, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = 61.0
-offset_right = 75.0
-offset_bottom = 61.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -326.0
+offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+cardVisual = NodePath("../..")

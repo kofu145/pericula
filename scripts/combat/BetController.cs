@@ -60,6 +60,7 @@ public partial class BetController : Node
 	private bool CanCall => ToCall > 0 && PlayerBalance >= ToCall;                  // player has enough chips to call the enemy's bet
 	private bool CanOpenRaise => !betOpen && PlayerBalance >= minimumBuyIn && EnemyBalance >= minimumBuyIn;         // player has enough chips to raise (at least minimumBuyIn) 
 	private bool CanRaiseOverCall => betOpen && AffordableRaise >= minimumBuyIn;    // player has enough chips to call the enemy's bet and raise (at least minimumBuyIn) 
+	private bool CanBet => PlayerBalance >= minimumBuyIn;
 	private int EnemyBalance => enemyChips.Balance;
 	// ====================================
 
@@ -114,6 +115,7 @@ public partial class BetController : Node
 		Show(checkButton);
 		Show(raiseButton);
 		UpdatePotLabel();
+		UpdateButtons();
 	}
 
 
@@ -247,7 +249,7 @@ public partial class BetController : Node
 		int balance = PlayerBalance;
 		if (balance <= 0) return;
 
-		balance = Math.Min(balance, EnemyBalance);  
+		balance = Math.Min(balance, EnemyBalance);
 
 		if (!playerChips.Deduct(balance)) return;
 		pot += balance;
@@ -319,7 +321,15 @@ public partial class BetController : Node
 		{
 			// TODO: Replace with AI logic and not random logic
 			// No open bet -> enemy randomly Check or Raise(open)
+
+			// TODO: replace implementation when player has <= 0 chips
+			// if player cannot call or raise (if PlayerBalance <= 0)
+			// then the player will check, no other options
 			var choice = rng.RandiRange(0, 1); // 0 = Check, 1 = Raise
+
+			if (!CanBet) choice = 0;    // force a check, because player cannot afford any bet
+
+
 			if (choice == 0)    // check
 			{
 				GD.Print("Enemy Checked");
@@ -348,7 +358,14 @@ public partial class BetController : Node
 
 		// TODO: Replace with AI logic and not random logic
 		// Bet is open -> enemy randomly Call / Raise / Fold
-		var r = rng.RandiRange(0, 2); // 0=Call, 1=Raise, 2=Fold
+
+		// TODO: replace implementation when player has <= 0 chips
+		// if player cannot call or raise (if PlayerBalance <= 0)
+
+		int r = 0;
+		if (CanBet) r = rng.RandiRange(0, 2); // 0=Call, 1=Fold, 2=Raise
+		else if (!CanBet) r = rng.RandiRange(0, 1); // 0=Call, 1=Fold
+
 		if (r == 0)
 		{
 			int amountToCall = Math.Max(0, currentBet - enemyPut);
@@ -368,7 +385,7 @@ public partial class BetController : Node
 				OnEnemyAction?.Invoke(BetAction.Call, amountToCall, 0);
 			}
 
-			if (!enemyChips.Deduct(amountToCall))	// over here, the balance is not deducted
+			if (!enemyChips.Deduct(amountToCall))   // over here, the balance is not deducted
 			{
 				GD.PushError("Enemy does not have enough chips for action.");
 				return;
@@ -378,12 +395,7 @@ public partial class BetController : Node
 
 			EndPhase(); // matched -> start battle
 		}
-		else if (r == 1)    // if raise
-		{
-			int amount = EnemyPickRaiseAmount();
-			ApplyEnemyRaise(amount);
-		}
-		else    // if fold
+		else if (r == 1)    // if fold
 		{
 			lastEnemyAction = BetAction.Fold;
 			OnEnemyAction?.Invoke(BetAction.Fold, 0, 0);
@@ -392,6 +404,11 @@ public partial class BetController : Node
 			foldedByPlayer = false;
 			EndPhase();
 		}
+		else    // if raise
+		{
+			int amount = EnemyPickRaiseAmount();
+			ApplyEnemyRaise(amount);
+		}
 	}
 
 	// TODO: Replace random logic
@@ -399,8 +416,9 @@ public partial class BetController : Node
 	{
 		int[] mults = { 1, 2, 5 };
 		int m = mults[rng.RandiRange(0, mults.Length - 1)];
-		int cap = Math.Min(EnemyBalance, PlayerBalance);
-		return Math.Min(minimumBuyIn * m, cap);
+		// cap the value to the lower of the enemyBalance or playerBalance and clamp to 0.
+		int betCap = Math.Max(0, Math.Min(EnemyBalance, PlayerBalance));
+		return Math.Min(minimumBuyIn * m, betCap);
 	}
 
 	private void ApplyEnemyRaise(int amount)
@@ -478,8 +496,8 @@ public partial class BetController : Node
 			case Turn.Player:
 				if (allInButton != null)
 				{
-					allInButton.Text = $"All-In ($ {Math.Min(PlayerBalance, EnemyBalance)})";
-					Show(allInButton);
+					allInButton.Text = $"All-In ($ {Math.Max(0, Math.Min(PlayerBalance, EnemyBalance))})";
+					if (CanBet) Show(allInButton);
 				}
 				if (choosingRaiseAmount)
 				{
@@ -489,9 +507,9 @@ public partial class BetController : Node
 				}
 				else if (betOpen)
 				{
-					if (CanCall) Show(callButton);
+					if (CanCall && ToCall != PlayerBalance) Show(callButton);
 					if (CanRaiseOverCall) Show(raiseButton);
-					Show(foldButton);
+					if (CanBet) Show(foldButton);
 				}
 				else
 				{

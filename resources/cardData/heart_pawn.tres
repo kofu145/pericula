@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://glcqaaiqyudp"]
+
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_3ge7x"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_htfsm"]
+
+[sub_resource type="Resource" id="Resource_mjdb7"]
+resource_local_to_scene = true
+script = ExtResource("1_3ge7x")
+Damage = 5
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_htfsm")
+DisplayName = "Diamond Pawn"
+Description = ""
+Rarity = "Starter"
+Trait = "Pawn"
+HP = 0
+MaxHP = 1
+BaseAttack = 3
+Attack = 0
+id = 2
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"

@@ -4,19 +4,31 @@ using Godot.Collections;
 [GlobalClass]
 public partial class CardData : Resource
 {
-    [Export] public string DisplayName;
-    [Export] public int HP;
-    public int BaseHP;
-    public int BaseAttack;
-    [Export] public int Attack;
-    [Export] public int id;
-    [Export] public Image Texture;
-    [Export] public Array<EffectTemplate> OnUse;
-    [Export] public Array<EffectTemplate> Passives;
+	[Export] public string DisplayName;
+	[Export] public string Description;
 
-    CardData()
+	[Export(PropertyHint.Enum, "Common,Rare,Mythic,Legendary,Starter,Token")]
+	public string Rarity;
+	[Export(PropertyHint.Enum, "Knight,Arcane,Citizen,Royalty,Beast,Mechanical,WildCard,Pawn")]
+	public string Trait;
+	[Export] public int HP;
+	public int MaxHP;
+	public int BaseAttack;
+	[Export] public int Attack;
+	[Export] public int id;
+	[Export] public Image Texture;
+	[Export] public Array<EffectTemplate> OnUse;
+	[Export] public Array<EffectTemplate> Passives;
+
+	CardData()
     {
         BaseHP = HP;
         BaseAttack = Attack;
     }
+
+	public override string ToString()
+	{
+		return $"{DisplayName} ({id}):\nHealth: {MaxHP}, Attack: {BaseAttack}, Trait: {Trait}, Rarity: {Rarity}, Description: {Description}";
+	}
+
 }

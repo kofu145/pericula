@@ -26,6 +26,7 @@ public partial class PhaseController : Node
 	// UI refs
 	[Export] private Label actionLabel;
 	[Export] private Label playerChipsLabel;
+	[Export] private Label negativeBalanceWarningLabel;
 	[Export] private Label enemyChipsLabel;
 	[Export] private Label potLabel;
 	[Export] private Label turnLabel;
@@ -119,7 +120,13 @@ public partial class PhaseController : Node
 		buyInLabel.Text = $"Current Buy In: {currentMinimumBuyIn}";
 
 		// enemy and player pays the buyIn amount
-		if (!playerChips.Deduct(currentMinimumBuyIn)) return;   // TODO: Need a way to handle this for negative balance
+		// if (!playerChips.Deduct(currentMinimumBuyIn)) return;
+
+		// TODO: Need a way to handle this for negative balance
+		playerChips.BorrowChips(currentMinimumBuyIn);
+		if (playerChips.Balance <= 0) negativeBalanceWarningLabel.Text = $"Warning. Losing next Showdown will lose you the run.";
+		negativeBalanceWarningLabel.Visible = playerChips.Balance <= 0;
+
 		if (!enemyChips.Deduct(currentMinimumBuyIn)) return;
 
 		currentPot = currentMinimumBuyIn * 2;
@@ -153,7 +160,6 @@ public partial class PhaseController : Node
 	private void EndShowdownPhase(bool playerWonCombat)
 	{
 		// should check which button to show, start next turn or go to shop
-		combatManager.EndCombat();
 		if (playerWonCombat)
 		{
 			playerChips.AddChips(currentPot);
@@ -178,7 +184,7 @@ public partial class PhaseController : Node
 
 	private void EndEncounter()
 	{
-		DeckManager.Instance.FinishAndReset();
+				combatManager.EndCombat();
 		if (PlayerLost)
 		{
 			// player lost

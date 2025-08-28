@@ -97,4 +97,9 @@ public partial class CardBase : Control
 			AcceptEvent();
 		}
 	}
+
+	public CardData GetCardData()
+	{
+		return Data;
+	}
 }
