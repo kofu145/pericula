@@ -91,10 +91,10 @@ public partial class BetController : Node
 		this.enemyChips = enemyChips;
 		pot = startingPot;
 
-		if (raise1xButton != null)raise1xButton.Text = $"$ {minimumBuyIn}";
-		if (raise2xButton != null)raise2xButton.Text = $"$ {minimumBuyIn * 2}";
-		if (raise5xButton != null)raise5xButton.Text = $"$ {minimumBuyIn * 5}";
-		
+		if (raise1xButton != null) raise1xButton.Text = $"$ {minimumBuyIn}";
+		if (raise2xButton != null) raise2xButton.Text = $"$ {minimumBuyIn * 2}";
+		if (raise5xButton != null) raise5xButton.Text = $"$ {minimumBuyIn * 5}";
+
 		// reset states for new bet
 		turn = Turn.Player;
 		lastEnemyAction = BetAction.None;
@@ -148,11 +148,11 @@ public partial class BetController : Node
 
 	private void ApplyPlayerRaise(int raiseAmount)
 	{
-		int toCall = ToCall;
+		int amountToCall = ToCall;
 		int balance = PlayerBalance;
 
 		if (balance <= 0) return;
-		if (balance < toCall)
+		if (balance < amountToCall)
 		{
 			// all in remaining
 			int spendAll = balance;
@@ -164,10 +164,10 @@ public partial class BetController : Node
 			return;
 		}
 
-		int maxRaise = Math.Max(0, balance - toCall);
+		int maxRaise = Math.Max(0, balance - amountToCall);
 		int finalRaise = Math.Min(Math.Max(0, raiseAmount), maxRaise);
 
-		int spend = toCall + finalRaise;
+		int spend = amountToCall + finalRaise;
 		if (spend <= 0) return;
 
 		if (!playerChips.Deduct(spend)) return;
@@ -190,10 +190,10 @@ public partial class BetController : Node
 	{
 		if (turn != Turn.Player) return;
 
-		int toCall = ToCall;
-		if (toCall <= 0) return;
+		int amountToCall = ToCall;
+		if (amountToCall <= 0) return;
 
-		int spend = Math.Min(toCall, PlayerBalance);
+		int spend = Math.Min(amountToCall, PlayerBalance);
 		if (spend <= 0) return;
 
 		if (!playerChips.Deduct(spend)) return;
@@ -247,7 +247,7 @@ public partial class BetController : Node
 		int balance = PlayerBalance;
 		if (balance <= 0) return;
 
-		// balance = Math.Min(balance, EnemyBalance);   // TODO: Update with enemy balance
+		balance = Math.Min(balance, EnemyBalance);  
 
 		if (!playerChips.Deduct(balance)) return;
 		pot += balance;
@@ -277,15 +277,15 @@ public partial class BetController : Node
 
 			if (choice == 0)   // call
 			{
-				int toCall = Math.Max(0, currentBet - enemyPut);
+				int amountToCall = Math.Max(0, currentBet - enemyPut);
 
-				if (toCall >= EnemyBalance)
+				if (amountToCall >= EnemyBalance)
 				{
 					// all in
-					toCall = EnemyBalance;
+					amountToCall = EnemyBalance;
 					lastEnemyAction = BetAction.AllIn;
-					OnEnemyAction?.Invoke(BetAction.AllIn, toCall, 0);
-					if (!enemyChips.Deduct(toCall))
+					OnEnemyAction?.Invoke(BetAction.AllIn, amountToCall, 0);
+					if (!enemyChips.Deduct(amountToCall))
 					{
 						GD.PushError("Enemy does not have enough chips for action.");
 						return;
@@ -295,17 +295,17 @@ public partial class BetController : Node
 				{
 					// regular call
 					lastEnemyAction = BetAction.Call;
-					OnEnemyAction?.Invoke(BetAction.Call, toCall, 0);
+					OnEnemyAction?.Invoke(BetAction.Call, amountToCall, 0);
 				}
 
-				if (!enemyChips.Deduct(ToCall))
+				if (!enemyChips.Deduct(amountToCall))
 				{
 					GD.PushError("Enemy does not have enough chips for action.");
 					return;
 				}
-				
-				pot += toCall;
-				enemyPut += toCall;
+
+				pot += amountToCall;
+				enemyPut += amountToCall;
 
 			}
 			else if (choice == 1)  // fold
@@ -327,6 +327,7 @@ public partial class BetController : Node
 			var choice = rng.RandiRange(0, 1); // 0 = Check, 1 = Raise
 			if (choice == 0)    // check
 			{
+				GD.Print("Enemy Checked");
 				lastEnemyAction = BetAction.Check;
 				OnEnemyAction?.Invoke(BetAction.Check, 0, 0);
 
@@ -355,36 +356,30 @@ public partial class BetController : Node
 		var r = rng.RandiRange(0, 2); // 0=Call, 1=Raise, 2=Fold
 		if (r == 0)
 		{
-			int toCall = Math.Max(0, currentBet - enemyPut);
+			int amountToCall = Math.Max(0, currentBet - enemyPut);
 
-			if (toCall >= EnemyBalance)
+			if (amountToCall >= EnemyBalance)
 			{
 				// all in
-				toCall = EnemyBalance;
+				amountToCall = EnemyBalance;
 				lastEnemyAction = BetAction.AllIn;
-				OnEnemyAction?.Invoke(BetAction.AllIn, toCall, 0);
+				OnEnemyAction?.Invoke(BetAction.AllIn, amountToCall, 0);
 
-				if (!enemyChips.Deduct(toCall))
-				{
-					GD.PushError("Enemy does not have enough chips for action.");
-					return;
-				}
 			}
 			else
 			{
 				// regular call
 				lastEnemyAction = BetAction.Call;
-				OnEnemyAction?.Invoke(BetAction.Call, toCall, 0);
+				OnEnemyAction?.Invoke(BetAction.Call, amountToCall, 0);
 			}
 
-			if (!enemyChips.Deduct(ToCall))
+			if (!enemyChips.Deduct(amountToCall))	// over here, the balance is not deducted
 			{
 				GD.PushError("Enemy does not have enough chips for action.");
 				return;
 			}
-
-			enemyPut += toCall;
-			pot += toCall;
+			enemyPut += amountToCall;
+			pot += amountToCall;
 
 			EndPhase(); // matched -> start battle
 		}
@@ -415,8 +410,8 @@ public partial class BetController : Node
 
 	private void ApplyEnemyRaise(int amount)
 	{
-		int toCall = Math.Max(0, currentBet - enemyPut);
-		int spend = toCall + amount;
+		int amountToCall = Math.Max(0, currentBet - enemyPut);
+		int spend = amountToCall + amount;
 
 		if (spend >= EnemyBalance)
 		{
@@ -427,8 +422,8 @@ public partial class BetController : Node
 		}
 		else
 		{
-			lastEnemyAction = toCall > 0 ? BetAction.CallAndRaise : BetAction.Raise;
-			OnEnemyAction?.Invoke(lastEnemyAction, toCall, amount);
+			lastEnemyAction = amountToCall > 0 ? BetAction.CallAndRaise : BetAction.Raise;
+			OnEnemyAction?.Invoke(lastEnemyAction, amountToCall, amount);
 		}
 
 		if (!enemyChips.Deduct(spend))
@@ -437,7 +432,7 @@ public partial class BetController : Node
 			return;
 		}
 
-		currentBet += Math.Max(0, spend - toCall);
+		currentBet += Math.Max(0, spend - amountToCall);
 		enemyPut += spend;
 		pot += spend;
 
@@ -488,7 +483,7 @@ public partial class BetController : Node
 			case Turn.Player:
 				if (allInButton != null)
 				{
-					allInButton.Text = $"All-In ($ {PlayerBalance})";
+					allInButton.Text = $"All-In ($ {Math.Min(PlayerBalance, EnemyBalance)})";
 					Show(allInButton);
 				}
 				if (choosingRaiseAmount)

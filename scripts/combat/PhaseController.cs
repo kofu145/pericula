@@ -158,6 +158,7 @@ public partial class PhaseController : Node
 	private void StartNextTurn()
 	{
 		combatManager.EndTurn();
+		DisplayPot(0);
 		currentTurn++;
 		StartCombatEncounter();
 	}
