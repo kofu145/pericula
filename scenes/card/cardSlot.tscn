@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://blcaayrmmwalb" path="res://scripts/CardSlot.cs" id="1_kebyr"]
 
 [node name="Slot" type="CenterContainer"]
-custom_minimum_size = Vector2(50, 59)
+custom_minimum_size = Vector2(100, 118)
 anchors_preset = -1
 anchor_left = 0.022
 anchor_top = 0.046

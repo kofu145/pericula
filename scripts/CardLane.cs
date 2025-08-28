@@ -77,11 +77,8 @@ public partial class CardLane : Node
 		}
 		//GD.Print(idx);
 		var cardToRemove = _cards[idx];
-		var slotToRemove = _slots[idx];
 		_cards.RemoveAt(idx);
-		_slots.RemoveAt(idx);
 		cardToRemove.QueueFree();
-		slotToRemove.QueueFree();
 
 
 		for (int i = 0; i < _cards.Count; i++)
@@ -104,7 +101,7 @@ public partial class CardLane : Node
 		DeckManager.Instance.ClearHand(side == LaneSide.Player);
 		foreach (var c in _cards) c.QueueFree(); // don't want to free the children carddata, we use them elsewhere in deck
 		foreach (var s in _slots) s.QueueFree();
-		
+
 		_cards.Clear();
 		_slots.Clear();
 	}
