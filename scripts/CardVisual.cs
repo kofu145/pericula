@@ -6,7 +6,7 @@ public partial class CardVisual : Control
 	[Export] private Label NameLabel;
 
 	// runtime refs
-	[Export] Control Base;
+	[Export] CardBase Base;
 
 	private Vector2 offsetPos;
 	private float FollowSpeed = 0;
@@ -17,6 +17,14 @@ public partial class CardVisual : Control
 	{
 		MouseFilter = MouseFilterEnum.Ignore;
 		PivotOffset = Size / 2;
+
+		if (Base != null)
+		{
+			CardData data = Base.GetCardData();
+			GetNode<Label>("Health").Text = data.MaxHP.ToString();
+			GetNode<Label>("Attack").Text = data.BaseAttack.ToString();
+			GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data.DisplayName, data.Description, data.Rarity, data.Trait);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
