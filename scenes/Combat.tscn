@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4hr0e855ng1k"]
+[gd_scene load_steps=11 format=3 uid="uid://c4hr0e855ng1k"]
 
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/PhaseController.cs" id="1_mak3c"]
 [ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="5_felwx"]
-[ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="6_acsaf"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="7_x8jxt"]
 [ext_resource type="Script" uid="uid://q6lik1u45kyf" path="res://scripts/combat/BetController.cs" id="8_132iy"]
 [ext_resource type="Script" uid="uid://bqexeu4nwqnrs" path="res://scripts/combat/CombatController.cs" id="8_mak3c"]
@@ -46,54 +45,18 @@ actionLabel = NodePath("EnemyActionLabel")
 playerChipsLabel = NodePath("PlayerChips/Count")
 enemyChipsLabel = NodePath("EnemyChips/Count")
 potLabel = NodePath("Pot/Count")
+turnLabel = NodePath("TurnLabel")
+buyInLabel = NodePath("BuyInLabel")
+betPhaseButton = NodePath("PhaseButtons/StartBetButton")
+showdownButton = NodePath("PhaseButtons/ShowdownButton")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="CombatController" type="Node" parent="." node_paths=PackedStringArray("ShowdownButton", "playerLane", "enemyLane")]
+[node name="CombatController" type="Node" parent="." node_paths=PackedStringArray("playerLane", "enemyLane")]
 script = ExtResource("8_mak3c")
-ShowdownButton = NodePath("../ShowdownButton")
 playerLane = NodePath("../PlayerCardLane")
 enemyLane = NodePath("../EnemyCardLane")
-
-[node name="BetPhaseButton" type="TextureButton" parent="."]
-z_index = 12
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -226.0
-offset_top = -114.0
-offset_right = -54.0
-offset_bottom = -50.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 1
-texture_normal = ExtResource("6_acsaf")
-texture_pressed = ExtResource("6_acsaf")
-texture_hover = ExtResource("6_acsaf")
-texture_disabled = ExtResource("6_acsaf")
-texture_focused = ExtResource("6_acsaf")
-stretch_mode = 0
-
-[node name="Text" type="Label" parent="BetPhaseButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = -17.0
-offset_right = 60.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "BET Phase"
 
 [node name="EnemyActionLabel" type="Label" parent="."]
 visible = false
@@ -306,27 +269,27 @@ theme_override_font_sizes/font_size = 36
 text = "100"
 horizontal_alignment = 1
 
-[node name="ShowdownButton" type="Button" parent="."]
+[node name="PhaseButtons" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -97.0
-offset_top = -142.0
-offset_right = 89.0
-offset_bottom = -80.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = 196.0
+offset_right = 136.0
+offset_bottom = 238.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="StartBet" type="Button" parent="Canvas/PhaseButtons"]
+[node name="StartBetButton" type="Button" parent="PhaseButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Start Bet"
 
-[node name="ShowdownButton" type="Button" parent="Canvas/PhaseButtons"]
+[node name="ShowdownButton" type="Button" parent="PhaseButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "SHOWDOWN"
@@ -347,42 +310,33 @@ CardSize = Vector2i(100, 118)
 inspectorCard = SubResource("Resource_spaix")
 dummyCardCount = 100
 
-[node name="ViewDeckButton" type="TextureButton" parent="."]
+[node name="ViewDeckButton" type="Button" parent="."]
 z_index = 12
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 46.0
-offset_top = -114.0
-offset_right = 218.0
-offset_bottom = -50.0
+offset_left = 29.0
+offset_top = -73.0
+offset_right = 160.0
+offset_bottom = -24.0
 grow_vertical = 0
-texture_normal = ExtResource("6_acsaf")
-texture_pressed = ExtResource("6_acsaf")
-texture_hover = ExtResource("6_acsaf")
-texture_disabled = ExtResource("6_acsaf")
-texture_focused = ExtResource("6_acsaf")
-stretch_mode = 0
-
-[node name="Text" type="Label" parent="ViewDeckButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -39.5
-offset_top = -11.5
-offset_right = 39.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "View Deck"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[connection signal="pressed" from="BetPhaseButton" to="." method="StartBetPhase"]
+[node name="TurnLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_right = 97.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Turn: X"
+
+[node name="BuyInLabel" type="Label" parent="."]
+offset_left = 142.0
+offset_right = 317.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "CurrentBuy In: "
+
 [connection signal="pressed" from="ViewDeckButton" to="DeckListView" method="ToggleDeckView"]
