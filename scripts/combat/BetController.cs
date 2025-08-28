@@ -58,7 +58,7 @@ public partial class BetController : Node
 	private int ToCall => Math.Max(0, currentBet - playerPut);                      // the amount to call the enemy's bet
 	private int AffordableRaise => Math.Max(0, PlayerBalance - ToCall);             // the remaining balance the player has after calling
 	private bool CanCall => ToCall > 0 && PlayerBalance >= ToCall;                  // player has enough chips to call the enemy's bet
-	private bool CanOpenRaise => !betOpen && PlayerBalance >= minimumBuyIn;         // player has enough chips to raise (at least minimumBuyIn) 
+	private bool CanOpenRaise => !betOpen && PlayerBalance >= minimumBuyIn && EnemyBalance >= minimumBuyIn;         // player has enough chips to raise (at least minimumBuyIn) 
 	private bool CanRaiseOverCall => betOpen && AffordableRaise >= minimumBuyIn;    // player has enough chips to call the enemy's bet and raise (at least minimumBuyIn) 
 	private int EnemyBalance => enemyChips.Balance;
 	// ====================================
@@ -74,6 +74,9 @@ public partial class BetController : Node
 		if (checkButton != null) checkButton.Pressed += OnClickPlayerCheck;
 		if (foldButton != null) foldButton.Pressed += OnClickPlayerFold;
 		if (allInButton != null) allInButton.Pressed += OnClickPlayerAllIn;
+		if (raise1xButton != null) raise1xButton.Pressed += () => OnClickPlayerRaiseAmount(1);
+		if (raise2xButton != null) raise2xButton.Pressed += () => OnClickPlayerRaiseAmount(2);
+		if (raise5xButton != null) raise5xButton.Pressed += () => OnClickPlayerRaiseAmount(5);
 
 		HideAll();
 		UpdatePotLabel();
@@ -88,22 +91,10 @@ public partial class BetController : Node
 		this.enemyChips = enemyChips;
 		pot = startingPot;
 
-		if (raise1xButton != null)
-		{
-			raise1xButton.Pressed += () => OnClickPlayerRaiseAmount(1);
-			raise1xButton.Text = $"$ {minimumBuyIn}";
-		}
-		if (raise2xButton != null)
-		{
-			raise2xButton.Pressed += () => OnClickPlayerRaiseAmount(2);
-			raise2xButton.Text = $"$ {minimumBuyIn * 2}";
-		}
-		if (raise5xButton != null)
-		{
-			raise5xButton.Pressed += () => OnClickPlayerRaiseAmount(5);
-			raise5xButton.Text = $"$ {minimumBuyIn * 5}";
-		}
-
+		if (raise1xButton != null)raise1xButton.Text = $"$ {minimumBuyIn}";
+		if (raise2xButton != null)raise2xButton.Text = $"$ {minimumBuyIn * 2}";
+		if (raise5xButton != null)raise5xButton.Text = $"$ {minimumBuyIn * 5}";
+		
 		// reset states for new bet
 		turn = Turn.Player;
 		lastEnemyAction = BetAction.None;
@@ -294,6 +285,11 @@ public partial class BetController : Node
 					toCall = EnemyBalance;
 					lastEnemyAction = BetAction.AllIn;
 					OnEnemyAction?.Invoke(BetAction.AllIn, toCall, 0);
+					if (!enemyChips.Deduct(toCall))
+					{
+						GD.PushError("Enemy does not have enough chips for action.");
+						return;
+					}
 				}
 				else
 				{
@@ -359,7 +355,6 @@ public partial class BetController : Node
 		if (r == 0)
 		{
 			int toCall = Math.Max(0, currentBet - enemyPut);
-			// TODO: Apply 'toCall' to enemy currency
 
 			if (toCall >= EnemyBalance)
 			{
@@ -367,6 +362,12 @@ public partial class BetController : Node
 				toCall = EnemyBalance;
 				lastEnemyAction = BetAction.AllIn;
 				OnEnemyAction?.Invoke(BetAction.AllIn, toCall, 0);
+
+				if (!enemyChips.Deduct(toCall))
+				{
+					GD.PushError("Enemy does not have enough chips for action.");
+					return;
+				}
 			}
 			else
 			{
@@ -491,9 +492,9 @@ public partial class BetController : Node
 				}
 				if (choosingRaiseAmount)
 				{
-					if (AffordableRaise >= minimumBuyIn) Show(raise1xButton);
-					if (AffordableRaise >= minimumBuyIn * 2) Show(raise2xButton);
-					if (AffordableRaise >= minimumBuyIn * 5) Show(raise5xButton);
+					if (AffordableRaise >= minimumBuyIn && EnemyBalance >= minimumBuyIn) Show(raise1xButton);
+					if (AffordableRaise >= minimumBuyIn * 2 && EnemyBalance >= minimumBuyIn * 2) Show(raise2xButton);
+					if (AffordableRaise >= minimumBuyIn * 5 && EnemyBalance >= minimumBuyIn * 5) Show(raise5xButton);
 				}
 				else if (betOpen)
 				{
