@@ -12,7 +12,7 @@ public partial class CardData : Resource
 	[Export(PropertyHint.Enum, "Knight,Arcane,Citizen,Royalty,Beast,Mechanical,WildCard,Pawn")]
 	public string Trait;
 	[Export] public int HP;
-	public int MaxHP;
+	public int BaseHP;
 	public int BaseAttack;
 	[Export] public int Attack;
 	[Export] public int id;
@@ -21,10 +21,10 @@ public partial class CardData : Resource
 	[Export] public Array<EffectTemplate> Passives;
 
 	CardData()
-    {
-        BaseHP = HP;
-        BaseAttack = Attack;
-    }
+	{
+		BaseHP = HP;
+		BaseAttack = Attack;
+	}
 
 	public override string ToString()
 	{
