@@ -246,4 +246,10 @@ public partial class PhaseController : Node
 	{
 		playerChipsLabel.Text = $"Chips: {amount}";
 	}
+
+	protected override void Dispose(bool disposing)
+    {
+        ChipManager.Instance.OnChipsChanged = null;
+        base.Dispose(disposing);
+    }
 }
