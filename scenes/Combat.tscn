@@ -29,7 +29,7 @@ OnUse = Array[Object]([SubResource("Resource_3q7sh")])
 Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
-[node name="Combat" type="Control" node_paths=PackedStringArray("combatManager", "betController", "actionLabel", "playerChipsLabel", "enemyChipsLabel", "potLabel", "turnLabel", "buyInLabel", "betPhaseButton", "showdownButton", "nextTurnButton", "endEncounterButton")]
+[node name="Combat" type="Control" node_paths=PackedStringArray("combatManager", "betController", "actionLabel", "playerChipsLabel", "enemyChipsLabel", "potLabel", "turnLabel", "buyInLabel", "nextTurnBuyInLabel", "betPhaseButton", "showdownButton", "nextTurnButton", "endEncounterButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,6 +47,7 @@ enemyChipsLabel = NodePath("EnemyChips/Count")
 potLabel = NodePath("Pot/Count")
 turnLabel = NodePath("TurnLabel")
 buyInLabel = NodePath("BuyInLabel")
+nextTurnBuyInLabel = NodePath("NextTurnBuyInLabel")
 betPhaseButton = NodePath("PhaseButtons/StartBetButton")
 showdownButton = NodePath("PhaseButtons/ShowdownButton")
 nextTurnButton = NodePath("PhaseButtons/NextTurnButton")
@@ -349,6 +350,14 @@ layout_mode = 0
 offset_left = 142.0
 offset_right = 317.0
 offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "CurrentBuy In: "
+
+[node name="NextTurnBuyInLabel" type="Label" parent="."]
+offset_left = 395.0
+offset_right = 603.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.86, 0, 0.200666, 1)
 theme_override_font_sizes/font_size = 24
 text = "CurrentBuy In: "
 

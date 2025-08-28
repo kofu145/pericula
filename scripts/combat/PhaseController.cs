@@ -30,6 +30,7 @@ public partial class PhaseController : Node
 	[Export] private Label potLabel;
 	[Export] private Label turnLabel;
 	[Export] private Label buyInLabel;
+	[Export] private Label nextTurnBuyInLabel;
 
 	// phase buttons
 	[Export] private Button betPhaseButton;
@@ -83,7 +84,7 @@ public partial class PhaseController : Node
 
 		// TODO: temp implementation
 		playerChips.AddChips(startingChips);
-		
+
 		// force update when scene is first loaded
 		DisplayPot(0);
 		DisplayPlayerChips(playerChips.Balance);
@@ -105,15 +106,20 @@ public partial class PhaseController : Node
 
 	private void StartPrePhase()
 	{
+		// increase the buy in
 		if (currentTurn >= turnBuyInIncrease)
 			currentMinimumBuyIn = (int)Math.Ceiling(currentMinimumBuyIn * buyInIncreaseMultiplier);
 
+		// display next turn's buy in
+		nextTurnBuyInLabel.Visible = currentTurn >= turnBuyInIncrease - 1;
+		nextTurnBuyInLabel.Text = $"Next Turn Buy In: {(int)Math.Ceiling(currentMinimumBuyIn * buyInIncreaseMultiplier)}";
 
+		// shw the turn count
 		turnLabel.Text = $"Turn: {currentTurn}";
 		buyInLabel.Text = $"Current Buy In: {currentMinimumBuyIn}";
 
-
-		if (!playerChips.Deduct(currentMinimumBuyIn)) return;   // Need a way to handle this for negative balance
+		// enemy and player pays the buyIn amount
+		if (!playerChips.Deduct(currentMinimumBuyIn)) return;   // TODO: Need a way to handle this for negative balance
 		if (!enemyChips.Deduct(currentMinimumBuyIn)) return;
 
 		currentPot = currentMinimumBuyIn * 2;
@@ -256,7 +262,7 @@ public partial class PhaseController : Node
 	}
 
 	protected override void Dispose(bool disposing)
-    {
+	{
 		betController.OnBetPhaseEnd -= EndBetPhase;
 		betController.OnEnemyAction -= DisplayEnemyAction;
 		betController.OnChipsChanged -= DisplayPot;
@@ -264,7 +270,7 @@ public partial class PhaseController : Node
 		combatManager.OnShowdownEndPlayerWin -= EndShowdownPhase;
 
 		enemyChips.OnChipsChanged = null;
-        ChipManager.Instance.OnChipsChanged = null;
-        base.Dispose(disposing);
-    }
+		ChipManager.Instance.OnChipsChanged = null;
+		base.Dispose(disposing);
+	}
 }
