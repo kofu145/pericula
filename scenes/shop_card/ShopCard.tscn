@@ -52,6 +52,7 @@ offset_left = -26.0
 offset_top = 122.0
 offset_right = 124.0
 offset_bottom = 122.0
+mouse_filter = 0
 
 [connection signal="gui_input" from="." to="." method="OnInput"]
 [connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
