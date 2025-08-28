@@ -249,6 +249,7 @@ public partial class PhaseController : Node
 
 	protected override void Dispose(bool disposing)
     {
+		enemyChips.OnChipsChanged = null;
         ChipManager.Instance.OnChipsChanged = null;
         base.Dispose(disposing);
     }
