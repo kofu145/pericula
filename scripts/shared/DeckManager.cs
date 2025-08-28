@@ -100,15 +100,17 @@ public partial class DeckManager : Node
 	}
 
 	/// <summary>
-	/// Adds a card to the discard pile 
+	/// Adds a card to the discard pile and removes it from hand
 	/// </summary>
 	/// <param name="c">The card data to be added to the discard pile</param>
 	/// <param name="isPlayer">The corresponding deck to discard to - true is player, false is enemy</param>
 	public void Discard(CardData c, bool isPlayer)
 	{
 		if (!initialized) return;
+		var targetList = isPlayer ? Hand : EnemyHand;
 		var targetDisc = isPlayer ? playerDisc : enemyDisc;
 
+		targetList.Remove(c);
 		targetDisc.Add(c);
 	}
 
