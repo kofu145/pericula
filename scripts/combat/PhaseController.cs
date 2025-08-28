@@ -160,7 +160,6 @@ public partial class PhaseController : Node
 	private void EndShowdownPhase(bool playerWonCombat)
 	{
 		// should check which button to show, start next turn or go to shop
-		combatManager.EndCombat();
 		if (playerWonCombat)
 		{
 			playerChips.AddChips(currentPot);
@@ -185,7 +184,7 @@ public partial class PhaseController : Node
 
 	private void EndEncounter()
 	{
-		DeckManager.Instance.FinishAndReset();
+				combatManager.EndCombat();
 		if (PlayerLost)
 		{
 			// player lost
