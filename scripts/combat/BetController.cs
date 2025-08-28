@@ -23,7 +23,7 @@ public partial class BetController : Node
 
 	// public events
 	public Action<BetAction, int, int> OnEnemyAction; // parameters: (action, toCallAmount, raiseAmount)
-	public Action OnBetPhaseEnd;
+	public Action<bool> OnBetPhaseEnd;
 	public Action<string, int> OnChipsChanged; // parameters: (entityName, newChipAmount)
 
 	// names for event
@@ -464,7 +464,7 @@ public partial class BetController : Node
 
 		UpdateChipLabel();
 
-		OnBetPhaseEnd?.Invoke();
+		OnBetPhaseEnd?.Invoke(endedWithFold);
 		GD.Print("Phase is over");
 	}
 

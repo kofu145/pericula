@@ -30,7 +30,7 @@ OnUse = Array[Object]([SubResource("Resource_3q7sh")])
 Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
-[node name="Combat" type="Control" node_paths=PackedStringArray("combatManager", "betController", "actionLabel", "playerChipsLabel", "enemyChipsLabel", "potLabel")]
+[node name="Combat" type="Control" node_paths=PackedStringArray("combatManager", "betController", "actionLabel", "playerChipsLabel", "enemyChipsLabel", "potLabel", "turnLabel", "buyInLabel", "betPhaseButton", "showdownButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,50 +46,16 @@ actionLabel = NodePath("Canvas/EnemyActionLabel")
 playerChipsLabel = NodePath("Canvas/PlayerChips/Count")
 enemyChipsLabel = NodePath("Canvas/EnemyChips/Count")
 potLabel = NodePath("Canvas/Pot/Count")
+turnLabel = NodePath("Canvas/TurnLabel")
+buyInLabel = NodePath("Canvas/BuyInLabel")
+betPhaseButton = NodePath("Canvas/PhaseButtons/StartBet")
+showdownButton = NodePath("Canvas/PhaseButtons/ShowdownButton")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
-
-[node name="BetPhaseButton" type="TextureButton" parent="Canvas"]
-z_index = 12
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -222.0
-offset_top = -114.0
-offset_right = -50.0
-offset_bottom = -50.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 1
-texture_normal = ExtResource("6_acsaf")
-texture_pressed = ExtResource("6_acsaf")
-texture_hover = ExtResource("6_acsaf")
-texture_disabled = ExtResource("6_acsaf")
-texture_focused = ExtResource("6_acsaf")
-stretch_mode = 0
-
-[node name="Text" type="Label" parent="Canvas/BetPhaseButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = -17.0
-offset_right = 60.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "BET Phase"
 
 [node name="EnemyActionLabel" type="Label" parent="Canvas"]
 visible = false
@@ -175,8 +141,8 @@ grow_vertical = 0
 script = ExtResource("8_132iy")
 raiseButton = NodePath("HBoxContainer/Raise")
 callButton = NodePath("HBoxContainer/Call")
-checkButton = NodePath("HBoxContainer/Fold")
-foldButton = NodePath("HBoxContainer/Check")
+checkButton = NodePath("HBoxContainer/Check")
+foldButton = NodePath("HBoxContainer/Fold")
 allInButton = NodePath("HBoxContainer/AllIn")
 raise1xButton = NodePath("HBoxContainer/1x")
 raise2xButton = NodePath("HBoxContainer/2x")
@@ -297,18 +263,27 @@ theme_override_font_sizes/font_size = 36
 text = "100"
 horizontal_alignment = 1
 
-[node name="ShowdownButton" type="Button" parent="Canvas"]
-anchors_preset = 7
+[node name="PhaseButtons" type="HBoxContainer" parent="Canvas"]
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -93.0
-offset_top = -142.0
-offset_right = 93.0
-offset_bottom = -80.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = 196.0
+offset_right = 136.0
+offset_bottom = 238.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="StartBet" type="Button" parent="Canvas/PhaseButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Start Bet"
+
+[node name="ShowdownButton" type="Button" parent="Canvas/PhaseButtons"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "SHOWDOWN"
 
@@ -363,11 +338,25 @@ text = "View Deck"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CombatController" type="Node" parent="." node_paths=PackedStringArray("ShowdownButton", "playerLane", "enemyLane")]
+[node name="TurnLabel" type="Label" parent="Canvas"]
+offset_left = 21.0
+offset_top = 10.0
+offset_right = 126.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 24
+text = "Turn: 0"
+
+[node name="BuyInLabel" type="Label" parent="Canvas"]
+offset_left = 166.0
+offset_top = 10.0
+offset_right = 366.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 24
+text = "Buy In: "
+
+[node name="CombatController" type="Node" parent="." node_paths=PackedStringArray("playerLane", "enemyLane")]
 script = ExtResource("8_mak3c")
-ShowdownButton = NodePath("../Canvas/ShowdownButton")
 playerLane = NodePath("../Canvas/PlayerCardLane")
 enemyLane = NodePath("../Canvas/EnemyCardLane")
 
-[connection signal="pressed" from="Canvas/BetPhaseButton" to="." method="StartBetPhase"]
 [connection signal="pressed" from="Canvas/ViewDeckButton" to="Canvas/DeckListView" method="ToggleDeckView"]

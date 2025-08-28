@@ -1,13 +1,15 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 
 public enum LaneSide { Player, Enemy }
 
 public partial class CombatController : Node
 {
-	[Export] public Button ShowdownButton;
 	[Export] private CardLane playerLane;
 	[Export] private CardLane enemyLane;
+
+	public Action<bool> OnShowdownEndPlayerWin;
 
 	private Godot.Collections.Array<Callable> actionQueue = new();
 	private Godot.Collections.Array<Callable> animationQueue = new();
@@ -16,9 +18,6 @@ public partial class CombatController : Node
 
 	public override void _Ready()
 	{
-		Hide(ShowdownButton);
-		ShowdownButton.Pressed += ShowdownHandler;
-
 	}
 
 	public void Initialize()
@@ -42,7 +41,6 @@ public partial class CombatController : Node
 
 		}
 		battleState.Initialize(playerLane, enemyLane);
-		Show(ShowdownButton);
 	}
 
 	public void EndRound()
@@ -71,11 +69,13 @@ public partial class CombatController : Node
 		{
 			// playerlost
 			//EndRound();
+			OnShowdownEndPlayerWin?.Invoke(true);
 		}
 		else if (enemyLane.CardCount <= 0)
 		{
 			// player won 
 			//EndRound();
+			OnShowdownEndPlayerWin?.Invoke(false);
 		}
 		else
 			DoBattle();
