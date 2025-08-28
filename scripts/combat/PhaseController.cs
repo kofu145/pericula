@@ -74,7 +74,7 @@ public partial class PhaseController : Node
 
 		combatManager.OnShowdownEndPlayerWin += EndShowdownPhase;
 
-		playerChips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
+		playerChips = ChipManager.Instance;
 		playerChips.OnChipsChanged += DisplayPlayerChips;
 
 		enemyChips = new(enemyChipsAmount);

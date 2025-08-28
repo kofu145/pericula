@@ -66,7 +66,7 @@ public partial class BetController : Node
 
 	public override void _Ready()
 	{
-		playerChips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
+		playerChips = ChipManager.Instance;
 
 		// wire button handlers
 		if (raiseButton != null) raiseButton.Pressed += OnClickPlayerRaise;
@@ -303,6 +303,7 @@ public partial class BetController : Node
 					GD.PushError("Enemy does not have enough chips for action.");
 					return;
 				}
+				
 				pot += toCall;
 				enemyPut += toCall;
 
