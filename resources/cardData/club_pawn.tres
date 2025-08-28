@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://txo0ujfjcelc"]
+
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_ctqyn"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_sru6r"]
+
+[sub_resource type="Resource" id="Resource_mjdb7"]
+resource_local_to_scene = true
+script = ExtResource("1_ctqyn")
+Damage = 5
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_sru6r")
+DisplayName = "Club Pawn"
+HP = 0
+MaxHP = 1
+BaseAttack = 3
+Attack = 0
+id = 3
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+metadata/_custom_type_script = "uid://clner77n1ff5a"
