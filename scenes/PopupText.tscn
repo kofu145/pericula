@@ -1,6 +1,6 @@
-[gd_scene load_steps=0 format=3 uid="uid://dha6a5my3cgt6"]
+[gd_scene format=3 uid="uid://dha6a5my3cgt6"]
 
-[node name="DmgNumber" type="Label"]
+[node name="PopupText" type="Label"]
 offset_left = -44.0
 offset_top = -35.0
 offset_right = 42.0

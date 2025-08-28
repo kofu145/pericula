@@ -59,13 +59,14 @@ _data = {
 &"RESET": SubResource("Animation_3dwn4")
 }
 
-[node name="Card" type="NinePatchRect" node_paths=PackedStringArray("Visual", "Description", "animation")]
+[node name="Card" type="Control" node_paths=PackedStringArray("Visual", "Description", "animation")]
 custom_minimum_size = Vector2(100, 118)
+layout_mode = 3
+anchors_preset = 0
 offset_right = 100.0
 offset_bottom = 118.0
 pivot_offset = Vector2(25, 29)
 size_flags_stretch_ratio = 0.0
-mouse_filter = 0
 script = ExtResource("1_s5r67")
 Visual = NodePath("Visual")
 Description = NodePath("Visual/CardDescription")
