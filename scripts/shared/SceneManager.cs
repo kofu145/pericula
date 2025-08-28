@@ -48,18 +48,18 @@ public partial class SceneManager : Node
 		GetTree().ChangeSceneToFile(target);
 		CurrentScene = target;
 		
-        var TweenUnfade = CreateTween();
-        TweenUnfade.TweenProperty(
-            SceneTransitionAnimationRect.Material,
-            "shader_parameter/progress",
-            0,
-            0.75f
-        ).From(0.75f).SetTrans(Tween.TransitionType.Sine);
+		var TweenUnfade = CreateTween();
+		TweenUnfade.TweenProperty(
+			SceneTransitionAnimationRect.Material,
+			"shader_parameter/progress",
+			0,
+			0.75f
+		).From(0.75f).SetTrans(Tween.TransitionType.Sine);
 
-        SceneTransitionAnimationRect.MouseFilter = Control.MouseFilterEnum.Ignore;
-        GetTree().ChangeSceneToFile(target);
+		SceneTransitionAnimationRect.MouseFilter = Control.MouseFilterEnum.Ignore;
+		GetTree().ChangeSceneToFile(target);
 
-        await ToSignal(TweenUnfade, "finished");
-        ChangingScenes = false;
+		await ToSignal(TweenUnfade, "finished");
+		ChangingScenes = false;
 	}
 }

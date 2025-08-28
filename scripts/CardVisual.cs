@@ -21,7 +21,7 @@ public partial class CardVisual : Control
 		if (Base != null)
 		{
 			CardData data = Base.GetCardData();
-			GetNode<Label>("Health").Text = data.MaxHP.ToString();
+			GetNode<Label>("Health").Text = data.BaseHP.ToString();
 			GetNode<Label>("Attack").Text = data.BaseAttack.ToString();
 			GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data.DisplayName, data.Description, data.Rarity, data.Trait);
 		}

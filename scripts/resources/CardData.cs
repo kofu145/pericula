@@ -28,7 +28,7 @@ public partial class CardData : Resource
 
 	public override string ToString()
 	{
-		return $"{DisplayName} ({id}):\nHealth: {MaxHP}, Attack: {BaseAttack}, Trait: {Trait}, Rarity: {Rarity}, Description: {Description}";
+		return $"{DisplayName} ({id}):\nHealth: {BaseHP}, Attack: {BaseAttack}, Trait: {Trait}, Rarity: {Rarity}, Description: {Description}";
 	}
 
 }
