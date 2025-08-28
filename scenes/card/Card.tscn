@@ -141,7 +141,7 @@ vertical_alignment = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="Visual"]
 follow_viewport_enabled = true
 
-[node name="CardDescription" parent="Visual/CanvasLayer" instance=ExtResource("4_3dwn4")]
+[node name="CardDescription" parent="Visual/CanvasLayer" node_paths=PackedStringArray("cardVisual") instance=ExtResource("4_3dwn4")]
 custom_minimum_size = Vector2(250, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -154,3 +154,4 @@ offset_right = -326.0
 offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
+cardVisual = NodePath("../..")
