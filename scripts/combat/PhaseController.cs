@@ -48,7 +48,6 @@ public partial class PhaseController : Node
 	// runtime refs
 	private RoundPhase currentPhase;
 	private int currentPot = 0;
-	private ChipManager playerChips;
 	private EnemyChips enemyChips;
 	private int currentTurn = 1;
 
@@ -67,14 +66,13 @@ public partial class PhaseController : Node
 
 		combatManager.OnShowdownEndPlayerWin += EndShowdownPhase;
 
-		playerChips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
-		playerChips.OnChipsChanged += DisplayPlayerChips;
+		ChipManager.Instance.OnChipsChanged += DisplayPlayerChips;
 
 		enemyChips = new(enemyChipsAmount);
 		enemyChips.OnChipsChanged += DisplayEnemyChips;
 
 		// TODO: temp implementation
-		playerChips.AddChips(startingChips);
+		ChipManager.Instance.AddChips(startingChips);
 
 		StartCombatEncounter();
 	}
@@ -98,7 +96,7 @@ public partial class PhaseController : Node
 		buyInLabel.Text = $"Current Buy In: {currentMinimumBuyIn}";
 
 
-		if (!playerChips.Deduct(currentMinimumBuyIn)) return;   // Need a way to handle this for negative balance
+		if (!ChipManager.Instance.Deduct(currentMinimumBuyIn)) return;   // Need a way to handle this for negative balance
 		if (!enemyChips.Deduct(currentMinimumBuyIn)) return;
 
 		currentPot = currentMinimumBuyIn * 2;
@@ -133,7 +131,7 @@ public partial class PhaseController : Node
 	{
 		if (playerWon)
 		{
-			playerChips.AddChips(currentPot);
+			ChipManager.Instance.AddChips(currentPot);
 			Show(nextTurnButton);   // optional maybe, different button that will start next turn AND claim reward
 		}
 		else
@@ -145,16 +143,18 @@ public partial class PhaseController : Node
 
 	private void StartNextTurn()
 	{
-		if (playerChips.Balance <= 0)
+		if (ChipManager.Instance.Balance <= 0)
 		{
 			OnEncounterOutcome?.Invoke(false);
 			combatManager.EndCombat();
+			GD.Print("Game over! Lost on stage " + StageManager.Instance.CurrentStageID);
 			return;
 		}
 		else if (enemyChips.Balance <= 0)
 		{
 			OnEncounterOutcome?.Invoke(true);
 			combatManager.EndCombat();
+			StageManager.Instance.CompleteStage();
 			return;
 		}
 
@@ -221,4 +221,10 @@ public partial class PhaseController : Node
 	{
 		playerChipsLabel.Text = $"Chips: {amount}";
 	}
+
+	protected override void Dispose(bool disposing)
+    {
+        ChipManager.Instance.OnChipsChanged = null;
+        base.Dispose(disposing);
+    }
 }
