@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=27 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dha6a5my3cgt6" path="res://scenes/PopupText.tscn" id="9_s02d4"]
 [ext_resource type="Shader" uid="uid://d3717vds76o65" path="res://scripts/shaders/DiamondTransition.gdshader" id="10_ivlop"]
 [ext_resource type="Script" uid="uid://cyyjmmxcnipyo" path="res://scripts/shared/StageManager.cs" id="10_s02d4"]
+[ext_resource type="Script" uid="uid://krak4fxo5k5x" path="res://scripts/shared/CardLookup.cs" id="12_7a67w"]
 
 [sub_resource type="Resource" id="Resource_mjdb7"]
 resource_local_to_scene = true
@@ -202,3 +203,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="StageManager" type="Node" parent="."]
 script = ExtResource("10_s02d4")
+
+[node name="CardLookup" type="Node" parent="."]
+script = ExtResource("12_7a67w")
