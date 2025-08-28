@@ -35,6 +35,7 @@ public partial class PhaseController : Node
 	[Export] private Button betPhaseButton;
 	[Export] private Button showdownButton;
 	[Export] private Button nextTurnButton;
+	[Export] private Button endEncounterButton;
 
 	// test data
 	[Export] public CardData testCardData;
@@ -52,6 +53,11 @@ public partial class PhaseController : Node
 	private EnemyChips enemyChips;
 	private int currentTurn = 1;
 
+	// =========================================
+	private bool PlayerWon => enemyChips.Balance <= 0;
+	private bool PlayerLost => playerChips.Balance <= 0;
+	// =========================================
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -60,6 +66,7 @@ public partial class PhaseController : Node
 		betPhaseButton.Pressed += StartBetPhase;
 		showdownButton.Pressed += StartShowdownPhase;
 		nextTurnButton.Pressed += StartNextTurn;
+		endEncounterButton.Pressed += EndEncounter;
 
 		betController.OnBetPhaseEnd += EndBetPhase;
 		betController.OnEnemyAction += DisplayEnemyAction;
@@ -84,6 +91,7 @@ public partial class PhaseController : Node
 		Show(betPhaseButton);
 		Hide(showdownButton);
 		Hide(nextTurnButton);
+		Hide(endEncounterButton);
 
 		StartPrePhase();
 	}
@@ -111,9 +119,9 @@ public partial class PhaseController : Node
 
 	public void StartBetPhase()
 	{
+		Hide(betPhaseButton);
 		currentPhase = RoundPhase.Betting;
 		betController.BeginPhase(currentMinimumBuyIn, enemyChips, currentPot);
-		Hide(betPhaseButton);
 	}
 
 	private void EndBetPhase(bool endOnFold)
@@ -129,39 +137,57 @@ public partial class PhaseController : Node
 		combatManager.ShowdownHandler();
 	}
 
-	private void EndShowdownPhase(bool playerWon)
+	private void EndShowdownPhase(bool playerWonCombat)
 	{
-		if (playerWon)
+		// should check which button to show, start next turn or go to shop
+		combatManager.EndCombat();
+		if (playerWonCombat)
 		{
 			playerChips.AddChips(currentPot);
-			Show(nextTurnButton);   // optional maybe, different button that will start next turn AND claim reward
+			if (PlayerLost || PlayerWon) Show(endEncounterButton);
+			else Show(nextTurnButton);   // optional maybe, different button that will start next turn AND claim reward
 		}
 		else
 		{
 			enemyChips.AddChips(currentPot);
-			Show(nextTurnButton);
+			if (PlayerLost || PlayerWon) Show(endEncounterButton);
+			else Show(nextTurnButton);
 		}
 	}
 
 	private void StartNextTurn()
 	{
-		if (playerChips.Balance <= 0)
-		{
-			OnEncounterOutcome?.Invoke(false);
-			combatManager.EndCombat();
-			return;
-		}
-		else if (enemyChips.Balance <= 0)
-		{
-			OnEncounterOutcome?.Invoke(true);
-			combatManager.EndCombat();
-			return;
-		}
-
 		combatManager.EndTurn();
 		currentTurn++;
 		StartCombatEncounter();
-		return;
+	}
+
+	private void EndEncounter()
+	{
+		if (PlayerLost)
+		{
+			// player lost
+			OnEncounterOutcome?.Invoke(false);
+			EndCurrentRun();
+		}
+
+		if (PlayerWon)
+		{
+			// player won
+			OnEncounterOutcome?.Invoke(true);
+			DisplaySummary();
+		}
+	}
+
+	private void EndCurrentRun()
+	{
+		GD.Print("Player lost. Restart run");
+	}
+
+	private void DisplaySummary()
+	{
+		GD.Print("Player won. On to the shop");
+
 	}
 
 	private void Hide(Button button)
