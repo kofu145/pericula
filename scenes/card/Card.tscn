@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://djkgyuhdqygsw"]
+[gd_scene load_steps=9 format=3 uid="uid://djkgyuhdqygsw"]
 
 [ext_resource type="Script" uid="uid://ohvegxjxbqxu" path="res://scripts/CardBase.cs" id="1_s5r67"]
 [ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="2_3dwn4"]
-[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/spade_pawn.tres" id="2_4cxr5"]
 [ext_resource type="Script" uid="uid://di1yqf4q41ly7" path="res://scripts/CardVisual.cs" id="3_4cxr5"]
 [ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="4_3dwn4"]
 
@@ -70,7 +69,6 @@ pivot_offset = Vector2(50, 59)
 size_flags_stretch_ratio = 0.0
 script = ExtResource("1_s5r67")
 Visual = NodePath("Visual")
-Data = ExtResource("2_4cxr5")
 Description = NodePath("Visual/CanvasLayer/CardDescription")
 animation = NodePath("Visual/AnimationPlayer")
 
@@ -154,4 +152,5 @@ offset_right = -326.0
 offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 cardVisual = NodePath("../..")

@@ -24,6 +24,7 @@ public partial class CardData : Resource
 	{
 		BaseHP = HP;
 		BaseAttack = Attack;
+		GD.Print(ToString());
 	}
 
 	public override string ToString()
