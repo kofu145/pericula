@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://crui1r41ywu27"]
 
-[ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_t4md6"]
-[ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="2_cimqq"]
-[ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="3_yltc6"]
-[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="4_8r1wq"]
-[ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="4_cimqq"]
-[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="5_ajxib"]
+[ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_fpbbi"]
+[ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="2_m0qts"]
+[ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="3_ht580"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="4_skkvx"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="5_eo1la"]
+[ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="6_toxd1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0.151276, 0.151276, 0.151276, 1)
@@ -16,14 +16,14 @@ expand_margin_bottom = 4.0
 
 [sub_resource type="Resource" id="Resource_y6sft"]
 resource_local_to_scene = true
-script = ExtResource("4_8r1wq")
+script = ExtResource("4_skkvx")
 Damage = 5
 name = ""
 metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 
 [sub_resource type="Resource" id="Resource_m4ofw"]
 resource_local_to_scene = true
-script = ExtResource("5_ajxib")
+script = ExtResource("5_eo1la")
 DisplayName = "CARD"
 HP = 6
 MaxHP = 0
@@ -41,9 +41,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_t4md6")
+script = ExtResource("1_fpbbi")
 shopChoices = NodePath("PanelContainer/ShopChoices")
-shopCardScene = ExtResource("2_cimqq")
+shopCardScene = ExtResource("2_m0qts")
 chipCount = NodePath("Chips/Count")
 
 [node name="ToBattleButton" type="Button" parent="."]
@@ -114,7 +114,7 @@ size_flags_vertical = 8
 focus_mode = 0
 text = "Reroll (2)"
 
-[node name="DeckListView" parent="." instance=ExtResource("3_yltc6")]
+[node name="DeckListView" parent="." instance=ExtResource("3_ht580")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -145,7 +145,7 @@ offset_bottom = 40.0
 
 [node name="Icon" type="Sprite2D" parent="Chips"]
 position = Vector2(1084, 20)
-texture = ExtResource("4_cimqq")
+texture = ExtResource("6_toxd1")
 
 [node name="Count" type="RichTextLabel" parent="Chips"]
 layout_mode = 0

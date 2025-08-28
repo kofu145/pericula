@@ -354,6 +354,7 @@ theme_override_font_sizes/font_size = 24
 text = "CurrentBuy In: "
 
 [node name="NextTurnBuyInLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 395.0
 offset_right = 603.0
 offset_bottom = 34.0
