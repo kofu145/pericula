@@ -94,17 +94,17 @@ public partial class CardLane : Node
 	public void RemoveCard(CardData cardData)
 	{
 		var target = GetCardBaseByData(cardData);
-		
+
 		int idx = IndexOf(target);
 		RemoveCardAtIndex(idx);
 	}
 
 	private void ClearLane()
 	{
+		DeckManager.Instance.ClearHand(side == LaneSide.Player);
 		foreach (var c in _cards) c.QueueFree(); // don't want to free the children carddata, we use them elsewhere in deck
 		foreach (var s in _slots) s.QueueFree();
-
-		// foreach (var c in _cards) 
+		
 		_cards.Clear();
 		_slots.Clear();
 	}

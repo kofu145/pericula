@@ -43,7 +43,19 @@ public partial class CombatController : Node
 		battleState.Initialize(playerLane, enemyLane);
 	}
 
-	public void EndRound()
+	/// <summary>
+	/// Ends the current turn in combat, enemy and player both discard their remaining hands.
+	/// </summary>
+	public void EndTurn()
+	{
+		playerLane.EndRound();
+		enemyLane.EndRound();
+	}
+
+	/// <summary>
+	/// Ends the current combat encounter. Clearing the player and enemy decks.
+	/// </summary>
+	public void EndCombat()
 	{
 		playerLane.EndRound();
 		enemyLane.EndRound();
@@ -68,13 +80,13 @@ public partial class CombatController : Node
 		if (playerLane.CardCount <= 0)
 		{
 			// playerlost
-			//EndRound();
+			// EndRound();
 			OnShowdownEndPlayerWin?.Invoke(false);
 		}
 		else if (enemyLane.CardCount <= 0)
 		{
 			// player won 
-			//EndRound();
+			// EndRound();
 			OnShowdownEndPlayerWin?.Invoke(true);
 		}
 		else

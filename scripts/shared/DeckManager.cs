@@ -113,6 +113,20 @@ public partial class DeckManager : Node
 		targetDisc.Add(c);
 	}
 
+	public void ClearHand(bool isPlayer)
+	{
+		if (!initialized) return;
+		var targetList = isPlayer ? Hand : EnemyHand;
+		var targetDisc = isPlayer ? playerDisc : enemyDisc;
+
+		for (int i = targetList.Count - 1; i >= 0; i--)
+		{
+			var c = targetList[i];
+			targetList.Remove(c);
+			targetDisc.Add(c);
+		}
+	}
+
 	// public void Discard(CardData c) => _discard.Add(c);
 	// public void DiscardRange(IEnumerable<CardData> cards) => _discard.AddRange(cards);
 

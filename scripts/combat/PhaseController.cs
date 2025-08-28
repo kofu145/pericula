@@ -34,6 +34,7 @@ public partial class PhaseController : Node
 	// phase buttons
 	[Export] private Button betPhaseButton;
 	[Export] private Button showdownButton;
+	[Export] private Button nextTurnButton;
 
 	// test data
 	[Export] public CardData testCardData;
@@ -57,6 +58,7 @@ public partial class PhaseController : Node
 
 		betPhaseButton.Pressed += StartBetPhase;
 		showdownButton.Pressed += StartShowdownPhase;
+		nextTurnButton.Pressed += StartNextTurn;
 
 		betController.OnBetPhaseEnd += EndBetPhase;
 		betController.OnEnemyAction += DisplayEnemyAction;
@@ -75,6 +77,7 @@ public partial class PhaseController : Node
 	{
 		Show(betPhaseButton);
 		Hide(showdownButton);
+		Hide(nextTurnButton);
 
 		StartPrePhase();
 	}
@@ -108,20 +111,13 @@ public partial class PhaseController : Node
 
 	private void EndBetPhase(bool endOnFold)
 	{
-		if (endOnFold)
-		{
-			if (playerChips.Balance <= 0) OnEncounterOutcome?.Invoke(false);
-			else if (enemyChips <= 0) OnEncounterOutcome?.Invoke(true);
-
-			currentTurn++;
-			StartCombatEncounter();
-			return;
-		}
-		Show(showdownButton);
+		if (endOnFold) Show(nextTurnButton);
+		else Show(showdownButton);
 	}
 
 	private void StartShowdownPhase()
 	{
+		Hide(showdownButton);
 		currentPhase = RoundPhase.Showdown;
 		combatManager.ShowdownHandler();
 	}
@@ -131,15 +127,31 @@ public partial class PhaseController : Node
 		if (playerWon)
 		{
 			playerChips.AddChips(currentPot);
+			Show(nextTurnButton);   // optional maybe, different button that will start next turn AND claim reward
 		}
 		else
 		{
 			enemyChips += currentPot;
+			Show(nextTurnButton);
+		}
+	}
+
+	private void StartNextTurn()
+	{
+		if (playerChips.Balance <= 0)
+		{
+			OnEncounterOutcome?.Invoke(false);
+			combatManager.EndCombat();
+			return;
+		}
+		else if (enemyChips <= 0)
+		{
+			OnEncounterOutcome?.Invoke(true);
+			combatManager.EndCombat();
+			return;
 		}
 
-		if (playerChips.Balance <= 0) OnEncounterOutcome?.Invoke(false);
-		else if (enemyChips <= 0) OnEncounterOutcome?.Invoke(true);
-
+		combatManager.EndTurn();
 		currentTurn++;
 		StartCombatEncounter();
 		return;

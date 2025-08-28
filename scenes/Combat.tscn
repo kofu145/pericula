@@ -29,7 +29,7 @@ OnUse = Array[Object]([SubResource("Resource_3q7sh")])
 Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
-[node name="Combat" type="Control" node_paths=PackedStringArray("combatManager", "betController", "actionLabel", "playerChipsLabel", "enemyChipsLabel", "potLabel", "turnLabel", "buyInLabel", "betPhaseButton", "showdownButton")]
+[node name="Combat" type="Control" node_paths=PackedStringArray("combatManager", "betController", "actionLabel", "playerChipsLabel", "enemyChipsLabel", "potLabel", "turnLabel", "buyInLabel", "betPhaseButton", "showdownButton", "nextTurnButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,6 +49,7 @@ turnLabel = NodePath("TurnLabel")
 buyInLabel = NodePath("BuyInLabel")
 betPhaseButton = NodePath("PhaseButtons/StartBetButton")
 showdownButton = NodePath("PhaseButtons/ShowdownButton")
+nextTurnButton = NodePath("PhaseButtons/NextTurnButton")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -293,6 +294,11 @@ text = "Start Bet"
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "SHOWDOWN"
+
+[node name="NextTurnButton" type="Button" parent="PhaseButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Next Turn"
 
 [node name="DeckListView" parent="." instance=ExtResource("5_felwx")]
 visible = false
