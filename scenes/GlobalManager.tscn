@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=24 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="5_bgvav"]
 [ext_resource type="Script" uid="uid://ckq7qoxv60uo8" path="res://scripts/shared/PopupText.cs" id="7_l76sc"]
 [ext_resource type="PackedScene" uid="uid://dha6a5my3cgt6" path="res://scenes/PopupText.tscn" id="9_s02d4"]
+[ext_resource type="Script" uid="uid://cyyjmmxcnipyo" path="res://scripts/shared/StageManager.cs" id="10_s02d4"]
 
 [sub_resource type="Resource" id="Resource_mjdb7"]
 resource_local_to_scene = true
@@ -178,3 +179,6 @@ PopupTextScene = ExtResource("9_s02d4")
 
 [node name="SceneManager" type="Node" parent="."]
 script = ExtResource("4_e58k3")
+
+[node name="StageManager" type="Node" parent="."]
+script = ExtResource("10_s02d4")

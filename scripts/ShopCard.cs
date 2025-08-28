@@ -61,6 +61,7 @@ public partial class ShopCard : Control
 		DeckManager.Instance.AddCardByID(_cardID);
 		GD.Print(_cardID + " was selected!");
 		GD.Print("Current Deck: " + string.Join(", ", DeckManager.Instance.PlayerDeck));
+		PopupText.Instance.ShowText(GlobalPosition, "Purchased!");
 
 		shop.UpdateChipCount();
 		RemoveFromShop();
