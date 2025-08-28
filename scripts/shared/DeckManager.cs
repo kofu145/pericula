@@ -96,11 +96,10 @@ public partial class DeckManager : Node
 			targetDeck.RemoveAt(lastIndex);
 			targetList.Add(c);
 		}
-
 	}
 
 	/// <summary>
-	/// Adds a card to the discard pile and removes it from hand
+	/// Adds a card to the <seealso cref="playerDisc"/> and removes it from <seealso cref="Hand"/>.
 	/// </summary>
 	/// <param name="c">The card data to be added to the discard pile</param>
 	/// <param name="isPlayer">The corresponding deck to discard to - true is player, false is enemy</param>

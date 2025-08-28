@@ -91,6 +91,8 @@ public partial class PhaseController : Node
 
 		if (!playerChips.Deduct(currentMinimumBuyIn)) return;   // Need a way to handle this for negative balance
 		enemyChips -= currentMinimumBuyIn;
+		currentPot += currentMinimumBuyIn * 2;
+
 		currentPhase = RoundPhase.PreRound;
 
 		// draw starting hand for each lane
@@ -100,7 +102,7 @@ public partial class PhaseController : Node
 	public void StartBetPhase()
 	{
 		currentPhase = RoundPhase.Betting;
-		betController.BeginPhase(currentMinimumBuyIn, enemyChips);
+		betController.BeginPhase(currentMinimumBuyIn, enemyChips, currentPot);
 		Hide(betPhaseButton);
 	}
 
@@ -109,7 +111,7 @@ public partial class PhaseController : Node
 		if (endOnFold)
 		{
 			if (playerChips.Balance <= 0) OnEncounterOutcome?.Invoke(false);
-			else OnEncounterOutcome?.Invoke(true);
+			else if (enemyChips <= 0) OnEncounterOutcome?.Invoke(true);
 
 			currentTurn++;
 			StartCombatEncounter();
@@ -136,7 +138,7 @@ public partial class PhaseController : Node
 		}
 
 		if (playerChips.Balance <= 0) OnEncounterOutcome?.Invoke(false);
-		else OnEncounterOutcome?.Invoke(true);
+		else if (enemyChips <= 0) OnEncounterOutcome?.Invoke(true);
 
 		currentTurn++;
 		StartCombatEncounter();

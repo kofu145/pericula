@@ -22,11 +22,11 @@ public partial class CombatController : Node
 
 	public void Initialize()
 	{
+		DeckManager.Instance.Initialize();
 	}
 
 	public void StartRound(int n)
 	{
-		DeckManager.Instance.Initialize();
 		DeckManager.Instance.Draw(n, true);
 		DeckManager.Instance.Draw(n, false);
 		GD.Print(DeckManager.Instance.Hand);
@@ -62,8 +62,8 @@ public partial class CombatController : Node
 
 	public void BattleRefreshHandler()
 	{
-		updateLane(true);
-		updateLane(false);
+		UpdateLane(true);
+		UpdateLane(false);
 		FlipTurn();
 		if (playerLane.CardCount <= 0)
 		{
@@ -130,7 +130,7 @@ public partial class CombatController : Node
 		}
 	}
 
-	private void updateLane(bool player)
+	private void UpdateLane(bool player)
 	{
 		List<CardData> toRemove = [];
 		var targetLane = player ? playerLane : enemyLane;
@@ -147,6 +147,7 @@ public partial class CombatController : Node
 		foreach (var remCard in toRemove)
 		{
 			targetLane.RemoveCard(remCard);
+			DeckManager.Instance.Discard(remCard, player);
 		}
 	}
 

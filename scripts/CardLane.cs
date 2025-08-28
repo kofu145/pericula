@@ -83,6 +83,7 @@ public partial class CardLane : Node
 		cardToRemove.QueueFree();
 		slotToRemove.QueueFree();
 
+
 		for (int i = 0; i < _cards.Count; i++)
 		{
 			_cards[i].Reparent(_slots[i]);
@@ -93,15 +94,17 @@ public partial class CardLane : Node
 	public void RemoveCard(CardData cardData)
 	{
 		var target = GetCardBaseByData(cardData);
-
+		
 		int idx = IndexOf(target);
 		RemoveCardAtIndex(idx);
 	}
 
 	private void ClearLane()
 	{
-		//foreach (var c in _cards) c.QueueFree(); // don't want to free the children carddata, we use them elsewhere in deck
+		foreach (var c in _cards) c.QueueFree(); // don't want to free the children carddata, we use them elsewhere in deck
 		foreach (var s in _slots) s.QueueFree();
+
+		// foreach (var c in _cards) 
 		_cards.Clear();
 		_slots.Clear();
 	}

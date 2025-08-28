@@ -82,14 +82,15 @@ public partial class BetController : Node
 		HideAll();
 		UpdateChipLabel();
 	}
-	public void BeginPhase(int minBuyIn, int enemyChips)
+	public void BeginPhase(int minBuyIn, int enemyChips, int startingPot)
 	{
 		// temp implementation of rng
 		rng = new();
 		rng.Randomize();
 
 		minimumBuyIn = minBuyIn;
-		this.enemyBalance = enemyChips;
+		enemyBalance = enemyChips;
+		pot = startingPot;
 
 		if (raise1xButton != null)
 		{
@@ -114,7 +115,6 @@ public partial class BetController : Node
 
 		playerPut = 0;
 		enemyPut = 0;
-		pot = 0;
 		currentBet = 0;
 		betOpen = false;
 
