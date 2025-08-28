@@ -191,7 +191,7 @@ public partial class PhaseController : Node
 
 	private void EndEncounter()
 	{
-				combatManager.EndCombat();
+		combatManager.EndCombat();
 		if (PlayerLost)
 		{
 			// player lost
@@ -214,6 +214,7 @@ public partial class PhaseController : Node
 
 	private void DisplaySummary()
 	{
+		UnbindEvents();
 		StageManager.Instance.CompleteStage();
 	}
 
@@ -277,6 +278,19 @@ public partial class PhaseController : Node
 
 	protected override void Dispose(bool disposing)
 	{
+		// betController.OnBetPhaseEnd -= EndBetPhase;
+		// betController.OnEnemyAction -= DisplayEnemyAction;
+		// betController.OnChipsChanged -= DisplayPot;
+
+		// combatManager.OnShowdownEndPlayerWin -= EndShowdownPhase;
+
+		// enemyChips.OnChipsChanged = null;
+		// ChipManager.Instance.OnChipsChanged = null;
+		// base.Dispose(disposing);
+	}
+
+	private void UnbindEvents()
+	{
 		betController.OnBetPhaseEnd -= EndBetPhase;
 		betController.OnEnemyAction -= DisplayEnemyAction;
 		betController.OnChipsChanged -= DisplayPot;
@@ -285,6 +299,5 @@ public partial class PhaseController : Node
 
 		enemyChips.OnChipsChanged = null;
 		ChipManager.Instance.OnChipsChanged = null;
-		base.Dispose(disposing);
 	}
 }
