@@ -13,8 +13,8 @@ public partial class DeckManager : Node
 	public Deck EnemyDeck;
 
 	// Intermediary collections used when actually battling
-	private Godot.Collections.Array<CardData> playerBattleDeck;
-	private Godot.Collections.Array<CardData> enemyBattleDeck;
+	private Godot.Collections.Array<CardData> playerBattleDeck = new();
+	private Godot.Collections.Array<CardData> enemyBattleDeck = new();
 
 	private bool initialized;
 
@@ -40,8 +40,8 @@ public partial class DeckManager : Node
 	public void Initialize()
 	{
 		initialized = true;
-		playerBattleDeck = PlayerDeck.Cards.Duplicate(true);
-		enemyBattleDeck = EnemyDeck.Cards.Duplicate(true);
+		CloneTempDeck(PlayerDeck.Cards, playerBattleDeck);
+		CloneTempDeck(EnemyDeck.Cards, enemyBattleDeck);
 	}
 
 	public void AddCardByID(int id)
@@ -137,6 +137,14 @@ public partial class DeckManager : Node
 		playerDisc.Clear();
 		enemyDisc.Clear();
 		initialized = false;
+	}
+
+	private void CloneTempDeck(Godot.Collections.Array<CardData> list, Godot.Collections.Array<CardData> targetList)
+	{
+		foreach (var card in list)
+		{
+			targetList.Add((CardData)card.Duplicate(true));
+		}
 	}
 
 	/// <summary>
