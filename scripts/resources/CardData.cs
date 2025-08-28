@@ -4,6 +4,7 @@ using Godot.Collections;
 [GlobalClass]
 public partial class CardData : Resource
 {
+	[Export] public int id;
 	[Export] public string DisplayName;
 	[Export] public string Description;
 
@@ -11,11 +12,10 @@ public partial class CardData : Resource
 	public string Rarity;
 	[Export(PropertyHint.Enum, "Knight,Arcane,Citizen,Royalty,Beast,Mechanical,WildCard,Pawn")]
 	public string Trait;
-	[Export] public int HP;
-	public int BaseHP;
-	public int BaseAttack;
-	[Export] public int Attack;
-	[Export] public int id;
+	public int HP;
+	public int Attack;
+	[Export] public int BaseAttack;
+	[Export] public int BaseHP;
 	[Export] public Image Texture;
 	[Export] public Array<EffectTemplate> OnUse;
 	[Export] public Array<EffectTemplate> Passives;

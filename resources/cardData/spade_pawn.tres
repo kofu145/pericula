@@ -13,13 +13,13 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_4idqb")
+id = 4
 DisplayName = "Spade Pawn"
 Description = "Combat Start: If there is another Spade Pawn played with this card, gain +2/+2"
 Rarity = "Starter"
 Trait = "Pawn"
-HP = 4
-Attack = 7
-id = 4
+BaseHP = 7
+BaseAttack = 4
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"
