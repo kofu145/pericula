@@ -6,6 +6,7 @@ public partial class ChipManager : Node
 	[Export] private int balance;
 	public int Balance => balance;
 	public static ChipManager Instance { get; private set; }
+	public Action<int> OnChipsChanged;
 
 	public override void _Ready()
 	{
@@ -24,6 +25,7 @@ public partial class ChipManager : Node
 	{
 		bool valid = balance >= amount;
 		balance = valid ? balance - amount : balance;
+		if (valid) OnChipsChanged?.Invoke(balance);
 		return valid;
 	}
 
@@ -33,5 +35,6 @@ public partial class ChipManager : Node
 	public void AddChips(int amount)
 	{
 		balance += amount;
+		OnChipsChanged?.Invoke(balance);
 	}
 }

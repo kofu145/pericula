@@ -13,7 +13,7 @@ public partial class PhaseController : Node
 	// get info from the singleton instance
 	[Export] private int currentMinimumBuyIn = 10;
 	// get info from the enemy info(?) when the scene is initialized(?)
-	[Export] private int enemyChips = 100;
+	[Export] private int enemyChipsAmount = 100;
 
 	// buy in config
 	[Export] private int turnBuyInIncrease = 4;
@@ -48,7 +48,8 @@ public partial class PhaseController : Node
 	// runtime refs
 	private RoundPhase currentPhase;
 	private int currentPot = 0;
-	private ChipManager playerChips;        // awarded to the winner after showdown
+	private ChipManager playerChips;
+	private EnemyChips enemyChips;
 	private int currentTurn = 1;
 
 	// Called when the node enters the scene tree for the first time.
@@ -62,11 +63,16 @@ public partial class PhaseController : Node
 
 		betController.OnBetPhaseEnd += EndBetPhase;
 		betController.OnEnemyAction += DisplayEnemyAction;
-		betController.OnChipsChanged += DisplayChips;
+		betController.OnChipsChanged += DisplayPot;
 
 		combatManager.OnShowdownEndPlayerWin += EndShowdownPhase;
 
 		playerChips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
+		playerChips.OnChipsChanged += DisplayPlayerChips;
+
+		enemyChips = new(enemyChipsAmount);
+		enemyChips.OnChipsChanged += DisplayEnemyChips;
+
 		// TODO: temp implementation
 		playerChips.AddChips(startingChips);
 
@@ -93,8 +99,9 @@ public partial class PhaseController : Node
 
 
 		if (!playerChips.Deduct(currentMinimumBuyIn)) return;   // Need a way to handle this for negative balance
-		enemyChips -= currentMinimumBuyIn;
-		currentPot += currentMinimumBuyIn * 2;
+		if (!enemyChips.Deduct(currentMinimumBuyIn)) return;
+
+		currentPot = currentMinimumBuyIn * 2;
 
 		currentPhase = RoundPhase.PreRound;
 
@@ -131,7 +138,7 @@ public partial class PhaseController : Node
 		}
 		else
 		{
-			enemyChips += currentPot;
+			enemyChips.AddChips(currentPot);
 			Show(nextTurnButton);
 		}
 	}
@@ -144,7 +151,7 @@ public partial class PhaseController : Node
 			combatManager.EndCombat();
 			return;
 		}
-		else if (enemyChips <= 0)
+		else if (enemyChips.Balance <= 0)
 		{
 			OnEncounterOutcome?.Invoke(true);
 			combatManager.EndCombat();
@@ -197,21 +204,21 @@ public partial class PhaseController : Node
 		actionLabel.Visible = false;
 	}
 
-	private void DisplayChips(string entity, int amount)
+	private void DisplayPot(int amount)
 	{
-		if (entity == "player" && playerChipsLabel != null)
-			playerChipsLabel.Text = $"Chips: {amount}";
-
-		else if (entity == "enemy" && enemyChipsLabel != null)
-		{
-			enemyChipsLabel.Text = $"Chips: {amount}";
-			enemyChips = amount;
-		}
-
-		else if (entity == "pot" && potLabel != null)
+		if (potLabel != null)
 		{
 			potLabel.Text = $"Pot: {amount}";
 			currentPot = amount;
 		}
+	}
+	private void DisplayEnemyChips(int amount)
+	{
+		enemyChipsLabel.Text = $"Chips: {amount}";
+	}
+
+	private void DisplayPlayerChips(int amount)
+	{
+		playerChipsLabel.Text = $"Chips: {amount}";
 	}
 }

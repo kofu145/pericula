@@ -24,12 +24,7 @@ public partial class BetController : Node
 	// public events
 	public Action<BetAction, int, int> OnEnemyAction; // parameters: (action, toCallAmount, raiseAmount)
 	public Action<bool> OnBetPhaseEnd;
-	public Action<string, int> OnChipsChanged; // parameters: (entityName, newChipAmount)
-
-	// names for event
-	private string playerName = "player";
-	private string enemyName = "enemy";
-	private string potName = "pot";
+	public Action<int> OnChipsChanged; // parameter: (newChipAmount)
 
 	// states
 	private Turn turn = Turn.None;
@@ -45,7 +40,7 @@ public partial class BetController : Node
 	private int enemyPut = 0;
 	private int pot = 0;            // total for both sides
 
-	private int enemyBalance = 0;
+	private EnemyChips enemyChips;
 
 	private bool choosingRaiseAmount = false;
 
@@ -65,6 +60,7 @@ public partial class BetController : Node
 	private bool CanCall => ToCall > 0 && PlayerBalance >= ToCall;                  // player has enough chips to call the enemy's bet
 	private bool CanOpenRaise => !betOpen && PlayerBalance >= minimumBuyIn;         // player has enough chips to raise (at least minimumBuyIn) 
 	private bool CanRaiseOverCall => betOpen && AffordableRaise >= minimumBuyIn;    // player has enough chips to call the enemy's bet and raise (at least minimumBuyIn) 
+	private int EnemyBalance => enemyChips.Balance;
 	// ====================================
 
 
@@ -80,16 +76,16 @@ public partial class BetController : Node
 		if (allInButton != null) allInButton.Pressed += OnClickPlayerAllIn;
 
 		HideAll();
-		UpdateChipLabel();
+		UpdatePotLabel();
 	}
-	public void BeginPhase(int minBuyIn, int enemyChips, int startingPot)
+	public void BeginPhase(int minBuyIn, EnemyChips enemyChips, int startingPot)
 	{
 		// temp implementation of rng
 		rng = new();
 		rng.Randomize();
 
 		minimumBuyIn = minBuyIn;
-		enemyBalance = enemyChips;
+		this.enemyChips = enemyChips;
 		pot = startingPot;
 
 		if (raise1xButton != null)
@@ -126,7 +122,7 @@ public partial class BetController : Node
 		HideAll();
 		Show(checkButton);
 		Show(raiseButton);
-		UpdateChipLabel();
+		UpdatePotLabel();
 	}
 
 
@@ -195,7 +191,7 @@ public partial class BetController : Node
 		turn = Turn.Enemy;
 
 		UpdateButtons();
-		UpdateChipLabel();
+		UpdatePotLabel();
 		EnemyAct();
 	}
 
@@ -239,7 +235,7 @@ public partial class BetController : Node
 
 		turn = Turn.Enemy;
 		UpdateButtons();
-		UpdateChipLabel();
+		UpdatePotLabel();
 		EnemyAct();
 	}
 
@@ -260,7 +256,7 @@ public partial class BetController : Node
 		int balance = PlayerBalance;
 		if (balance <= 0) return;
 
-		// balance = Math.Min(balance, enemyBalance);   // TODO: Update with enemy balance
+		// balance = Math.Min(balance, EnemyBalance);   // TODO: Update with enemy balance
 
 		if (!playerChips.Deduct(balance)) return;
 		pot += balance;
@@ -272,7 +268,7 @@ public partial class BetController : Node
 
 		turn = Turn.Enemy;
 		UpdateButtons();
-		UpdateChipLabel();
+		UpdatePotLabel();
 		EnemyAct();
 	}
 
@@ -292,10 +288,10 @@ public partial class BetController : Node
 			{
 				int toCall = Math.Max(0, currentBet - enemyPut);
 
-				if (toCall >= enemyBalance)
+				if (toCall >= EnemyBalance)
 				{
 					// all in
-					toCall = enemyBalance;
+					toCall = EnemyBalance;
 					lastEnemyAction = BetAction.AllIn;
 					OnEnemyAction?.Invoke(BetAction.AllIn, toCall, 0);
 				}
@@ -306,7 +302,11 @@ public partial class BetController : Node
 					OnEnemyAction?.Invoke(BetAction.Call, toCall, 0);
 				}
 
-				enemyBalance -= toCall;
+				if (!enemyChips.Deduct(ToCall))
+				{
+					GD.PushError("Enemy does not have enough chips for action.");
+					return;
+				}
 				pot += toCall;
 				enemyPut += toCall;
 
@@ -348,7 +348,7 @@ public partial class BetController : Node
 				int amount = EnemyPickRaiseAmount();
 				ApplyEnemyRaise(amount);
 			}
-			UpdateChipLabel();
+			UpdatePotLabel();
 			return;
 		}
 
@@ -361,10 +361,10 @@ public partial class BetController : Node
 			int toCall = Math.Max(0, currentBet - enemyPut);
 			// TODO: Apply 'toCall' to enemy currency
 
-			if (toCall >= enemyBalance)
+			if (toCall >= EnemyBalance)
 			{
 				// all in
-				toCall = enemyBalance;
+				toCall = EnemyBalance;
 				lastEnemyAction = BetAction.AllIn;
 				OnEnemyAction?.Invoke(BetAction.AllIn, toCall, 0);
 			}
@@ -375,7 +375,12 @@ public partial class BetController : Node
 				OnEnemyAction?.Invoke(BetAction.Call, toCall, 0);
 			}
 
-			enemyBalance -= toCall;
+			if (!enemyChips.Deduct(ToCall))
+			{
+				GD.PushError("Enemy does not have enough chips for action.");
+				return;
+			}
+
 			enemyPut += toCall;
 			pot += toCall;
 
@@ -402,7 +407,7 @@ public partial class BetController : Node
 	{
 		int[] mults = { 1, 2, 5 };
 		int m = mults[rng.RandiRange(0, mults.Length - 1)];
-		int cap = Math.Min(enemyBalance, PlayerBalance);
+		int cap = Math.Min(EnemyBalance, PlayerBalance);
 		return Math.Min(minimumBuyIn * m, cap);
 	}
 
@@ -411,10 +416,10 @@ public partial class BetController : Node
 		int toCall = Math.Max(0, currentBet - enemyPut);
 		int spend = toCall + amount;
 
-		if (spend >= enemyBalance)
+		if (spend >= EnemyBalance)
 		{
 			// all in
-			spend = enemyBalance;
+			spend = EnemyBalance;
 			lastEnemyAction = BetAction.AllIn;
 			OnEnemyAction?.Invoke(lastEnemyAction, spend, 0);
 		}
@@ -424,7 +429,12 @@ public partial class BetController : Node
 			OnEnemyAction?.Invoke(lastEnemyAction, toCall, amount);
 		}
 
-		enemyBalance -= spend;
+		if (!enemyChips.Deduct(spend))
+		{
+			GD.PushError("Enemy does not have enough chips for action.");
+			return;
+		}
+
 		currentBet += Math.Max(0, spend - toCall);
 		enemyPut += spend;
 		pot += spend;
@@ -437,10 +447,10 @@ public partial class BetController : Node
 			EndPhase();
 			return;
 		}
-		
+
 		turn = Turn.Player;
 		UpdateButtons();
-		UpdateChipLabel();
+		UpdatePotLabel();
 	}
 
 	// ============ UI & Helpers =============
@@ -458,11 +468,11 @@ public partial class BetController : Node
 			}
 			else
 			{
-				enemyBalance += pot;
+				enemyChips.AddChips(pot);
 			}
 		}
 
-		UpdateChipLabel();
+		UpdatePotLabel();
 
 		OnBetPhaseEnd?.Invoke(endedWithFold);
 		GD.Print("Phase is over");
@@ -532,10 +542,8 @@ public partial class BetController : Node
 		button.Disabled = false;
 	}
 
-	private void UpdateChipLabel()
+	private void UpdatePotLabel()
 	{
-		OnChipsChanged?.Invoke(playerName, playerChips.Balance);
-		OnChipsChanged?.Invoke(enemyName, enemyBalance); // TODO: Replace with enemy chips
-		OnChipsChanged?.Invoke(potName, pot);
+		OnChipsChanged?.Invoke(pot);
 	}
 }
