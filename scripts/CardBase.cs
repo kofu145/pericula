@@ -9,7 +9,7 @@ public partial class CardBase : Control
 	[Export] private float ScaleSpeed = 12f;
 
 	[Export] public CardVisual Visual;
-	[Export] public CardData Data;
+	public CardData Data;
 	[Export] public CardDescription Description;
 	[Export] public AnimationPlayer animation;
 
@@ -31,8 +31,8 @@ public partial class CardBase : Control
 
 	public void Initialize(CardData data)
 	{
-		if (Visual != null) Visual.Initialize(data, FollowSpeed, ScaleSpeed);
 		Data = data;
+		if (Visual != null) Visual.Initialize(data, FollowSpeed, ScaleSpeed);
 	}
 
 	public void Reveal() => Visual?.ShowInfo();

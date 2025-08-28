@@ -24,7 +24,7 @@ public partial class Shop : Control
 		int _upgradeID;
 		for (int i = 0; i < choicesAvailable; i++)
 		{
-			_upgradeID = GD.RandRange(0, 10); // TODO: update w/ ids in-game
+			_upgradeID = GD.RandRange(1, 4); // TODO: update w/ ids in-game
 			CreateOffer(_upgradeID);
 		}
 	}

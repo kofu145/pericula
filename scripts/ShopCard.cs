@@ -31,7 +31,30 @@ public partial class ShopCard : Control
 		this.shop = shop;
 
 		// TODO: Assign icon, text, etc.
-		labelId.Text = id.ToString();
+		CardData data = CardLookup.GetCardByID(_cardID);
+		GetNode<Label>("Health").Text = data.BaseHP.ToString();
+		GetNode<Label>("Attack").Text = data.BaseAttack.ToString();
+
+		double _currentCost = 100;
+
+		// TODO: Update this later
+		switch (data.Rarity)
+		{
+			case "Rare":
+				_currentCost *= 1.5;
+				break;
+			case "Mythic":
+				_currentCost *= 2;
+				break;
+			case "Legendary":
+				_currentCost *= 2.5;
+				break;
+			default:
+				break;
+		}
+
+		GetNode<Label>("Cost").Text = Math.Round(_currentCost).ToString();
+		GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data.DisplayName, data.Description, data.Rarity, data.Trait);
 	}
 
 	void OnInput(InputEvent @event)

@@ -17,14 +17,6 @@ public partial class CardVisual : Control
 	{
 		MouseFilter = MouseFilterEnum.Ignore;
 		PivotOffset = Size / 2;
-
-		if (Base != null)
-		{
-			CardData data = Base.GetCardData();
-			GetNode<Label>("Health").Text = data.BaseHP.ToString();
-			GetNode<Label>("Attack").Text = data.BaseAttack.ToString();
-			GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data.DisplayName, data.Description, data.Rarity, data.Trait);
-		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,7 +26,7 @@ public partial class CardVisual : Control
 
 		var target = Base.GlobalPosition;
 		float t = 1f - Mathf.Exp(-FollowSpeed * (float)delta);
-		GlobalPosition = offsetPos.Lerp(target, t);
+		//GlobalPosition = offsetPos.Lerp(target, t);
 		offsetPos = GlobalPosition;
 
 		float ts = 1f - Mathf.Exp(-ScaleSpeed * (float)delta);
@@ -50,6 +42,14 @@ public partial class CardVisual : Control
 
 		this.FollowSpeed = FollowSpeed;
 		this.ScaleSpeed = ScaleSpeed;
+		
+		if (Base != null)
+		{
+			var baseData = Base.GetCardData();
+			GetNode<Label>("Health").Text = baseData.BaseHP.ToString();
+			GetNode<Label>("Attack").Text = baseData.BaseAttack.ToString();
+			GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(baseData.DisplayName, baseData.Description, baseData.Rarity, baseData.Trait);
+		}
 	}
 
 	public void RebasePos(Vector2 newPos)

@@ -42,6 +42,7 @@ public partial class DeckManager : Node
 		initialized = true;
 		CloneTempDeck(PlayerDeck.Cards, playerBattleDeck);
 		CloneTempDeck(EnemyDeck.Cards, enemyBattleDeck);
+		GD.Print(playerBattleDeck);
 	}
 
 	public void AddCardByID(int id)

@@ -20,7 +20,6 @@ public partial class CardLookup : Node
 		{
 			if (filePath.EndsWith(".tres"))
 			{
-				GD.Print(filePath);
 				var cardData = GD.Load<CardData>(CARD_DATA_PATH + filePath);
 				if (cardData != null && cardData.id == id)
 				{
@@ -40,7 +39,6 @@ public partial class CardLookup : Node
 		{
 			if (filePath.EndsWith(".tres"))
 			{
-				GD.Print(filePath);
 				var cardData = GD.Load<CardData>(CARD_DATA_PATH + filePath);
 				if (cardData != null)
 				{
