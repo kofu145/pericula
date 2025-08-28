@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 
 public partial class DeckManager : Node
 {
@@ -96,6 +97,19 @@ public partial class DeckManager : Node
 			targetList.Add(c);
 		}
 
+	}
+
+	/// <summary>
+	/// Adds a card to the discard pile 
+	/// </summary>
+	/// <param name="c">The card data to be added to the discard pile</param>
+	/// <param name="isPlayer">The corresponding deck to discard to - true is player, false is enemy</param>
+	public void Discard(CardData c, bool isPlayer)
+	{
+		if (!initialized) return;
+		var targetDisc = isPlayer ? playerDisc : enemyDisc;
+
+		targetDisc.Add(c);
 	}
 
 	// public void Discard(CardData c) => _discard.Add(c);
