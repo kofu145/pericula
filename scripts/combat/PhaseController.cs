@@ -49,7 +49,6 @@ public partial class PhaseController : Node
 	// runtime refs
 	private RoundPhase currentPhase;
 	private int currentPot = 0;
-	private ChipManager playerChips;
 	private EnemyChips enemyChips;
 	private int currentTurn = 1;
 
@@ -74,14 +73,13 @@ public partial class PhaseController : Node
 
 		combatManager.OnShowdownEndPlayerWin += EndShowdownPhase;
 
-		playerChips = GetNode<ChipManager>("/root/GlobalManager/ChipManager");
-		playerChips.OnChipsChanged += DisplayPlayerChips;
+		ChipManager.Instance.OnChipsChanged += DisplayPlayerChips;
 
 		enemyChips = new(enemyChipsAmount);
 		enemyChips.OnChipsChanged += DisplayEnemyChips;
 
 		// TODO: temp implementation
-		playerChips.AddChips(startingChips);
+		ChipManager.Instance.AddChips(startingChips);
 
 		StartCombatEncounter();
 	}
@@ -106,7 +104,7 @@ public partial class PhaseController : Node
 		buyInLabel.Text = $"Current Buy In: {currentMinimumBuyIn}";
 
 
-		if (!playerChips.Deduct(currentMinimumBuyIn)) return;   // Need a way to handle this for negative balance
+		if (!ChipManager.Instance.Deduct(currentMinimumBuyIn)) return;   // Need a way to handle this for negative balance
 		if (!enemyChips.Deduct(currentMinimumBuyIn)) return;
 
 		currentPot = currentMinimumBuyIn * 2;
@@ -181,11 +179,12 @@ public partial class PhaseController : Node
 
 	private void EndCurrentRun()
 	{
-		GD.Print("Player lost. Restart run");
+		GD.Print("Game over! Lost on stage " + StageManager.Instance.CurrentStageID);
 	}
 
 	private void DisplaySummary()
 	{
+		StageManager.Instance.CompleteStage();
 		GD.Print("Player won. On to the shop");
 
 	}
@@ -247,4 +246,10 @@ public partial class PhaseController : Node
 	{
 		playerChipsLabel.Text = $"Chips: {amount}";
 	}
+
+	protected override void Dispose(bool disposing)
+    {
+        ChipManager.Instance.OnChipsChanged = null;
+        base.Dispose(disposing);
+    }
 }
