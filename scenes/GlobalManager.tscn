@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dha6a5my3cgt6" path="res://scenes/PopupText.tscn" id="9_s02d4"]
 [ext_resource type="Shader" uid="uid://d3717vds76o65" path="res://scripts/shaders/DiamondTransition.gdshader" id="10_ivlop"]
 [ext_resource type="Script" uid="uid://cyyjmmxcnipyo" path="res://scripts/shared/StageManager.cs" id="10_s02d4"]
-[ext_resource type="Script" path="res://scripts/shared/CardLookup.cs" id="12_7a67w"]
+[ext_resource type="Script" uid="uid://krak4fxo5k5x" path="res://scripts/shared/CardLookup.cs" id="12_7a67w"]
 
 [sub_resource type="Resource" id="Resource_mjdb7"]
 resource_local_to_scene = true
@@ -24,6 +24,9 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 Attack = 3
 id = 0
@@ -35,6 +38,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 Attack = 3
 id = 0
@@ -46,6 +52,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 Attack = 3
 id = 0
@@ -57,6 +66,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 Attack = 3
 id = 0
@@ -68,6 +80,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 Attack = 3
 id = 0
@@ -85,6 +100,9 @@ metadata/_custom_type_script = "uid://dnh88quxuv4le"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 Attack = 3
 id = 0
@@ -96,6 +114,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 Attack = 3
 id = 0
@@ -107,6 +128,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 Attack = 3
 id = 0
@@ -118,6 +142,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 Attack = 3
 id = 0
@@ -129,6 +156,9 @@ metadata/_custom_type_script = "uid://clner77n1ff5a"
 resource_local_to_scene = true
 script = ExtResource("4_l76sc")
 DisplayName = "CARD"
+Description = ""
+Rarity = ""
+Trait = ""
 HP = 6
 Attack = 3
 id = 0
@@ -164,8 +194,9 @@ script = ExtResource("3_8tji2")
 script = ExtResource("7_l76sc")
 PopupTextScene = ExtResource("9_s02d4")
 
-[node name="SceneManager" type="Node" parent="."]
+[node name="SceneManager" type="Node" parent="." node_paths=PackedStringArray("SceneTransitionAnimationRect")]
 script = ExtResource("4_e58k3")
+SceneTransitionAnimationRect = NodePath("CanvasLayer/SceneTransitionRect")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SceneManager"]
 layer = 127

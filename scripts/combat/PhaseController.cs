@@ -120,6 +120,10 @@ public partial class PhaseController : Node
 		buyInLabel.Text = $"Current Buy In: {currentMinimumBuyIn}";
 
 		// enemy and player pays the buyIn amount
+
+		if (!enemyChips.Deduct(currentMinimumBuyIn)) currentMinimumBuyIn = enemyChips.Balance;
+
+		enemyChips.Deduct(currentMinimumBuyIn);
 		// if (!playerChips.Deduct(currentMinimumBuyIn)) return;
 
 		// TODO: Need a way to handle this for negative balance
@@ -127,14 +131,17 @@ public partial class PhaseController : Node
 		if (playerChips.Balance <= 0) negativeBalanceWarningLabel.Text = $"Warning. Losing next Showdown will lose you the run.";
 		negativeBalanceWarningLabel.Visible = playerChips.Balance <= 0;
 
-		if (!enemyChips.Deduct(currentMinimumBuyIn)) return;
-
-		currentPot = currentMinimumBuyIn * 2;
+		DisplayPot(currentMinimumBuyIn * 2);
 
 		currentPhase = RoundPhase.PreRound;
 
 		// draw starting hand for each lane
 		combatManager.StartRound(startingDraw);
+		if (enemyChips.Balance == 0)
+		{
+			Hide(betPhaseButton);
+			Show(showdownButton);
+		}
 	}
 
 	public void StartBetPhase()
