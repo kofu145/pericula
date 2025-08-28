@@ -13,13 +13,13 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_rgdj1")
+id = 0
 DisplayName = "CARD"
 Description = ""
 Rarity = ""
 Trait = ""
-BaseHP = 0
 BaseAttack = 0
-id = 0
+BaseHP = 0
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"

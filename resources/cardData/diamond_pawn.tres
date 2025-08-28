@@ -13,13 +13,13 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_lrfo8")
+id = 1
 DisplayName = "Diamond Pawn"
 Description = ""
 Rarity = "Starter"
 Trait = "Pawn"
-BaseHP = 5
 BaseAttack = 5
-id = 1
+BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
 metadata/_custom_type_script = "uid://clner77n1ff5a"
