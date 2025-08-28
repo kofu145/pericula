@@ -69,13 +69,13 @@ public partial class CombatController : Node
 		{
 			// playerlost
 			//EndRound();
-			OnShowdownEndPlayerWin?.Invoke(true);
+			OnShowdownEndPlayerWin?.Invoke(false);
 		}
 		else if (enemyLane.CardCount <= 0)
 		{
 			// player won 
 			//EndRound();
-			OnShowdownEndPlayerWin?.Invoke(false);
+			OnShowdownEndPlayerWin?.Invoke(true);
 		}
 		else
 			DoBattle();
