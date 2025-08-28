@@ -285,11 +285,6 @@ public partial class BetController : Node
 					amountToCall = EnemyBalance;
 					lastEnemyAction = BetAction.AllIn;
 					OnEnemyAction?.Invoke(BetAction.AllIn, amountToCall, 0);
-					if (!enemyChips.Deduct(amountToCall))
-					{
-						GD.PushError("Enemy does not have enough chips for action.");
-						return;
-					}
 				}
 				else
 				{
