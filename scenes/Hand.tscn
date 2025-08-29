@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbfcor04febj5"]
+
+[ext_resource type="Script" uid="uid://ce3eacidxas64" path="res://scripts/CardLane.cs" id="1_co447"]
+[ext_resource type="PackedScene" uid="uid://ctpdonyuipdam" path="res://scenes/card/cardSlot.tscn" id="1_vchyo"]
+[ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/Card.tscn" id="2_oym42"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("lane")]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -160.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_co447")
+CardScene = ExtResource("2_oym42")
+lane = NodePath("Hand")
+
+[node name="Hand" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -160.0
+offset_right = 310.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Slot0" parent="Hand" instance=ExtResource("1_vchyo")]
+layout_mode = 2
+
+[node name="Slot1" parent="Hand" instance=ExtResource("1_vchyo")]
+layout_mode = 2
+
+[node name="Slot2" parent="Hand" instance=ExtResource("1_vchyo")]
+layout_mode = 2
+
+[node name="Slot3" parent="Hand" instance=ExtResource("1_vchyo")]
+layout_mode = 2
+
+[node name="Slot4" parent="Hand" instance=ExtResource("1_vchyo")]
+layout_mode = 2

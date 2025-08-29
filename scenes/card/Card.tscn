@@ -440,6 +440,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Visual"]
+layer = 126
 follow_viewport_enabled = true
 
 [node name="CardDescription" parent="Visual/CanvasLayer" instance=ExtResource("4_3dwn4")]
