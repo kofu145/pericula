@@ -180,12 +180,12 @@ public partial class PhaseController : Node
 			if (PlayerLost || PlayerWon) Show(endEncounterButton);
 			else Show(nextTurnButton);
 		}
+		DisplayPot(0);
 	}
 
 	private void StartNextTurn()
 	{
 		combatManager.EndTurn();
-		DisplayPot(0);
 		currentTurn++;
 		StartCombatEncounter();
 	}
@@ -208,11 +208,13 @@ public partial class PhaseController : Node
 		}
 	}
 
+	// loss handler
 	private void EndCurrentRun()
 	{
-		GD.Print("Game over! Lost on stage " + StageManager.Instance.CurrentStageID);
+		// TODO: Wire back to the title screen
 	}
 
+	// win handler
 	private void DisplaySummary()
 	{
 		UnbindEvents();
