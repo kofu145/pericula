@@ -357,7 +357,6 @@ theme_override_font_sizes/font_size = 24
 text = "Warning."
 
 [node name="CombatTutorial" parent="." instance=ExtResource("7_t74xm")]
-visible = false
 layout_mode = 1
 tutorials = Array[ExtResource("8_felwx")]([ExtResource("9_acsaf"), ExtResource("10_x8jxt"), ExtResource("11_132iy")])
 overrideTutorialOnlyOnce = true

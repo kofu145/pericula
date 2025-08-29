@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://crui1r41ywu27"]
+[gd_scene load_steps=10 format=3 uid="uid://crui1r41ywu27"]
 
 [ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_fpbbi"]
+[ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="2_ht580"]
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="3_ht580"]
 [ext_resource type="PackedScene" uid="uid://dyau1eaiah8c7" path="res://scenes/Tutorial.tscn" id="4_cimqq"]
 [ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="5_m0qts"]
@@ -15,7 +16,7 @@ expand_margin_top = 4.0
 expand_margin_right = 12.0
 expand_margin_bottom = 4.0
 
-[node name="Shop" type="Control"]
+[node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices", "chipCount")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fpbbi")
+shopChoices = NodePath("PanelContainer/ShopChoices")
+shopCardScene = ExtResource("2_ht580")
+chipCount = NodePath("Chips/Count")
 
 [node name="ToBattleButton" type="Button" parent="."]
 layout_mode = 1
@@ -104,6 +108,7 @@ offset_left = -560.0
 offset_top = -308.0
 offset_right = 560.0
 offset_bottom = 308.0
+CardSize = Vector2i(100, 118)
 
 [node name="DeckViewButton" type="Button" parent="."]
 layout_mode = 0
@@ -135,7 +140,6 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="ShopTutorial" parent="." instance=ExtResource("4_cimqq")]
-visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0

@@ -22,5 +22,5 @@ BaseAttack = 5
 BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-keywords = null
+Keywords = []
 metadata/_custom_type_script = "uid://clner77n1ff5a"

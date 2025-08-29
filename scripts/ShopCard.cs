@@ -106,6 +106,7 @@ public partial class ShopCard : Control
 		ZIndex = 100;
 		StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION);
 		description.Display();
+		SoundManager.PlaySE("touchcard");
 	}
 
 	public void OnMouseExited()
