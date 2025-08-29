@@ -8,6 +8,9 @@ public partial class ChipManager : Node
     public static ChipManager Instance { get; private set; }
     public Action<int> OnChipsChanged;
 
+    // run info of chips
+    private int chipsEarned;
+
     public override void _Ready()
     {
         Instance = this;
@@ -19,6 +22,7 @@ public partial class ChipManager : Node
     public void StartNewRun(int startingChips)
     {
         balance = startingChips;
+        chipsEarned = 0;
     }
 
     /// <summary>
@@ -40,6 +44,7 @@ public partial class ChipManager : Node
     public void AddChips(int amount)
     {
         balance += amount;
+        chipsEarned += amount;
         OnChipsChanged?.Invoke(balance);
     }
 

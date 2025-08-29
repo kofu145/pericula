@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qyuap")
 startGameButton = NodePath("ButtonsContainer/StartRunButton")
-settingsButton = NodePath("ButtonsContainer/SettingsButton")
+settingsButton = NodePath("")
 runConfig = ExtResource("2_ch40n")
 
 [node name="GameNameLabel" type="Label" parent="."]
@@ -46,8 +46,3 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Start Run"
-
-[node name="SettingsButton" type="Button" parent="ButtonsContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Settings"

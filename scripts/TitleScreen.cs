@@ -3,7 +3,6 @@ using Godot;
 public partial class TitleScreen : Panel
 {
     [Export] private Button startGameButton;
-    [Export] private Button settingsButton;
 
     // game config
     [Export] private RunConfig runConfig;
