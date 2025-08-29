@@ -10,7 +10,6 @@ offset_right = 640.0
 offset_bottom = 200.0
 texture = ExtResource("1_oge5e")
 script = ExtResource("1_motnv")
-SlotScene = ExtResource("1_r27dx")
 CardScene = ExtResource("3_n0i63")
 lane = NodePath("HBoxContainer")
 
@@ -20,8 +19,31 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 13.0
+offset_right = -7.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 16
-alignment = 1
+theme_override_constants/separation = 5
+
+[node name="Slot0" parent="HBoxContainer" instance=ExtResource("1_r27dx")]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+
+[node name="Slot1" parent="HBoxContainer" instance=ExtResource("1_r27dx")]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+
+[node name="Slot2" parent="HBoxContainer" instance=ExtResource("1_r27dx")]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+
+[node name="Slot3" parent="HBoxContainer" instance=ExtResource("1_r27dx")]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+
+[node name="Slot4" parent="HBoxContainer" instance=ExtResource("1_r27dx")]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2

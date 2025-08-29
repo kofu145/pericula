@@ -38,15 +38,15 @@ public partial class DeckManager : Node
     public override void _Ready()
     {
         initialized = false;
-        // Shuffle(false);
-        // foreach (var card in PlayerDeck.Cards)
-        // {
-        //     card.Initialize();
-        // }
-        // foreach (var card in EnemyDeck.Cards)
-        // {
-        //     card.Initialize();
-        // }
+        Shuffle(false);
+        foreach (var card in PlayerDeck.Cards)
+        {
+            card.Initialize();
+        }
+        foreach (var card in EnemyDeck.Cards)
+        {
+            card.Initialize();
+        }
         Instance = this;
     }
 

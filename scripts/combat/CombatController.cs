@@ -32,7 +32,7 @@ public partial class CombatController : Node
             foreach (var data in drawn)
             {
                 var lane = i == 0 ? playerLane : enemyLane;
-                lane.SpawnCard(data);
+                lane.SpawnCard(data, i);
             }
 
         }
