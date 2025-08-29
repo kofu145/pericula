@@ -19,7 +19,7 @@ public partial class CardData : Resource
 	[Export] public Image Texture;
 	[Export] public Array<EffectTemplate> OnUse;
 	[Export] public Array<EffectTemplate> Passives;
-	[Export] public Array<Keyword> keywords;
+	[Export] public Array<Keyword> Keywords = new Array<Keyword>();
 
 	CardData()
 	{

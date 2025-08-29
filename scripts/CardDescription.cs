@@ -11,13 +11,10 @@ public partial class CardDescription : Control
     [Export] RichTextLabel Class;
     [Export] PackedScene keywordTooltip;
     [Export] Control anchor;
-    [Export] Control cardVisual;
-    [Export] Vector2 tooltipOffset = new Vector2(20,20);
+    [Export] Vector2 tooltipOffset = new Vector2(20, 20);
     
     Tween tween;
     const float FINAL_SCALE = 1f;
-
-    Vector2 offset = new Vector2(-62f, 155f);
     private List<KeywordTooltip> keywords = new();
 
     public override void _Ready()
@@ -60,7 +57,7 @@ public partial class CardDescription : Control
         Description.Text = data.Description;
         Class.Text = data.Trait;
 
-        foreach (var keyword in data.keywords)
+        foreach (var keyword in data.Keywords)
         {
             var tooltip = keywordTooltip.Instantiate<KeywordTooltip>();
             tooltip.Initialize(keyword);

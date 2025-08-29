@@ -20,6 +20,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -12.0
+offset_right = 10.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fpbbi")
@@ -104,6 +108,7 @@ offset_left = -560.0
 offset_top = -308.0
 offset_right = 560.0
 offset_bottom = 308.0
+CardSize = Vector2i(100, 118)
 
 [node name="DeckViewButton" type="Button" parent="."]
 layout_mode = 0
@@ -117,8 +122,9 @@ text = "View Deck"
 
 [node name="Chips" type="Control" parent="."]
 anchors_preset = 0
+offset_top = 9.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 49.0
 
 [node name="Icon" type="Sprite2D" parent="Chips"]
 position = Vector2(1084, 20)
