@@ -14,7 +14,7 @@ expand_margin_top = 4.0
 expand_margin_right = 12.0
 expand_margin_bottom = 4.0
 
-[node name="Shop" type="Control"]
+[node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices", "chipCount")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +22,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fpbbi")
+shopChoices = NodePath("PanelContainer/ShopChoices")
+shopCardScene = ExtResource("2_ht580")
+chipCount = NodePath("Chips/Count")
 
 [node name="ToBattleButton" type="Button" parent="."]
 layout_mode = 1
@@ -91,6 +94,33 @@ size_flags_vertical = 8
 focus_mode = 0
 text = "Reroll (2)"
 
+<<<<<<< HEAD
+=======
+[node name="DeckListView" parent="." instance=ExtResource("3_ht580")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = -308.0
+offset_right = 560.0
+offset_bottom = 308.0
+CardSize = Vector2i(100, 118)
+
+[node name="DeckViewButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 593.0
+offset_right = 1127.0
+offset_bottom = 624.0
+size_flags_vertical = 8
+focus_mode = 0
+text = "View Deck"
+
+>>>>>>> 6d560065ec960020c17a23d490bc8a8f82b8b77a
 [node name="Chips" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -111,6 +141,12 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="ShopTutorial" parent="." instance=ExtResource("4_cimqq")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 tutorials = Array[ExtResource("5_m0qts")]([ExtResource("6_ht580"), ExtResource("7_skkvx")])
 tutorialKey = "ShopTutorial"
 overrideTutorialOnlyOnce = true
