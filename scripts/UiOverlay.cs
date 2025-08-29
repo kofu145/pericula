@@ -31,9 +31,9 @@ public partial class UiOverlay : CanvasLayer
         discardButton.Pressed += deckListView.OpenDiscard;
     }
 
-    public void Show()
+    public void Refresh()
     {
-        Visible = true;
+        Visible = !(GetTree().CurrentScene?.Name == "TitleScreen");
     }
 
     private void UpdateChipsUI(int newAmount)

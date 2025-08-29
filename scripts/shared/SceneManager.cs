@@ -46,8 +46,11 @@ public partial class SceneManager : Node
         await ToSignal(TweenFade, "finished");
 
         GetTree().ChangeSceneToFile(target);
+
+        UiOverlay.Instance.Refresh();   // refreshes the UI overlay
+
         CurrentScene = target;
-        
+
         var TweenUnfade = CreateTween();
         TweenUnfade.TweenProperty(
             SceneTransitionAnimationRect.Material,
