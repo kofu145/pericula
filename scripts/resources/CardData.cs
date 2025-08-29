@@ -16,7 +16,7 @@ public partial class CardData : Resource
     public int Attack;
     [Export] public int BaseAttack;
     [Export] public int BaseHP;
-    [Export] public Image Texture;
+    [Export] public Texture2D Texture;
     [Export] public Array<EffectTemplate> OnUse;
     [Export] public Array<EffectTemplate> Passives;
     [Export] public Array<Keyword> Keywords = new Array<Keyword>();
