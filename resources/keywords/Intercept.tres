@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_lw5pw")
-DisplayName = ""
-Description = ""
+DisplayName = "Intercept"
+Description = "Takes damage in place of the defending unit. If two or more units with Intercept are present, the leftmost becomes the defending unit."
 metadata/_custom_type_script = "uid://ykohcc4cvglr"
