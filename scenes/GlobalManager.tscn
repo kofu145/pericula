@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=21 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" uid="uid://cyyjmmxcnipyo" path="res://scripts/shared/StageManager.cs" id="10_s02d4"]
 [ext_resource type="Script" uid="uid://krak4fxo5k5x" path="res://scripts/shared/CardLookup.cs" id="12_7a67w"]
 [ext_resource type="Script" uid="uid://bcnq7d2jmb0mv" path="res://scripts/shared/SoundManager.cs" id="15_2rbph"]
-[ext_resource type="AudioStream" uid="uid://d3n210rdi2cjj" path="res://assets/audio/teacup.ogg" id="16_wpjal"]
 
 [sub_resource type="Resource" id="Resource_e58k3"]
 resource_local_to_scene = true
@@ -37,7 +36,6 @@ shader_parameter/diamondPixelSize = 32.0
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_2rbph"]
 clip_count = 3
 clip_0/name = &"base"
-clip_0/stream = ExtResource("16_wpjal")
 clip_0/auto_advance = 0
 clip_1/name = &"game_over"
 clip_1/auto_advance = 0
