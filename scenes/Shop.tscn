@@ -135,13 +135,6 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="ShopTutorial" parent="." instance=ExtResource("4_cimqq")]
-visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
 tutorials = Array[ExtResource("5_m0qts")]([ExtResource("6_ht580"), ExtResource("7_skkvx")])
 tutorialKey = "ShopTutorial"
 

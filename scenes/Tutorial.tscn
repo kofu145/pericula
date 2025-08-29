@@ -1,34 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyau1eaiah8c7"]
+[gd_scene load_steps=3 format=3 uid="uid://dyau1eaiah8c7"]
 
 [ext_resource type="Script" uid="uid://bddg2jsxk7acm" path="res://scripts/TutorialController.cs" id="1_ci5ev"]
-[ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="2_pgr2e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ci5ev"]
 bg_color = Color(0.08, 0.08, 0.08, 0.94902)
 
-[node name="CombatTutorial" type="Panel" node_paths=PackedStringArray("texture", "header", "description", "nextPageButton")]
+[node name="TutorialCavnas" type="CanvasLayer" node_paths=PackedStringArray("texture", "header", "description", "nextPageButton")]
+layer = 128
 visible = false
+follow_viewport_enabled = true
+script = ExtResource("1_ci5ev")
+texture = NodePath("Panel/TextureRect")
+header = NodePath("Panel/Title")
+description = NodePath("Panel/Description")
+nextPageButton = NodePath("Panel/Button")
+
+[node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ci5ev")
-script = ExtResource("1_ci5ev")
-texture = NodePath("TextureRect")
-header = NodePath("Title")
-description = NodePath("Description")
-tutorials = Array[ExtResource("2_pgr2e")]([null])
-nextPageButton = NodePath("Button")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 0
 offset_left = 92.0
 offset_top = 175.0
 offset_right = 548.0
 offset_bottom = 543.0
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -42,7 +44,7 @@ theme_override_font_sizes/font_size = 48
 text = "Header"
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="."]
+[node name="Description" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 583.0
 offset_top = 144.0
@@ -53,7 +55,7 @@ text = "Description"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 995.0
 offset_top = 530.0
