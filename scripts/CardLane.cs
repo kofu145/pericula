@@ -70,6 +70,12 @@ public partial class CardLane : Node
         }
     }
 
+    // honestly this method should just replace the one below but we would have to refactor a bunch of shit if did so
+    public CardBase GetBaseAtIndex(int idx)
+    {
+        return _cards[idx];
+    }
+
     public CardData GetCardAtIndex(int idx)
     {
         return _cards[idx].Data;
