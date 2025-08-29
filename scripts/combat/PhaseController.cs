@@ -137,8 +137,9 @@ public partial class PhaseController : Node
 
 		// draw starting hand for each lane
 		combatManager.StartRound(startingDraw);
-		if (enemyChips.Balance == 0)
+		if (enemyChips.Balance == 0 || playerChips.Balance <= 0)
 		{
+			// skip the bet phase because either side cannot bet
 			Hide(betPhaseButton);
 			Show(showdownButton);
 		}
