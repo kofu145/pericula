@@ -54,7 +54,7 @@ public partial class ShopCard : Control
 		}
 
 		GetNode<Label>("Cost").Text = Math.Round(_currentCost).ToString();
-		GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data.DisplayName, data.Description, data.Rarity, data.Trait);
+		GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
 	}
 
 	void OnInput(InputEvent @event)

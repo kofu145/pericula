@@ -48,7 +48,7 @@ public partial class CardVisual : Control
 			var baseData = Base.GetCardData();
 			GetNode<Label>("Health").Text = baseData.BaseHP.ToString();
 			GetNode<Label>("Attack").Text = baseData.BaseAttack.ToString();
-			GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(baseData.DisplayName, baseData.Description, baseData.Rarity, baseData.Trait);
+			GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(baseData);
 		}
 	}
 

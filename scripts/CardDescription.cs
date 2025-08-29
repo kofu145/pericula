@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 public partial class CardDescription : Control
@@ -8,11 +9,16 @@ public partial class CardDescription : Control
     [Export] RichTextLabel CardName;
     [Export] RichTextLabel Description;
     [Export] RichTextLabel Class;
+    [Export] PackedScene keywordTooltip;
+    [Export] Control anchor;
     [Export] Control cardVisual;
+    [Export] Vector2 tooltipOffset = new Vector2(20,20);
+    
     Tween tween;
     const float FINAL_SCALE = 1f;
 
     Vector2 offset = new Vector2(-62f, 155f);
+    private List<KeywordTooltip> keywords = new();
 
     public override void _Ready()
     {
@@ -23,10 +29,10 @@ public partial class CardDescription : Control
     public override void _Process(double delta)
     {
         PivotOffset = Size / 2f;
-        GlobalPosition = GetGlobalMousePosition();
+        GlobalPosition = GetGlobalMousePosition() + tooltipOffset;
     }
 
-    public void Initialize(string name, string description, string rarity, string className)
+    public void Initialize(CardData data)
     {
         // switch (rarity)
         // {
@@ -49,10 +55,18 @@ public partial class CardDescription : Control
         //         CardName.Theme.SetColor("RichTextLabel", "default_color", Colors.Gray);
         //         break;
         // }
+        
+        CardName.Text = data.DisplayName;
+        Description.Text = data.Description;
+        Class.Text = data.Trait;
 
-        CardName.Text = name;
-        Description.Text = description;
-        Class.Text = className;
+        foreach (var keyword in data.keywords)
+        {
+            var tooltip = keywordTooltip.Instantiate<KeywordTooltip>();
+            tooltip.Initialize(keyword);
+            anchor.AddChild(tooltip);
+            keywords.Add(tooltip);
+        }
     }
 
     public void Display()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://baprw7he5vf61"]
+[gd_scene load_steps=4 format=3 uid="uid://baprw7he5vf61"]
 
 [ext_resource type="Script" uid="uid://5tw62lr861wl" path="res://scripts/CardDescription.cs" id="1_r66ow"]
+[ext_resource type="PackedScene" uid="uid://bsw1swsvwt5yy" path="res://scenes/keyword_tooltip.tscn" id="2_u02sh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r66ow"]
 bg_color = Color(0.197937, 0.197937, 0.197937, 1)
@@ -13,22 +14,24 @@ expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
-[node name="CardDescription" type="Control" node_paths=PackedStringArray("CardName", "Description", "Class")]
+[node name="CardDescription" type="VBoxContainer" node_paths=PackedStringArray("CardName", "Description", "Class", "anchor")]
 z_index = 10
 custom_minimum_size = Vector2(250, 0)
-layout_mode = 3
-anchors_preset = 0
+offset_right = 250.0
+offset_bottom = 92.0
 mouse_filter = 2
+theme_override_constants/separation = 10
 script = ExtResource("1_r66ow")
 CardName = NodePath("PanelContainer/VBoxContainer/CardName")
 Description = NodePath("PanelContainer/VBoxContainer/CardDescription")
 Class = NodePath("PanelContainer/VBoxContainer/CardClass")
+keywordTooltip = ExtResource("2_u02sh")
+anchor = NodePath(".")
+tooltipOffset = Vector2(5, 5)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(250, 0)
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 88.0
+layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r66ow")
 
