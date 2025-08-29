@@ -99,14 +99,8 @@ public partial class CardBase : Control
                 _dragging = false;
 
                 // Try to place/swap into hovered slot
-                var targetSlot = GetHoveredSlot();
-                if (targetSlot != null)
-                {
-                    var lane = targetSlot.OwnerLane;
-                    GD.Print($"Hovered and dropped over {lane.Name}");
+                // var targetSlot = GetHoveredSlot();
 
-                }
-                
                 if (EnableDefaultDrag) Position = Vector2.Zero;
                 AcceptEvent();
             }
@@ -115,8 +109,6 @@ public partial class CardBase : Control
         else if (e is InputEventMouseMotion && _dragging)
         {
             OnDragging?.Invoke(this);
-
-            // TODO: Highlight slot if hovered over
 
             if (EnableDefaultDrag) GlobalPosition = GetGlobalMousePosition() - _grabOffset;
             AcceptEvent();
