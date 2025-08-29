@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://np0ifctevug3"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://np0ifctevug3"]
 
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_3ge7x"]
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_htfsm"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_htfsm"]
 
 [sub_resource type="Resource" id="Resource_mjdb7"]
@@ -19,8 +20,8 @@ Description = ""
 Rarity = "Starter"
 Trait = "Pawn"
 BaseAttack = 5
-BaseHP = 5
+BaseHP = 8
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-Keywords = []
+Keywords = Array[ExtResource("1_htfsm")]([])
 metadata/_custom_type_script = "uid://clner77n1ff5a"

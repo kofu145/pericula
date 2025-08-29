@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class TutorialController : Panel
+public partial class TutorialController : CanvasLayer
 {
 	[Export] private TextureRect texture;
 	[Export] private Label header;

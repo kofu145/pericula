@@ -6,68 +6,68 @@ using System.Collections.Generic;
 
 public partial class Shop : Control
 {
-	[Export] HBoxContainer shopChoices;
-	[Export] PackedScene shopCardScene;
-	[Export] int choicesAvailable = 5;
-	[Export] RichTextLabel chipCount;
-	const int REROLL_COST = 2;
+    [Export] HBoxContainer shopChoices;
+    [Export] PackedScene shopCardScene;
+    [Export] int choicesAvailable = 5;
+    [Export] RichTextLabel chipCount;
+    const int REROLL_COST = 2;
 
-	public override void _Ready()
-	{
-		ChipManager.Instance.AddChips(100);
-		base._Ready();
-		Initialize();
-	}
+    public override void _Ready()
+    {
+        ChipManager.Instance.AddChips(100);
+        base._Ready();
+        Initialize();
+    }
 
-	public void Initialize()
-	{
-		int _upgradeID;
-		for (int i = 0; i < choicesAvailable; i++)
-		{
-			_upgradeID = GD.RandRange(1, 4); // TODO: update w/ ids in-game
-			CreateOffer(_upgradeID);
-		}
-	}
+    public void Initialize()
+    {
+        int _upgradeID;
+        for (int i = 0; i < choicesAvailable; i++)
+        {
+            _upgradeID = GD.RandRange(1, 4); // TODO: update w/ ids in-game
+            CreateOffer(_upgradeID);
+        }
+    }
 
-	public void Clear()
-	{
-		foreach (ShopCard card in shopChoices.GetChildren())
-		{
-			card.QueueFree();
-		}
-	}
+    public void Clear()
+    {
+        foreach (ShopCard card in shopChoices.GetChildren())
+        {
+            card.QueueFree();
+        }
+    }
 
-	public void CreateOffer(int id)
-	{
-		ShopCard card = shopCardScene.Instantiate<ShopCard>();
-		card.Initialize(id, this);
+    public void CreateOffer(int id)
+    {
+        ShopCard card = shopCardScene.Instantiate<ShopCard>();
+        card.Initialize(id, this);
 
-		shopChoices.AddChild(card);
-	}
+        shopChoices.AddChild(card);
+    }
 
-	public void Reroll()
-	{
-		if (ChipManager.Instance.Balance < REROLL_COST)
-		{
-			GD.Print("Not enough chips to reroll!");
-			return;
-		}
-		else
-		{
-			ChipManager.Instance.Deduct(REROLL_COST);
-			UpdateChipCount();
-			Clear();
-			Initialize();
-		}
-	}
+    public void Reroll()
+    {
+        if (ChipManager.Instance.Balance < REROLL_COST)
+        {
+            GD.Print("Not enough chips to reroll!");
+            return;
+        }
+        else
+        {
+            ChipManager.Instance.Deduct(REROLL_COST);
+            UpdateChipCount();
+            Clear();
+            Initialize();
+        }
+    }
 
-	public void UpdateChipCount()
-	{
-		chipCount.Text = ChipManager.Instance.Balance.ToString();
-	}
+    public void UpdateChipCount()
+    {
+        chipCount.Text = ChipManager.Instance.Balance.ToString();
+    }
 
-	public void EndShopPhase()
-	{
-		SceneManager.ChangeSceneToFile("PreCombat");
-	}
+    public void EndShopPhase()
+    {
+        SceneManager.ChangeSceneToFile("PreCombat");
+    }
 }
