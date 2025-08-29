@@ -20,7 +20,7 @@ CardScene = ExtResource("2_jmkb4")
 headerLabel = NodePath("Header")
 Scroll = NodePath("MarginContainer/ScrollContainer")
 Grid = NodePath("MarginContainer/ScrollContainer/GridContainer")
-CardSize = Vector2i(50, 59)
+CardSize = Vector2i(100, 118)
 HGap = 16
 VGap = 16
 

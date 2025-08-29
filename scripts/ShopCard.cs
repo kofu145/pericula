@@ -18,6 +18,10 @@ public partial class ShopCard : Control
     {
         base._Ready();
         PivotOffset = Size / 2;
+
+        StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION / 2f);
+        StartTween(this, "scale", Vector2.One, TWEEN_DURATION, TWEEN_DURATION / 2f);
+        
     }
 
     public override void _PhysicsProcess(double delta)
@@ -86,7 +90,6 @@ public partial class ShopCard : Control
         GD.Print("Current Deck: " + string.Join(", ", DeckManager.Instance.PlayerDeck));
         PopupText.Instance.ShowText(GlobalPosition, "Purchased!");
 
-        shop.UpdateChipCount();
         RemoveFromShop();
     }
 
