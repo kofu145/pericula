@@ -461,8 +461,8 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = 10.0
 offset_top = 32.0
-offset_right = 111.0
-offset_bottom = 133.0
+offset_right = 110.0
+offset_bottom = 134.0
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("7_1oahe")
 
