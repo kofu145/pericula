@@ -275,6 +275,7 @@ offset_bottom = 8.0
 text = "View Draw Pile"
 
 [node name="DiscardPileButton" type="Button" parent="DeckListButtonContainer"]
+layout_mode = 0
 offset_top = 50.0
 offset_right = 140.0
 offset_bottom = 81.0
