@@ -158,13 +158,31 @@ public partial class PhaseController : Node
         if (playerWonCombat)
         {
             playerChips.AddChips(currentPot);
-            if (PlayerLost || PlayerWon) Show(endEncounterButton);
+            if (PlayerLost)
+            {
+                Show(endEncounterButton);
+                endEncounterButton.Text = "Game Over";
+            }
+            else if (PlayerWon)
+            {
+                Show(endEncounterButton);
+                if (StageManager.Instance.IsFinalEncounterOfRun) endEncounterButton.Text = "Continue";
+            }
             else Show(nextTurnButton);   // optional maybe, different button that will start next turn AND claim reward
         }
         else
         {
             enemyChips.AddChips(currentPot);
-            if (PlayerLost || PlayerWon) Show(endEncounterButton);
+            if (PlayerLost)
+            {
+                Show(endEncounterButton);
+                endEncounterButton.Text = "Game Over";
+            }
+            else if (PlayerWon)
+            {
+                Show(endEncounterButton);
+                if (StageManager.Instance.IsFinalEncounterOfRun) endEncounterButton.Text = "Continue";
+            }
             else Show(nextTurnButton);
         }
         UpdatePot(0);
@@ -198,7 +216,7 @@ public partial class PhaseController : Node
     // loss handler
     private void EndCurrentRun()
     {
-        // TODO: Wire back to the title screen
+        RunEndManager.Instance.LoseRun();
     }
 
     // win handler

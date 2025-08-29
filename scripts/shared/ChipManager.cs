@@ -9,7 +9,8 @@ public partial class ChipManager : Node
     public Action<int> OnChipsChanged;
 
     // run info of chips
-    private int chipsEarned;
+    public int ChipsEarned { get; private set; }
+    public int ChipsUsed { get; private set; }
 
     public override void _Ready()
     {
@@ -22,7 +23,8 @@ public partial class ChipManager : Node
     public void StartNewRun(int startingChips)
     {
         balance = startingChips;
-        chipsEarned = 0;
+        ChipsEarned = 0;
+        ChipsUsed = 0;
     }
 
     /// <summary>
@@ -34,7 +36,11 @@ public partial class ChipManager : Node
     {
         bool valid = balance >= amount;
         balance = valid ? balance - amount : balance;
-        if (valid) OnChipsChanged?.Invoke(balance);
+        if (valid)
+        {
+            OnChipsChanged?.Invoke(balance);
+            ChipsUsed += amount;
+        }
         return valid;
     }
 
@@ -44,7 +50,7 @@ public partial class ChipManager : Node
     public void AddChips(int amount)
     {
         balance += amount;
-        chipsEarned += amount;
+        ChipsEarned += amount;
         OnChipsChanged?.Invoke(balance);
     }
 
@@ -55,6 +61,7 @@ public partial class ChipManager : Node
     public void BorrowChips(int amount)
     {
         balance -= amount;
+        ChipsUsed += amount;
         OnChipsChanged?.Invoke(balance);
     }
 }

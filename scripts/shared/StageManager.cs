@@ -19,6 +19,7 @@ public partial class StageManager : Node
 	// public APIs
 	public int AnteCount => config.antesPerRun;
 	public int EnemiesPerAnte => config.enemiesPerAnte;
+	public bool IsFinalEncounterOfRun => AnteCount - 1 == CurrentAnte && EnemiesPerAnte - 1 == CurrentStageNumber;
 	// =====================
 
 
@@ -61,8 +62,7 @@ public partial class StageManager : Node
 			if (AnteCount - 1 == CurrentAnte)
 			{
 				// Completed Game
-				//TODO: handle a WIN 
-				GD.Print("You completed the game");
+				RunEndManager.Instance.WinRun();
 				return;
 			}
 

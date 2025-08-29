@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=26 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -18,6 +18,8 @@
 [ext_resource type="Resource" uid="uid://ck2dnlghav1xg" path="res://resources/RunConfig.tres" id="14_ycd5x"]
 [ext_resource type="PackedScene" uid="uid://ibxg7th6h5c6" path="res://resources/tutorialPage/UIOverlay.tscn" id="15_2rbph"]
 [ext_resource type="Script" uid="uid://bcnq7d2jmb0mv" path="res://scripts/shared/SoundManager.cs" id="16_wpjal"]
+[ext_resource type="Script" uid="uid://dxymik5n3bcgn" path="res://scripts/shared/RunEndManager.cs" id="19_4o0wa"]
+[ext_resource type="PackedScene" uid="uid://cp02nsp5tkfuj" path="res://scenes/RunEndPanel.tscn" id="20_8mbio"]
 
 [sub_resource type="Resource" id="Resource_e58k3"]
 resource_local_to_scene = true
@@ -84,7 +86,7 @@ color = Color(0, 0, 0, 1)
 [node name="StageManager" type="Node" parent="."]
 script = ExtResource("10_s02d4")
 config = ExtResource("14_ycd5x")
-tempEnemyList = Array[Object]([ExtResource("14_8p6hn")])
+tempEnemy = ExtResource("14_8p6hn")
 
 [node name="CardLookup" type="Node" parent="."]
 script = ExtResource("12_7a67w")
@@ -101,3 +103,10 @@ volume_db = -6.0
 [node name="SE" type="AudioStreamPlayer" parent="SoundManager"]
 stream = SubResource("AudioStreamPolyphonic_2rbph")
 volume_db = -6.0
+
+[node name="RunEndManager" type="Node" parent="." node_paths=PackedStringArray("runEndPanel")]
+script = ExtResource("19_4o0wa")
+runEndPanel = NodePath("RunEndPanel")
+
+[node name="RunEndPanel" parent="RunEndManager" instance=ExtResource("20_8mbio")]
+visible = false

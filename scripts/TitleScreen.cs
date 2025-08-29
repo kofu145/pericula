@@ -16,7 +16,6 @@ public partial class TitleScreen : Panel
     {
         // reset globalManagers
         ResetManagers();
-        // go to shop first
         SceneManager.ChangeSceneToFile("PreCombat");
     }
 
