@@ -7,6 +7,7 @@
 bg_color = Color(0.08, 0.08, 0.08, 0.94902)
 
 [node name="CombatTutorial" type="Panel" node_paths=PackedStringArray("texture", "header", "description", "nextPageButton")]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
