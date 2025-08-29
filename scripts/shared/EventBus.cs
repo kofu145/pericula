@@ -21,4 +21,9 @@ public partial class EventBus : Node
         RefreshBattleLoop?.Invoke();
     }
 
+    public void ClearEvents()
+    {
+        RefreshBattleLoop = null;
+    }
+
 }
