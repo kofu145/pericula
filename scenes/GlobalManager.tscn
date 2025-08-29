@@ -93,7 +93,9 @@ script = ExtResource("16_wpjal")
 [node name="BGM" type="AudioStreamPlayer" parent="SoundManager"]
 stream = SubResource("AudioStreamInteractive_2rbph")
 volume_db = -6.0
+bus = &"BGM"
 
 [node name="SE" type="AudioStreamPlayer" parent="SoundManager"]
 stream = SubResource("AudioStreamPolyphonic_2rbph")
 volume_db = -6.0
+bus = &"SE"
