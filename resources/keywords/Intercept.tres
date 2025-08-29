@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Keyword" load_steps=2 format=3 uid="uid://5qk7udynoqn"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_lw5pw"]
+
+[resource]
+script = ExtResource("1_lw5pw")
+DisplayName = ""
+Description = ""
+metadata/_custom_type_script = "uid://ykohcc4cvglr"
