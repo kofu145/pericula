@@ -211,7 +211,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_4cxr5"]
 resource_name = "MoveDownAction"
-length = 0.6
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -219,7 +219,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1665, 0.3, 0.5661),
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35),
 "transitions": PackedFloat32Array(0.112657, 12.996, 0.138696, 8.87654),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 30), Vector2(0, 0)]
@@ -227,7 +227,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_s5r67"]
 resource_name = "MoveUpAction"
-length = 0.6
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -235,7 +235,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1665, 0.2997, 0.5661),
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35),
 "transitions": PackedFloat32Array(0.112657, 12.996, 0.138696, 8.87654),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, -30), Vector2(0, 0)]
