@@ -11,13 +11,19 @@ public partial class DoDamageEffect : EffectTemplate
 
         opposingLane.GetCardAtIndex(0).HP -= Damage;
         var pos = opposingLane.GetCardBaseByData(opposingLane.GetCardAtIndex(0)).GlobalPosition;
-        PopupText.Instance.ShowNumber(pos + new Vector2(10, -30), Damage);
-        GD.Print("called damage");
+
+        DoAnimation(param, Damage, pos);
+        //GD.Print("called damage");
         //DeckManager.Instance.PrintData();
 
     }
 
     public async override void OnEnqueue(EffectParam param)
+    {
+
+    }
+
+    private async void DoAnimation(EffectParam param, int damage, Vector2 damagePos)
     {
         var isPlayerTurn = param.State.currentTurn == Turn.Player;
         var currLane = isPlayerTurn ? param.State.PlayerLane : param.State.EnemyLane;
@@ -29,6 +35,7 @@ public partial class DoDamageEffect : EffectTemplate
         param.State.ToggleLerp(false);
         await ToSignal(parent.animation, AnimationPlayer.SignalName.AnimationFinished);
         param.State.ToggleLerp(true);
+        PopupText.Instance.ShowNumber(damagePos + new Vector2(78, 135), Damage);
         EventBus.Instance.RefreshBattle();
     }
 
