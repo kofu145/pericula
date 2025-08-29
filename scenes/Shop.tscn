@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://crui1r41ywu27"]
+[gd_scene load_steps=8 format=3 uid="uid://crui1r41ywu27"]
 
 [ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_fpbbi"]
-[ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="3_ht580"]
 [ext_resource type="PackedScene" uid="uid://dyau1eaiah8c7" path="res://scenes/Tutorial.tscn" id="4_cimqq"]
 [ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="5_m0qts"]
 [ext_resource type="Resource" uid="uid://8av2eh3jeih" path="res://resources/tutorialPage/ShopTutorial1.tres" id="6_ht580"]
@@ -92,29 +91,6 @@ size_flags_vertical = 8
 focus_mode = 0
 text = "Reroll (2)"
 
-[node name="DeckListView" parent="." instance=ExtResource("3_ht580")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -560.0
-offset_top = -308.0
-offset_right = 560.0
-offset_bottom = 308.0
-
-[node name="DeckViewButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1040.0
-offset_top = 593.0
-offset_right = 1127.0
-offset_bottom = 624.0
-size_flags_vertical = 8
-focus_mode = 0
-text = "View Deck"
-
 [node name="Chips" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -137,7 +113,7 @@ autowrap_mode = 0
 [node name="ShopTutorial" parent="." instance=ExtResource("4_cimqq")]
 tutorials = Array[ExtResource("5_m0qts")]([ExtResource("6_ht580"), ExtResource("7_skkvx")])
 tutorialKey = "ShopTutorial"
+overrideTutorialOnlyOnce = true
 
 [connection signal="pressed" from="ToBattleButton" to="." method="EndShopPhase"]
 [connection signal="pressed" from="RerollButton" to="." method="Reroll"]
-[connection signal="pressed" from="DeckViewButton" to="DeckListView" method="ToggleDeckView"]

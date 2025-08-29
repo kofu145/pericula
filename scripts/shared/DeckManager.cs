@@ -19,11 +19,20 @@ public partial class DeckManager : Node
 	private bool initialized;
 
 	public readonly Random RndGen = new(seed);
+	// ====================================
+	// public APIs
+	// ====================================
 	public Godot.Collections.Array<CardData> Hand = new();
 	public Godot.Collections.Array<CardData> EnemyHand = new();
 
 	public Godot.Collections.Array<CardData> playerDisc = new();
 	public Godot.Collections.Array<CardData> enemyDisc = new();
+
+
+	public Godot.Collections.Array<CardData> PlayerDrawPile => playerBattleDeck;
+	public Godot.Collections.Array<CardData> PlayerFullDeck => PlayerDeck?.Cards;
+
+
 	public static DeckManager Instance { get; private set; }
 
 	public override void _Ready()
@@ -173,6 +182,4 @@ public partial class DeckManager : Node
 			(targetDeck[i], targetDeck[j]) = (targetDeck[j], targetDeck[i]);
 		}
 	}
-
-
 }
