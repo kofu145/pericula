@@ -14,6 +14,11 @@ public partial class StageManager : Node
 		CurrentStageID = 1;
 	}
 
+	public void StartNewRun()
+	{
+		CurrentStageID = 1;
+	}
+
 	public void BeginStage()
 	{
 		SceneManager.ChangeSceneToFile("Combat");

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4hr0e855ng1k"]
+[gd_scene load_steps=12 format=3 uid="uid://c4hr0e855ng1k"]
 
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/PhaseController.cs" id="1_mak3c"]
 [ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
+[ext_resource type="Script" uid="uid://vco8yllxna0r" path="res://scenes/ViewDeckButtonBinder.cs" id="6_t74xm"]
 [ext_resource type="PackedScene" uid="uid://dyau1eaiah8c7" path="res://scenes/Tutorial.tscn" id="7_t74xm"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="7_x8jxt"]
 [ext_resource type="Script" uid="uid://q6lik1u45kyf" path="res://scripts/combat/BetController.cs" id="8_132iy"]
@@ -235,9 +236,9 @@ horizontal_alignment = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1054.0
-offset_top = 56.0
+offset_top = 90.0
 offset_right = 1054.0
-offset_bottom = 56.0
+offset_bottom = 90.0
 
 [node name="Icon" type="Sprite2D" parent="Pot"]
 scale = Vector2(2, 2)
@@ -256,6 +257,29 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 36
 text = "100"
 horizontal_alignment = 1
+
+[node name="DeckListButtonContainer" type="Control" parent="." node_paths=PackedStringArray("drawPileButton", "discardPileButton")]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 400.0
+offset_right = 20.0
+offset_bottom = 400.0
+script = ExtResource("6_t74xm")
+drawPileButton = NodePath("DrawPileButton")
+discardPileButton = NodePath("DiscardPileButton")
+
+[node name="DrawPileButton" type="Button" parent="DeckListButtonContainer"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "View Draw Pile"
+
+[node name="DiscardPileButton" type="Button" parent="DeckListButtonContainer"]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 140.0
+offset_bottom = 81.0
+text = "View Discard Pile"
 
 [node name="PhaseButtons" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -319,14 +343,13 @@ text = "CurrentBuy In: "
 
 [node name="NegativeBalanceWarningLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 393.0
-offset_right = 361.0
-offset_bottom = 427.0
+offset_left = 711.0
+offset_top = 4.0
+offset_right = 1146.0
+offset_bottom = 38.0
 theme_override_colors/font_color = Color(0.86, 0, 0.200666, 1)
 theme_override_font_sizes/font_size = 24
 text = "Warning."
 
 [node name="CombatTutorial" parent="." instance=ExtResource("7_t74xm")]
 tutorials = Array[ExtResource("8_felwx")]([ExtResource("9_acsaf"), ExtResource("10_x8jxt"), ExtResource("11_132iy")])
-overrideTutorialOnlyOnce = true

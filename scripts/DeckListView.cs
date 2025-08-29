@@ -2,12 +2,14 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+
 public partial class DeckListView : Control
 {
     // Scene refs
     [Export] private PackedScene CardScene;
 
     // UI refs
+    [Export] private Label headerLabel;
     [Export] private ScrollContainer Scroll;
     [Export] private GridContainer Grid;
 
@@ -18,6 +20,13 @@ public partial class DeckListView : Control
 
     // runtime refs
     private List<CardBase> _cards = new();
+
+    private enum ViewMode { Closed, Deck, Draw, Discard }
+    private ViewMode currentMode = ViewMode.Closed;
+
+    public void OpenDeck() => Toggle(ViewMode.Deck);
+    public void OpenDraw() => Toggle(ViewMode.Draw);
+    public void OpenDiscard() => Toggle(ViewMode.Discard);
 
 
     // Called when the node enters the scene tree for the first time.
@@ -30,7 +39,41 @@ public partial class DeckListView : Control
         if (Scroll != null) Scroll.Resized += UpdateColumns;
 
         CallDeferred(nameof(UpdateColumns));
-        Populate(DeckManager.Instance.PlayerDeck);
+        // playerBattleDeck
+        // playerDisc
+    }
+
+    private void Toggle(ViewMode mode)
+    {
+        // already opened
+        if (currentMode == mode && Visible == true) { Visible = false; return; }
+
+        currentMode = mode;
+        Visible = true;
+        Refresh();
+    }
+
+    private void Refresh()
+    {
+        Clear();
+
+        Godot.Collections.Array<CardData> source = currentMode switch
+        {
+            ViewMode.Deck => DeckManager.Instance.PlayerFullDeck,
+            ViewMode.Draw => DeckManager.Instance.PlayerDrawPile,
+            ViewMode.Discard => DeckManager.Instance.playerDisc,
+            _ => DeckManager.Instance.PlayerFullDeck,
+        };
+
+        headerLabel.Text = currentMode switch
+        {
+            ViewMode.Deck => "Player Deck",
+            ViewMode.Draw => "Player Draw Pile",
+            ViewMode.Discard => "Player Discard Pile",
+            _ => ""
+        };
+
+        Populate(source);
     }
 
     private void UpdateColumns()
@@ -56,10 +99,10 @@ public partial class DeckListView : Control
     /// Populates the deck view with the given list of cardDatas.
     /// </summary>
     /// <param name="deck"> list of cards to populate the view with</param>
-    public void Populate(Deck deck)
+    public void Populate(IEnumerable<CardData> deck)
     {
         Clear();
-        foreach (var data in deck.Cards) SpawnCard(data);
+        foreach (var data in deck) SpawnCard(data);
     }
 
     private void SpawnCard(CardData data)
@@ -70,30 +113,5 @@ public partial class DeckListView : Control
         _cards.Add(cardBase);
 
         cardBase.Initialize(data);
-    }
-
-    public void ToggleDeckView()
-    {
-        if (Visible)
-        {
-            CloseDeckView();
-        }
-        else
-        {
-            OpenDeckView();
-        }
-
-        Visible = !Visible;
-    }
-
-    private void OpenDeckView()
-    {
-        Clear();
-        Populate(DeckManager.Instance.PlayerDeck);
-    }
-
-    private void CloseDeckView()
-    {
-
     }
 }

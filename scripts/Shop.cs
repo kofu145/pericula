@@ -9,12 +9,10 @@ public partial class Shop : Control
     [Export] HBoxContainer shopChoices;
     [Export] PackedScene shopCardScene;
     [Export] int choicesAvailable = 5;
-    [Export] RichTextLabel chipCount;
     const int REROLL_COST = 2;
 
     public override void _Ready()
     {
-        ChipManager.Instance.AddChips(100);
         base._Ready();
         Initialize();
     }
@@ -55,15 +53,9 @@ public partial class Shop : Control
         else
         {
             ChipManager.Instance.Deduct(REROLL_COST);
-            UpdateChipCount();
             Clear();
             Initialize();
         }
-    }
-
-    public void UpdateChipCount()
-    {
-        chipCount.Text = ChipManager.Instance.Balance.ToString();
     }
 
     public void EndShopPhase()

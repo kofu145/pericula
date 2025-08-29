@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RunConfig" load_steps=3 format=3 uid="uid://ck2dnlghav1xg"]
+
+[ext_resource type="Resource" uid="uid://bwt0lm0awbt3m" path="res://resources/decks/otherDeck.tres" id="1_ngmds"]
+[ext_resource type="Script" uid="uid://ca6ooknqy7pvf" path="res://scripts/resources/RunConfig.cs" id="1_v7nrs"]
+
+[resource]
+script = ExtResource("1_v7nrs")
+playerStartingChips = 100
+playerStartingDeck = ExtResource("1_ngmds")
+metadata/_custom_type_script = "uid://ca6ooknqy7pvf"

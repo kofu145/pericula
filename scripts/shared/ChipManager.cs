@@ -16,6 +16,11 @@ public partial class ChipManager : Node
     // may come in handy when potentially setting through events
     // (for instance, tracking whenever a player is deducted) for future
 
+    public void StartNewRun(int startingChips)
+    {
+        balance = startingChips;
+    }
+
     /// <summary>
     /// Method to deduct from total balance. 
     /// Returns true if balance is sufficient
