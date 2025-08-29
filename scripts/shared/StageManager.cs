@@ -15,11 +15,12 @@ public partial class StageManager : Node
     // =====================
 
 
-    // =====================
-    // public APIs
-    public int AnteCount => config.antesPerRun;
-    public int EnemiesPerAnte => config.enemiesPerAnte;
-    // =====================
+	// =====================
+	// public APIs
+	public int AnteCount => config.antesPerRun;
+	public int EnemiesPerAnte => config.enemiesPerAnte;
+	public bool IsFinalEncounterOfRun => AnteCount - 1 == CurrentAnte && EnemiesPerAnte - 1 == CurrentStageNumber;
+	// =====================
 
 
     // runtime refs
@@ -54,17 +55,16 @@ public partial class StageManager : Node
         SceneManager.ChangeSceneToFile("Combat");
     }
 
-    public void CompleteStage()
-    {
-        if (EnemiesPerAnte - 1 == CurrentStageNumber)
-        {
-            if (AnteCount - 1 == CurrentAnte)
-            {
-                // Completed Game
-                //TODO: handle a WIN 
-                GD.Print("You completed the game");
-                return;
-            }
+	public void CompleteStage()
+	{
+		if (EnemiesPerAnte - 1 == CurrentStageNumber)
+		{
+			if (AnteCount - 1 == CurrentAnte)
+			{
+				// Completed Game
+				RunEndManager.Instance.WinRun();
+				return;
+			}
 
             CurrentStageNumber = 0;
             CurrentAnte++;

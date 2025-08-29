@@ -4,8 +4,7 @@ using System;
 public partial class RunEndManager : Node
 {
     public static RunEndManager Instance { get; private set; }
-    [Export] private Panel losePanel;
-    [Export] private Panel winPanel;
+    [Export] private RunEndPanel runEndPanel;
 
     public override void _Ready()
     {
@@ -15,11 +14,13 @@ public partial class RunEndManager : Node
 
     public void LoseRun()
     {
-        losePanel.Visible = true;
+        runEndPanel.Visible = true;
+        runEndPanel.InitializeLoss();
     }
 
     public void WinRun()
     {
-
+        runEndPanel.Visible = true;
+        runEndPanel.InitializeWin();
     }
 }

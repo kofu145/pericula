@@ -16,12 +16,13 @@ public partial class TitleScreen : Panel
     {
         // reset globalManagers
         ResetManagers();
-        // go to shop first
+        startGameButton.Pressed -= StartNewRun;
         SceneManager.ChangeSceneToFile("PreCombat");
     }
 
     private void ResetManagers()
     {
+        // deck and chips arent being disposed of
         ChipManager.Instance.StartNewRun(runConfig.playerStartingChips);
         StageManager.Instance.StartNewRun();
         DeckManager.Instance.StartNewRun(runConfig.playerStartingDeck);
