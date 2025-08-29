@@ -18,22 +18,22 @@ public partial class DeckManager : Node
 
     private bool initialized;
 
-	public readonly Random RndGen = new(seed);
-	// ====================================
-	// public APIs
-	// ====================================
-	public Godot.Collections.Array<CardData> Hand = new();
-	public Godot.Collections.Array<CardData> EnemyHand = new();
+    public readonly Random RndGen = new(seed);
+    // ====================================
+    // public APIs
+    // ====================================
+    public Godot.Collections.Array<CardData> Hand = new();
+    public Godot.Collections.Array<CardData> EnemyHand = new();
 
-	public Godot.Collections.Array<CardData> playerDisc = new();
-	public Godot.Collections.Array<CardData> enemyDisc = new();
-
-
-	public Godot.Collections.Array<CardData> PlayerDrawPile => playerBattleDeck;
-	public Godot.Collections.Array<CardData> PlayerFullDeck => PlayerDeck?.Cards;
+    public Godot.Collections.Array<CardData> playerDisc = new();
+    public Godot.Collections.Array<CardData> enemyDisc = new();
 
 
-	public static DeckManager Instance { get; private set; }
+    public Godot.Collections.Array<CardData> PlayerDrawPile => playerBattleDeck;
+    public Godot.Collections.Array<CardData> PlayerFullDeck => PlayerDeck?.Cards;
+
+
+    public static DeckManager Instance { get; private set; }
 
     public override void _Ready()
     {
@@ -51,22 +51,22 @@ public partial class DeckManager : Node
         Instance = this;
     }
 
-	public void StartNewRun(Deck playerDeck)
-	{
-		PlayerDeck = playerDeck;
-	}
+    public void StartNewRun(Deck playerDeck)
+    {
+        PlayerDeck = playerDeck;
+    }
 
     /// <summary>
-	/// Must be called before the start of any round.
-	/// </summary>
-	public void Initialize()
-	{
-		initialized = true;
-		CloneTempDeck(PlayerDeck.Cards, playerBattleDeck);
-		CloneTempDeck(EnemyDeck.Cards, enemyBattleDeck);
-		//GD.Print(playerBattleDeck + "From Deckmanager");
+    /// Must be called before the start of any round.
+    /// </summary>
+    public void Initialize()
+    {
+        initialized = true;
+        CloneTempDeck(PlayerDeck.Cards, playerBattleDeck);
+        CloneTempDeck(EnemyDeck.Cards, enemyBattleDeck);
+        //GD.Print(playerBattleDeck + "From Deckmanager");
 
-	}
+    }
 
     public void AddCardByID(int id)
     {
@@ -198,18 +198,18 @@ public partial class DeckManager : Node
         Shuffle(isPlayer);
     }
 
-	/// <summary>
-	/// Carryover shuffle method from previous implementation - shuffles a respective deck.
-	/// </summary>
-	/// <param name="isPlayer">Determines which deck to shuffle - true: player, false: enemy.</param>
-	private void Shuffle(bool isPlayer)
-	{
-		if (!initialized) return;
-		var targetDeck = isPlayer ? playerBattleDeck : enemyBattleDeck;
-		for (int i = 0; i < targetDeck.Count; i++)
-		{
-			int j = RndGen.Next(i + 1);
-			(targetDeck[i], targetDeck[j]) = (targetDeck[j], targetDeck[i]);
-		}
-	}
+    /// <summary>
+    /// Carryover shuffle method from previous implementation - shuffles a respective deck.
+    /// </summary>
+    /// <param name="isPlayer">Determines which deck to shuffle - true: player, false: enemy.</param>
+    private void Shuffle(bool isPlayer)
+    {
+        if (!initialized) return;
+        var targetDeck = isPlayer ? playerBattleDeck : enemyBattleDeck;
+        for (int i = 0; i < targetDeck.Count; i++)
+        {
+            int j = RndGen.Next(i + 1);
+            (targetDeck[i], targetDeck[j]) = (targetDeck[j], targetDeck[i]);
+        }
+    }
 }

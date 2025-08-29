@@ -301,6 +301,6 @@ public partial class PhaseController : Node
         combatManager.OnShowdownEndPlayerWin -= EndShowdownPhase;
 
         enemyChips.OnChipsChanged = null;
-		ChipManager.Instance.OnChipsChanged -= DisplayPlayerChips;
+        ChipManager.Instance.OnChipsChanged -= DisplayPlayerChips;
     }
 }
