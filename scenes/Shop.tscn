@@ -134,7 +134,8 @@ text = "100"
 fit_content = true
 autowrap_mode = 0
 
-[node name="CombatTutorial" parent="." instance=ExtResource("4_cimqq")]
+[node name="ShopTutorial" parent="." instance=ExtResource("4_cimqq")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0

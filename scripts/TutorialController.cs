@@ -21,6 +21,7 @@ public partial class TutorialController : Panel
 
 	public override void _Ready()
 	{
+		Visible = true;
 		// Skip if already completed
 		if (IsTutorialCompleted() && !overrideTutorialOnlyOnce)
 		{
