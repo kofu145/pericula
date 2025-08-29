@@ -24,32 +24,20 @@ public partial class DeckManager : Node
     // ====================================
     public Godot.Collections.Array<CardData> Hand = new();
     public Godot.Collections.Array<CardData> EnemyHand = new();
-    public readonly Random RndGen = new(seed);
-    // ====================================
-    // public APIs
-    // ====================================
-    public Godot.Collections.Array<CardData> Hand = new();
-    public Godot.Collections.Array<CardData> EnemyHand = new();
 
-    public Godot.Collections.Array<CardData> playerDisc = new();
-    public Godot.Collections.Array<CardData> enemyDisc = new();
     public Godot.Collections.Array<CardData> playerDisc = new();
     public Godot.Collections.Array<CardData> enemyDisc = new();
 
 
     public Godot.Collections.Array<CardData> PlayerDrawPile => playerBattleDeck;
     public Godot.Collections.Array<CardData> PlayerFullDeck => PlayerDeck?.Cards;
-    public Godot.Collections.Array<CardData> PlayerDrawPile => playerBattleDeck;
-    public Godot.Collections.Array<CardData> PlayerFullDeck => PlayerDeck?.Cards;
 
 
-    public static DeckManager Instance { get; private set; }
     public static DeckManager Instance { get; private set; }
 
     public override void _Ready()
     {
         initialized = false;
-        Shuffle(true);
         Shuffle(false);
         foreach (var card in PlayerDeck.Cards)
         {
@@ -62,10 +50,6 @@ public partial class DeckManager : Node
         Instance = this;
     }
 
-    public void StartNewRun(Deck playerDeck)
-    {
-        PlayerDeck = playerDeck;
-    }
     public void StartNewRun(Deck playerDeck)
     {
         PlayerDeck = playerDeck;
@@ -208,20 +192,6 @@ public partial class DeckManager : Node
         Shuffle(isPlayer);
     }
 
-    /// <summary>
-    /// Carryover shuffle method from previous implementation - shuffles a respective deck.
-    /// </summary>
-    /// <param name="isPlayer">Determines which deck to shuffle - true: player, false: enemy.</param>
-    private void Shuffle(bool isPlayer)
-    {
-        if (!initialized) return;
-        var targetDeck = isPlayer ? playerBattleDeck : enemyBattleDeck;
-        for (int i = 0; i < targetDeck.Count; i++)
-        {
-            int j = RndGen.Next(i + 1);
-            (targetDeck[i], targetDeck[j]) = (targetDeck[j], targetDeck[i]);
-        }
-    }
     /// <summary>
     /// Carryover shuffle method from previous implementation - shuffles a respective deck.
     /// </summary>

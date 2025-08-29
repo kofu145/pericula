@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://dwica0isghtbp" path="res://resources/enemyData/testEnemy.tres" id="14_8p6hn"]
 [ext_resource type="Resource" uid="uid://ck2dnlghav1xg" path="res://resources/RunConfig.tres" id="14_ycd5x"]
 [ext_resource type="PackedScene" uid="uid://ibxg7th6h5c6" path="res://resources/tutorialPage/UIOverlay.tscn" id="15_2rbph"]
-[ext_resource type="Script" path="res://scripts/shared/SoundManager.cs" id="16_wpjal"]
+[ext_resource type="Script" uid="uid://bcnq7d2jmb0mv" path="res://scripts/shared/SoundManager.cs" id="16_wpjal"]
 
 [sub_resource type="Resource" id="Resource_e58k3"]
 resource_local_to_scene = true

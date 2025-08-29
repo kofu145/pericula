@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/PhaseController.cs" id="1_mak3c"]
 [ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
-[ext_resource type="Script" path="res://scenes/ViewDeckButtonBinder.cs" id="6_t74xm"]
+[ext_resource type="Script" uid="uid://vco8yllxna0r" path="res://scenes/ViewDeckButtonBinder.cs" id="6_t74xm"]
 [ext_resource type="PackedScene" uid="uid://dyau1eaiah8c7" path="res://scenes/Tutorial.tscn" id="7_t74xm"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="7_x8jxt"]
 [ext_resource type="Script" uid="uid://q6lik1u45kyf" path="res://scripts/combat/BetController.cs" id="8_132iy"]
