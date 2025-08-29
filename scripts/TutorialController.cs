@@ -11,6 +11,9 @@ public partial class TutorialController : Panel
 
 	[Export] private string tutorialKey = "CombatTutorial";
 
+	// For testing
+	[Export] private bool overrideTutorialOnlyOnce = false;
+
 	private int currentPage = 0;
 
 	private const string SavePath = "user://settings.cfg";
@@ -19,7 +22,7 @@ public partial class TutorialController : Panel
 	public override void _Ready()
 	{
 		// Skip if already completed
-		if (IsTutorialCompleted())
+		if (IsTutorialCompleted() && !overrideTutorialOnlyOnce)
 		{
 			QueueFree();
 			return;
