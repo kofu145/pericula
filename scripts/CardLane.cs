@@ -62,6 +62,14 @@ public partial class CardLane : Node
         }
     }
 
+    public void ToggleVisualLerp(bool value)
+    {
+        foreach (var card in _cards)
+        {
+            card.Visual.ToggleLerp(value);
+        }
+    }
+
     public CardData GetCardAtIndex(int idx)
     {
         return _cards[idx].Data;

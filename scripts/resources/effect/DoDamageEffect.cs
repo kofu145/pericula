@@ -25,8 +25,9 @@ public partial class DoDamageEffect : EffectTemplate
         parent.animation.Play(animName);
         //parent.animation.AnimationFinished = null;
         //parent.animation.AnimationFinished += (Godot.StringName animName) => { EventBus.Instance.RefreshBattle(); };
-
+        param.State.ToggleLerp(false);
         await ToSignal(parent.animation, AnimationPlayer.SignalName.AnimationFinished);
+        param.State.ToggleLerp(true);
         EventBus.Instance.RefreshBattle();
     }
 
