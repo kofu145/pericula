@@ -8,7 +8,7 @@
 layer = 120
 follow_viewport_enabled = true
 script = ExtResource("1_ridxj")
-chipsCountLabel = NodePath("Pot/Count")
+chipsCountLabel = NodePath("PlayerChipCount/Count")
 deckButton = NodePath("Button")
 deckListView = NodePath("DeckListView")
 
@@ -27,7 +27,7 @@ offset_right = 118.0
 offset_bottom = 633.0
 text = "View Deck"
 
-[node name="Pot" type="Control" parent="."]
+[node name="PlayerChipCount" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1000.0
@@ -35,11 +35,11 @@ offset_top = 600.0
 offset_right = 1000.0
 offset_bottom = 600.0
 
-[node name="Icon" type="Sprite2D" parent="Pot"]
+[node name="Icon" type="Sprite2D" parent="PlayerChipCount"]
 scale = Vector2(2, 2)
 texture = ExtResource("2_nohtj")
 
-[node name="Count" type="Label" parent="Pot"]
+[node name="Count" type="Label" parent="PlayerChipCount"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
