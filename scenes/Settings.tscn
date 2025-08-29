@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bvfmw8occmkxk" path="res://scripts/AudioBusSlider.cs" id="1_rbmmp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4ih8"]
-bg_color = Color(0.201527, 0.201527, 0.201526, 0.901961)
+bg_color = Color(0.06, 0.06, 0.06, 0.901961)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16

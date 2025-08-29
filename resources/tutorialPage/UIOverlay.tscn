@@ -49,7 +49,10 @@ theme_override_font_sizes/font_size = 36
 text = "100"
 horizontal_alignment = 1
 
-[node name="Settings" parent="." instance=ExtResource("4_xviqy")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Settings" parent="CanvasLayer" instance=ExtResource("4_xviqy")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
