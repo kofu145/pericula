@@ -51,17 +51,22 @@ public partial class DeckManager : Node
         Instance = this;
     }
 
-    /// <summary>
-    /// Must be called before the start of any round.
-    /// </summary>
-    public void Initialize()
-    {
-        initialized = true;
-        CloneTempDeck(PlayerDeck.Cards, playerBattleDeck);
-        CloneTempDeck(EnemyDeck.Cards, enemyBattleDeck);
-        //GD.Print(playerBattleDeck + "From Deckmanager");
+	public void StartNewRun(Deck playerDeck)
+	{
+		PlayerDeck = playerDeck;
+	}
 
-    }
+    /// <summary>
+	/// Must be called before the start of any round.
+	/// </summary>
+	public void Initialize()
+	{
+		initialized = true;
+		CloneTempDeck(PlayerDeck.Cards, playerBattleDeck);
+		CloneTempDeck(EnemyDeck.Cards, enemyBattleDeck);
+		//GD.Print(playerBattleDeck + "From Deckmanager");
+
+	}
 
     public void AddCardByID(int id)
     {
