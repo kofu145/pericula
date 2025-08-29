@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://vika2c5aum5v"]
+[gd_scene load_steps=2 format=3 uid="uid://vika2c5aum5v"]
 
-[ext_resource type="Texture2D" uid="uid://bn0q04ui08rd3" path="res://assets/card.png" id="1_enx36"]
 [ext_resource type="Script" uid="uid://di1yqf4q41ly7" path="res://scripts/CardVisual.cs" id="2_n2pnx"]
 
 [node name="CardVisual" type="NinePatchRect" node_paths=PackedStringArray("NameLabel")]
@@ -16,7 +15,6 @@ offset_right = 24.656
 offset_bottom = 29.192
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_enx36")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 16
 patch_margin_top = 16

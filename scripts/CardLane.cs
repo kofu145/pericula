@@ -1,11 +1,12 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 public partial class CardLane : Node
 {
     // scene refs
-    [Export] private PackedScene SlotScene;
+    // [Export] private PackedScene SlotScene;
     [Export] private PackedScene CardScene;
 
     [Export] private HBoxContainer lane;
@@ -19,21 +20,23 @@ public partial class CardLane : Node
     private List<CardSlot> _slots = new();
     private List<CardBase> _cards = new();
 
-    public void BindSide(LaneSide s) => side = s;
+    public override void _Ready()
+    {
+        for (int i = 0; i < lane.GetChildCount(); i++)
+        {
+            if (lane.GetChild(i) is CardSlot slot) _slots.Add(slot);
+        }
+    }
 
     public void EndRound()
     {
         ClearLane();
     }
 
-    public void SpawnCard(CardData data)
+    public void SpawnCard(CardData data, int index)
     {
-        var slot = SlotScene.Instantiate<CardSlot>();
-        lane.AddChild(slot);
-        _slots.Add(slot);
-
         var cardBase = CardScene.Instantiate<CardBase>();
-        slot.AddChild(cardBase);
+        _slots[index].AddChild(cardBase);
         _cards.Add(cardBase);
 
         cardBase.Initialize(data);
@@ -109,10 +112,8 @@ public partial class CardLane : Node
         DeckManager.Instance.ClearHand(side == LaneSide.Player);
         GD.Print("free");
         foreach (var c in _cards) c.QueueFree(); // don't want to free the children carddata, we use them elsewhere in deck
-        foreach (var s in _slots) s.QueueFree();
 
         _cards.Clear();
-        _slots.Clear();
     }
 
     public void RevealAtIndex(int index) => _cards[index].Reveal();
