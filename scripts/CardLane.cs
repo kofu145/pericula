@@ -51,6 +51,14 @@ public partial class CardLane : Node
 		}
 	}
 
+	public void PrintCards()
+	{
+		foreach (var card in _cards)
+		{
+			GD.Print(card.Data);
+		}
+	}
+
 	public CardData GetCardAtIndex(int idx)
 	{
 		return _cards[idx].Data;
@@ -99,6 +107,7 @@ public partial class CardLane : Node
 	private void ClearLane()
 	{
 		DeckManager.Instance.ClearHand(side == LaneSide.Player);
+		GD.Print("free");
 		foreach (var c in _cards) c.QueueFree(); // don't want to free the children carddata, we use them elsewhere in deck
 		foreach (var s in _slots) s.QueueFree();
 

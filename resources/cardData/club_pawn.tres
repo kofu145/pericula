@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://bujtixc664anp"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://bujtixc664anp"]
 
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_ctqyn"]
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_sru6r"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_sru6r"]
 
 [sub_resource type="Resource" id="Resource_mjdb7"]
@@ -18,9 +19,9 @@ DisplayName = "Club Pawn"
 Description = ""
 Rarity = "Starter"
 Trait = "Pawn"
-BaseAttack = 5
+BaseAttack = 7
 BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-keywords = null
+Keywords = Array[ExtResource("1_sru6r")]([])
 metadata/_custom_type_script = "uid://clner77n1ff5a"

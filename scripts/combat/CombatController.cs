@@ -29,7 +29,7 @@ public partial class CombatController : Node
 	{
 		DeckManager.Instance.Draw(n, true);
 		DeckManager.Instance.Draw(n, false);
-		GD.Print(DeckManager.Instance.Hand);
+		//GD.Print(DeckManager.Instance.Hand + "From StartRound in CombatController");
 		for (int i = 0; i < 2; i++)
 		{
 			var drawn = i == 0 ? DeckManager.Instance.Hand : DeckManager.Instance.EnemyHand;
@@ -106,7 +106,7 @@ public partial class CombatController : Node
 
 			eff.OnUse(effectParam);
 			eff.OnEnqueue(effectParam);
-			GD.Print("waiting?");
+			//GD.Print("waiting?");
 		}
 
 	}
@@ -149,7 +149,7 @@ public partial class CombatController : Node
 		var targetLane = player ? playerLane : enemyLane;
 		for (int i = 0; i < targetLane.CardCount; i++)
 		{
-			GD.Print($"Turn is player: {player} idx: {i} HP is {targetLane.GetCardAtIndex(i).HP}");
+			//GD.Print($"Turn is player: {player} idx: {i} HP is {targetLane.GetCardAtIndex(i).HP}");
 			if (targetLane.GetCardAtIndex(i).HP <= 0)
 			{
 				GD.Print($"got a to remove at idx {i}");
@@ -157,6 +157,7 @@ public partial class CombatController : Node
 			}
 
 		}
+		//GD.Print(DeckManager.Instance.EnemyHand);
 		foreach (var remCard in toRemove)
 		{
 			targetLane.RemoveCard(remCard);

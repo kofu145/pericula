@@ -13,6 +13,7 @@ public partial class DoDamageEffect : EffectTemplate
 		var pos = opposingLane.GetCardBaseByData(opposingLane.GetCardAtIndex(0)).GlobalPosition;
 		PopupText.Instance.ShowNumber(pos + new Vector2(10, -30), Damage);
 		//GD.Print("called damage");
+
 	}
 
 	public async override void OnEnqueue(EffectParam param)

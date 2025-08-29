@@ -31,6 +31,14 @@ public partial class DeckManager : Node
 		initialized = false;
 		Shuffle(true);
 		Shuffle(false);
+		foreach (var card in PlayerDeck.Cards)
+		{
+			card.Initialize();
+		}
+		foreach (var card in EnemyDeck.Cards)
+		{
+			card.Initialize();
+		}
 		Instance = this;
 	}
 
@@ -42,7 +50,8 @@ public partial class DeckManager : Node
 		initialized = true;
 		CloneTempDeck(PlayerDeck.Cards, playerBattleDeck);
 		CloneTempDeck(EnemyDeck.Cards, enemyBattleDeck);
-		GD.Print(playerBattleDeck);
+		//GD.Print(playerBattleDeck + "From Deckmanager");
+
 	}
 
 	public void AddCardByID(int id)
@@ -110,6 +119,10 @@ public partial class DeckManager : Node
 
 		targetList.Remove(c);
 		targetDisc.Add(c);
+		foreach (var card in targetDisc)
+		{
+			card.ResetForBattle();
+		}
 	}
 
 	public void ClearHand(bool isPlayer)
@@ -138,11 +151,19 @@ public partial class DeckManager : Node
 		initialized = false;
 	}
 
+	public void PrintData()
+	{
+		GD.Print($"Player Deck: {PlayerDeck} Player Disc: {playerDisc} Player Hand {Hand},\\n EnemyDeck{enemyBattleDeck}, enemyDisc: {enemyDisc}, EnemyHand: {EnemyHand}");
+	}
+
 	private void CloneTempDeck(Godot.Collections.Array<CardData> list, Godot.Collections.Array<CardData> targetList)
 	{
 		foreach (var card in list)
 		{
-			targetList.Add((CardData)card.Duplicate(true));
+			var cardToAdd = (CardData)card.Duplicate(true);
+			targetList.Add(cardToAdd);
+			cardToAdd.Initialize();
+			//card.id = RndGen.Next(100);
 		}
 	}
 
@@ -154,6 +175,10 @@ public partial class DeckManager : Node
 		var targetDeck = isPlayer ? playerBattleDeck : enemyBattleDeck;
 		var targetDisc = isPlayer ? playerDisc : enemyDisc;
 
+		foreach (var card in targetDisc)
+		{
+			card.ResetForBattle();
+		}
 		targetDeck.AddRange(targetDisc);
 		targetDisc.Clear();
 		Shuffle(isPlayer);

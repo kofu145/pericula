@@ -11,4 +11,6 @@ public partial class EffectTemplate : Resource
 	public virtual void OnUse(EffectParam param) { }
 
 	public virtual void Initialize(EffectParam param) { }
+
+	public virtual void Reset() { }
 }
