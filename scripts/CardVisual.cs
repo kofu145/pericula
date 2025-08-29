@@ -97,4 +97,11 @@ public partial class CardVisual : Control
             CardBack.Visible = false;
         }
     }
+
+    public void UpdateLabels()
+    {
+
+        GetNode<Label>("Health").Text = Base.Data.HP.ToString();
+        GetNode<Label>("Attack").Text = Base.Data.Attack.ToString();
+    }
 }
