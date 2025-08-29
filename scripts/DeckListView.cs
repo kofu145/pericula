@@ -9,6 +9,7 @@ public partial class DeckListView : Control
     [Export] private PackedScene CardScene;
 
     // UI refs
+    [Export] private Label headerLabel;
     [Export] private ScrollContainer Scroll;
     [Export] private GridContainer Grid;
 
@@ -62,6 +63,14 @@ public partial class DeckListView : Control
             ViewMode.Draw => DeckManager.Instance.PlayerDrawPile,
             ViewMode.Discard => DeckManager.Instance.playerDisc,
             _ => DeckManager.Instance.PlayerFullDeck,
+        };
+
+        headerLabel.Text = currentMode switch
+        {
+            ViewMode.Deck => "Player Deck",
+            ViewMode.Draw => "Player Draw Pile",
+            ViewMode.Discard => "Player Discard Pile",
+            _ => ""
         };
 
         Populate(source);
