@@ -231,6 +231,7 @@ public partial class PhaseController : Node
         if (button == null) return;
         button.Visible = false;
         button.Disabled = true;
+        button.MouseFilter = Control.MouseFilterEnum.Ignore;
     }
 
     private void Show(Button button)
@@ -238,6 +239,7 @@ public partial class PhaseController : Node
         if (button == null) return;
         button.Visible = true;
         button.Disabled = false;
+        button.MouseFilter = Control.MouseFilterEnum.Stop;
     }
 
     private void DisplayEnemyAction(BetAction action, int called, int raised)
