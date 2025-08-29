@@ -16,10 +16,6 @@ public partial class DeckListView : Control
 	[Export] private int HGap = 24;
 	[Export] private int VGap = 24;
 
-	// Dummy data for inspector testing
-	// [Export] private CardData inspectorCard;
-	// [Export] private int dummyCardCount = 10;
-
 	// runtime refs
 	private List<CardBase> _cards = new();
 
@@ -34,10 +30,6 @@ public partial class DeckListView : Control
 		if (Scroll != null) Scroll.Resized += UpdateColumns;
 
 		CallDeferred(nameof(UpdateColumns));
-
-		// TEMP: populate with dummy cards
-		// var dummyDeck = new List<CardData>();
-		// for (int i = 0; i < dummyCardCount; i++) dummyDeck.Add(inspectorCard);
 		Populate(DeckManager.Instance.PlayerDeck);
 	}
 
@@ -96,7 +88,8 @@ public partial class DeckListView : Control
 
 	private void OpenDeckView()
 	{
-
+		Clear();
+		Populate(DeckManager.Instance.PlayerDeck);
 	}
 
 	private void CloseDeckView()

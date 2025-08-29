@@ -42,7 +42,7 @@ BaseAttack = 0
 BaseHP = 0
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-keywords = null
+Keywords = []
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_2mo7f"]
@@ -57,7 +57,7 @@ BaseAttack = 0
 BaseHP = 0
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-keywords = null
+Keywords = []
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_xvcie"]
@@ -72,7 +72,7 @@ BaseAttack = 0
 BaseHP = 0
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-keywords = null
+Keywords = []
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_islkc"]
@@ -87,7 +87,7 @@ BaseAttack = 0
 BaseHP = 0
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-keywords = null
+Keywords = []
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_ijwxy"]
@@ -102,7 +102,7 @@ BaseAttack = 0
 BaseHP = 0
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-keywords = null
+Keywords = []
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_l76sc"]

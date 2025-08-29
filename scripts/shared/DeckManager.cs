@@ -47,8 +47,7 @@ public partial class DeckManager : Node
 
 	public void AddCardByID(int id)
 	{
-		// need to add lookup table
-		// PlayerDeck.Cards.Add();
+		PlayerDeck.Cards.Add(CardLookup.GetCardByID(id));
 	}
 
 	public bool RemoveCardWithID(int id)
@@ -85,7 +84,6 @@ public partial class DeckManager : Node
 
 		for (int i = 0; i < n; i++)
 		{
-
 			if (targetDeck.Count == 0)
 			{
 				if (targetDisc.Count == 0) break;
