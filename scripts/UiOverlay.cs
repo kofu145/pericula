@@ -12,7 +12,9 @@ public partial class UiOverlay : CanvasLayer
     public override void _Ready()
     {
         if (Instance == null) Instance = this;
-        else if (Instance != this) {QueueFree(); return;}
+        else if (Instance != this) { QueueFree(); return; }
+
+        if (GetTree().CurrentScene?.Name == "TitleScreen") Visible = false;
 
         ChipManager.Instance.OnChipsChanged += UpdateChipsUI;
 
@@ -29,10 +31,6 @@ public partial class UiOverlay : CanvasLayer
         discardButton.Pressed += deckListView.OpenDiscard;
     }
 
-    public void Hide()
-    {
-        Visible = false;
-    }
     public void Show()
     {
         Visible = true;
