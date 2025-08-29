@@ -44,7 +44,7 @@ public partial class CardBase : Control
         CardImage.Position = new Vector2(10, 32.5f);
     }
 
-    public void Reveal() => Visual?.ShowInfo();
+    public void FlipCard() => Visual?.FlipCard();
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()

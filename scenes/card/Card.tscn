@@ -170,7 +170,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [-1]
+"values": [-2]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -206,7 +206,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [-1, -1]
 }
 
 [sub_resource type="Animation" id="Animation_4cxr5"]
@@ -349,7 +349,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [-1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u4wdl"]
@@ -457,12 +457,13 @@ grow_vertical = 2
 mouse_filter = 0
 
 [node name="Image" type="TextureRect" parent="Visual"]
+z_index = -1
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = 10.0
-offset_top = 32.5
+offset_top = 32.0
 offset_right = 110.0
-offset_bottom = 132.5
+offset_bottom = 134.0
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("7_1oahe")
 

@@ -47,6 +47,7 @@ public partial class CombatController : Node
     {
         playerLane.EndRound();
         enemyLane.EndRound();
+        EventBus.Instance.ClearEvents();
     }
 
     /// <summary>
@@ -58,6 +59,7 @@ public partial class CombatController : Node
         enemyLane.EndRound();
 
         DeckManager.Instance.FinishAndReset();
+        EventBus.Instance.ClearEvents();
     }
 
     public void ShowdownHandler()
@@ -146,7 +148,7 @@ public partial class CombatController : Node
         var targetLane = player ? playerLane : enemyLane;
         for (int i = 0; i < targetLane.CardCount; i++)
         {
-            //GD.Print($"Turn is player: {player} idx: {i} HP is {targetLane.GetCardAtIndex(i).HP}");
+            GD.Print($"Turn is player: {player} idx: {i} HP is {targetLane.GetCardAtIndex(i).HP}");
             if (targetLane.GetCardAtIndex(i).HP <= 0)
             {
                 GD.Print($"got a to remove at idx {i}");

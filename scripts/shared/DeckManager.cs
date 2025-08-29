@@ -62,6 +62,10 @@ public partial class DeckManager : Node
     {
         initialized = true;
         EnemyDeck = StageManager.Instance.GetCurrentEnemyDeck();
+        foreach (var card in EnemyDeck.Cards)
+        {
+            card.Initialize();
+        }
         CloneTempDeck(PlayerDeck.Cards, playerBattleDeck);
         CloneTempDeck(EnemyDeck.Cards, enemyBattleDeck);
     }

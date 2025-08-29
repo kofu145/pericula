@@ -13,12 +13,14 @@ public partial class CardVisual : Control
     private float FollowSpeed = 0;
     private float ScaleSpeed = 0;
     private bool doLerp = true;
+    private bool faceUp = true;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         MouseFilter = MouseFilterEnum.Ignore;
         PivotOffset = Size / 2;
+        CardBack.Visible = false;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,16 +77,24 @@ public partial class CardVisual : Control
         doLerp = value;
     }
 
-    public void HideInfo()
-    {
-
-    }
-
     /// <summary>
-    /// Reveal the card's info (flip card face up)
+    /// Toggles flipping the card
     /// </summary>
-    public void ShowInfo()
+    public async void FlipCard()
     {
-
+        CardBack.Visible = true;
+        if (faceUp)
+        {
+            Base.animation.Play("FlipCardToBack");
+            await ToSignal(Base.animation, AnimationPlayer.SignalName.AnimationFinished);
+            faceUp = false;
+        }
+        else
+        {
+            Base.animation.Play("FlipCardToFront");
+            await ToSignal(Base.animation, AnimationPlayer.SignalName.AnimationFinished);
+            faceUp = true;
+            CardBack.Visible = false;
+        }
     }
 }

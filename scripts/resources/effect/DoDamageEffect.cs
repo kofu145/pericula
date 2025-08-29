@@ -12,7 +12,8 @@ public partial class DoDamageEffect : EffectTemplate
         opposingLane.GetCardAtIndex(0).HP -= Damage;
         var pos = opposingLane.GetCardBaseByData(opposingLane.GetCardAtIndex(0)).GlobalPosition;
         PopupText.Instance.ShowNumber(pos + new Vector2(10, -30), Damage);
-        //GD.Print("called damage");
+        GD.Print("called damage");
+        //DeckManager.Instance.PrintData();
 
     }
 

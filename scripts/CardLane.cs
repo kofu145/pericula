@@ -154,7 +154,7 @@ public partial class CardLane : Node
         _cards.Clear();
     }
 
-    public void RevealAtIndex(int index) => _cards[index].Reveal();
+    public void FlipAtIndex(int index) => _cards[index].FlipCard();
 
     private void BeginDrag(CardBase c)
     {
