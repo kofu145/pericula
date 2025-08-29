@@ -23,6 +23,7 @@ public partial class ChipManager : Node
     public void StartNewRun(int startingChips)
     {
         balance = startingChips;
+        OnChipsChanged?.Invoke(startingChips);
         ChipsEarned = 0;
         ChipsUsed = 0;
     }

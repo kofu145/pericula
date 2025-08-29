@@ -23,6 +23,6 @@ public partial class RunEndPanel : CanvasLayer
     private void ReturnToTitleScreen()
     {
         SceneManager.ChangeSceneToFile("TitleScreen");
-        QueueFree();
+        Visible = false;
     }
 }
