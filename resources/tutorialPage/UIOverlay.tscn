@@ -14,8 +14,10 @@ chipsCountLabel = NodePath("PlayerChipCount/Count")
 deckButton = NodePath("Button")
 deckListView = NodePath("DeckListView")
 
-[node name="DeckListView" parent="." instance=ExtResource("1_cj1pm")]
+[node name="DeckListView" parent="." node_paths=PackedStringArray("headerLabel") instance=ExtResource("1_cj1pm")]
 visible = false
+headerLabel = NodePath("Header")
+CardSize = Vector2i(50, 59)
 
 [node name="Button" type="Button" parent="."]
 offset_left = 15.0

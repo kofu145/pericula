@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmkb4"]
 bg_color = Color(0.05, 0.05, 0.05, 0.901961)
 
-[node name="DeckListView" type="Panel" node_paths=PackedStringArray("Scroll", "Grid")]
+[node name="DeckListView" type="Panel" node_paths=PackedStringArray("headerLabel", "Scroll", "Grid")]
 clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jmkb4")
 script = ExtResource("1_ce1bn")
 CardScene = ExtResource("2_jmkb4")
+headerLabel = NodePath("Header")
 Scroll = NodePath("MarginContainer/ScrollContainer")
 Grid = NodePath("MarginContainer/ScrollContainer/GridContainer")
 CardSize = Vector2i(100, 118)
