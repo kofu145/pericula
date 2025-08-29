@@ -7,4 +7,10 @@
 script = ExtResource("1_v7nrs")
 playerStartingChips = 100
 playerStartingDeck = ExtResource("1_ngmds")
+enemiesPerAnte = 1
+antesPerRun = 3
+baseEnemyStartingChips = 100
+enemyStartingChipsPerAnteMultipler = 1.0
+baseBuyIn = 20
+buyInPerAnteMultiplier = 1.0
 metadata/_custom_type_script = "uid://ca6ooknqy7pvf"

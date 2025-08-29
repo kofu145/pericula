@@ -16,10 +16,6 @@ public partial class CombatController : Node
     private Godot.Collections.Array<EffectParam> queueParams = new();
     private BattleState battleState = new();
 
-    public override void _Ready()
-    {
-    }
-
     public void Initialize()
     {
         DeckManager.Instance.Initialize();

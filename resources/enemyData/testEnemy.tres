@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://dwica0isghtbp"]
+
+[ext_resource type="Resource" uid="uid://x1s3hs3wqykm" path="res://resources/decks/TestDeck.tres" id="1_ls3m4"]
+[ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="1_y0x1x"]
+
+[resource]
+script = ExtResource("1_y0x1x")
+DisplayName = "Test Enemy"
+deck = ExtResource("1_ls3m4")
+metadata/_custom_type_script = "uid://bseo3sf3127a4"

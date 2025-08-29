@@ -22,8 +22,6 @@ offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mak3c")
-startingChips = 25
-enemyChipsAmount = 9
 combatManager = NodePath("CombatController")
 betController = NodePath("BetController")
 actionLabel = NodePath("EnemyActionLabel")
@@ -258,23 +256,27 @@ theme_override_font_sizes/font_size = 36
 text = "100"
 horizontal_alignment = 1
 
-[node name="DeckListButtonContainer" type="Control" parent="." node_paths=PackedStringArray("drawPileButton", "discardPileButton")]
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = 121
+
+[node name="DeckListButtonContainer" type="Control" parent="Canvas" node_paths=PackedStringArray("drawPileButton", "discardPileButton")]
+layout_mode = 3
 anchors_preset = 0
-offset_left = 20.0
+offset_left = 24.0
 offset_top = 400.0
-offset_right = 20.0
+offset_right = 24.0
 offset_bottom = 400.0
 script = ExtResource("6_t74xm")
 drawPileButton = NodePath("DrawPileButton")
 discardPileButton = NodePath("DiscardPileButton")
 
-[node name="DrawPileButton" type="Button" parent="DeckListButtonContainer"]
+[node name="DrawPileButton" type="Button" parent="Canvas/DeckListButtonContainer"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "View Draw Pile"
 
-[node name="DiscardPileButton" type="Button" parent="DeckListButtonContainer"]
+[node name="DiscardPileButton" type="Button" parent="Canvas/DeckListButtonContainer"]
 layout_mode = 0
 offset_top = 50.0
 offset_right = 140.0

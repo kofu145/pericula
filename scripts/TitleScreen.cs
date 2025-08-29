@@ -19,7 +19,6 @@ public partial class TitleScreen : Panel
         ResetManagers();
         // go to shop first
         SceneManager.ChangeSceneToFile("PreCombat");
-        UiOverlay.Instance.Show();
     }
 
     private void ResetManagers()

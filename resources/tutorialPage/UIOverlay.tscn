@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="1_cj1pm"]
 [ext_resource type="Script" uid="uid://csmcdyn34vwy2" path="res://scripts/UiOverlay.cs" id="1_ridxj"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="2_nohtj"]
-[ext_resource type="PackedScene" uid="uid://ckew32h2rg0o2" path="res://scenes/Settings.tscn" id="4_xviqy"]
+[ext_resource type="PackedScene" path="res://scenes/Settings.tscn" id="4_xviqy"]
 [ext_resource type="Script" uid="uid://d3x06mp85iy38" path="res://scripts/Settings.cs" id="5_r3r3p"]
 
 [node name="UIOverlay" type="CanvasLayer" node_paths=PackedStringArray("chipsCountLabel", "deckButton", "deckListView")]

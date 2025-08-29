@@ -8,22 +8,23 @@ public partial class PreStagePanel : PanelContainer
     [Export] Button startRoundButton;
     int _stageID;
 
-    public void Initialize(int id)
+    public void Initialize(int stageNumber, EnemyData data)
     {
-        _stageID = id;
+        _stageID = stageNumber;
 
-        // TODO: Set stage name based on id
-        stageName.Text = "[wave]Enemy[/wave]";
-        stageNumber.Text = "Round " + id;
+        stageName.Text = $"[wave]{data.DisplayName}[/wave]";
+        this.stageNumber.Text = $"Round {stageNumber + 1}";
 
-        if (id > StageManager.Instance.CurrentStageID)
+        if (stageNumber > StageManager.Instance.CurrentStageNumber)
         {
             DisableAsLocked();
         }
-        else if (id < StageManager.Instance.CurrentStageID)
+        else if (stageNumber < StageManager.Instance.CurrentStageNumber)
         {
             DisableAsCompleted();
         }
+
+        // TODO: Initialize a button that opens a deck preview of the enemy's deck
     }
 
     public void OnStartRoundClicked()
@@ -47,6 +48,6 @@ public partial class PreStagePanel : PanelContainer
     {
         Modulate = new Color(0.5f, 0.5f, 0.5f);
         startRoundButton.Disabled = true;
-        
+
     }
 }

@@ -7,14 +7,6 @@ public partial class PhaseController : Node
     [Export] private int startingDraw = 5;
     [Export] private float displayDuration = 1.5f;
 
-    // TODO: temp implementation
-    [Export] private int startingChips = 100;
-    // minimum starting bet, will be increased by singleton instance as run progresses
-    // get info from the singleton instance
-    [Export] private int currentMinimumBuyIn = 10;
-    // get info from the enemy info(?) when the scene is initialized(?)
-    [Export] private int enemyChipsAmount = 100;
-
     // buy in config
     [Export] private int turnBuyInIncrease = 4;
     [Export] private float buyInIncreaseMultiplier = 2;
@@ -39,9 +31,6 @@ public partial class PhaseController : Node
     [Export] private Button nextTurnButton;
     [Export] private Button endEncounterButton;
 
-    // test data
-    [Export] public CardData testCardData;
-
     // public actions
     /// <summary>
     /// true indicates player won encounter
@@ -50,10 +39,11 @@ public partial class PhaseController : Node
 
     // runtime refs
     private RoundPhase currentPhase;
-    private int currentPot = 0;
     private ChipManager playerChips;
     private EnemyChips enemyChips;
     private int currentTurn = 1;
+    private int currentPot = 0;
+    private int currentMinimumBuyIn = 0;
 
     // =========================================
     private bool PlayerWon => enemyChips.Balance <= 0;
@@ -72,7 +62,7 @@ public partial class PhaseController : Node
 
         betController.OnBetPhaseEnd += EndBetPhase;
         betController.OnEnemyAction += DisplayEnemyAction;
-        betController.OnChipsChanged += DisplayPot;
+        betController.OnChipsChanged += UpdatePot;
 
         combatManager.OnShowdownEndPlayerWin += EndShowdownPhase;
 
@@ -80,14 +70,14 @@ public partial class PhaseController : Node
         playerChips = ChipManager.Instance;
         playerChips.OnChipsChanged += DisplayPlayerChips;
 
-        enemyChips = new(enemyChipsAmount);
+        currentMinimumBuyIn = StageManager.Instance.GetCurrentBuyIn();
+
+        enemyChips = new(StageManager.Instance.GetEnemyStartingChips());
         enemyChips.OnChipsChanged += DisplayEnemyChips;
 
-        // TODO: temp implementation
-        playerChips.AddChips(startingChips);
 
         // force update when scene is first loaded
-        DisplayPot(0);
+        UpdatePot(0);
         DisplayPlayerChips(playerChips.Balance);
         DisplayEnemyChips(enemyChips.Balance);
 
@@ -120,18 +110,15 @@ public partial class PhaseController : Node
         buyInLabel.Text = $"Current Buy In: {currentMinimumBuyIn}";
 
         // enemy and player pays the buyIn amount
-
-        if (!enemyChips.Deduct(currentMinimumBuyIn)) currentMinimumBuyIn = enemyChips.Balance;
+        if (enemyChips.Balance < currentMinimumBuyIn) currentMinimumBuyIn = enemyChips.Balance;
 
         enemyChips.Deduct(currentMinimumBuyIn);
-        // if (!playerChips.Deduct(currentMinimumBuyIn)) return;
 
-        // TODO: Need a way to handle this for negative balance
         playerChips.BorrowChips(currentMinimumBuyIn);
         if (playerChips.Balance <= 0) negativeBalanceWarningLabel.Text = $"Warning. Losing next Showdown will lose you the run.";
         negativeBalanceWarningLabel.Visible = playerChips.Balance <= 0;
 
-        DisplayPot(currentMinimumBuyIn * 2);
+        UpdatePot(currentMinimumBuyIn * 2);
 
         currentPhase = RoundPhase.PreRound;
 
@@ -180,7 +167,7 @@ public partial class PhaseController : Node
             if (PlayerLost || PlayerWon) Show(endEncounterButton);
             else Show(nextTurnButton);
         }
-        DisplayPot(0);
+        UpdatePot(0);
     }
 
     private void StartNextTurn()
@@ -261,7 +248,7 @@ public partial class PhaseController : Node
         actionLabel.Visible = false;
     }
 
-    private void DisplayPot(int amount)
+    private void UpdatePot(int amount)
     {
         if (potLabel != null)
         {
@@ -296,11 +283,11 @@ public partial class PhaseController : Node
     {
         betController.OnBetPhaseEnd -= EndBetPhase;
         betController.OnEnemyAction -= DisplayEnemyAction;
-        betController.OnChipsChanged -= DisplayPot;
+        betController.OnChipsChanged -= UpdatePot;
 
         combatManager.OnShowdownEndPlayerWin -= EndShowdownPhase;
 
         enemyChips.OnChipsChanged = null;
-		ChipManager.Instance.OnChipsChanged -= DisplayPlayerChips;
+        ChipManager.Instance.OnChipsChanged -= DisplayPlayerChips;
     }
 }

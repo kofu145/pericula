@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c16njbemom5e" path="res://scripts/PreCombat.cs" id="1_433f5"]
 [ext_resource type="PackedScene" uid="uid://bqqs350nnamat" path="res://scenes/pre_combat/PreStagePanel.tscn" id="1_fdsa5"]
 
-[node name="PreCombat" type="Control" node_paths=PackedStringArray("StageList")]
+[node name="PreCombat" type="Control" node_paths=PackedStringArray("StageList", "anteCountLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_433f5")
 PreStagePanel = ExtResource("1_fdsa5")
 StageList = NodePath("ScrollContainer/StageList")
+anteCountLabel = NodePath("RichTextLabel")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1

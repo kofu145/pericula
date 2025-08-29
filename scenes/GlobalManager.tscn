@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=24 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -14,6 +14,8 @@
 [ext_resource type="Shader" uid="uid://d3717vds76o65" path="res://scripts/shaders/DiamondTransition.gdshader" id="10_ivlop"]
 [ext_resource type="Script" uid="uid://cyyjmmxcnipyo" path="res://scripts/shared/StageManager.cs" id="10_s02d4"]
 [ext_resource type="Script" uid="uid://krak4fxo5k5x" path="res://scripts/shared/CardLookup.cs" id="12_7a67w"]
+[ext_resource type="Resource" uid="uid://dwica0isghtbp" path="res://resources/enemyData/testEnemy.tres" id="14_8p6hn"]
+[ext_resource type="Resource" uid="uid://ck2dnlghav1xg" path="res://resources/RunConfig.tres" id="14_ycd5x"]
 [ext_resource type="PackedScene" uid="uid://ibxg7th6h5c6" path="res://resources/tutorialPage/UIOverlay.tscn" id="15_2rbph"]
 [ext_resource type="Script" uid="uid://bcnq7d2jmb0mv" path="res://scripts/shared/SoundManager.cs" id="16_wpjal"]
 
@@ -81,6 +83,8 @@ color = Color(0, 0, 0, 1)
 
 [node name="StageManager" type="Node" parent="."]
 script = ExtResource("10_s02d4")
+config = ExtResource("14_ycd5x")
+tempEnemyList = Array[Object]([ExtResource("14_8p6hn")])
 
 [node name="CardLookup" type="Node" parent="."]
 script = ExtResource("12_7a67w")
@@ -93,9 +97,7 @@ script = ExtResource("16_wpjal")
 [node name="BGM" type="AudioStreamPlayer" parent="SoundManager"]
 stream = SubResource("AudioStreamInteractive_2rbph")
 volume_db = -6.0
-bus = &"BGM"
 
 [node name="SE" type="AudioStreamPlayer" parent="SoundManager"]
 stream = SubResource("AudioStreamPolyphonic_2rbph")
 volume_db = -6.0
-bus = &"SE"
