@@ -7,10 +7,12 @@ public partial class CardVisual : Control
 
     // runtime refs
     [Export] CardBase Base;
+    [Export] TextureRect CardBack;
 
     private Vector2 offsetPos;
     private float FollowSpeed = 0;
     private float ScaleSpeed = 0;
+    private bool doLerp = true;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -26,11 +28,22 @@ public partial class CardVisual : Control
 
         var target = Base.GlobalPosition;
         float t = 1f - Mathf.Exp(-FollowSpeed * (float)delta);
-        //GlobalPosition = offsetPos.Lerp(target, t);
+        if (doLerp)
+        {
+            GlobalPosition = offsetPos.Lerp(target, t);
+
+        }
+
+        else
+            GlobalPosition = Base.GlobalPosition;
         offsetPos = GlobalPosition;
 
         float ts = 1f - Mathf.Exp(-ScaleSpeed * (float)delta);
-        Scale = Scale.Lerp(Base.Scale, ts);
+        if (doLerp)
+            Scale = Scale.Lerp(Base.Scale, ts);
+
+        CardBack.GlobalPosition = GlobalPosition;
+        CardBack.Scale = Scale;
     }
 
     public void Initialize(CardData data = null, float FollowSpeed = 0, float ScaleSpeed = 0)
@@ -42,7 +55,7 @@ public partial class CardVisual : Control
 
         this.FollowSpeed = FollowSpeed;
         this.ScaleSpeed = ScaleSpeed;
-        
+
         if (Base != null)
         {
             var baseData = Base.GetCardData();
@@ -55,6 +68,11 @@ public partial class CardVisual : Control
     public void RebasePos(Vector2 newPos)
     {
         Base.GlobalPosition = newPos;
+    }
+
+    public void ToggleLerp(bool value)
+    {
+        doLerp = value;
     }
 
     public void HideInfo()

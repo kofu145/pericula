@@ -16,4 +16,10 @@ public partial class BattleState : Node
         EnemyLane = enemyLane;
         currentTurn = Turn.Player;
     }
+
+    public void ToggleLerp(bool value)
+    {
+        PlayerLane.ToggleVisualLerp(value);
+        EnemyLane.ToggleVisualLerp(value);
+    }
 }
