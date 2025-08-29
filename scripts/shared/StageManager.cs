@@ -24,13 +24,13 @@ public partial class StageManager : Node
 
 	// runtime refs
 	// private int currentStage;
-	public int CurrentStageNumber { get; private set; }			// 0-indexed
+	public int CurrentStageNumber { get; private set; }         // 0-indexed
 	public int CurrentAnte { get; private set; }                // 0-indexed
 	private List<EnemyData> currentAnteEnemies = new();
 
 
 	// TODO: Temporary implementation, remove when GetEnemies() is implemented
-	[Export] private Godot.Collections.Array<EnemyData> tempEnemyList;
+	[Export] private EnemyData tempEnemy;
 
 	public override void _Ready()
 	{
@@ -76,10 +76,15 @@ public partial class StageManager : Node
 		SceneManager.ChangeSceneToFile("Shop");
 	}
 
-	// TODO: based on the currentAnte, returns a list of enemiesPerAnte number of Enemies
+	// TODO: based on the currentAnte, returns a list of EnemiesPerAnte number of Enemies
 	private List<EnemyData> GetEnemies()
 	{
-		return tempEnemyList.ToList();
+		List<EnemyData> tempList = new();
+		for (int i = 0; i < EnemiesPerAnte; i++)
+		{
+			tempList.Add(tempEnemy);
+		}
+		return tempList;
 	}
 	public EnemyData GetEnemyAtIndex(int i)
 	{
