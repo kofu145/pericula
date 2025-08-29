@@ -33,6 +33,11 @@ public partial class CardBase : Control
     {
         Data = data;
         if (Visual != null) Visual.Initialize(data, FollowSpeed, ScaleSpeed);
+        var cardTex = new Godot.Sprite2D();
+        cardTex.Texture = Data.Texture;
+        cardTex.Position = new Vector2(60, 82);
+        cardTex.Scale = new Vector2(3.125f, 3.125f);
+        Visual.AddChild(cardTex);
     }
 
     public void Reveal() => Visual?.ShowInfo();
