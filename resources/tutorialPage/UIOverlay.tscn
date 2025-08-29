@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ibxg7th6h5c6"]
+[gd_scene load_steps=5 format=3 uid="uid://ibxg7th6h5c6"]
 
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="1_cj1pm"]
 [ext_resource type="Script" uid="uid://csmcdyn34vwy2" path="res://scripts/UiOverlay.cs" id="1_ridxj"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="2_nohtj"]
-[ext_resource type="PackedScene" path="res://scenes/Settings.tscn" id="4_xviqy"]
-[ext_resource type="Script" uid="uid://d3x06mp85iy38" path="res://scripts/Settings.cs" id="5_r3r3p"]
+[ext_resource type="PackedScene" uid="uid://coyntyyf64no0" path="res://scenes/Settings.tscn" id="4_xviqy"]
 
 [node name="UIOverlay" type="CanvasLayer" node_paths=PackedStringArray("chipsCountLabel", "deckButton", "deckListView")]
 layer = 120
@@ -14,9 +13,8 @@ chipsCountLabel = NodePath("PlayerChipCount/Count")
 deckButton = NodePath("Button")
 deckListView = NodePath("DeckListView")
 
-[node name="DeckListView" parent="." node_paths=PackedStringArray("headerLabel") instance=ExtResource("1_cj1pm")]
+[node name="DeckListView" parent="." instance=ExtResource("1_cj1pm")]
 visible = false
-headerLabel = NodePath("Header")
 CardSize = Vector2i(50, 59)
 
 [node name="Button" type="Button" parent="."]
@@ -61,4 +59,3 @@ offset_left = -470.0
 offset_top = -255.0
 offset_right = 470.0
 offset_bottom = 255.0
-script = ExtResource("5_r3r3p")

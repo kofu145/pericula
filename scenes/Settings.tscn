@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckew32h2rg0o2"]
+[gd_scene load_steps=4 format=3 uid="uid://coyntyyf64no0"]
 
+[ext_resource type="Script" uid="uid://d3x06mp85iy38" path="res://scripts/Settings.cs" id="1_i47rn"]
 [ext_resource type="Script" uid="uid://bvfmw8occmkxk" path="res://scripts/AudioBusSlider.cs" id="1_rbmmp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4ih8"]
@@ -20,6 +21,7 @@ offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v4ih8")
+script = ExtResource("1_i47rn")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -107,3 +109,4 @@ text = "Back"
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Music/MusicSlider" to="MarginContainer/VBoxContainer/Music" method="OnValueChanged"]
 [connection signal="drag_ended" from="MarginContainer/VBoxContainer/SoundEffects/SoundSlider" to="MarginContainer/VBoxContainer/SoundEffects" method="SoundFinishedChanging"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SoundEffects/SoundSlider" to="MarginContainer/VBoxContainer/SoundEffects" method="OnValueChanged"]
+[connection signal="pressed" from="Button" to="." method="ToggleSettings"]
