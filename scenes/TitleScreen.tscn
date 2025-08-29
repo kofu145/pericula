@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://nrlv13nr5v60" path="res://scripts/TitleScreen.cs" id="1_qyuap"]
 [ext_resource type="Resource" uid="uid://ck2dnlghav1xg" path="res://resources/RunConfig.tres" id="2_ch40n"]
 
-[node name="TitleScreen" type="Panel" node_paths=PackedStringArray("startGameButton", "settingsButton")]
+[node name="TitleScreen" type="Panel" node_paths=PackedStringArray("startGameButton")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,7 +11,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qyuap")
 startGameButton = NodePath("ButtonsContainer/StartRunButton")
-settingsButton = NodePath("")
 runConfig = ExtResource("2_ch40n")
 
 [node name="GameNameLabel" type="Label" parent="."]
