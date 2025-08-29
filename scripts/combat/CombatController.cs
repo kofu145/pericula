@@ -29,6 +29,7 @@ public partial class CombatController : Node
         for (int i = 0; i < 2; i++)
         {
             var drawn = i == 0 ? DeckManager.Instance.Hand : DeckManager.Instance.EnemyHand;
+            GD.Print(drawn.Count);
             for (int j = 0; j < drawn.Count; j++)
             {
                 var lane = i == 0 ? playerLane : enemyLane;

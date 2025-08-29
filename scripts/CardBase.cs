@@ -29,6 +29,8 @@ public partial class CardBase : Control
     // runtime references
     private bool _dragging;
     private Vector2 _grabOffset;
+    private int originIndex;
+    private CardLane originLane;
 
     public void Initialize(CardData data)
     {
@@ -81,6 +83,10 @@ public partial class CardBase : Control
 
                 _dragging = true;
                 _grabOffset = GetGlobalMousePosition() - GlobalPosition;
+
+                var parentSlot = GetParent() as CardSlot;
+                originLane = parentSlot?.OwnerLane;
+                originIndex = originLane != null ? originLane.IndexOf(this) : -1;
             }
             else if (mb.ButtonIndex == MouseButton.Left && mb.Pressed)
             {
@@ -88,9 +94,19 @@ public partial class CardBase : Control
             }
             else if (_dragging)
             {
+                // dropped
                 OnEndDrag?.Invoke(this);
-
                 _dragging = false;
+
+                // Try to place/swap into hovered slot
+                var targetSlot = GetHoveredSlot();
+                if (targetSlot != null)
+                {
+                    var lane = targetSlot.OwnerLane;
+                    GD.Print($"Hovered and dropped over {lane.Name}");
+
+                }
+                
                 if (EnableDefaultDrag) Position = Vector2.Zero;
                 AcceptEvent();
             }
@@ -100,6 +116,8 @@ public partial class CardBase : Control
         {
             OnDragging?.Invoke(this);
 
+            // TODO: Highlight slot if hovered over
+
             if (EnableDefaultDrag) GlobalPosition = GetGlobalMousePosition() - _grabOffset;
             AcceptEvent();
         }
@@ -108,5 +126,16 @@ public partial class CardBase : Control
     public CardData GetCardData()
     {
         return Data;
+    }
+
+    private CardSlot GetHoveredSlot()
+    {
+        Vector2 mouse = GetGlobalMousePosition();
+        foreach (var n in GetTree().GetNodesInGroup("card_slots"))
+        {
+            if (n is CardSlot s && s.GetGlobalRect().HasPoint(mouse))
+                return s;
+        }
+        return null;
     }
 }

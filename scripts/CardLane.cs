@@ -20,11 +20,22 @@ public partial class CardLane : Node
     private List<CardSlot> _slots = new();
     private List<CardBase> _cards = new();
 
+    // ========================
+    // public APIs
+    // ========================
+    public int SlotIndexOf(CardSlot slot) => _slots.IndexOf(slot);
+    public int IndexOf(CardBase c) => _cards.FindIndex(x => x == c);
+
+
     public override void _Ready()
     {
         for (int i = 0; i < lane.GetChildCount(); i++)
         {
-            if (lane.GetChild(i) is CardSlot slot) _slots.Add(slot);
+            if (lane.GetChild(i) is CardSlot slot)
+            {
+                slot.OwnerLane = this;
+                _slots.Add(slot);
+            }
         }
     }
 
@@ -43,9 +54,7 @@ public partial class CardLane : Node
 
         if (side == LaneSide.Player)
         {
-            cardBase.OnStartDrag += BeginDrag;
-            cardBase.OnDragging += Drag;
-            cardBase.OnEndDrag += EndDrag;
+            SubscribeCard(cardBase);
         }
         else
         {
@@ -115,6 +124,27 @@ public partial class CardLane : Node
         RemoveCardAtIndex(idx);
     }
 
+
+
+    // Utility to (un)wire a card's drag events to THIS lane's handlers.
+    // Call these when a card changes lanes.
+    public void SubscribeCard(CardBase card)
+    {
+        card.OnStartDrag += BeginDrag;
+        card.OnDragging += Drag;
+        card.OnEndDrag += EndDrag;
+    }
+    public void UnsubscribeCard(CardBase card)
+    {
+        card.OnStartDrag -= BeginDrag;
+        card.OnDragging -= Drag;
+        card.OnEndDrag -= EndDrag;
+    }
+
+    // ==============================================
+    // private helpers
+    // ==============================================
+
     private void ClearLane()
     {
         DeckManager.Instance.ClearHand(side == LaneSide.Player);
@@ -158,8 +188,6 @@ public partial class CardLane : Node
         c.TopLevel = false;
         c.ZIndex = 0;
     }
-
-    private int IndexOf(CardBase c) => _cards.FindIndex(cr => cr == c);
 
     private int ClosestSlotIndex(float globalX)
     {
