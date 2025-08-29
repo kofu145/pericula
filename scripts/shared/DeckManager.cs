@@ -56,9 +56,9 @@ public partial class DeckManager : Node
     }
 
     /// <summary>
-	/// Must be called before the start of any round.
-	/// </summary>
-	public void Initialize()
+    /// Must be called before the start of any round.
+    /// </summary>
+    public void Initialize()
     {
         initialized = true;
         EnemyDeck = StageManager.Instance.GetCurrentEnemyDeck();

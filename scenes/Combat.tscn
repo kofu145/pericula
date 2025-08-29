@@ -1,16 +1,44 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4hr0e855ng1k"]
+[gd_scene load_steps=25 format=3 uid="uid://c4hr0e855ng1k"]
 
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/PhaseController.cs" id="1_mak3c"]
 [ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="6_b4pb0"]
 [ext_resource type="Script" uid="uid://vco8yllxna0r" path="res://scenes/ViewDeckButtonBinder.cs" id="6_t74xm"]
+[ext_resource type="Texture2D" uid="uid://25rhlptkeyua" path="res://assets/button_hover_regular.png" id="7_13pag"]
 [ext_resource type="PackedScene" uid="uid://dyau1eaiah8c7" path="res://scenes/Tutorial.tscn" id="7_t74xm"]
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="7_x8jxt"]
+[ext_resource type="Texture2D" uid="uid://rmqv41pu3lvn" path="res://assets/button_pressed_regular.png" id="8_040v5"]
 [ext_resource type="Script" uid="uid://q6lik1u45kyf" path="res://scripts/combat/BetController.cs" id="8_132iy"]
 [ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="8_felwx"]
 [ext_resource type="Script" uid="uid://bqexeu4nwqnrs" path="res://scripts/combat/CombatController.cs" id="8_mak3c"]
 [ext_resource type="Resource" uid="uid://cm5w1f2f4iueg" path="res://resources/tutorialPage/CombatTutorial1.tres" id="9_acsaf"]
+[ext_resource type="Texture2D" uid="uid://tkejteclx6nb" path="res://assets/button_up_regular.png" id="9_xuxku"]
+[ext_resource type="StyleBox" uid="uid://cjuvxeskdxmr3" path="res://assets/stylebox_tex/button_hover.tres" id="10_7qnt1"]
 [ext_resource type="Resource" uid="uid://bpeexath2soo5" path="res://resources/tutorialPage/CombatTutorial2.tres" id="10_x8jxt"]
 [ext_resource type="Resource" uid="uid://dst83iae10rla" path="res://resources/tutorialPage/CombatTutorial3.tres" id="11_132iy"]
+[ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="11_mwu67"]
+[ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="12_r8g7h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pgor7"]
+texture = ExtResource("7_13pag")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ak6aq"]
+texture = ExtResource("8_040v5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_il00m"]
+texture = ExtResource("9_xuxku")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1c4m3"]
+resource_local_to_scene = true
+texture = ExtResource("7_13pag")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qriva"]
+resource_local_to_scene = true
+texture = ExtResource("8_040v5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jof5a"]
+resource_local_to_scene = true
+texture = ExtResource("9_xuxku")
 
 [node name="Combat" type="Control" node_paths=PackedStringArray("combatManager", "betController", "actionLabel", "playerChipsLabel", "negativeBalanceWarningLabel", "enemyChipsLabel", "potLabel", "turnLabel", "buyInLabel", "nextTurnBuyInLabel", "betPhaseButton", "showdownButton", "nextTurnButton", "endEncounterButton")]
 layout_mode = 3
@@ -70,10 +98,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -392.0
-offset_top = -264.0
-offset_right = 384.0
-offset_bottom = -136.0
+offset_left = -349.0
+offset_top = -291.0
+offset_right = 291.0
+offset_bottom = -91.0
 grow_horizontal = 2
 grow_vertical = 2
 side = 1
@@ -85,10 +113,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -392.0
-offset_top = -64.0
-offset_right = 384.0
-offset_bottom = 64.0
+offset_left = -346.0
+offset_top = -81.0
+offset_right = 294.0
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -157,49 +185,63 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Raise" type="Button" parent="BetController/HBoxContainer"]
-custom_minimum_size = Vector2(100, 64)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_pgor7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ak6aq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_il00m")
 text = "Match & Raise"
 
 [node name="Call" type="Button" parent="BetController/HBoxContainer"]
-custom_minimum_size = Vector2(100, 64)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = ExtResource("10_7qnt1")
+theme_override_styles/pressed = ExtResource("11_mwu67")
+theme_override_styles/normal = ExtResource("12_r8g7h")
 text = "Call"
 
 [node name="Fold" type="Button" parent="BetController/HBoxContainer"]
-custom_minimum_size = Vector2(100, 64)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = ExtResource("10_7qnt1")
+theme_override_styles/pressed = ExtResource("11_mwu67")
+theme_override_styles/normal = ExtResource("12_r8g7h")
 text = "Fold"
 
 [node name="Check" type="Button" parent="BetController/HBoxContainer"]
-custom_minimum_size = Vector2(100, 64)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxTexture_1c4m3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qriva")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jof5a")
 text = "Check"
 
 [node name="1x" type="Button" parent="BetController/HBoxContainer"]
-custom_minimum_size = Vector2(100, 64)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1x"
 
 [node name="2x" type="Button" parent="BetController/HBoxContainer"]
-custom_minimum_size = Vector2(100, 64)
+custom_minimum_size = Vector2(200, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "2x"
 
 [node name="5x" type="Button" parent="BetController/HBoxContainer"]
-custom_minimum_size = Vector2(100, 64)
+custom_minimum_size = Vector2(200, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "5x"
 
 [node name="AllIn" type="Button" parent="BetController/HBoxContainer"]
-custom_minimum_size = Vector2(100, 64)
+custom_minimum_size = Vector2(200, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "ALL IN!!"

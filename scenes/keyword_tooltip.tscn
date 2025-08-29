@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnq6knfh85wt4"]
+[gd_scene load_steps=4 format=3 uid="uid://cnq6knfh85wt4"]
 
 [ext_resource type="Script" uid="uid://c5h1ydyeun6s3" path="res://scripts/KeywordTooltip.cs" id="1_27i1h"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="2_a5buo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks5ko"]
 bg_color = Color(0.197937, 0.197937, 0.197937, 1)
@@ -43,6 +44,7 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_a5buo")
 theme_override_font_sizes/normal_font_size = 20
 text = "Name"
 fit_content = true
@@ -51,6 +53,7 @@ horizontal_alignment = 1
 [node name="CardDescription" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_a5buo")
 theme_override_font_sizes/normal_font_size = 16
 text = "Description"
 fit_content = true

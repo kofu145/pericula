@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbwoqka80h84c"]
+[gd_scene load_steps=5 format=3 uid="uid://cbwoqka80h84c"]
 
 [ext_resource type="Script" uid="uid://ce3eacidxas64" path="res://scripts/CardLane.cs" id="1_motnv"]
+[ext_resource type="Texture2D" uid="uid://dg7wdkga0mlsi" path="res://assets/cardlane.png" id="1_oge5e"]
 [ext_resource type="PackedScene" uid="uid://ctpdonyuipdam" path="res://scenes/card/cardSlot.tscn" id="1_r27dx"]
 [ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/Card.tscn" id="3_n0i63"]
 
-[node name="CardLane" type="Panel" node_paths=PackedStringArray("lane")]
-offset_right = 776.0
-offset_bottom = 128.0
+[node name="CardLane" type="TextureRect" node_paths=PackedStringArray("lane")]
+offset_right = 640.0
+offset_bottom = 200.0
+texture = ExtResource("1_oge5e")
 script = ExtResource("1_motnv")
 SlotScene = ExtResource("1_r27dx")
 CardScene = ExtResource("3_n0i63")
