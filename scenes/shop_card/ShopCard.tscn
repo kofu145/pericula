@@ -30,7 +30,6 @@ patch_margin_bottom = 16
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CardDescription" parent="CanvasLayer" node_paths=PackedStringArray("cardVisual") instance=ExtResource("3_hscbs")]
-offset_right = 250.0
 cardVisual = NodePath("../..")
 
 [node name="Health" type="Label" parent="."]

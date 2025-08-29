@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TutorialPage" load_steps=3 format=3 uid="uid://8av2eh3jeih"]
+
+[ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="1_jmt1o"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jmt1o"]
+
+[resource]
+script = ExtResource("1_jmt1o")
+tutorialImage = SubResource("PlaceholderTexture2D_jmt1o")
+pageName = "Buying Units"
+pageDescription = "Click on a card to purchase it using your chips earned during battle.
+
+Be careful not to spend all your chips of you won't be able to bet until you earn enough chips."
+metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"

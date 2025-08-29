@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TutorialPage" load_steps=3 format=3 uid="uid://dst83iae10rla"]
+
+[ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="1_uhptm"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uhptm"]
+
+[resource]
+script = ExtResource("1_uhptm")
+tutorialImage = SubResource("PlaceholderTexture2D_uhptm")
+pageName = "The Flop"
+pageDescription = "The attack order alternates between you and your opponent.
+
+Only the leftmost units attack and when attacking, the units do not receive damage.
+
+The Flop ends when either side has no cards on their lanes."
+metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"
