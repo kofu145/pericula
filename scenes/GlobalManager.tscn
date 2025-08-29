@@ -1,14 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=23 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
 [ext_resource type="Script" uid="uid://bse2d7muju74w" path="res://scripts/shared/EventBus.cs" id="3_8tji2"]
 [ext_resource type="Resource" uid="uid://bujtixc664anp" path="res://resources/cardData/club_pawn.tres" id="3_wpjal"]
-[ext_resource type="Resource" uid="uid://cd14ulb4n153f" path="res://resources/cardData/diamond_pawn.tres" id="4_8p6hn"]
+[ext_resource type="Resource" uid="uid://x1s3hs3wqykm" path="res://resources/decks/TestDeck.tres" id="3_ycd5x"]
 [ext_resource type="Script" uid="uid://cnyblma4mqw1o" path="res://scripts/shared/SceneManager.cs" id="4_e58k3"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="5_bgvav"]
-[ext_resource type="Resource" uid="uid://np0ifctevug3" path="res://resources/cardData/heart_pawn.tres" id="5_ycd5x"]
-[ext_resource type="Resource" uid="uid://b0w15y32bgqj6" path="res://resources/cardData/testCard.tres" id="6_2svbd"]
 [ext_resource type="Script" uid="uid://ckq7qoxv60uo8" path="res://scripts/shared/PopupText.cs" id="7_l76sc"]
 [ext_resource type="PackedScene" uid="uid://dha6a5my3cgt6" path="res://scenes/PopupText.tscn" id="9_s02d4"]
 [ext_resource type="Shader" uid="uid://d3717vds76o65" path="res://scripts/shaders/DiamondTransition.gdshader" id="10_ivlop"]
@@ -20,12 +18,6 @@
 [ext_resource type="Script" uid="uid://bcnq7d2jmb0mv" path="res://scripts/shared/SoundManager.cs" id="16_wpjal"]
 [ext_resource type="Script" uid="uid://dxymik5n3bcgn" path="res://scripts/shared/RunEndManager.cs" id="19_4o0wa"]
 [ext_resource type="PackedScene" uid="uid://cp02nsp5tkfuj" path="res://scenes/RunEndPanel.tscn" id="20_8mbio"]
-
-[sub_resource type="Resource" id="Resource_e58k3"]
-resource_local_to_scene = true
-script = ExtResource("5_bgvav")
-Cards = Array[Object]([ExtResource("3_wpjal"), ExtResource("4_8p6hn"), ExtResource("5_ycd5x"), ExtResource("6_2svbd"), ExtResource("3_wpjal")])
-metadata/_custom_type_script = "uid://dnh88quxuv4le"
 
 [sub_resource type="Resource" id="Resource_l76sc"]
 resource_local_to_scene = true
@@ -56,7 +48,7 @@ script = ExtResource("1_kacr6")
 
 [node name="DeckManager" type="Node" parent="."]
 script = ExtResource("2_kacr6")
-PlayerDeck = SubResource("Resource_e58k3")
+PlayerDeck = ExtResource("3_ycd5x")
 EnemyDeck = SubResource("Resource_l76sc")
 
 [node name="EventBus" type="Node" parent="."]
