@@ -29,10 +29,10 @@ public partial class CombatController : Node
         for (int i = 0; i < 2; i++)
         {
             var drawn = i == 0 ? DeckManager.Instance.Hand : DeckManager.Instance.EnemyHand;
-            foreach (var data in drawn)
+            for (int j = 0; j < drawn.Count; j++)
             {
                 var lane = i == 0 ? playerLane : enemyLane;
-                lane.SpawnCard(data, i);
+                lane.SpawnCard(drawn[j], j);
             }
 
         }
