@@ -9,6 +9,7 @@ public partial class CardBase : Control
     [Export] private float ScaleSpeed = 12f;
 
     [Export] public CardVisual Visual;
+    [Export] public TextureRect CardImage;
     public CardData Data;
     [Export] public CardDescription Description;
     [Export] public AnimationPlayer animation;
@@ -34,10 +35,11 @@ public partial class CardBase : Control
         Data = data;
         if (Visual != null) Visual.Initialize(data, FollowSpeed, ScaleSpeed);
         var cardTex = new Godot.Sprite2D();
-        cardTex.Texture = Data.Texture;
-        cardTex.Position = new Vector2(60, 82);
-        cardTex.Scale = new Vector2(3.125f, 3.125f);
-        Visual.AddChild(cardTex);
+        //cardTex.Texture = Data.Texture;
+        //cardTex.Position = new Vector2(60, 82);
+        //cardTex.Scale = new Vector2(3.125f, 3.125f);
+        CardImage.Texture = Data.Texture;
+        CardImage.Position = new Vector2(10, 32.5f);
     }
 
     public void Reveal() => Visual?.ShowInfo();
