@@ -25,6 +25,7 @@ offset_bottom = 633.0
 text = "View Deck"
 
 [node name="PlayerChipCount" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1000.0

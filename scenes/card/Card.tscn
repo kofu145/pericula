@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="4_3dwn4"]
 [ext_resource type="FontFile" uid="uid://d2e06h3tqexbl" path="res://assets/karmatic-arcade/ka1.ttf" id="4_u4wdl"]
 [ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="4_wcykg"]
-[ext_resource type="Texture2D" uid="uid://e7jcgcd315dv" path="res://assets/empty.png" id="7_1oahe"]
+[ext_resource type="Texture2D" uid="uid://e7jcgcd315dv" path="res://assets/cards/empty.png" id="7_1oahe"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="8_y3kt5"]
 
 [sub_resource type="Animation" id="Animation_1oahe"]

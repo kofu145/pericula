@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 GlobalManager="*res://scenes/GlobalManager.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="pericula"
@@ -40,4 +44,4 @@ escape={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.48865, 0.757016, 0.553124, 1)
+environment/defaults/default_clear_color=Color(0.227451, 0.239216, 0.34902, 1)

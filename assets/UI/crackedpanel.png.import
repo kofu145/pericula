@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyiegx7t444dw"
-path="res://.godot/imported/number_icon.png-24f69c8dd2937770f6d85c41623507af.ctex"
+uid="uid://dyu218r3i63pl"
+path="res://.godot/imported/crackedpanel.png-d6d6ecf3655fb12fb1304b5ea28d902b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/number_icon.png"
-dest_files=["res://.godot/imported/number_icon.png-24f69c8dd2937770f6d85c41623507af.ctex"]
+source_file="res://assets/UI/crackedpanel.png"
+dest_files=["res://.godot/imported/crackedpanel.png-d6d6ecf3655fb12fb1304b5ea28d902b.ctex"]
 
 [params]
 

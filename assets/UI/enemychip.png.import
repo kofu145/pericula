@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyiegx7t444dw"
-path="res://.godot/imported/number_icon.png-24f69c8dd2937770f6d85c41623507af.ctex"
+uid="uid://bmqh8jeds4yww"
+path="res://.godot/imported/enemychip.png-a7e107eb883690351edf6ba50e2b0d00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/number_icon.png"
-dest_files=["res://.godot/imported/number_icon.png-24f69c8dd2937770f6d85c41623507af.ctex"]
+source_file="res://assets/UI/enemychip.png"
+dest_files=["res://.godot/imported/enemychip.png-a7e107eb883690351edf6ba50e2b0d00.ctex"]
 
 [params]
 

@@ -1,29 +1,31 @@
-[gd_scene load_steps=31 format=3 uid="uid://c4hr0e855ng1k"]
+[gd_scene load_steps=34 format=3 uid="uid://c4hr0e855ng1k"]
 
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/PhaseController.cs" id="1_mak3c"]
 [ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
-[ext_resource type="Texture2D" uid="uid://c1mfvprlcnydn" path="res://assets/number_icon.png" id="6_7qnt1"]
 [ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="6_b4pb0"]
 [ext_resource type="Script" uid="uid://vco8yllxna0r" path="res://scenes/ViewDeckButtonBinder.cs" id="6_t74xm"]
-[ext_resource type="Texture2D" uid="uid://25rhlptkeyua" path="res://assets/button_hover_regular.png" id="7_13pag"]
+[ext_resource type="Texture2D" uid="uid://25rhlptkeyua" path="res://assets/UI/button_hover_regular.png" id="7_13pag"]
 [ext_resource type="PackedScene" uid="uid://dyau1eaiah8c7" path="res://scenes/Tutorial.tscn" id="7_t74xm"]
-[ext_resource type="Texture2D" uid="uid://rmqv41pu3lvn" path="res://assets/button_pressed_regular.png" id="8_040v5"]
+[ext_resource type="Texture2D" uid="uid://rmqv41pu3lvn" path="res://assets/UI/button_pressed_regular.png" id="8_040v5"]
 [ext_resource type="Script" uid="uid://q6lik1u45kyf" path="res://scripts/combat/BetController.cs" id="8_132iy"]
 [ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="8_felwx"]
 [ext_resource type="Script" uid="uid://bqexeu4nwqnrs" path="res://scripts/combat/CombatController.cs" id="8_mak3c"]
 [ext_resource type="Resource" uid="uid://cm5w1f2f4iueg" path="res://resources/tutorialPage/CombatTutorial1.tres" id="9_acsaf"]
-[ext_resource type="Texture2D" uid="uid://tkejteclx6nb" path="res://assets/button_up_regular.png" id="9_xuxku"]
+[ext_resource type="Texture2D" uid="uid://tkejteclx6nb" path="res://assets/UI/button_up_regular.png" id="9_xuxku"]
 [ext_resource type="StyleBox" uid="uid://cjuvxeskdxmr3" path="res://assets/stylebox_tex/button_hover.tres" id="10_7qnt1"]
 [ext_resource type="Resource" uid="uid://bpeexath2soo5" path="res://resources/tutorialPage/CombatTutorial2.tres" id="10_x8jxt"]
 [ext_resource type="Resource" uid="uid://dst83iae10rla" path="res://resources/tutorialPage/CombatTutorial3.tres" id="11_132iy"]
 [ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="11_mwu67"]
 [ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="12_r8g7h"]
-[ext_resource type="Texture2D" uid="uid://d3jqcqlatac7a" path="res://assets/bigger_numpanel.png" id="14_mwu67"]
-[ext_resource type="FontFile" uid="uid://d2e06h3tqexbl" path="res://assets/karmatic-arcade/ka1.ttf" id="16_r8g7h"]
-[ext_resource type="Texture2D" uid="uid://do0eg8kbumt5o" path="res://assets/main_panel.png" id="22_pgor7"]
-[ext_resource type="Texture2D" uid="uid://bmqh8jeds4yww" path="res://assets/enemychip.png" id="22_r8g7h"]
-[ext_resource type="Texture2D" uid="uid://7r215rf117lm" path="res://assets/chip.png" id="23_pgor7"]
-[ext_resource type="Texture2D" uid="uid://dyu218r3i63pl" path="res://assets/crackedpanel.png" id="24_ak6aq"]
+[ext_resource type="Shader" uid="uid://qbun5diokmrm" path="res://scripts/shaders/connected_circles.gdshader" id="18_ak6aq"]
+[ext_resource type="Texture2D" uid="uid://b8ey5pfd8ckq" path="res://assets/UI/SimplexNoise2D.png" id="19_il00m"]
+[ext_resource type="Texture2D" uid="uid://do0eg8kbumt5o" path="res://assets/UI/main_panel.png" id="22_pgor7"]
+[ext_resource type="Texture2D" uid="uid://bmqh8jeds4yww" path="res://assets/UI/enemychip.png" id="22_r8g7h"]
+[ext_resource type="Texture2D" uid="uid://7r215rf117lm" path="res://assets/UI/chip.png" id="23_pgor7"]
+[ext_resource type="Texture2D" uid="uid://dyu218r3i63pl" path="res://assets/UI/crackedpanel.png" id="24_ak6aq"]
+[ext_resource type="Texture2D" uid="uid://ydfu3xj42c1" path="res://assets/UI/long_name_panel.png" id="24_il00m"]
+[ext_resource type="Texture2D" uid="uid://6214nepigti3" path="res://assets/UI/longpanel.png" id="24_pgor7"]
+[ext_resource type="Texture2D" uid="uid://c3mivv11quyir" path="res://assets/UI/numpanel.png" id="25_il00m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pgor7"]
 texture = ExtResource("7_13pag")
@@ -46,6 +48,18 @@ texture = ExtResource("8_040v5")
 resource_local_to_scene = true
 texture = ExtResource("9_xuxku")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1c4m3"]
+shader = ExtResource("18_ak6aq")
+shader_parameter/separation = 0.032
+shader_parameter/radius = 0.012
+shader_parameter/min_thick = 0.337
+shader_parameter/speed = 0.019
+shader_parameter/tilt_45 = true
+shader_parameter/direction = -45.0
+shader_parameter/noise_texture = ExtResource("19_il00m")
+shader_parameter/color1 = Color(0.227451, 0.239216, 0.34902, 1)
+shader_parameter/color2 = Color(0.345162, 0.361311, 0.50698, 1)
+
 [node name="Combat" type="Control" node_paths=PackedStringArray("combatManager", "betController", "actionLabel", "playerChipsLabel", "negativeBalanceWarningLabel", "enemyChipsLabel", "potLabel", "turnLabel", "buyInLabel", "nextTurnBuyInLabel", "betPhaseButton", "showdownButton", "nextTurnButton", "endEncounterButton")]
 layout_mode = 3
 anchors_preset = 15
@@ -61,7 +75,7 @@ playerChipsLabel = NodePath("PlayerChips/Count")
 negativeBalanceWarningLabel = NodePath("NegativeBalanceWarningLabel")
 enemyChipsLabel = NodePath("EnemyChips/Count")
 potLabel = NodePath("Pot/Count")
-turnLabel = NodePath("TurnLabel")
+turnLabel = NodePath("RightPanel/Turn Panel/TurnLabel")
 buyInLabel = NodePath("BuyInLabel")
 nextTurnBuyInLabel = NodePath("NextTurnBuyInLabel")
 betPhaseButton = NodePath("PhaseButtons/StartBetButton")
@@ -78,19 +92,19 @@ playerLane = NodePath("../PlayerCardLane")
 enemyLane = NodePath("../EnemyCardLane")
 
 [node name="EnemyActionLabel" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -122.5
-offset_top = -125.0
-offset_right = 114.5
-offset_bottom = -75.0
+offset_left = -124.0
+offset_top = 259.0
+offset_right = 113.0
+offset_bottom = 309.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 36
 text = "Enemy Action"
 horizontal_alignment = 1
@@ -137,22 +151,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 682.0
-offset_top = 457.0
-offset_right = 770.0
-offset_bottom = 508.0
+offset_left = 653.0
+offset_top = 392.0
+offset_right = 815.0
+offset_bottom = 461.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "100
 "
 horizontal_alignment = 1
-
-[node name="NumberIcon" type="Sprite2D" parent="EnemyChips"]
-z_index = -1
-position = Vector2(748, 447)
-scale = Vector2(5, 5)
-texture = ExtResource("6_7qnt1")
 
 [node name="BetController" type="Control" parent="." node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "allInButton", "raise1xButton", "raise2xButton", "raise5xButton")]
 layout_mode = 1
@@ -161,10 +169,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 324.0
-offset_top = -498.0
-offset_right = 324.0
-offset_bottom = -498.0
+offset_left = 344.0
+offset_top = -358.0
+offset_right = 344.0
+offset_bottom = -358.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("8_132iy")
@@ -186,7 +194,6 @@ offset_right = 200.0
 offset_bottom = 700.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
 [node name="Raise" type="Button" parent="BetController/HBoxContainer"]
 custom_minimum_size = Vector2(200, 84)
@@ -285,21 +292,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 684.0
-offset_top = 151.0
-offset_right = 769.0
-offset_bottom = 202.0
+offset_left = 653.0
+offset_top = 73.0
+offset_right = 814.0
+offset_bottom = 142.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "100
 "
 horizontal_alignment = 1
-
-[node name="NumberIcon" type="Sprite2D" parent="PlayerChips"]
-position = Vector2(750, 151)
-scale = Vector2(5, 5)
-texture = ExtResource("6_7qnt1")
 
 [node name="Pot" type="Control" parent="."]
 layout_mode = 3
@@ -314,27 +316,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -266.0
-offset_top = 25.0
-offset_right = -194.0
-offset_bottom = 75.0
+offset_left = -145.0
+offset_top = 18.0
+offset_right = 42.0
+offset_bottom = 54.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 32
 text = "100"
 horizontal_alignment = 1
-
-[node name="BiggerNumpanel2" type="Sprite2D" parent="Pot"]
-z_index = -1
-position = Vector2(-237, 100)
-scale = Vector2(5, 5)
-texture = ExtResource("14_mwu67")
-
-[node name="BiggerNumpanel" type="Sprite2D" parent="."]
-position = Vector2(814, 281)
-scale = Vector2(5, 5)
-texture = ExtResource("14_mwu67")
+vertical_alignment = 1
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 layer = 121
@@ -373,14 +364,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 324.0
-offset_top = -44.0
-offset_right = 528.0
-offset_bottom = 304.0
+offset_left = 344.0
+offset_top = -34.0
+offset_right = 544.0
+offset_bottom = 314.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-alignment = 1
 
 [node name="StartBetButton" type="Button" parent="PhaseButtons"]
 custom_minimum_size = Vector2(200, 84)
@@ -422,43 +412,37 @@ theme_override_styles/pressed = ExtResource("11_mwu67")
 theme_override_styles/normal = ExtResource("12_r8g7h")
 text = "Go to Shop"
 
-[node name="TurnLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 762.0
-offset_top = 605.0
-offset_right = 858.0
-offset_bottom = 639.0
-theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 24
-text = "Turn: X"
-
 [node name="BuyInLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 747.0
-offset_top = 340.0
-offset_right = 874.0
-offset_bottom = 356.0
+offset_left = 909.0
+offset_top = 175.0
+offset_right = 1096.0
+offset_bottom = 215.0
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 15
-text = "CurrentBuy In: "
+theme_override_font_sizes/font_size = 32
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NextTurnBuyInLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 746.0
-offset_top = 224.0
-offset_right = 886.0
-offset_bottom = 239.0
+offset_left = 908.0
+offset_top = 249.0
+offset_right = 1094.0
+offset_bottom = 282.0
 theme_override_colors/font_color = Color(0.86, 0, 0.200666, 1)
-theme_override_fonts/font = ExtResource("16_r8g7h")
-theme_override_font_sizes/font_size = 13
-text = "CurrentBuy In: "
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_font_sizes/font_size = 32
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NegativeBalanceWarningLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 745.0
-offset_top = 265.0
-offset_right = 855.0
-offset_bottom = 292.0
+offset_left = 15.0
+offset_top = 613.0
+offset_right = 680.0
+offset_bottom = 643.0
 theme_override_colors/font_color = Color(0.86, 0, 0.200666, 1)
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
@@ -467,35 +451,140 @@ text = "Warning."
 [node name="CombatTutorial" parent="." instance=ExtResource("7_t74xm")]
 tutorials = Array[ExtResource("8_felwx")]([ExtResource("9_acsaf"), ExtResource("10_x8jxt"), ExtResource("11_132iy")])
 
-[node name="MainPanel" type="Sprite2D" parent="."]
+[node name="BackgroundEffect" type="Panel" parent="."]
+z_index = -50
+material = SubResource("ShaderMaterial_1c4m3")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="RightPanel" type="Node2D" parent="."]
+z_index = -10
+
+[node name="MainPanel" type="Sprite2D" parent="RightPanel"]
 z_index = -10
 position = Vector2(920, 330)
 scale = Vector2(9, 8.156)
 texture = ExtResource("22_pgor7")
 
-[node name="Enemychip" type="Sprite2D" parent="."]
-position = Vector2(751, 466)
-scale = Vector2(1.5, 1.5)
+[node name="Longpanel" type="Sprite2D" parent="RightPanel"]
+position = Vector2(920, 125.5)
+scale = Vector2(4, 4)
+texture = ExtResource("24_pgor7")
+
+[node name="Longpanel2" type="Sprite2D" parent="RightPanel"]
+position = Vector2(920, 195)
+scale = Vector2(4, 4)
+texture = ExtResource("24_pgor7")
+
+[node name="Longpanel3" type="Sprite2D" parent="RightPanel"]
+position = Vector2(920, 265)
+scale = Vector2(4, 4)
+texture = ExtResource("24_pgor7")
+
+[node name="Numpanel" type="Sprite2D" parent="RightPanel"]
+position = Vector2(825, 380)
+scale = Vector2(3, 3)
+texture = ExtResource("25_il00m")
+
+[node name="Numpanel2" type="Sprite2D" parent="RightPanel"]
+position = Vector2(825, 490)
+scale = Vector2(3, 3)
+texture = ExtResource("25_il00m")
+
+[node name="LongNamePanel" type="Sprite2D" parent="RightPanel"]
+position = Vector2(920, 45)
+scale = Vector2(4, 4)
+texture = ExtResource("24_il00m")
+
+[node name="Turn Panel" type="Sprite2D" parent="RightPanel"]
+z_index = -1
+position = Vector2(825, 600)
+scale = Vector2(2, 2)
+texture = ExtResource("24_ak6aq")
+
+[node name="TurnLabel" type="Label" parent="RightPanel/Turn Panel"]
+offset_left = -37.0
+offset_top = -10.0
+offset_right = 35.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_font_sizes/font_size = 18
+text = "Turn: X"
+
+[node name="PotLabel" type="Label" parent="RightPanel"]
+offset_left = 740.0
+offset_top = 115.0
+offset_right = 901.0
+offset_bottom = 138.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_font_sizes/font_size = 22
+text = "CURRENT POT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyInTitle" type="Label" parent="RightPanel"]
+offset_left = 771.0
+offset_top = 170.0
+offset_right = 866.0
+offset_bottom = 219.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_font_sizes/font_size = 22
+text = "CURRENT
+BUY IN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextBuyInLabel" type="Label" parent="RightPanel"]
+offset_left = 751.0
+offset_top = 254.0
+offset_right = 890.0
+offset_bottom = 277.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_font_sizes/font_size = 22
+text = "NEXT BUY IN"
+
+[node name="EnemyName" type="Label" parent="RightPanel"]
+offset_left = 733.0
+offset_top = 10.0
+offset_right = 1108.0
+offset_bottom = 80.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_font_sizes/font_size = 22
+text = "LOREM ISPUM, RULER OF ALL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLabel" type="Label" parent="RightPanel"]
+offset_left = 780.0
+offset_top = 347.0
+offset_right = 910.0
+offset_bottom = 370.0
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_font_sizes/font_size = 18
+text = "PLAYER CHIPS"
+
+[node name="EnemyLabel" type="Label" parent="RightPanel"]
+offset_left = 782.0
+offset_top = 457.0
+offset_right = 907.0
+offset_bottom = 481.0
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_font_sizes/font_size = 19
+text = "ENEMY CHIPS"
+
+[node name="Enemychip" type="Sprite2D" parent="RightPanel"]
+position = Vector2(755, 468)
 texture = ExtResource("22_r8g7h")
 
-[node name="Chip" type="Sprite2D" parent="."]
-position = Vector2(751, 553)
-scale = Vector2(1.5, 1.5)
+[node name="Chip" type="Sprite2D" parent="RightPanel"]
+position = Vector2(755, 358)
 texture = ExtResource("23_pgor7")
-
-[node name="Crackedpanel" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(923, 70)
-scale = Vector2(4, 4)
-texture = ExtResource("24_ak6aq")
-
-[node name="Crackedpanel2" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(813, 620)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("24_ak6aq")
-
-[node name="BiggerNumpanel2" type="Sprite2D" parent="."]
-position = Vector2(813, 370)
-scale = Vector2(5, 5)
-texture = ExtResource("14_mwu67")

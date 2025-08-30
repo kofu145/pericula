@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c58o6pf7u2c2y"
-path="res://.godot/imported/knight.png-b33800fb7ddfd7bcabc4517f1e9e68e8.ctex"
+uid="uid://c3mivv11quyir"
+path="res://.godot/imported/numpanel.png-5896cbc5f0a7cb95ea33c7e6456b47b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/knight.png"
-dest_files=["res://.godot/imported/knight.png-b33800fb7ddfd7bcabc4517f1e9e68e8.ctex"]
+source_file="res://assets/UI/numpanel.png"
+dest_files=["res://.godot/imported/numpanel.png-5896cbc5f0a7cb95ea33c7e6456b47b9.ctex"]
 
 [params]
 

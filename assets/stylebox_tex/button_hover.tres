@@ -1,6 +1,6 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cjuvxeskdxmr3"]
 
-[ext_resource type="Texture2D" uid="uid://25rhlptkeyua" path="res://assets/button_hover_regular.png" id="1_np6v7"]
+[ext_resource type="Texture2D" uid="uid://25rhlptkeyua" path="res://assets/UI/button_hover_regular.png" id="1_np6v7"]
 
 [resource]
 resource_local_to_scene = true
