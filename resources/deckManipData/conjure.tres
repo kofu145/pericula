@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DeckManipData" load_steps=2 format=3 uid="uid://ce66ms2hu4evy"]
+
+[ext_resource type="Script" uid="uid://csomvc22gyf1k" path="res://scripts/resources/DeckManipData.cs" id="1_6gefa"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_6gefa")
+id = 4
+DisplayName = "Conjure"
+Description = "Add a random card to your deck that is Rare or higher."
+Cost = 200
+metadata/_custom_type_script = "uid://clner77n1ff5a"

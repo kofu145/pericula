@@ -34,6 +34,7 @@ public partial class DeckManipCard : Control
 
         // TODO: Assign icon, text, etc.
         DeckManipData data = Lookup.GetDeckManipByID(_deckManipID);
+        GetNode<Label>("CardBorder/CardName").Text = data.DisplayName.ToString();
         GetNode<Label>("CardBorder/Cost").Text = data.Cost.ToString();
         GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
     }

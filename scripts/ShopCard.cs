@@ -20,7 +20,6 @@ public partial class ShopCard : Control
 
         StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION / 2f);
         StartTween(this, "scale", Vector2.One, TWEEN_DURATION, TWEEN_DURATION / 2f);
-        
     }
 
     public override void _PhysicsProcess(double delta)

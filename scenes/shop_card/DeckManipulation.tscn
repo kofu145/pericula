@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://nniabjsgwor0"]
 
-[ext_resource type="Script" uid="uid://d2ajyw3o0u05g" path="res://scripts/ShopCard.cs" id="1_81fa8"]
+[ext_resource type="Script" uid="uid://ddrnb0vsmihyy" path="res://scripts/DeckManipCard.cs" id="1_81fa8"]
 [ext_resource type="Texture2D" uid="uid://cfslaiwa8d2qw" path="res://assets/card_alt.png" id="2_5gutp"]
 [ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="3_sj2sd"]
 [ext_resource type="Texture2D" uid="uid://e7jcgcd315dv" path="res://assets/empty.png" id="4_fo8cm"]

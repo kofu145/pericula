@@ -45,9 +45,10 @@ public partial class CardDescription : Control
     }
 
     public void Initialize(DeckManipData data)
-    {   
+    {
         CardName.Text = data.DisplayName;
         Description.Text = data.Description;
+        Class.Text = "Incantation";
     }
 
     public void Display()

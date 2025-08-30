@@ -7,14 +7,18 @@ using System.Collections.Generic;
 public partial class Shop : Control
 {
     [Export] HBoxContainer shopChoices;
+    [Export] HBoxContainer manipChoices;
     [Export] PackedScene shopCardScene;
+    [Export] PackedScene manipScene;
     [Export] int choicesAvailable = 5;
+    [Export] int deckManipAvailable = 2;
     const int REROLL_COST = 2;
 
     public override void _Ready()
     {
         base._Ready();
         Initialize();
+        InitializeDeckManipOptions();
     }
 
     public void Initialize()
@@ -24,6 +28,16 @@ public partial class Shop : Control
         {
             _upgradeID = GD.RandRange(1, 4); // TODO: update w/ ids in-game
             CreateOffer(_upgradeID);
+        }
+    }
+
+    public void InitializeDeckManipOptions()
+    {
+        int _deckManipID;
+        for (int i = 0; i < deckManipAvailable; i++)
+        {
+            _deckManipID = GD.RandRange(1, 4); // TODO: update w/ ids in-game
+            CreateDeckManipOffer(_deckManipID);
         }
     }
 
@@ -41,6 +55,14 @@ public partial class Shop : Control
         card.Initialize(id, this);
 
         shopChoices.AddChild(card);
+    }
+
+    public void CreateDeckManipOffer(int id)
+    {
+        DeckManipCard card = manipScene.Instantiate<DeckManipCard>();
+        card.Initialize(id, this);
+
+        manipChoices.AddChild(card);
     }
 
     public void Reroll()

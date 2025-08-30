@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dha6a5my3cgt6" path="res://scenes/PopupText.tscn" id="9_s02d4"]
 [ext_resource type="Shader" uid="uid://d3717vds76o65" path="res://scripts/shaders/DiamondTransition.gdshader" id="10_ivlop"]
 [ext_resource type="Script" uid="uid://cyyjmmxcnipyo" path="res://scripts/shared/StageManager.cs" id="10_s02d4"]
-[ext_resource type="Script" uid="uid://krak4fxo5k5x" path="res://scripts/shared/CardLookup.cs" id="12_7a67w"]
+[ext_resource type="Script" uid="uid://d1bqdf0j2c48r" path="res://scripts/shared/Lookup.cs" id="14_2svbd"]
 [ext_resource type="Resource" uid="uid://dwica0isghtbp" path="res://resources/enemyData/testEnemy.tres" id="14_8p6hn"]
 [ext_resource type="Resource" uid="uid://ck2dnlghav1xg" path="res://resources/RunConfig.tres" id="14_ycd5x"]
 [ext_resource type="PackedScene" uid="uid://ibxg7th6h5c6" path="res://resources/tutorialPage/UIOverlay.tscn" id="15_2rbph"]
@@ -81,7 +81,7 @@ config = ExtResource("14_ycd5x")
 tempEnemy = ExtResource("14_8p6hn")
 
 [node name="CardLookup" type="Node" parent="."]
-script = ExtResource("12_7a67w")
+script = ExtResource("14_2svbd")
 
 [node name="UIOverlay" parent="." instance=ExtResource("15_2rbph")]
 

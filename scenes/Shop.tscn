@@ -14,7 +14,7 @@ expand_margin_top = 4.0
 expand_margin_right = 12.0
 expand_margin_bottom = 4.0
 
-[node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices")]
+[node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices", "manipChoices")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +23,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fpbbi")
 shopChoices = NodePath("PanelContainer/ShopChoices")
+manipChoices = NodePath("PanelContainer2/DeckManipChoices")
 shopCardScene = ExtResource("2_fpbbi")
+manipScene = ExtResource("3_fpbbi")
 
 [node name="ToBattleButton" type="Button" parent="."]
 layout_mode = 1
@@ -81,12 +83,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_xfvoa")
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
-
-[node name="DeckManipulation" parent="PanelContainer2/DeckManipChoices" instance=ExtResource("3_fpbbi")]
-layout_mode = 2
-
-[node name="DeckManipulation2" parent="PanelContainer2/DeckManipChoices" instance=ExtResource("3_fpbbi")]
-layout_mode = 2
 
 [node name="RerollButton" type="Button" parent="."]
 layout_mode = 2
