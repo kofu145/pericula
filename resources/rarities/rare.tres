@@ -7,5 +7,5 @@ script = ExtResource("1_3670p")
 DisplayName = "Rare"
 RarityType = 3
 ShopCost = 150
-Weights = 30.0
+Weights = 30
 RarityColor = Color(0.257031, 0.37923, 1, 1)

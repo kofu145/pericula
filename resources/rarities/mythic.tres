@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_2rg82")
-DisplayName = "Rare"
-RarityType = 3
-ShopCost = 150
-Weights = 30.0
-RarityColor = Color(0, 0, 0, 0)
+DisplayName = "Mythic"
+RarityType = 4
+ShopCost = 250
+Weights = 10
+RarityColor = Color(0.943865, 0, 0.265534, 1)
