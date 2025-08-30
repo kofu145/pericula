@@ -30,7 +30,7 @@ public partial class Shop : Control
 
         ShopManager.Instance.Resetreroll();
         UpdateRerollCost();
-        if (testMode) ChipManager.Instance.AddChips(1000);
+        if (testMode) ChipManager.Instance.AddChips(100000);
     }
 
     public void Initialize()

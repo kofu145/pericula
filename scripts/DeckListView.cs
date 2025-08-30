@@ -15,15 +15,12 @@ public partial class DeckListView : Control
     [Export] private Button CloseButton;
 
     // Layout config
-    [Export] private Vector2I CardSize = new(260, 360); // pixel size of each card cell
-    [Export] private int HGap = 24;
-    [Export] private int VGap = 24;
 
     // runtime refs
     private List<CardBase> _cards = new();
 
     private enum ViewMode { Deck, Draw, Discard, ShopRemove, ShopUpgrade, ShopDuplicate }
-    private List<ViewMode> CanClose = new() { ViewMode.Deck, ViewMode.Draw, ViewMode.Discard};
+    private List<ViewMode> CanClose = new() { ViewMode.Deck, ViewMode.Draw, ViewMode.Discard };
 
     public void OpenDeck() => Open(ViewMode.Deck);
     public void OpenDraw() => Open(ViewMode.Draw);
@@ -37,13 +34,6 @@ public partial class DeckListView : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        Grid.AddThemeConstantOverride("h_separation", HGap);
-        Grid.AddThemeConstantOverride("v_separation", VGap);
-
-        Resized += UpdateColumns;
-        if (Scroll != null) Scroll.Resized += UpdateColumns;
-
-        CallDeferred(nameof(UpdateColumns));
 
         CloseButton.Pressed += Close;
     }
@@ -104,19 +94,6 @@ public partial class DeckListView : Control
         Populate(source, onClickHandler);
     }
 
-
-    private void UpdateColumns()
-    {
-        // Width available to the grid (inside the ScrollContainer)
-        float avail = Scroll?.Size.X ?? Size.X;
-
-        // Each cell takes card width + horizontal gap (except the last column)
-        float cell = CardSize.X + HGap;
-
-        // Columns = how many cells fit; clamp to >= 1
-        int cols = Mathf.Max(1, Mathf.FloorToInt((avail + HGap) / cell));
-        Grid.Columns = cols;
-    }
 
     public void Clear()
     {

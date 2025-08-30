@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://4bvri2crpxyv"]
+[gd_scene load_steps=5 format=3 uid="uid://4bvri2crpxyv"]
 
 [ext_resource type="Script" uid="uid://lah3ed6n3ssj" path="res://scripts/DeckListView.cs" id="1_ce1bn"]
 [ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/Card.tscn" id="2_jmkb4"]
@@ -6,25 +6,42 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmkb4"]
 bg_color = Color(0.05, 0.05, 0.05, 0.901961)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13om8"]
+bg_color = Color(0.04, 0.04, 0.04, 1)
+
 [node name="DeckListView" type="Panel" node_paths=PackedStringArray("headerLabel", "Scroll", "Grid", "CloseButton")]
 clip_contents = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.5
+anchor_right = 0.112
+anchor_bottom = 0.5
+offset_left = -129.024
+offset_top = -324.0
+offset_right = 1022.98
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(500, 500)
 theme_override_styles/panel = SubResource("StyleBoxFlat_jmkb4")
 script = ExtResource("1_ce1bn")
 CardScene = ExtResource("2_jmkb4")
-headerLabel = NodePath("Header")
-Scroll = NodePath("MarginContainer/ScrollContainer")
-Grid = NodePath("MarginContainer/ScrollContainer/GridContainer")
-CloseButton = NodePath("Button")
-CardSize = Vector2i(100, 118)
-HGap = 16
-VGap = 16
+headerLabel = NodePath("HeaderPanel/Header")
+Scroll = NodePath("BottomPanel/MarginContainer/ScrollContainer")
+Grid = NodePath("BottomPanel/MarginContainer/ScrollContainer/GridContainer")
+CloseButton = NodePath("HeaderPanel/Button")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="BottomPanel" type="Panel" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BottomPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,40 +51,42 @@ grow_vertical = 2
 theme_override_constants/margin_left = 96
 theme_override_constants/margin_top = 96
 theme_override_constants/margin_right = 96
-theme_override_constants/margin_bottom = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BottomPanel/MarginContainer"]
 clip_contents = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="BottomPanel/MarginContainer/ScrollContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
 columns = 7
 
-[node name="CardVisualContainer" type="CenterContainer" parent="MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Header" type="Label" parent="."]
+[node name="HeaderPanel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -174.5
-offset_top = 24.0
-offset_right = 174.5
-offset_bottom = 79.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 87.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_13om8")
+
+[node name="Header" type="Label" parent="HeaderPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "Deck Type Header"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="HeaderPanel"]
 layout_mode = 0
-offset_left = 877.0
-offset_top = 28.0
-offset_right = 1107.0
-offset_bottom = 88.0
+offset_left = 897.0
+offset_top = 13.0
+offset_right = 1127.0
+offset_bottom = 73.0
 text = "Close (arrow button)"
