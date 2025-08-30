@@ -23,9 +23,9 @@ public partial class UiOverlay : CanvasLayer
 
     public void BindDraw(Button button) => button.Pressed += deckListView.OpenDraw;
     public void BindDiscard(Button button) => button.Pressed += deckListView.OpenDiscard;
-    public void BindShopRemove(Button button) => button.Pressed += deckListView.OpenShopRemove;
-    public void BindShopUpgrade(Button button) => button.Pressed += deckListView.OpenShopUpgrade;
-    public void BindShopDuplicate(Button button) => button.Pressed += deckListView.OpenShopDuplicate;
+    public void Remove() => deckListView.OpenShopRemove();
+    public void Upgrade() => deckListView.OpenShopUpgrade();
+    public void Duplicate() => deckListView.OpenShopDuplicate();
 
     public void Refresh()
     {

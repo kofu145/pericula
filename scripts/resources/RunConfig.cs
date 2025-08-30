@@ -14,7 +14,7 @@ public partial class RunConfig : Resource
 
     // enemy chips info
     [Export] public int baseEnemyStartingChips;
-    [Export] public float enemyStartingChipsPerAnteMultipler;
+    [Export] public int enemyStartingChipsPerAnteIncrease;
 
     // Buy In info
     [Export] public int baseBuyIn;

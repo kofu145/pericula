@@ -31,6 +31,7 @@ public partial class ShopManager : Node
     {
         if (playerChips >= GetRemovalCost())
         {
+            // TODO: Remove card here from the DeckManager.Instance
             removalsUsed++;
             return true;
         }
