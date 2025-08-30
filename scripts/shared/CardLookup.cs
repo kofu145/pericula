@@ -2,12 +2,12 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class CardLookup : Node
+public partial class Lookup : Node
 {
-	public static CardLookup Instance { get; private set; }
+	public static Lookup Instance { get; private set; }
 
 	const string CARD_DATA_PATH = "res://resources/cardData/";
-	const int TOTAL_CARD_COUNT = 4;
+	const string DECK_MANIP_PATH = "res://resources/deckManipData/";
 
 	public override void _Ready()
 	{
@@ -31,10 +31,28 @@ public partial class CardLookup : Node
 		GD.PrintErr("Couldn't find card with ID: " + id);
 		return null;
 	}
+	
+	public static DeckManipData GetDeckManipByID(int id)
+	{
+		foreach (string filePath in DirAccess.GetFilesAt(DECK_MANIP_PATH))
+		{
+			if (filePath.EndsWith(".tres"))
+			{
+				var manipData = GD.Load<DeckManipData>(DECK_MANIP_PATH + filePath);
+				if (manipData != null && manipData.id == id)
+				{
+					return manipData;
+				}
+			}
+		}
+
+		GD.PrintErr("Couldn't find deck manip with ID: " + id);
+		return null;
+	}
 
 	public static List<CardData> GetCardList()
 	{
-		List < CardData > cardList = [];
+		List<CardData> cardList = [];
 		foreach (string filePath in DirAccess.GetFilesAt(CARD_DATA_PATH))
 		{
 			if (filePath.EndsWith(".tres"))

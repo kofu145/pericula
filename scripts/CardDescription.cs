@@ -33,27 +33,6 @@ public partial class CardDescription : Control
 
     public void Initialize(CardData data)
     {
-        // switch (rarity)
-        // {
-        //     case "common":
-        //         CardName.Theme.SetColor("RichTextLabel", "default_color", Colors.DarkGreen);
-        //         break;
-        //     case "rare":
-        //         CardName.Theme.SetColor("RichTextLabel", "default_color", Colors.Blue);
-        //         break;
-        //     case "mythic":
-        //         CardName.Theme.SetColor("RichTextLabel", "default_color", Colors.Purple);
-        //         break;
-        //     case "legendary":
-        //         CardName.Theme.SetColor("RichTextLabel", "default_color", Colors.Gold);
-        //         break;
-        //     case "starter":
-        //         CardName.Theme.SetColor("RichTextLabel", "default_color", Colors.Gray);
-        //         break;
-        //     default:
-        //         CardName.Theme.SetColor("RichTextLabel", "default_color", Colors.Gray);
-        //         break;
-        // }
         Description.BbcodeEnabled = true;
         Class.BbcodeEnabled = true;
         string hex = TraitAndKeywordColor.ToHtml(true);
@@ -84,6 +63,12 @@ public partial class CardDescription : Control
             anchor.AddChild(tooltip);
             keywords.Add(tooltip);
         }
+    }
+
+    public void Initialize(DeckManipData data)
+    {   
+        CardName.Text = data.DisplayName;
+        Description.Text = data.Description;
     }
 
     public void Display()
