@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=31 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -12,10 +12,13 @@
 [ext_resource type="Shader" uid="uid://d3717vds76o65" path="res://scripts/shaders/DiamondTransition.gdshader" id="10_ivlop"]
 [ext_resource type="Script" uid="uid://cyyjmmxcnipyo" path="res://scripts/shared/StageManager.cs" id="10_s02d4"]
 [ext_resource type="Script" uid="uid://d1bqdf0j2c48r" path="res://scripts/shared/Lookup.cs" id="14_2svbd"]
-[ext_resource type="Resource" uid="uid://dwica0isghtbp" path="res://resources/enemyData/testEnemy.tres" id="14_8p6hn"]
+[ext_resource type="Resource" uid="uid://cbam7qbr2r0pj" path="res://resources/enemyData/testEnemyBoss.tres" id="14_5lwj7"]
+[ext_resource type="Resource" uid="uid://cmwl67i3dkerl" path="res://resources/enemyData/testEnemy.tres" id="14_8p6hn"]
+[ext_resource type="Resource" uid="uid://ckhg6n00j1qyq" path="res://resources/enemyData/testEnemyBoss_2.tres" id="14_g275a"]
 [ext_resource type="Resource" uid="uid://ck2dnlghav1xg" path="res://resources/RunConfig.tres" id="14_ycd5x"]
 [ext_resource type="PackedScene" uid="uid://ibxg7th6h5c6" path="res://resources/tutorialPage/UIOverlay.tscn" id="15_2rbph"]
 [ext_resource type="Script" uid="uid://7ui3lvlr7ktx" path="res://scripts/shared/ShopManager.cs" id="16_2svbd"]
+[ext_resource type="Resource" uid="uid://bjng4qcsln5ge" path="res://resources/enemyData/testEnemy2.tres" id="16_5lwj7"]
 [ext_resource type="Script" uid="uid://bcnq7d2jmb0mv" path="res://scripts/shared/SoundManager.cs" id="16_wpjal"]
 [ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="17_o54j6"]
 [ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="18_g275a"]
@@ -83,7 +86,7 @@ color = Color(0, 0, 0, 1)
 [node name="StageManager" type="Node" parent="."]
 script = ExtResource("10_s02d4")
 config = ExtResource("14_ycd5x")
-enemiesData = Array[Object]([ExtResource("14_8p6hn"), ExtResource("14_8p6hn"), ExtResource("14_8p6hn")])
+enemiesData = Array[Object]([ExtResource("14_5lwj7"), ExtResource("14_g275a"), ExtResource("14_8p6hn"), ExtResource("14_8p6hn"), ExtResource("14_8p6hn"), ExtResource("14_8p6hn"), ExtResource("16_5lwj7"), ExtResource("16_5lwj7"), ExtResource("16_5lwj7"), ExtResource("16_5lwj7")])
 
 [node name="CardLookup" type="Node" parent="."]
 script = ExtResource("14_2svbd")
