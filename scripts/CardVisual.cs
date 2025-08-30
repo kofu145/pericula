@@ -20,6 +20,7 @@ public partial class CardVisual : Control
     private float ScaleSpeed = 0;
     private bool doLerp = true;
     private bool faceUp = true;
+    private Color color;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -72,7 +73,7 @@ public partial class CardVisual : Control
             attackLabel.Text = baseData.BaseAttack.ToString();
             cardDescription.Initialize(baseData);
         }
-
+        color = data.Rarity.RarityColor;
         SetHolo(data.Rarity.RarityType == RarityType.Mythic || data.Rarity.RarityType == RarityType.Legendary);
     }
 
@@ -129,6 +130,9 @@ public partial class CardVisual : Control
             shaderMat.SetShaderParameter("strength", 0.12);
             shaderMat.SetShaderParameter("speed", 0.3);
             shaderMat.SetShaderParameter("angle", 45);
+            shaderMat.SetShaderParameter("red", color.R);
+            shaderMat.SetShaderParameter("blue", color.B);
+            shaderMat.SetShaderParameter("green", color.G);
             Material = shaderMat;
             cardBorder.Material = shaderMat;
         }

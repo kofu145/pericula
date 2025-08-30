@@ -20,6 +20,7 @@ public partial class ShopCard : Control
     bool _isHovering = false;
     CardData data;
     Shop shop;
+    private Color color;
 
     public override void _Ready()
     {
@@ -46,6 +47,7 @@ public partial class ShopCard : Control
         attackLabel.Text = data.BaseAttack.ToString();
         border.Modulate = data.Rarity.RarityColor;
         spriteImage.Texture = data.Texture;
+        color = data.Rarity.RarityColor;
 
         costLabel.Text = ShopManager.Instance.GetCardPrice(data).ToString();
         var rarity = data.Rarity.RarityType;
@@ -133,6 +135,9 @@ public partial class ShopCard : Control
             shaderMat.SetShaderParameter("strength", 0.12);
             shaderMat.SetShaderParameter("speed", 0.3);
             shaderMat.SetShaderParameter("angle", 45);
+            shaderMat.SetShaderParameter("red", color.R);
+            shaderMat.SetShaderParameter("blue", color.B);
+            shaderMat.SetShaderParameter("green", color.G);
             baseCard.Material = shaderMat;
             border.Material = shaderMat;
         }

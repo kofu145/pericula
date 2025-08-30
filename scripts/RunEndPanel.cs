@@ -8,7 +8,8 @@ public partial class RunEndPanel : CanvasLayer
 
     public void InitializeWin()
     {
-        header.Text = "You Won!";
+        header.BbcodeEnabled = true;
+        header.Text = "[wave]You Won![/wave]";
         description.Text = $"You earned a total of: {ChipManager.Instance.ChipsEarned} Chips\n"
         + $"You spent a total of: {ChipManager.Instance.ChipsUsed} Chips";
     }
