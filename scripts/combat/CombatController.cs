@@ -143,7 +143,7 @@ public partial class CombatController : Node
         }
     }
 
-    private void UpdateLane(bool player)
+    private async void UpdateLane(bool player)
     {
         List<CardData> toRemove = [];
         var targetLane = player ? playerLane : enemyLane;
@@ -161,7 +161,7 @@ public partial class CombatController : Node
         //GD.Print(DeckManager.Instance.EnemyHand);
         foreach (var remCard in toRemove)
         {
-            targetLane.RemoveCard(remCard);
+            await targetLane.RemoveCard(remCard);
             DeckManager.Instance.Discard(remCard, player);
         }
     }

@@ -153,9 +153,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 653.0
-offset_top = 392.0
+offset_top = 359.0
 offset_right = 815.0
-offset_bottom = 461.0
+offset_bottom = 428.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 32
@@ -302,9 +302,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 653.0
-offset_top = 73.0
+offset_top = 44.0
 offset_right = 814.0
-offset_bottom = 142.0
+offset_bottom = 113.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 32
@@ -500,12 +500,12 @@ scale = Vector2(4, 4)
 texture = ExtResource("24_pgor7")
 
 [node name="Numpanel" type="Sprite2D" parent="RightPanel"]
-position = Vector2(825, 380)
+position = Vector2(825, 351)
 scale = Vector2(3, 3)
 texture = ExtResource("25_il00m")
 
 [node name="Numpanel2" type="Sprite2D" parent="RightPanel"]
-position = Vector2(825, 490)
+position = Vector2(825, 457)
 scale = Vector2(3, 3)
 texture = ExtResource("25_il00m")
 
@@ -578,26 +578,26 @@ vertical_alignment = 1
 
 [node name="PlayerLabel" type="Label" parent="RightPanel"]
 offset_left = 780.0
-offset_top = 347.0
+offset_top = 318.0
 offset_right = 910.0
-offset_bottom = 370.0
+offset_bottom = 341.0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 18
 text = "PLAYER CHIPS"
 
 [node name="EnemyLabel" type="Label" parent="RightPanel"]
 offset_left = 782.0
-offset_top = 457.0
+offset_top = 424.0
 offset_right = 907.0
-offset_bottom = 481.0
+offset_bottom = 448.0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 19
 text = "ENEMY CHIPS"
 
 [node name="Enemychip" type="Sprite2D" parent="RightPanel"]
-position = Vector2(755, 468)
+position = Vector2(755, 435)
 texture = ExtResource("22_r8g7h")
 
 [node name="Chip" type="Sprite2D" parent="RightPanel"]
-position = Vector2(755, 358)
+position = Vector2(755, 329)
 texture = ExtResource("23_pgor7")

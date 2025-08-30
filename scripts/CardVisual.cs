@@ -8,6 +8,7 @@ public partial class CardVisual : Control
     // runtime refs
     [Export] CardBase Base;
     [Export] TextureRect CardBack;
+    public bool LerpSet => doLerp;
 
     private Vector2 offsetPos;
     private float FollowSpeed = 0;
@@ -65,6 +66,11 @@ public partial class CardVisual : Control
             GetNode<Label>("Attack").Text = baseData.BaseAttack.ToString();
             GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(baseData);
         }
+    }
+
+    public void SetOffset(Vector2 pos)
+    {
+        offsetPos = pos;
     }
 
     public void RebasePos(Vector2 newPos)
