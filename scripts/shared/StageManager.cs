@@ -78,17 +78,40 @@ public partial class StageManager : Node
     private Godot.Collections.Array<EnemyData> GetEnemies()
     {
         Godot.Collections.Array<EnemyData> result = new();
+        EnemyData boss = null;
         foreach (var data in enemiesData)
         {
+            //GD.Print($"Ante is {CurrentAnte} and data is {data.Difficulty}");
             if (data.Difficulty == CurrentAnte)
             {
-                result.Add(data);
+                if (data.IsBoss)
+                {
+                    boss = data;
+                }
+                else
+                    result.Add(data);
             }
         }
+        //GD.Print(result);
+        // result.Shuffle(); // Better method - shuffle using godot rand 
+
+        // using fisher yates
+        int n = result.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = DeckManager.Instance.RndGen.Next(n + 1);
+            EnemyData val = result[k];
+            result[k] = result[n];
+            result[n] = val;
+        }
+        if (boss != null)
+            result.Add(boss);
         return result;
     }
     public EnemyData GetEnemyAtIndex(int i)
     {
+        GD.Print($"Accessing at {i}");
         return currentAnteEnemies[i];
     }
     public int GetEnemyStartingChips() => config.EnemyChipsPerAnte[CurrentAnte] + (CurrentStageNumber == EnemiesPerAnte - 1 ? config.bossBonusPerAnte[CurrentAnte] : 0);
