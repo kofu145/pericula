@@ -14,7 +14,6 @@ public partial class UiOverlay : CanvasLayer
     {
         if (Instance == null) Instance = this;
         else if (Instance != this) { QueueFree(); return; }
-        CallDeferred(nameof(Refresh));
 
         if (GetTree().CurrentScene?.Name == "TitleScreen") Visible = false;
 
@@ -25,6 +24,7 @@ public partial class UiOverlay : CanvasLayer
 
     public void BindDraw(Button button) => button.Pressed += deckListView.OpenDraw;
     public void BindDiscard(Button button) => button.Pressed += deckListView.OpenDiscard;
+    public void Enemy(int index) => deckListView.OpenEnemy(index);
 
     /// <summary>
     /// Opens up a menu of your deck. Each card on the view will have the onClickHandler.
@@ -44,12 +44,12 @@ public partial class UiOverlay : CanvasLayer
     /// <param name="onClickHandler">The-on click function that the base cards will inherit</param>
     public void Duplicate(Action<CardBase> onClickHandler) => deckListView.OpenShopDuplicate(onClickHandler);
 
-    public void Refresh()
+    public void Refresh(string sceneName)
     {
-        GD.Print($"CurrentScene: {GetTree().CurrentScene?.Name}");
+        GD.Print($"CurrentScene: {sceneName}");
 
-        Visible = !(GetTree().CurrentScene?.Name == "TitleScreen");
-        chips.Visible = !(GetTree().CurrentScene?.Name == "Combat");
+        Visible = !(sceneName == "TitleScreen");
+        chips.Visible = !(sceneName == "Combat");
     }
 
     private void UpdateChipsUI(int newAmount)

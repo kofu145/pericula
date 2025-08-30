@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bp3r4cbe8ntmt" path="res://scripts/PreStagePanel.cs" id="1_5dvc7"]
 
-[node name="PreStagePanel" type="PanelContainer" node_paths=PackedStringArray("stageName", "stageNumber", "startRoundButton")]
+[node name="PreStagePanel" type="PanelContainer" node_paths=PackedStringArray("stageName", "stageNumber", "startRoundButton", "viewDeckButton")]
 custom_minimum_size = Vector2(1055, 152)
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,8 @@ size_flags_vertical = 3
 script = ExtResource("1_5dvc7")
 stageName = NodePath("VBoxContainer/StageName")
 stageNumber = NodePath("VBoxContainer/RoundNumber")
-startRoundButton = NodePath("VBoxContainer/Control/Button")
+startRoundButton = NodePath("VBoxContainer/Control/StartRoundButton")
+viewDeckButton = NodePath("VBoxContainer/Control/DeckButton")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -52,7 +53,7 @@ size_flags_horizontal = 3
 [node name="Control" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/Control"]
+[node name="StartRoundButton" type="Button" parent="VBoxContainer/Control"]
 layout_mode = 2
 offset_left = -241.0
 offset_top = 41.0
@@ -62,4 +63,14 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 24
 text = "START ROUND"
 
-[connection signal="pressed" from="VBoxContainer/Control/Button" to="." method="OnStartRoundClicked"]
+[node name="DeckButton" type="Button" parent="VBoxContainer/Control"]
+layout_mode = 0
+offset_left = -379.0
+offset_top = 41.0
+offset_right = -270.0
+offset_bottom = 131.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "Deck"
+
+[connection signal="pressed" from="VBoxContainer/Control/StartRoundButton" to="." method="OnStartRoundClicked"]

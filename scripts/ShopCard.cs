@@ -37,9 +37,8 @@ public partial class ShopCard : Control
         GetNode<Label>("CardBorder/Health").Text = data.BaseHP.ToString();
         GetNode<Label>("CardBorder/Attack").Text = data.BaseAttack.ToString();
 
-        double _currentCost = 100;
 
-        GetNode<Label>("CardBorder/Cost").Text = Math.Round(_currentCost).ToString();
+        GetNode<Label>("CardBorder/Cost").Text = ShopManager.Instance.GetCardPrice(data).ToString();
         GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
     }
 

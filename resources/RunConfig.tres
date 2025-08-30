@@ -7,8 +7,8 @@
 script = ExtResource("1_v7nrs")
 playerStartingChips = 100
 playerStartingDeck = ExtResource("1_ngmds")
-enemiesPerAnte = 3
-antesPerRun = 5
+enemiesPerAnte = 2
+antesPerRun = 1
 EnemyChipsPerAnte = Array[int]([100, 120, 150, 200, 300])
 bossBonusPerAnte = Array[int]([50, 50, 50, 100, 100])
 baseBuyIn = 20

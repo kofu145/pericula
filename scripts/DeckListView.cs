@@ -23,11 +23,12 @@ public partial class DeckListView : Control
     private List<CardBase> _cards = new();
 
     private enum ViewMode { Deck, Draw, Discard, ShopRemove, ShopUpgrade, ShopDuplicate }
-    private List<ViewMode> CanClose = new() { ViewMode.Deck, ViewMode.Draw, ViewMode.Discard };
+    private List<ViewMode> CanClose = new() { ViewMode.Deck, ViewMode.Draw, ViewMode.Discard};
 
     public void OpenDeck() => Open(ViewMode.Deck);
     public void OpenDraw() => Open(ViewMode.Draw);
     public void OpenDiscard() => Open(ViewMode.Discard);
+    public void OpenEnemy(int index) => OpenEnemyPanel(index);
     public void OpenShopRemove(Action<CardBase> onClickHandler) => Open(ViewMode.ShopRemove, onClickHandler);  // should have a function as aa parameter
     public void OpenShopUpgrade(Action<CardBase> onClickHandler) => Open(ViewMode.ShopUpgrade, onClickHandler);
     public void OpenShopDuplicate(Action<CardBase> onClickHandler) => Open(ViewMode.ShopDuplicate, onClickHandler);
@@ -52,6 +53,18 @@ public partial class DeckListView : Control
         Visible = true;
         Refresh(mode, onClickHandler);
         CloseButton.Visible = CanClose.Contains(mode);
+    }
+
+    private void OpenEnemyPanel(int index)
+    {
+        Visible = true;
+        CloseButton.Visible = true;
+
+        var enemy = StageManager.Instance.GetEnemyAtIndex(index);
+
+        Clear();
+        headerLabel.Text = $"{enemy.DisplayName}'s Deck";
+        Populate(enemy.deck.Cards, null);
     }
 
     private void Close()
@@ -83,8 +96,8 @@ public partial class DeckListView : Control
             ViewMode.Draw => "Player Draw Pile",
             ViewMode.Discard => "Player Discard Pile",
             ViewMode.ShopRemove => "Remove a Card",
-            ViewMode.ShopUpgrade => "Transmogify a Card",
             ViewMode.ShopDuplicate => "Duplicate a Card",
+            ViewMode.ShopUpgrade => "Transmogify a Card",
             _ => ""
         };
 
@@ -129,8 +142,8 @@ public partial class DeckListView : Control
         {
             cardBase.OnLeftClicked += c =>
             {
-                onClickHandler(c);  
-                Close(); 
+                onClickHandler(c);
+                Close();
             };
         }
         cardBase.EnableDefaultDrag = false;
