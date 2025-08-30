@@ -78,6 +78,9 @@ public partial class DeckListView : Control
             ViewMode.Deck => "Player Deck",
             ViewMode.Draw => "Player Draw Pile",
             ViewMode.Discard => "Player Discard Pile",
+            ViewMode.ShopRemove => "Remove a Card",
+            ViewMode.ShopUpgrade => "Transmogify a Card",
+            ViewMode.ShopDuplicate => "Duplicate a Card",
             _ => ""
         };
 

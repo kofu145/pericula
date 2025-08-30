@@ -4,6 +4,13 @@ using System.Collections.Generic;
 
 public partial class DeckManipCard : Control
 {
+    enum Incantation : int
+    {
+        Remove = 1,
+        Duplicate = 2,
+        Conjure = 3,
+        Upgrade = 4
+    }
     [Export] CardDescription description;
     int _deckManipID;
     bool _disabled = false;
@@ -66,10 +73,20 @@ public partial class DeckManipCard : Control
 
     private void Buy()
     {
-        ChipManager.Instance.Deduct(_deckManipID);
-        DeckManager.Instance.AddCardByID(_deckManipID);
-        GD.Print(_deckManipID + " was selected!");
-        GD.Print("Current Deck: " + string.Join(", ", DeckManager.Instance.PlayerDeck));
+        ChipManager.Instance.Deduct(200);
+        switch (_deckManipID)
+        {
+            case (int)Incantation.Remove:
+                UiOverlay.Instance.Remove();
+                break;
+            case (int)Incantation.Duplicate:
+                UiOverlay.Instance.Duplicate();
+                break;
+            case (int)Incantation.Upgrade:
+                UiOverlay.Instance.Upgrade();
+                break;
+        }
+
         PopupText.Instance.ShowText(GlobalPosition, "Purchased!");
 
         RemoveFromShop();
