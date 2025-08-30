@@ -1,0 +1,9 @@
+Name	Description
+Intercept	Takes damage in place of the defending unit. If two or more units with Intercept are present, the leftmost becomes the defending unit.
+Final Wager	Triggers an effect when the unit dies.
+Obscured	If face-down during Bet Phase, triggers an effect when combat starts.
+Combat Start	Triggers an effect at the start of combat.
+Cleave	Damages the defending unit and all units directly to its left and right.
+Wild Card	Counts as every class.
+Advantage	Triggers an effect when an ally attacks.
+On Use	Instead of Attacking the defending target, triggers the On Use effect.

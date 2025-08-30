@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Keyword" load_steps=2 format=3 uid="uid://cshg215q640rj"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_5my5v"]
+
+[resource]
+script = ExtResource("1_5my5v")
+DisplayName = "Combat Start"
+Description = "Triggers an effect at the start of combat."
