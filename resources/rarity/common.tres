@@ -4,3 +4,8 @@
 
 [resource]
 script = ExtResource("1_c3o38")
+DisplayName = "Common"
+RarityType = 2
+ShopCost = 80
+Weights = 55.0
+RarityColor = Color(0.274369, 0.678644, 0, 1)

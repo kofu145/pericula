@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Rarity" load_steps=2 format=3 uid="uid://tm2w577qejgy"]
+
+[ext_resource type="Script" uid="uid://d3u6vaerxchcc" path="res://scripts/resources/Rarity.cs" id="1_2emjm"]
+
+[resource]
+script = ExtResource("1_2emjm")
+DisplayName = "Starter"
+RarityType = 1
+ShopCost = 0
+Weights = 0.0
+RarityColor = Color(0.55, 0.5335, 0.533775, 1)

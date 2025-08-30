@@ -7,5 +7,5 @@
 script = ExtResource("1_y0x1x")
 DisplayName = "Test Enemy"
 deck = ExtResource("1_ls3m4")
-Difficulty = 0
+Difficulty = 1
 metadata/_custom_type_script = "uid://bseo3sf3127a4"

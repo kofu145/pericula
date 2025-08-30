@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Rarity" load_steps=2 format=3 uid="uid://ffhumvpf47af"]
+
+[ext_resource type="Script" uid="uid://d3u6vaerxchcc" path="res://scripts/resources/Rarity.cs" id="1_pxit0"]
+
+[resource]
+script = ExtResource("1_pxit0")
+DisplayName = "Token"
+RarityType = 0
+ShopCost = 0
+Weights = 0.0
+RarityColor = Color(1, 0.873753, 0.843817, 1)

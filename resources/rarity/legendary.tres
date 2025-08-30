@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Rarity" load_steps=2 format=3 uid="uid://be2gy23cbidlv"]
+
+[ext_resource type="Script" uid="uid://d3u6vaerxchcc" path="res://scripts/resources/Rarity.cs" id="1_mfc7m"]
+
+[resource]
+script = ExtResource("1_mfc7m")
+DisplayName = "Mythic"
+RarityType = 4
+ShopCost = 250
+Weights = 10.0
+RarityColor = Color(1, 0.293496, 0.289194, 1)
