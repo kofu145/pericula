@@ -8,8 +8,9 @@ public partial class DeckManipCard : Control
     {
         Remove = 1,
         Duplicate = 2,
-        Conjure = 3,
-        Upgrade = 4
+        Upgrade = 3,
+        Conjure = 4,
+
     }
     [Export] CardDescription description;
     int _deckManipID;
