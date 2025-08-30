@@ -20,8 +20,9 @@ public partial class ShopManager : Node
         removalsUsed = 0;
     }
 
+    // SHOP PRICES FOR SOME OPTIONS NEED TO FACTOR THE CARD ITSELF
     public int GetUpgradeCost() => config.baseUpgradeCost;
-    public int GetRemovalCost() => (removalsUsed * config.RemovalCostIncrease) + config.baseRemovalCost;
+    public int GetRemovalCost() => config.baseRemovalCost;
     public int GetCreateRandomCardCost() => config.baseCreateRandomCardCost;
     public int GetDuplicateCost() => config.baseDuplicateCost;
     public int GetCardPrice(CardData data) => data.Rarity.ShopCost;

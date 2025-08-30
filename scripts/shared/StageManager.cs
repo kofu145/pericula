@@ -75,7 +75,6 @@ public partial class StageManager : Node
         SceneManager.ChangeSceneToFile("Shop");
     }
 
-    //: based on the currentAnte, returns a list of EnemiesPerAnte number of Enemies
     private Godot.Collections.Array<EnemyData> GetEnemies()
     {
         Godot.Collections.Array<EnemyData> result = new();
@@ -92,16 +91,9 @@ public partial class StageManager : Node
     {
         return currentAnteEnemies[i];
     }
-    public int GetEnemyStartingChips()
-    {
-        // TODO: no multiplier based on ante yet
-        return config.baseEnemyStartingChips;
-    }
-    public int GetCurrentBuyIn()
-    {
-        // TODO: no multiplier based on ante yet
-        return config.baseBuyIn;
-    }
+    public int GetEnemyStartingChips() => config.EnemyChipsPerAnte[CurrentAnte] + (CurrentStageNumber == EnemiesPerAnte - 1 ? config.bossBonusPerAnte[CurrentAnte] : 0);
+    public int GetCurrentBuyIn() => config.baseBuyIn + (CurrentAnte * config.buyInIncreasePerAnte);
+
     public Deck GetCurrentEnemyDeck()
     {
         return currentAnteEnemies[CurrentStageNumber].deck;
