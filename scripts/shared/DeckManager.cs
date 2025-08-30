@@ -94,7 +94,8 @@ public partial class DeckManager : Node
     {
         Godot.Collections.Array<CardData> returnList = new();
         foreach (var data in PlayerDeck.Cards)
-            if (data != null && data.Rarity != null && data.Rarity.RarityType != RarityType.Legendary) returnList.Add(data);
+            if (data != null && data.Rarity != null && data.Rarity.RarityType != RarityType.Legendary)
+                returnList.Add(data);
         return returnList;
     }
 
