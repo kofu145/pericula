@@ -1,7 +1,7 @@
 using Godot;
 using Godot.Collections;
 
-public enum Trait { Knight, Arcane, Citizen, Royalty, Beast, Mechanical, WildCard, Pawn };
+public enum Trait { Knight, Arcane, Citizen, Royalty, Beast, Mechanical, WildCard, Pawn, Undead };
 
 [GlobalClass]
 public partial class CardData : Resource
