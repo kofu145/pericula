@@ -1,16 +1,23 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://b4cv5p0cgkkxc"]
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://b4cv5p0cgkkxc"]
 
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_jou0k"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_4idqb"]
+[ext_resource type="Script" uid="uid://dgdrml3ghdm8w" path="res://scripts/resources/effect/PawnAdvantageBuffEffect.cs" id="2_hh7ys"]
 [ext_resource type="Texture2D" uid="uid://c58o6pf7u2c2y" path="res://assets/cards/knight.png" id="3_hh7ys"]
 [ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="3_ifdj7"]
 
 [sub_resource type="Resource" id="Resource_mjdb7"]
 resource_local_to_scene = true
 script = ExtResource("1_jou0k")
-Damage = 5
 name = ""
 metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_ifdj7"]
+script = ExtResource("2_hh7ys")
+HPBuff = 2
+DamageBuff = 2
+name = ""
+metadata/_custom_type_script = "uid://dgdrml3ghdm8w"
 
 [resource]
 resource_local_to_scene = true
@@ -24,6 +31,6 @@ BaseAttack = 4
 BaseHP = 7
 Texture = ExtResource("3_hh7ys")
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
-Passives = null
+Passives = Array[Object]([SubResource("Resource_ifdj7")])
 Keywords = []
 metadata/_custom_type_script = "uid://clner77n1ff5a"
