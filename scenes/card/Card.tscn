@@ -369,6 +369,7 @@ offset_right = 120.0
 offset_bottom = 160.0
 pivot_offset = Vector2(50, 59)
 size_flags_stretch_ratio = 0.0
+mouse_filter = 1
 script = ExtResource("1_s5r67")
 Visual = NodePath("Visual")
 CardImage = NodePath("Visual/Image")
@@ -459,7 +460,7 @@ offset_right = -172.0
 offset_bottom = -302.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
+mouse_filter = 1
 
 [node name="Image" type="TextureRect" parent="Visual"]
 z_index = -1
@@ -470,6 +471,7 @@ offset_top = 32.0
 offset_right = 110.0
 offset_bottom = 134.0
 pivot_offset = Vector2(50, 50)
+mouse_filter = 2
 texture = ExtResource("7_1oahe")
 
 [node name="CardBack" type="TextureRect" parent="."]
@@ -480,4 +482,5 @@ offset_top = -2.0
 offset_right = 120.0
 offset_bottom = 158.0
 pivot_offset = Vector2(60, 80)
+mouse_filter = 2
 texture = ExtResource("8_y3kt5")

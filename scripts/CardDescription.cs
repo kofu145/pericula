@@ -12,7 +12,7 @@ public partial class CardDescription : Control
     [Export] RichTextLabel Class;
     [Export] PackedScene keywordTooltip;
     [Export] Control anchor;
-    [Export] Vector2 tooltipOffset = new Vector2(20, 20);
+[Export] Vector2 tooltipOffset = new Vector2(20, 20);
     [Export] public Color TraitAndKeywordColor = new Color(0, 0, 0);
 
     Tween tween;
@@ -52,7 +52,7 @@ public partial class CardDescription : Control
 
         // Now replace all matches
         desc = Regex.Replace(
-            desc,
+    desc,
             pattern,
             m => $"[color={hex}]{m.Value}[/color]"
         );

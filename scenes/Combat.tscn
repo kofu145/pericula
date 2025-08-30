@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://dst83iae10rla" path="res://resources/tutorialPage/CombatTutorial3.tres" id="11_132iy"]
 [ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="11_mwu67"]
 [ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="12_r8g7h"]
-[ext_resource type="Shader" path="res://scripts/shaders/connected_circles.gdshader" id="18_ak6aq"]
+[ext_resource type="Shader" uid="uid://qbun5diokmrm" path="res://scripts/shaders/connected_circles.gdshader" id="18_ak6aq"]
 [ext_resource type="Texture2D" uid="uid://b8ey5pfd8ckq" path="res://assets/UI/SimplexNoise2D.png" id="19_il00m"]
 [ext_resource type="Texture2D" uid="uid://do0eg8kbumt5o" path="res://assets/UI/main_panel.png" id="22_pgor7"]
 [ext_resource type="Texture2D" uid="uid://bmqh8jeds4yww" path="res://assets/UI/enemychip.png" id="22_r8g7h"]
@@ -585,23 +585,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayerLabel" type="Label" parent="RightPanel"]
-offset_left = 781.0
-offset_top = 312.0
-offset_right = 877.0
-offset_bottom = 335.0
-scale = Vector2(1.4, 1.4)
+offset_left = 767.0
+offset_top = 310.0
+offset_right = 863.0
+offset_bottom = 333.0
+scale = Vector2(1.6, 1.6)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 12
-text = "PLAYER CHIPS"
+text = "YOUR CHIPS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EnemyLabel" type="Label" parent="RightPanel"]
-offset_left = 787.0
-offset_top = 425.0
-offset_right = 874.0
-offset_bottom = 441.0
-scale = Vector2(1.4, 1.4)
+offset_left = 780.0
+offset_top = 424.0
+offset_right = 867.0
+offset_bottom = 440.0
+scale = Vector2(1.6, 1.6)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 12
 text = "ENEMY CHIPS"

@@ -9,6 +9,7 @@ public partial class CardVisual : Control
     [Export] CardBase Base;
     [Export] TextureRect CardBack;
     public bool LerpSet => doLerp;
+    public bool isFaceUp => faceUp;
 
     private Vector2 offsetPos;
     private float FollowSpeed = 0;
@@ -92,13 +93,13 @@ public partial class CardVisual : Control
         if (faceUp)
         {
             Base.animation.Play("FlipCardToBack");
-            await ToSignal(Base.animation, AnimationPlayer.SignalName.AnimationFinished);
+            //await ToSignal(Base.animation, AnimationPlayer.SignalName.AnimationFinished);
             faceUp = false;
         }
         else
         {
             Base.animation.Play("FlipCardToFront");
-            await ToSignal(Base.animation, AnimationPlayer.SignalName.AnimationFinished);
+            //await ToSignal(Base.animation, AnimationPlayer.SignalName.AnimationFinished);
             faceUp = true;
             CardBack.Visible = false;
         }

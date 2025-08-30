@@ -38,7 +38,18 @@ public partial class CombatController : Node
             }
 
         }
+        playerLane.SetFlopPhase();
+        enemyLane.SetFlopPhase();
         battleState.Initialize(playerLane, enemyLane);
+    }
+
+    /// <summary>
+    /// Indicate to combat manager that bet phase has started.
+    /// </summary>
+    public void StartBetPhase()
+    {
+        playerLane.SetBetPhase();
+        enemyLane.SetBetPhase();
     }
 
     /// <summary>
@@ -132,6 +143,7 @@ public partial class CombatController : Node
     private void InitLane(bool player)
     {
         var targetLane = player ? playerLane : enemyLane;
+        targetLane.SetCombat();
         for (int i = 0; i < targetLane.CardCount; i++)
         {
             foreach (var effect in targetLane.GetCardAtIndex(i).Passives)
