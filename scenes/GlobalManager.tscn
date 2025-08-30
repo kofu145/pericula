@@ -1,9 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=27 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
 [ext_resource type="Script" uid="uid://bse2d7muju74w" path="res://scripts/shared/EventBus.cs" id="3_8tji2"]
-[ext_resource type="Resource" uid="uid://bujtixc664anp" path="res://resources/cardData/3_ClubPawn.tres" id="3_wpjal"]
+[ext_resource type="Resource" uid="uid://c3n8acwkxod23" path="res://resources/cardData/club_pawn.tres" id="3_wpjal"]
 [ext_resource type="Resource" uid="uid://x1s3hs3wqykm" path="res://resources/decks/TestDeck.tres" id="3_ycd5x"]
 [ext_resource type="Script" uid="uid://cnyblma4mqw1o" path="res://scripts/shared/SceneManager.cs" id="4_e58k3"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="5_bgvav"]
@@ -20,11 +20,7 @@
 [ext_resource type="Script" uid="uid://7ui3lvlr7ktx" path="res://scripts/shared/ShopManager.cs" id="16_2svbd"]
 [ext_resource type="Resource" uid="uid://bjng4qcsln5ge" path="res://resources/enemyData/testEnemy2.tres" id="16_5lwj7"]
 [ext_resource type="Script" uid="uid://bcnq7d2jmb0mv" path="res://scripts/shared/SoundManager.cs" id="16_wpjal"]
-[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="17_o54j6"]
-[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="18_g275a"]
 [ext_resource type="Script" uid="uid://dxymik5n3bcgn" path="res://scripts/shared/RunEndManager.cs" id="19_4o0wa"]
-[ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="19_x8feg"]
-[ext_resource type="Resource" uid="uid://be2gy23cbidlv" path="res://resources/rarities/legendary.tres" id="20_5lwj7"]
 [ext_resource type="PackedScene" uid="uid://cp02nsp5tkfuj" path="res://scenes/RunEndPanel.tscn" id="20_8mbio"]
 
 [sub_resource type="Resource" id="Resource_l76sc"]
@@ -96,7 +92,6 @@ script = ExtResource("14_2svbd")
 [node name="ShopManager" type="Node" parent="."]
 script = ExtResource("16_2svbd")
 config = ExtResource("14_ycd5x")
-rarities = Array[Object]([ExtResource("17_o54j6"), ExtResource("18_g275a"), ExtResource("19_x8feg"), ExtResource("20_5lwj7")])
 
 [node name="SoundManager" type="Node" parent="."]
 script = ExtResource("16_wpjal")
