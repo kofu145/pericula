@@ -16,6 +16,7 @@ public partial class CardBase : Control
 
     public bool EnableHoverScale { get; set; } = true;
     public bool EnableDefaultDrag { get; set; } = true;
+    public bool IsPlayer = true;
 
     // public events
     public event Action<CardBase> OnLeftClicked;
@@ -59,7 +60,8 @@ public partial class CardBase : Control
             if (EnableHoverScale) Scale = new Vector2(HoverScale, HoverScale);
 
             // Show card description
-            Description.Display();
+            if (Visual.isFaceUp || IsPlayer)
+                Description.Display();
             ZIndex = 10;
         };
         MouseExited += () =>
@@ -92,17 +94,20 @@ public partial class CardBase : Control
             {
                 OnRightClicked?.Invoke(this);
             }
-            else if (_dragging)
+            else if (mb.ButtonIndex == MouseButton.Left && !mb.IsPressed())
             {
-                // dropped
-                OnEndDrag?.Invoke(this);
-                _dragging = false;
+                if (_dragging)
+                {
+                    // dropped
+                    OnEndDrag?.Invoke(this);
+                    _dragging = false;
 
-                // Try to place/swap into hovered slot
-                // var targetSlot = GetHoveredSlot();
+                    // Try to place/swap into hovered slot
+                    // var targetSlot = GetHoveredSlot();
 
-                if (EnableDefaultDrag) Position = Vector2.Zero;
-                AcceptEvent();
+                    if (EnableDefaultDrag) Position = Vector2.Zero;
+                    AcceptEvent();
+                }
             }
         }
 
