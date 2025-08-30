@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bki587v31okuf"]
+[gd_scene load_steps=10 format=3 uid="uid://bki587v31okuf"]
 
 [ext_resource type="Script" uid="uid://d2ajyw3o0u05g" path="res://scripts/ShopCard.cs" id="1_m5bcj"]
 [ext_resource type="Texture2D" uid="uid://b5txekkfra7y6" path="res://assets/card_alt_borderless.png" id="2_lkv26"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://e7jcgcd315dv" path="res://assets/cards/empty.png" id="4_myijq"]
 [ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="5_lkv26"]
 [ext_resource type="Texture2D" uid="uid://x15fynsqc0ae" path="res://assets/card_alt_border.png" id="6_myijq"]
+[ext_resource type="FontFile" uid="uid://c1g82x6mbsiht" path="res://assets/Minercraftory.ttf" id="6_sk3ko"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="7_sk3ko"]
 
 [node name="ShopCard" type="Control" node_paths=PackedStringArray("description", "border", "baseCard", "spriteImage", "nameLabel", "healthLabel", "attackLabel", "costLabel")]
@@ -21,8 +22,8 @@ border = NodePath("Base/Border")
 baseCard = NodePath("Base")
 spriteImage = NodePath("Base/Image")
 nameLabel = NodePath("Base/CardName")
-healthLabel = NodePath("Base/Health")
-attackLabel = NodePath("Base/Attack")
+healthLabel = NodePath("")
+attackLabel = NodePath("")
 costLabel = NodePath("Panel/Cost")
 
 [node name="Base" type="TextureRect" parent="."]
@@ -43,36 +44,6 @@ offset_right = 110.0
 offset_bottom = 134.0
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("4_myijq")
-
-[node name="Health" type="Label" parent="Base"]
-layout_mode = 0
-offset_left = 78.0
-offset_top = 133.0
-offset_right = 109.0
-offset_bottom = 153.0
-scale = Vector2(1.2, 1.2)
-theme_override_colors/font_color = Color(0.107714, 0.678551, 7.12335e-06, 1)
-theme_override_colors/font_shadow_color = Color(0.10091, 0.351419, 0.097345, 1)
-theme_override_fonts/font = ExtResource("4_fa6lo")
-theme_override_font_sizes/font_size = 10
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Attack" type="Label" parent="Base"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 135.0
-offset_right = 36.0
-offset_bottom = 152.0
-scale = Vector2(1.2, 1.2)
-theme_override_colors/font_color = Color(0.484068, 0.10549, 0.101686, 1)
-theme_override_colors/font_shadow_color = Color(0.947244, 0.393573, 0.359345, 1)
-theme_override_fonts/font = ExtResource("4_fa6lo")
-theme_override_font_sizes/font_size = 10
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="CardName" type="Label" parent="Base"]
 layout_mode = 1
@@ -97,6 +68,34 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_myijq")
+
+[node name="Attack" type="Label" parent="Base"]
+offset_left = 5.0
+offset_top = 135.0
+offset_right = 128.0
+offset_bottom = 202.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_sk3ko")
+theme_override_font_sizes/font_size = 41
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="Base"]
+offset_left = 77.0
+offset_top = 135.0
+offset_right = 204.0
+offset_bottom = 201.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_sk3ko")
+theme_override_font_sizes/font_size = 41
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
