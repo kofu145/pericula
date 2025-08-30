@@ -6,6 +6,8 @@ public partial class ShopCard : Control
 {
     [Export] CardDescription description;
     [Export] private TextureRect border;
+    [Export] private TextureRect baseCard;
+    [Export] private TextureRect spriteImage;
     [Export] private Label nameLabel;
     [Export] private Label healthLabel;
     [Export] private Label attackLabel;
@@ -43,9 +45,12 @@ public partial class ShopCard : Control
         healthLabel.Text = data.BaseHP.ToString();
         attackLabel.Text = data.BaseAttack.ToString();
         border.Modulate = data.Rarity.RarityColor;
-
+        spriteImage.Texture = data.Texture;
 
         costLabel.Text = ShopManager.Instance.GetCardPrice(data).ToString();
+        var rarity = data.Rarity.RarityType;
+        SetHolo(rarity == RarityType.Mythic || rarity == RarityType.Legendary);
+
         description.Initialize(data);
     }
 
@@ -116,5 +121,23 @@ public partial class ShopCard : Control
         OnMouseExited();
         _disabled = true;
         Modulate = new Color(0.4f, 0.4f, 0.4f);
+    }
+
+    public void SetHolo(bool isHolo)
+    {
+        if (isHolo)
+        {
+            Shader shader = GD.Load<Shader>("res://scripts/shaders/movingrainbow.gdshader");
+            ShaderMaterial shaderMat = new();
+            shaderMat.Shader = shader;
+            shaderMat.SetShaderParameter("strength", 0.12);
+            shaderMat.SetShaderParameter("speed", 0.3);
+            shaderMat.SetShaderParameter("angle", 45);
+            baseCard.Material = shaderMat;
+        }
+        else
+        {
+            baseCard.Material = null;
+        }
     }
 }
