@@ -5,6 +5,11 @@ using System.Collections.Generic;
 public partial class ShopCard : Control
 {
     [Export] CardDescription description;
+    [Export] private TextureRect border;
+    [Export] private Label nameLabel;
+    [Export] private Label healthLabel;
+    [Export] private Label attackLabel;
+    [Export] private Label costLabel;
     int _cardID;
     bool _disabled = false;
 
@@ -33,14 +38,15 @@ public partial class ShopCard : Control
         _cardID = id;
         this.shop = shop;
 
-        // TODO: Assign icon, text, etc.
         data = Lookup.GetCardByID(_cardID);
-        GetNode<Label>("CardBorder/Health").Text = data.BaseHP.ToString();
-        GetNode<Label>("CardBorder/Attack").Text = data.BaseAttack.ToString();
+        nameLabel.Text = data.DisplayName;
+        healthLabel.Text = data.BaseHP.ToString();
+        attackLabel.Text = data.BaseAttack.ToString();
+        border.Modulate = data.Rarity.RarityColor;
 
 
-        GetNode<Label>("CardBorder/Cost").Text = ShopManager.Instance.GetCardPrice(data).ToString();
-        GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
+        costLabel.Text = ShopManager.Instance.GetCardPrice(data).ToString();
+        description.Initialize(data);
     }
 
     void OnInput(InputEvent @event)

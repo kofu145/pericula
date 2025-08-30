@@ -8,6 +8,7 @@ public partial class CardVisual : Control
     // runtime refs
     [Export] CardBase Base;
     [Export] TextureRect CardBack;
+    [Export] TextureRect CardBorder;
     public bool LerpSet => doLerp;
     public bool isFaceUp => faceUp;
 
@@ -56,6 +57,7 @@ public partial class CardVisual : Control
 
         offsetPos = Base.Position;
         NameLabel.Text = data.DisplayName;
+        CardBorder.Modulate = data.Rarity.RarityColor;
 
         this.FollowSpeed = FollowSpeed;
         this.ScaleSpeed = ScaleSpeed;
