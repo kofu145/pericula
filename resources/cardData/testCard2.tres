@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 [resource]
 resource_local_to_scene = true
 script = ExtResource("4_hr5ly")
-id = 999
+id = 997
 DisplayName = "Common Card"
 Description = "Combat Start: test"
 Rarity = ExtResource("3_sacea")
