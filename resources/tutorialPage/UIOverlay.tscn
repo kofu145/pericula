@@ -5,10 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="2_nohtj"]
 [ext_resource type="PackedScene" uid="uid://coyntyyf64no0" path="res://scenes/Settings.tscn" id="4_xviqy"]
 
-[node name="UIOverlay" type="CanvasLayer" node_paths=PackedStringArray("chipsCountLabel", "deckButton", "deckListView")]
+[node name="UIOverlay" type="CanvasLayer" node_paths=PackedStringArray("chips", "chipsCountLabel", "deckButton", "deckListView")]
 layer = 120
 follow_viewport_enabled = true
 script = ExtResource("1_ridxj")
+chips = NodePath("PlayerChipCount")
 chipsCountLabel = NodePath("PlayerChipCount/Count")
 deckButton = NodePath("Button")
 deckListView = NodePath("DeckListView")

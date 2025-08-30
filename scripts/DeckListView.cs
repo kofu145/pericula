@@ -22,15 +22,15 @@ public partial class DeckListView : Control
     // runtime refs
     private List<CardBase> _cards = new();
 
-    private enum ViewMode {Deck, Draw, Discard, ShopRemove, ShopUpgrade, ShopDuplicate }
-    private List<ViewMode> CanClose = new(){ViewMode.Deck, ViewMode.Draw, ViewMode.Discard};
+    private enum ViewMode { Deck, Draw, Discard, ShopRemove, ShopUpgrade, ShopDuplicate }
+    private List<ViewMode> CanClose = new() { ViewMode.Deck, ViewMode.Draw, ViewMode.Discard };
 
     public void OpenDeck() => Open(ViewMode.Deck);
     public void OpenDraw() => Open(ViewMode.Draw);
     public void OpenDiscard() => Open(ViewMode.Discard);
-    public void OpenShopRemove() => Open(ViewMode.ShopRemove);
-    public void OpenShopUpgrade() => Open(ViewMode.ShopUpgrade);
-    public void OpenShopDuplicate() => Open(ViewMode.ShopDuplicate);
+    public void OpenShopRemove(Action<CardBase> onClickHandler) => Open(ViewMode.ShopRemove, onClickHandler);  // should have a function as aa parameter
+    public void OpenShopUpgrade(Action<CardBase> onClickHandler) => Open(ViewMode.ShopUpgrade, onClickHandler);
+    public void OpenShopDuplicate(Action<CardBase> onClickHandler) => Open(ViewMode.ShopDuplicate, onClickHandler);
 
 
     // Called when the node enters the scene tree for the first time.
@@ -47,11 +47,11 @@ public partial class DeckListView : Control
         CloseButton.Pressed += Close;
     }
 
-    private void Open(ViewMode mode)
+    private void Open(ViewMode mode, Action<CardBase> onClickHandler = null)
     {
         Visible = true;
-        Refresh(mode);
-        CloseButton.Visible = CanClose.Contains(mode);
+        Refresh(mode, onClickHandler);
+        CloseButton.Visible = !CanClose.Contains(mode);
     }
 
     private void Close()
@@ -59,7 +59,8 @@ public partial class DeckListView : Control
         Visible = false;
     }
 
-    private void Refresh(ViewMode mode)
+    // add an optional parameter for the function
+    private void Refresh(ViewMode mode, Action<CardBase> onClickHandler)
     {
         Clear();
 
@@ -87,8 +88,9 @@ public partial class DeckListView : Control
             _ => ""
         };
 
-        Populate(source);
+        Populate(source, onClickHandler);
     }
+
 
     private void UpdateColumns()
     {
@@ -113,15 +115,17 @@ public partial class DeckListView : Control
     /// Populates the deck view with the given list of cardDatas.
     /// </summary>
     /// <param name="deck"> list of cards to populate the view with</param>
-    public void Populate(IEnumerable<CardData> deck)
+    public void Populate(IEnumerable<CardData> deck, Action<CardBase> onClickHandler)
     {
         Clear();
-        foreach (var data in deck) SpawnCard(data);
+        foreach (var data in deck) SpawnCard(data, onClickHandler);
     }
 
-    private void SpawnCard(CardData data)
+    // add optional parameter on the function
+    private void SpawnCard(CardData data, Action<CardBase> onClickHandler)
     {
         var cardBase = CardScene.Instantiate<CardBase>();
+        if (onClickHandler != null) cardBase.OnLeftClicked += onClickHandler;
         cardBase.EnableDefaultDrag = false;
         Grid.AddChild(cardBase);
         _cards.Add(cardBase);

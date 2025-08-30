@@ -43,7 +43,7 @@ public partial class DeckManipCard : Control
         // TODO: Assign icon, text, etc.
         DeckManipData data = Lookup.GetDeckManipByID(_deckManipID);
         GetNode<Label>("CardBorder/CardName").Text = data.DisplayName.ToString();
-        GetNode<Label>("CardBorder/Cost").Text = data.Cost.ToString();
+        GetNode<Label>("CardBorder/Cost").Text = ShopManager.Instance.GetManipPrice(id).ToString();
         GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
     }
 
@@ -74,23 +74,38 @@ public partial class DeckManipCard : Control
 
     private void Buy()
     {
-        ChipManager.Instance.Deduct(200);
+        ChipManager.Instance.Deduct(ShopManager.Instance.GetManipPrice(_deckManipID));
         switch (_deckManipID)
         {
             case (int)Incantation.Remove:
-                UiOverlay.Instance.Remove();
+                UiOverlay.Instance.Remove(RemoveCard);
                 break;
             case (int)Incantation.Duplicate:
-                UiOverlay.Instance.Duplicate();
+                UiOverlay.Instance.Duplicate(DuplicateCard);
                 break;
             case (int)Incantation.Upgrade:
-                UiOverlay.Instance.Upgrade();
+                UiOverlay.Instance.Upgrade(UpgradeCard);
                 break;
         }
 
         PopupText.Instance.ShowText(GlobalPosition, "Purchased!");
 
         RemoveFromShop();
+    }
+
+    private void RemoveCard(CardBase cardBase)
+    {
+        
+    }
+
+    private void DuplicateCard(CardBase cardBase)
+    {
+
+    }
+
+    private void UpgradeCard(CardBase cardBase)
+    {
+
     }
 
     private void StartTween(GodotObject @object, NodePath property, Variant finalValue, float duration, float delay = 0f)

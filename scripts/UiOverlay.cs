@@ -3,6 +3,7 @@ using System;
 
 public partial class UiOverlay : CanvasLayer
 {
+    [Export] private Control chips;
     [Export] private Label chipsCountLabel;
     [Export] private Button deckButton;
     [Export] private DeckListView deckListView;
@@ -13,6 +14,7 @@ public partial class UiOverlay : CanvasLayer
     {
         if (Instance == null) Instance = this;
         else if (Instance != this) { QueueFree(); return; }
+        CallDeferred(nameof(Refresh));
 
         if (GetTree().CurrentScene?.Name == "TitleScreen") Visible = false;
 
@@ -23,13 +25,16 @@ public partial class UiOverlay : CanvasLayer
 
     public void BindDraw(Button button) => button.Pressed += deckListView.OpenDraw;
     public void BindDiscard(Button button) => button.Pressed += deckListView.OpenDiscard;
-    public void Remove() => deckListView.OpenShopRemove();
-    public void Upgrade() => deckListView.OpenShopUpgrade();
-    public void Duplicate() => deckListView.OpenShopDuplicate();
+    public void Remove(Action<CardBase> onClickHandler) => deckListView.OpenShopRemove(onClickHandler);
+    public void Upgrade(Action<CardBase> onClickHandler) => deckListView.OpenShopUpgrade(onClickHandler);
+    public void Duplicate(Action<CardBase> onClickHandler) => deckListView.OpenShopDuplicate(onClickHandler);
 
     public void Refresh()
     {
+        GD.Print($"CurrentScene: {GetTree().CurrentScene?.Name}");
+
         Visible = !(GetTree().CurrentScene?.Name == "TitleScreen");
+        chips.Visible = !(GetTree().CurrentScene?.Name == "Combat");
     }
 
     private void UpdateChipsUI(int newAmount)
