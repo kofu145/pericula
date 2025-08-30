@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbwoqka80h84c"]
 
 [ext_resource type="Script" uid="uid://ce3eacidxas64" path="res://scripts/CardLane.cs" id="1_motnv"]
-[ext_resource type="Texture2D" uid="uid://dg7wdkga0mlsi" path="res://assets/cardlane.png" id="1_oge5e"]
+[ext_resource type="Texture2D" uid="uid://dg7wdkga0mlsi" path="res://assets/UI/cardlane.png" id="1_oge5e"]
 [ext_resource type="PackedScene" uid="uid://ctpdonyuipdam" path="res://scenes/card/cardSlot.tscn" id="1_r27dx"]
 [ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/Card.tscn" id="3_n0i63"]
 
