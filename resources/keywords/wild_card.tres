@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Keyword" load_steps=2 format=3 uid="uid://be7kxoyeabiix"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_amp77"]
+
+[resource]
+script = ExtResource("1_amp77")
+DisplayName = "Wild Card"
+Description = "Counts as every class."

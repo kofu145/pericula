@@ -5,5 +5,4 @@
 [resource]
 script = ExtResource("1_tmfsq")
 DisplayName = "Obscured"
-Description = "If face-down during the Bet Phase, triggers an effect."
-metadata/_custom_type_script = "uid://ykohcc4cvglr"
+Description = "If face-down during Bet Phase, triggers an effect when combat starts."

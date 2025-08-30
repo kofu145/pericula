@@ -10,7 +10,7 @@ public partial class ShopManager : Node
     [Export] Godot.Collections.Array<Rarity> rarities;
 
     // runtime refs of run info
-    private int removalsUsed = 0;
+    private int rerollsUsed = 0;
 
     public override void _Ready()
     {
@@ -20,13 +20,22 @@ public partial class ShopManager : Node
 
     public void StartNewRun()
     {
-        removalsUsed = 0;
+        rerollsUsed = 0;
+    }
+
+    public void Resetreroll()
+    {
+        rerollsUsed = 0;
     }
 
     public int GetUpgradeCost() => config.baseUpgradeCost;
     public int GetRemovalCost() => config.baseRemovalCost;
     public int GetCreateRandomCardCost() => config.baseCreateRandomCardCost;
     public int GetDuplicateCost() => config.baseDuplicateCost;
+
+    public int GetRerollCost() => config.rerollCost * (int)Math.Pow(config.rerollMultiplierPerUse, rerollsUsed);
+    public void Reroll() { rerollsUsed++; }
+
 
     public int GetManipPrice(int id)
     {
@@ -44,7 +53,7 @@ public partial class ShopManager : Node
                 return 0;
         }
     }
-    
+
     public int GetCardPrice(CardData data) => data.Rarity.ShopCost;
     public int GetCardPrice(Rarity rarity) => rarity.ShopCost;
 

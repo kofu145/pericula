@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://b4cv5p0cgkkxc"]
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://b4cv5p0cgkkxc"]
 
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_6ku4p"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_jou0k"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_4idqb"]
 [ext_resource type="Texture2D" uid="uid://c58o6pf7u2c2y" path="res://assets/cards/knight.png" id="3_hh7ys"]
@@ -25,5 +26,5 @@ BaseHP = 7
 Texture = ExtResource("3_hh7ys")
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-Keywords = []
+Keywords = Array[ExtResource("1_6ku4p")]([])
 metadata/_custom_type_script = "uid://clner77n1ff5a"

@@ -106,10 +106,10 @@ public partial class CardLane : Node
 
     public void DisableInteraction()
     {
-
         foreach (var card in _cards)
         {
             card.EnableDefaultDrag = false;
+            UnsubscribeCard(card);
         }
     }
 
@@ -118,6 +118,7 @@ public partial class CardLane : Node
         foreach (var card in _cards)
         {
             card.EnableDefaultDrag = true;
+            SubscribeCard(card);
         }
     }
 

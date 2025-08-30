@@ -12,9 +12,15 @@ public partial class Shop : Control
     [Export] PackedScene manipScene;
     [Export] int choicesAvailable = 5;
     [Export] int deckManipAvailable = 2;
-    const int REROLL_COST = 2;
+
+    // UI Ref
+    [Export] private Button rerollButton;
 
     [Export] private bool testMode = false;
+
+
+    // runtime
+    private int currentRerollCost = 0;
 
     public override void _Ready()
     {
@@ -22,11 +28,14 @@ public partial class Shop : Control
         Initialize();
         InitializeDeckManipOptions();
 
-        if (testMode) ChipManager.Instance.AddChips(1000);
+        ShopManager.Instance.Resetreroll();
+        UpdateRerollCost();
+        if (testMode) ChipManager.Instance.AddChips(100000);
     }
 
     public void Initialize()
     {
+
         int _upgradeID;
         for (int i = 0; i < choicesAvailable; i++)
         {
@@ -77,14 +86,16 @@ public partial class Shop : Control
 
     public void Reroll()
     {
-        if (ChipManager.Instance.Balance < REROLL_COST)
+        if (!ChipManager.Instance.Deduct(currentRerollCost))
         {
             GD.Print("Not enough chips to reroll!");
             return;
         }
         else
         {
-            ChipManager.Instance.Deduct(REROLL_COST);
+            ChipManager.Instance.Deduct(currentRerollCost);
+            ShopManager.Instance.Reroll();
+            UpdateRerollCost();
             Clear();
             Initialize();
         }
@@ -93,5 +104,11 @@ public partial class Shop : Control
     public void EndShopPhase()
     {
         SceneManager.ChangeSceneToFile("PreCombat");
+    }
+
+    private void UpdateRerollCost()
+    {
+        currentRerollCost = ShopManager.Instance.GetRerollCost();
+        rerollButton.Text = $"Reroll ({currentRerollCost})";
     }
 }

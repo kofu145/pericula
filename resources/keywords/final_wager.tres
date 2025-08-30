@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Keyword" load_steps=2 format=3 uid="uid://dyb56i12g80ky"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_hext7"]
+
+[resource]
+script = ExtResource("1_hext7")
+DisplayName = "Final Wager"
+Description = "Triggers an effect when the unit dies."

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Keyword" load_steps=2 format=3 uid="uid://da0mnxj3qgg1p"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_47eml"]
+
+[resource]
+script = ExtResource("1_47eml")
+DisplayName = "Cleave"
+Description = "Damages the defending unit and all units directly to its left and right."

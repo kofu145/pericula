@@ -32,6 +32,8 @@ public partial class RunConfig : Resource
     [Export] public int baseUpgradeCost;
     [Export] public int baseCreateRandomCardCost;
     [Export] public int baseDuplicateCost;
+    [Export] public int rerollCost = 20;
+    [Export] public int rerollMultiplierPerUse = 2;
 
     // when can rarities start to appear
     [Export] public int mythicAvailableAtAnte;

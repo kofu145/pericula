@@ -55,6 +55,5 @@ public partial class PreStagePanel : PanelContainer
     {
         Modulate = new Color(0.5f, 0.5f, 0.5f);
         startRoundButton.Disabled = true;
-
     }
 }

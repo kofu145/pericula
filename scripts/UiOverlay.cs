@@ -46,10 +46,8 @@ public partial class UiOverlay : CanvasLayer
 
     public void Refresh(string sceneName)
     {
-        GD.Print($"CurrentScene: {sceneName}");
-
-        Visible = !(sceneName == "TitleScreen");
-        chips.Visible = !(sceneName == "Combat");
+        Visible = sceneName != "scenes/TitleScreen.tscn";
+        chips.Visible = sceneName != "scenes/Combat.tscn";
     }
 
     private void UpdateChipsUI(int newAmount)
