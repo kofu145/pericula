@@ -10,10 +10,10 @@ public partial class CardData : Resource
     [Export] public string DisplayName;
     [Export(PropertyHint.MultilineText)] public string Description;
 
-    [Export(PropertyHint.Enum, "Common,Rare,Mythic,Legendary,Starter,Token")]
-    public string Rarity;
     [Export]
-    public Trait trait;
+    public Rarity Rarity;
+    [Export]
+    public Trait Trait;
     public int HP;
     public int Attack;
     [Export] public int BaseAttack;
@@ -32,7 +32,7 @@ public partial class CardData : Resource
 
     public override string ToString()
     {
-        return $"{DisplayName} ({id}):\nHealth: {HP}/{BaseHP}, Attack: {Attack}/{BaseAttack}, Trait: {trait}, Rarity: {Rarity}, Description: {Description}";
+        return $"{DisplayName} ({id}):\nHealth: {HP}/{BaseHP}, Attack: {Attack}/{BaseAttack}, Trait: {Trait}, Rarity: {Rarity}, Description: {Description}";
     }
 
     public void ResetForBattle()
