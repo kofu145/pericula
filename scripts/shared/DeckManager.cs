@@ -158,6 +158,45 @@ public partial class DeckManager : Node
         }
     }
 
+    public void DuplicateCard(CardData card)
+    {
+        // optional check for if it exists in deck?
+        // if (PlayerDeck.Contains(card))
+
+        PlayerDeck.Cards.Add((CardData)card.Duplicate(true));
+    }
+
+    public void Remove(CardData cardToRemove)
+    {
+        PlayerDeck.Cards.Remove(cardToRemove);
+    }
+
+    public void Upgrade(CardData card)
+    {
+        Rarity rarity = card.Rarity;
+        if (card.Rarity.RarityType == RarityType.Legendary)
+        {
+            GD.PrintErr("tried to upgrade a legendary card!");
+            return;
+        }
+        var upgradeTo = (int)rarity.RarityType + 1;
+
+        var targets = Lookup.GetCardsByRarity((RarityType)upgradeTo);
+        int target = RndGen.Next(targets.Count);
+
+        Remove(card);
+        PlayerDeck.Cards.Add(targets[target]);
+
+    }
+
+    public void AddRandomCard()
+    {
+        int roll = RndGen.Next(100);
+        RarityType target = roll < 5 ? RarityType.Legendary : RarityType.Mythic;
+        var targets = Lookup.GetCardsByRarity(target);
+        PlayerDeck.Cards.Add(targets[RndGen.Next(targets.Count)]);
+    }
+
     // public void Discard(CardData c) => _discard.Add(c);
     // public void DiscardRange(IEnumerable<CardData> cards) => _discard.AddRange(cards);
 

@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://dst83iae10rla" path="res://resources/tutorialPage/CombatTutorial3.tres" id="11_132iy"]
 [ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="11_mwu67"]
 [ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="12_r8g7h"]
-[ext_resource type="Shader" path="res://scripts/shaders/connected_circles.gdshader" id="18_ak6aq"]
+[ext_resource type="Shader" uid="uid://qbun5diokmrm" path="res://scripts/shaders/connected_circles.gdshader" id="18_ak6aq"]
 [ext_resource type="Texture2D" uid="uid://b8ey5pfd8ckq" path="res://assets/UI/SimplexNoise2D.png" id="19_il00m"]
 [ext_resource type="Texture2D" uid="uid://do0eg8kbumt5o" path="res://assets/UI/main_panel.png" id="22_pgor7"]
 [ext_resource type="Texture2D" uid="uid://bmqh8jeds4yww" path="res://assets/UI/enemychip.png" id="22_r8g7h"]
@@ -154,11 +154,12 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 653.0
 offset_top = 359.0
-offset_right = 815.0
-offset_bottom = 428.0
+offset_right = 787.0
+offset_bottom = 410.0
 grow_horizontal = 2
+scale = Vector2(1.2, 1.2)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "100
 "
 horizontal_alignment = 1
@@ -303,11 +304,12 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 653.0
 offset_top = 44.0
-offset_right = 814.0
-offset_bottom = 113.0
+offset_right = 788.0
+offset_bottom = 95.0
 grow_horizontal = 2
+scale = Vector2(1.2, 1.2)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "100
 "
 horizontal_alignment = 1
@@ -325,13 +327,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -145.0
-offset_top = 18.0
-offset_right = 42.0
-offset_bottom = 54.0
+offset_left = -149.0
+offset_top = 13.0
+offset_right = 13.0
+offset_bottom = 51.0
 grow_horizontal = 2
+scale = Vector2(1.2, 1.2)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -429,10 +432,11 @@ text = "Go to Shop"
 layout_mode = 0
 offset_left = 909.0
 offset_top = 175.0
-offset_right = 1096.0
-offset_bottom = 215.0
+offset_right = 1064.0
+offset_bottom = 211.0
+scale = Vector2(1.2, 1.2)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -440,12 +444,13 @@ vertical_alignment = 1
 [node name="NextTurnBuyInLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 908.0
-offset_top = 249.0
-offset_right = 1094.0
+offset_top = 245.0
+offset_right = 1065.0
 offset_bottom = 282.0
+scale = Vector2(1.2, 1.2)
 theme_override_colors/font_color = Color(0.86, 0, 0.200666, 1)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -521,47 +526,50 @@ scale = Vector2(2, 2)
 texture = ExtResource("24_ak6aq")
 
 [node name="TurnLabel" type="Label" parent="RightPanel/Turn Panel"]
-offset_left = -37.0
-offset_top = -10.0
-offset_right = 35.0
-offset_bottom = 8.0
+offset_left = -43.5
+offset_top = -11.0
+offset_right = 28.5
+offset_bottom = 7.0
+scale = Vector2(1.2, 1.2)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 12
 text = "Turn: X"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PotLabel" type="Label" parent="RightPanel"]
 offset_left = 740.0
-offset_top = 115.0
+offset_top = 114.0
 offset_right = 901.0
 offset_bottom = 138.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 22
-text = "CURRENT POT"
+theme_override_font_sizes/font_size = 24
+text = "POT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BuyInTitle" type="Label" parent="RightPanel"]
-offset_left = 771.0
+offset_left = 765.0
 offset_top = 170.0
-offset_right = 866.0
-offset_bottom = 219.0
+offset_right = 875.0
+offset_bottom = 221.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 24
 text = "CURRENT
 BUY IN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NextBuyInLabel" type="Label" parent="RightPanel"]
-offset_left = 751.0
+offset_left = 744.0
 offset_top = 254.0
-offset_right = 890.0
-offset_bottom = 277.0
+offset_right = 896.0
+offset_bottom = 278.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 24
 text = "NEXT BUY IN"
 
 [node name="EnemyName" type="Label" parent="RightPanel"]
@@ -571,27 +579,31 @@ offset_right = 1108.0
 offset_bottom = 80.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 24
 text = "LOREM ISPUM, RULER OF ALL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayerLabel" type="Label" parent="RightPanel"]
-offset_left = 780.0
-offset_top = 318.0
-offset_right = 910.0
-offset_bottom = 341.0
+offset_left = 781.0
+offset_top = 312.0
+offset_right = 877.0
+offset_bottom = 335.0
+scale = Vector2(1.4, 1.4)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 12
 text = "PLAYER CHIPS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EnemyLabel" type="Label" parent="RightPanel"]
-offset_left = 782.0
-offset_top = 424.0
-offset_right = 907.0
-offset_bottom = 448.0
+offset_left = 787.0
+offset_top = 425.0
+offset_right = 874.0
+offset_bottom = 441.0
+scale = Vector2(1.4, 1.4)
 theme_override_fonts/font = ExtResource("6_b4pb0")
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 12
 text = "ENEMY CHIPS"
 
 [node name="Enemychip" type="Sprite2D" parent="RightPanel"]

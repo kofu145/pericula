@@ -26,7 +26,13 @@ public partial class Shop : Control
         int _upgradeID;
         for (int i = 0; i < choicesAvailable; i++)
         {
-            _upgradeID = GD.RandRange(1, 4); // TODO: update w/ ids in-game
+            var rarity = GenRarity();
+            var target = Lookup.GetCardsByRarity(rarity);
+            GD.Print(target);
+            GD.Print(rarity);
+            _upgradeID = target[DeckManager.Instance.RndGen.Next(target.Count)].id;
+
+
             CreateOffer(_upgradeID);
         }
     }
@@ -78,6 +84,18 @@ public partial class Shop : Control
             Clear();
             Initialize();
         }
+    }
+
+    public RarityType GenRarity()
+    {
+        var roll = DeckManager.Instance.RndGen.Next(100);
+        int[] tiers = { 100, 45, 15, 5 };
+        int target = -1;
+        for (int i = 0; i < tiers.Length; i++)
+        {
+            target = roll < tiers[i] ? i : target;
+        }
+        return (RarityType)(target + 2);
     }
 
     public void EndShopPhase()
