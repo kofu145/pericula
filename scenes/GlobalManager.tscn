@@ -78,7 +78,7 @@ color = Color(0, 0, 0, 1)
 [node name="StageManager" type="Node" parent="."]
 script = ExtResource("10_s02d4")
 config = ExtResource("14_ycd5x")
-tempEnemy = ExtResource("14_8p6hn")
+enemiesData = Array[Object]([ExtResource("14_8p6hn")])
 
 [node name="CardLookup" type="Node" parent="."]
 script = ExtResource("14_2svbd")
