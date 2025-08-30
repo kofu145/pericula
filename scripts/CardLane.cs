@@ -27,6 +27,7 @@ public partial class CardLane : Node
     public int SlotIndexOf(CardSlot slot) => _slots.IndexOf(slot);
     public int IndexOf(CardBase c) => _cards.FindIndex(x => x == c);
 
+    private bool isFlopPhase = false;
 
     public override void _Ready()
     {
@@ -52,7 +53,7 @@ public partial class CardLane : Node
         _cards.Add(cardBase);
 
         cardBase.Initialize(data);
-
+        cardBase.IsPlayer = side == LaneSide.Player;
         if (side == LaneSide.Player)
         {
             SubscribeCard(cardBase);
@@ -155,6 +156,41 @@ public partial class CardLane : Node
         card.OnEndDrag -= EndDrag;
     }
 
+    public void SetFlopPhase()
+    {
+        isFlopPhase = true;
+        if (side == LaneSide.Player)
+        {
+            for (int i = 0; i < _cards.Count; i++)
+            {
+                if ((i == 3 || i == 4) && _cards[i].Visual.isFaceUp)
+                {
+                    _cards[i].FlipCard();
+                }
+            }
+        }
+        else
+        {
+            foreach (var card in _cards)
+            {
+                if (card.Visual.isFaceUp)
+                    card.FlipCard();
+            }
+        }
+    }
+
+    public void SetCombat()
+    {
+        isFlopPhase = false;
+        foreach (var card in _cards)
+        {
+            if (!card.Visual.isFaceUp)
+            {
+                card.FlipCard();
+            }
+        }
+    }
+
     // ==============================================
     // private helpers
     // ==============================================
@@ -191,6 +227,10 @@ public partial class CardLane : Node
         ShiftOthers(currentIndex, desired);
 
         MoveInList(_cards, currentIndex, desired);
+        for (int i = 0; i < _cards.Count; i++)
+        {
+            SetBackState(_cards[i], i);
+        }
     }
 
     private void EndDrag(CardBase c)
@@ -245,6 +285,7 @@ public partial class CardLane : Node
                 var w = _cards[i];
                 if (w != null)
                     w.Reparent(_slots[i - 1]);
+
             }
         }
         else
@@ -259,6 +300,21 @@ public partial class CardLane : Node
         }
     }
 
+    private void SetBackState(CardBase card, int idxAt)
+    {
+
+        if (isFlopPhase && (idxAt == 3 || idxAt == 4) && card.Visual.isFaceUp)
+        {
+            card.FlipCard();
+        }
+        else if (idxAt < 3)
+        {
+            if (!card.Visual.isFaceUp)
+            {
+                card.FlipCard();
+            }
+        }
+    }
 
 
 }

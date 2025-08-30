@@ -129,8 +129,8 @@ public partial class DeckListView : Control
         {
             cardBase.OnLeftClicked += c =>
             {
-                onClickHandler(c);  
-                Close(); 
+                onClickHandler(c);
+                Close();
             };
         }
         cardBase.EnableDefaultDrag = false;
