@@ -212,7 +212,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_4cxr5"]
 resource_name = "MoveDownAction"
-length = 0.6
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -220,15 +220,15 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.25, 0.5),
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.6),
 "transitions": PackedFloat32Array(0.112657, 12.996, 0.138696, 0.112),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 50), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, -30), Vector2(0, 70), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_s5r67"]
 resource_name = "MoveUpAction"
-length = 0.6
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -236,10 +236,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.25, 0.5),
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.6),
 "transitions": PackedFloat32Array(0.112657, 12.996, 0.138696, 0.112),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, -50), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, 30), Vector2(0, -70), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_3dwn4"]
@@ -367,7 +367,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_y3kt5"]
 resource_name = "Trigger"
-length = 0.5
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -375,10 +375,10 @@ tracks/0/path = NodePath("Visual:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(15.455, 0.0980729, 0.164938),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -387,10 +387,10 @@ tracks/1/path = NodePath("Visual:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.25),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(12.5533, 1, 1),
 "update": 0,
-"values": [0.0, 0.20944, 0.0]
+"values": [0.0, 0.122173, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u4wdl"]
@@ -420,7 +420,7 @@ CardImage = NodePath("Visual/Image")
 Description = NodePath("Visual/CanvasLayer/CardDescription")
 animation = NodePath("Visual/AnimationPlayer")
 
-[node name="Visual" type="TextureRect" parent="." node_paths=PackedStringArray("NameLabel")]
+[node name="Visual" type="TextureRect" parent="." node_paths=PackedStringArray("NameLabel", "cardBase", "cardBack", "cardBorder", "cardDescription", "attackLabel", "healthLabel")]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -432,6 +432,12 @@ pivot_offset = Vector2(60, 80)
 texture = ExtResource("2_y3kt5")
 script = ExtResource("3_4cxr5")
 NameLabel = NodePath("CardName")
+cardBase = NodePath("..")
+cardBack = NodePath("../CardBack")
+cardBorder = NodePath("Border")
+cardDescription = NodePath("CanvasLayer/CardDescription")
+attackLabel = NodePath("Attack")
+healthLabel = NodePath("Health")
 
 [node name="CardName" type="Label" parent="Visual"]
 layout_mode = 1

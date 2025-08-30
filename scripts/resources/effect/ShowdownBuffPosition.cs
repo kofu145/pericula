@@ -3,36 +3,31 @@ using System;
 using System.Threading.Tasks;
 
 [GlobalClass]
-public partial class PawnShowdownBuffEffect : EffectTemplate
+public partial class ShowdownBuffPosition : EffectTemplate
 {
-    [Export] public int HPBuff = 2;
-    [Export] public int DamageBuff = 2;
+    [Export] public int HPBuff = 4;
+    [Export] public int AtkBuff = 4;
+    [Export] public int PositionToBuff = 0;
+
     public override void Initialize(EffectParam param)
     {
         Action handler = null;
         handler = () =>
         {
+
             param.State.QueueTrigger(
             async () =>
             {
                 var lane = param.State.GetSide(param.Self);
-                bool pawnExists = false;
-                for (int i = 0; i < lane.CardCount; i++)
+                if (lane.CardCount > 0)
                 {
-                    if (lane.GetCardAtIndex(i).id == 4 && lane.GetCardAtIndex(i) != param.Self)
-                        pawnExists = true;
-                }
-                if (pawnExists)
-                {
-                    GD.Print("exists so doing the thing!");
-                    param.Self.HP += HPBuff;
-                    param.Self.Attack += DamageBuff;
-                    BuffText(HPBuff, DamageBuff, param.Self, param);
 
+                    var target = lane.GetCardAtIndex(PositionToBuff);
+                    target.HP += HPBuff;
+                    target.Attack += AtkBuff;
+                    BuffText(HPBuff, AtkBuff, target, param);
                     await DoTriggerAnimation(param);
                 }
-
-
             });
             EventBus.Instance.ShowdownEvent -= handler;
         };

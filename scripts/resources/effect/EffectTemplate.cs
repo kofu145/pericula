@@ -11,13 +11,13 @@ public partial class EffectTemplate : Resource
     /// <summary>
     /// Called after OnUse. Legacy method that you probably won't need to touch.
     /// </summary>
-    public async virtual void OnEnqueue(EffectParam param) { }
+    public async virtual Task OnEnqueue(EffectParam param) { }
 
     /// <summary>
     /// Called whenever the current unit is actually taking an action on their turn.
     /// (most of the time we will just be using DoDamageEffect)
     /// </summary>
-    public async virtual void OnUse(EffectParam param) { }
+    public async virtual Task OnUse(EffectParam param) { }
 
     /// <summary>
     /// Called once at the start of the combat phase.
@@ -32,15 +32,25 @@ public partial class EffectTemplate : Resource
     /// </summary>
     public virtual void Reset() { }
 
+    protected async Task DealDamage(int damage, CardData target, EffectParam param)
+    {
+        target.HP -= damage;
+        await DamageText(damage, target, param);
+        EventBus.Instance.InvokeTakeDamageEvent(target);
+        //await EventBus.Instance.ClearTriggerQueue();
+    }
+
     /// <summary>
     /// Damage text - timer is aligned perfectly with when the attack animation hits the enemy card.
     /// Don't await this if using in conjunction with an animation.
     /// </summary>
     protected async Task DamageText(int damage, CardData target, EffectParam param)
     {
-        await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.27), Timer.SignalName.Timeout);
-        var damagePos = param.State.GetSide(target).GetCardBaseByData(target).GlobalPosition;
-        PopupText.Instance.ShowText(damagePos + new Vector2(60, 125), $"-{damage}");
+        var cardBase = param.State.GetSide(target).GetCardBaseByData(target);
+        ToSignal(DeckManager.Instance.GetTree().CreateTimer(.27), Timer.SignalName.Timeout);
+        var damagePos = cardBase.GlobalPosition;
+        PopupText.Instance.ShowText(damagePos + new Vector2(40, 100), $"-{damage}");
+        cardBase.Visual.UpdateLabels();
     }
 
     /// <summary>
@@ -49,9 +59,9 @@ public partial class EffectTemplate : Resource
     protected async Task BuffText(int HP, int Attack, CardData target, EffectParam param)
     {
         var cardBase = param.State.GetSide(target).GetCardBaseByData(target);
-        //await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.27), Timer.SignalName.Timeout);
+        await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.1), Timer.SignalName.Timeout);
         var damagePos = cardBase.GlobalPosition;
-        PopupText.Instance.ShowText(damagePos + new Vector2(30, 60), $"+{Attack}/+{HP}");
+        PopupText.Instance.ShowText(damagePos + new Vector2(0, 40), $"+{Attack}/+{HP}");
         cardBase.Visual.UpdateLabels();
     }
 
@@ -100,9 +110,8 @@ public partial class EffectTemplate : Resource
     /// </summary>
     protected async Task AdvanceInit()
     {
-        await ToSignal(EventBus.Instance.GetTree().CreateTimer(.01), "timeout");
-        GD.Print("DONE!");
-        EventBus.Instance.EmitSignal(EventBus.SignalName.Triggered);
+        //EventBus.Instance.EmitSignal(EventBus.SignalName.Triggered);
+        //await ToSignal(EventBus.Instance.GetTree().CreateTimer(0.5f), SceneTreeTimer.SignalName.Timeout);
     }
     /// <summary>
     /// Calls the combat controller main combat handler again. If this is not called after
@@ -115,6 +124,7 @@ public partial class EffectTemplate : Resource
         EventBus.Instance.RefreshBattle();
 
     }
+
 
 
 }

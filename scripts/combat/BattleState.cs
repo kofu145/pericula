@@ -13,8 +13,8 @@ public partial class BattleState : Node
     public Turn currentTurn;
     public int QueueCount => triggerQueue.Count;
 
-    private Queue<Callable> triggerQueue = new();
-    private Godot.Collections.Array<CardData> hasIntercept = new();
+    private Queue<Func<Task>> triggerQueue = new();
+    private List<CardData> hasIntercept = new();
 
     public void Initialize(CardLane playerLane, CardLane enemyLane)
     {
@@ -31,6 +31,7 @@ public partial class BattleState : Node
 
     public CardData GetTarget(CardData self)
     {
+        hasIntercept.RemoveAll(e => e == null); // doubt this is neccesary since carddata isnt being nulled
         var selfLane = GetSide(self);
         var opposingLane = selfLane.Side == LaneSide.Player ? EnemyLane : PlayerLane;
         CardData target = opposingLane.GetCardAtIndex(0);
@@ -53,6 +54,11 @@ public partial class BattleState : Node
         return target;
     }
 
+    public void AddToIntercept(CardData card)
+    {
+        hasIntercept.Add(card);
+    }
+
     public CardLane? GetSide(CardData card)
     {
         if (PlayerLane.Contains(card))
@@ -63,15 +69,20 @@ public partial class BattleState : Node
         return null;
     }
 
+    public CardLane OpposingLane(CardData card) => GetSide(card).Side == LaneSide.Player ? EnemyLane : PlayerLane;
+
     public async Task PopTriggerQueue()
     {
-        triggerQueue.Dequeue().Call();
-        await ToSignal(EventBus.Instance, EventBus.SignalName.Triggered);
-        GD.Print("signal done!");
+        if (triggerQueue.Count == 0)
+            return;
+        var func = triggerQueue.Dequeue();
+        //await ToSignal(EventBus.Instance, EventBus.SignalName.Triggered);
+        await func();
+        //await ToSignal(EventBus.Instance.GetTree().CreateTimer(0.7f), SceneTreeTimer.SignalName.Timeout);
     }
 
-    public void QueueTrigger(Callable callable)
+    public void QueueTrigger(Func<Task> func)
     {
-        triggerQueue.Enqueue(callable);
+        triggerQueue.Enqueue(func);
     }
 }

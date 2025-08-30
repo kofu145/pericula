@@ -16,6 +16,7 @@ public partial class CombatController : Node
 
     public void Initialize()
     {
+        EventBus.Instance.CombatManager = this;
         DeckManager.Instance.Initialize();
     }
 
@@ -80,12 +81,12 @@ public partial class CombatController : Node
 
         EventBus.Instance.InvokeShowdown();
         await ClearActionQueue();
-        DoBattle();
+        await DoBattle();
         //currLane.RemoveCardAtIndex(2);
         //actionQueue.Add(new Callable(this, MethodName.UpdateLanes));
     }
 
-    public void BattleRefreshHandler()
+    public async void BattleRefreshHandler()
     {
         UpdateLane(true);
         UpdateLane(false);
@@ -103,28 +104,27 @@ public partial class CombatController : Node
             OnShowdownEndPlayerWin?.Invoke(true);
         }
         else
-            DoBattle();
+            await DoBattle();
     }
 
-    private void DoBattle()
+    private async Task DoBattle()
     {
         var currLane = battleState.currentTurn == Turn.Player ? playerLane : enemyLane;
-        foreach (var eff in currLane.GetCardAtIndex(0).OnUse)
+        var currCard = currLane.GetCardAtIndex(0);
+        foreach (var eff in currCard.OnUse)
         {
             //GD.Print("called in onuse!");
 
             var effectParam = new EffectParam();
-            effectParam.Initialize(battleState, currLane.GetCardAtIndex(0));
+            effectParam.Initialize(battleState, currCard);
 
-            eff.OnUse(effectParam);
-            eff.OnEnqueue(effectParam);
+            await eff.OnUse(effectParam);
+            await eff.OnEnqueue(effectParam);
+            EventBus.Instance.InvokeAdvantage(currCard);
             //GD.Print("waiting?");
         }
 
-    }
-
-    private void BuildQueue()
-    {
+        await ClearActionQueue();
 
     }
 
@@ -134,11 +134,6 @@ public partial class CombatController : Node
             battleState.currentTurn = Turn.Enemy;
         else if (battleState.currentTurn == Turn.Enemy)
             battleState.currentTurn = Turn.Player;
-    }
-
-    private void Action(Callable call, bool isAnimation)
-    {
-
     }
 
     private void InitLane(bool player)
@@ -156,13 +151,15 @@ public partial class CombatController : Node
         }
     }
 
-    private async Task ClearActionQueue()
+    public async Task ClearActionQueue()
     {
         int count = battleState.QueueCount;
         for (int i = 0; i < count; i++)
         {
             await battleState.PopTriggerQueue();
         }
+        UpdateLane(true);
+        UpdateLane(false);
     }
 
     private async void UpdateLane(bool player)

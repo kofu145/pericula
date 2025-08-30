@@ -1,37 +1,38 @@
+
 using Godot;
 using System;
 using System.Threading.Tasks;
 
 [GlobalClass]
-public partial class PawnShowdownBuffEffect : EffectTemplate
+public partial class ShowdownDamageForTrait : EffectTemplate
 {
-    [Export] public int HPBuff = 2;
-    [Export] public int DamageBuff = 2;
+    [Export] public int Damage = 2;
+    [Export] public Trait TargetTrait = Trait.Arcane;
+
     public override void Initialize(EffectParam param)
     {
         Action handler = null;
         handler = () =>
         {
-            param.State.QueueTrigger(
-            async () =>
+            param.State.QueueTrigger(async () =>
             {
+                var count = 0;
                 var lane = param.State.GetSide(param.Self);
-                bool pawnExists = false;
                 for (int i = 0; i < lane.CardCount; i++)
                 {
-                    if (lane.GetCardAtIndex(i).id == 4 && lane.GetCardAtIndex(i) != param.Self)
-                        pawnExists = true;
+                    var card = lane.GetCardAtIndex(i);
+                    if (card.Trait == TargetTrait)
+                    {
+                        count++;
+                    }
                 }
-                if (pawnExists)
+                var enemies = param.State.OpposingLane(param.Self);
+                for (int i = 0; i < count; i++)
                 {
-                    GD.Print("exists so doing the thing!");
-                    param.Self.HP += HPBuff;
-                    param.Self.Attack += DamageBuff;
-                    BuffText(HPBuff, DamageBuff, param.Self, param);
-
+                    var enemy = enemies.GetCardAtIndex(DeckManager.Instance.RndGen.Next(enemies.CardCount));
+                    DealDamage(Damage, enemy, param);
                     await DoTriggerAnimation(param);
                 }
-
 
             });
             EventBus.Instance.ShowdownEvent -= handler;

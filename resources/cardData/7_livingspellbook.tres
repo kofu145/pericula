@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://c21op0lph4uj2"]
+
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_c54p4"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="1_lifjp"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_o0dmj"]
+[ext_resource type="Script" uid="uid://doqx5px7tegt4" path="res://scripts/resources/effect/ShowdownDamageForTrait.cs" id="3_boa4s"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="4_kejpi"]
+
+[sub_resource type="Resource" id="Resource_rey00"]
+script = ExtResource("2_o0dmj")
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_3yi1l"]
+script = ExtResource("3_boa4s")
+Damage = 2
+TargetTrait = 1
+name = ""
+metadata/_custom_type_script = "uid://doqx5px7tegt4"
+
+[resource]
+script = ExtResource("1_c54p4")
+id = 7
+DisplayName = "Living Spellbook"
+Description = "Showdown: Deal 2 damage to a random Foe. Repeat for each friendly Arcane unit."
+Rarity = ExtResource("4_kejpi")
+Trait = 1
+BaseAttack = 4
+BaseHP = 9
+OnUse = Array[Object]([SubResource("Resource_rey00")])
+Passives = Array[Object]([SubResource("Resource_3yi1l")])
+Keywords = [ExtResource("1_lifjp")]
+metadata/_custom_type_script = "uid://clner77n1ff5a"
