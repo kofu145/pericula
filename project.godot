@@ -28,6 +28,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="pericula"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/data_importer/plugin.cfg")
+
 [input]
 
 click={
