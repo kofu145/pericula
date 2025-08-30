@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyu218r3i63pl"
-path="res://.godot/imported/crackedpanel.png-37652a669936f270bcafb98d4d09efe5.ctex"
+uid="uid://7r215rf117lm"
+path="res://.godot/imported/chip.png-f6fb285565e6cc9f0b988b401387dfba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/crackedpanel.png"
-dest_files=["res://.godot/imported/crackedpanel.png-37652a669936f270bcafb98d4d09efe5.ctex"]
+source_file="res://assets/UI/chip.png"
+dest_files=["res://.godot/imported/chip.png-f6fb285565e6cc9f0b988b401387dfba.ctex"]
 
 [params]
 

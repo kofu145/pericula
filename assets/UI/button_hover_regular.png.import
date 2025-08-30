@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmqh8jeds4yww"
-path="res://.godot/imported/enemychip.png-1379891cca41ccf33de19b233d171155.ctex"
+uid="uid://25rhlptkeyua"
+path="res://.godot/imported/button_hover_regular.png-13428577a13621177a1a3f05cb487f23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemychip.png"
-dest_files=["res://.godot/imported/enemychip.png-1379891cca41ccf33de19b233d171155.ctex"]
+source_file="res://assets/UI/button_hover_regular.png"
+dest_files=["res://.godot/imported/button_hover_regular.png-13428577a13621177a1a3f05cb487f23.ctex"]
 
 [params]
 

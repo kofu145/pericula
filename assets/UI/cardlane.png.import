@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyiegx7t444dw"
-path="res://.godot/imported/number_icon.png-24f69c8dd2937770f6d85c41623507af.ctex"
+uid="uid://dg7wdkga0mlsi"
+path="res://.godot/imported/cardlane.png-f2c28279ee97b36b83de15edf7a1864a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/number_icon.png"
-dest_files=["res://.godot/imported/number_icon.png-24f69c8dd2937770f6d85c41623507af.ctex"]
+source_file="res://assets/UI/cardlane.png"
+dest_files=["res://.godot/imported/cardlane.png-f2c28279ee97b36b83de15edf7a1864a.ctex"]
 
 [params]
 

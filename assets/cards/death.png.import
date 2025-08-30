@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3jqcqlatac7a"
-path="res://.godot/imported/bigger_numpanel.png-970de8c8bfad75158f1db7390654c70d.ctex"
+uid="uid://setl0iw1vnf"
+path="res://.godot/imported/death.png-b56f74dbf134a1a90df7998a1bc3dba0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bigger_numpanel.png"
-dest_files=["res://.godot/imported/bigger_numpanel.png-970de8c8bfad75158f1db7390654c70d.ctex"]
+source_file="res://assets/cards/death.png"
+dest_files=["res://.godot/imported/death.png-b56f74dbf134a1a90df7998a1bc3dba0.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyiegx7t444dw"
-path="res://.godot/imported/number_icon.png-24f69c8dd2937770f6d85c41623507af.ctex"
+uid="uid://b8ey5pfd8ckq"
+path="res://.godot/imported/SimplexNoise2D.png-e59625e200522fba433f082ba129f169.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/number_icon.png"
-dest_files=["res://.godot/imported/number_icon.png-24f69c8dd2937770f6d85c41623507af.ctex"]
+source_file="res://assets/UI/SimplexNoise2D.png"
+dest_files=["res://.godot/imported/SimplexNoise2D.png-e59625e200522fba433f082ba129f169.ctex"]
 
 [params]
 
