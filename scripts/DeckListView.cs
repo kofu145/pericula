@@ -21,12 +21,15 @@ public partial class DeckListView : Control
     // runtime refs
     private List<CardBase> _cards = new();
 
-    private enum ViewMode { Closed, Deck, Draw, Discard }
+    private enum ViewMode { Closed, Deck, Draw, Discard, ShopRemove, ShopUpgrade, ShopDuplicate }
     private ViewMode currentMode = ViewMode.Closed;
 
     public void OpenDeck() => Toggle(ViewMode.Deck);
     public void OpenDraw() => Toggle(ViewMode.Draw);
     public void OpenDiscard() => Toggle(ViewMode.Discard);
+    public void OpenShopRemove() => Toggle(ViewMode.ShopRemove);
+    public void OpenShopUpgrade() => Toggle(ViewMode.ShopUpgrade);
+    public void OpenShopDuplicate() => Toggle(ViewMode.ShopDuplicate);
 
 
     // Called when the node enters the scene tree for the first time.
@@ -57,11 +60,16 @@ public partial class DeckListView : Control
     {
         Clear();
 
+        var dm = DeckManager.Instance;
+
         Godot.Collections.Array<CardData> source = currentMode switch
         {
-            ViewMode.Deck => DeckManager.Instance.PlayerFullDeck,
-            ViewMode.Draw => DeckManager.Instance.PlayerDrawPile,
-            ViewMode.Discard => DeckManager.Instance.playerDisc,
+            ViewMode.Deck => dm.PlayerFullDeck,
+            ViewMode.Draw => dm.PlayerDrawPile,
+            ViewMode.Discard => dm.playerDisc,
+            ViewMode.ShopRemove => dm.PlayerFullDeck,
+            ViewMode.ShopDuplicate => dm.PlayerFullDeck,
+            ViewMode.ShopUpgrade => dm.GetUpgradableCardsInPlayerDeck(),
             _ => DeckManager.Instance.PlayerFullDeck,
         };
 

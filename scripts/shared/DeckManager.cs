@@ -90,6 +90,13 @@ public partial class DeckManager : Node
         return true;
     }
 
+    public Godot.Collections.Array<CardData> GetUpgradableCardsInPlayerDeck()
+    {
+        Godot.Collections.Array<CardData> returnList = new();
+        foreach (var data in PlayerDeck.Cards)
+            if (data.Rarity != "Legendary") returnList.Add(data);
+        return returnList;
+    }
 
     /// <summary>
     /// Adds a random assortment of n cards to <seealso cref="Hand"/>.
