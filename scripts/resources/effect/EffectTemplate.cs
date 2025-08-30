@@ -7,14 +7,35 @@ public partial class EffectTemplate : Resource
 {
 
     [Export] public string name;
+
+    /// <summary>
+    /// Called after OnUse. Legacy method that you probably won't need to touch.
+    /// </summary>
     public async virtual void OnEnqueue(EffectParam param) { }
 
+    /// <summary>
+    /// Called whenever the current unit is actually taking an action on their turn.
+    /// (most of the time we will just be using DoDamageEffect)
+    /// </summary>
     public async virtual void OnUse(EffectParam param) { }
 
+    /// <summary>
+    /// Called once at the start of the combat phase.
+    /// Should use this as a way to set event handlers, NOT to take an actual action.
+    /// If you want an example, see showdown usage in ShowdownBuffClass.
+    /// </summary>
     public virtual void Initialize(EffectParam param) { }
 
+    /// <summary>
+    /// Called when resetting stats of recycled units (discard -> deck).
+    /// Should be used to reset event handlers, if need be. (ideally they are self-handled in initialize())
+    /// </summary>
     public virtual void Reset() { }
 
+    /// <summary>
+    /// Damage text - timer is aligned perfectly with when the attack animation hits the enemy card.
+    /// Don't await this if using in conjunction with an animation.
+    /// </summary>
     protected async Task DamageText(int damage, CardData target, EffectParam param)
     {
         await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.27), Timer.SignalName.Timeout);
@@ -22,6 +43,9 @@ public partial class EffectTemplate : Resource
         PopupText.Instance.ShowText(damagePos + new Vector2(60, 125), $"-{damage}");
     }
 
+    /// <summary>
+    /// Buff text. May call it over and over on multiple targets.
+    /// </summary>
     protected async Task BuffText(int HP, int Attack, CardData target, EffectParam param)
     {
         var cardBase = param.State.GetSide(target).GetCardBaseByData(target);
@@ -31,6 +55,11 @@ public partial class EffectTemplate : Resource
         cardBase.Visual.UpdateLabels();
     }
 
+    /// <summary>
+    /// Attack animation caller. Await this so that multiple animations don't play at once.
+    /// Make sure to call an actual ending method after this, like AdvanceAfterAction()
+    /// to actually proceed the gamestate, otherwise the game will softlock.
+    /// </summary>
     protected async Task DoAttackAnimation(EffectParam param)
     {
         var currLane = param.State.GetSide(param.Self);
@@ -43,6 +72,12 @@ public partial class EffectTemplate : Resource
         ResetAnimation(parent.animation);
     }
 
+    /// <summary>
+    /// Trigger animation, for when things like event triggers happen.
+    /// Make sure this is awaited, and make sure the end of your callable
+    /// calls something like AdvanceInit() (awaited) otherwise the game will hang 
+    /// and softlock.
+    /// </summary>
     protected async Task DoTriggerAnimation(EffectParam param)
     {
         var parent = param.State.GetSide(param.Self).GetCardBaseByData(param.Self);
@@ -58,12 +93,22 @@ public partial class EffectTemplate : Resource
         anim.Play("RESET");
     }
 
+    /// <summary>
+    /// Signal emitter, to let CombatController know we are done processing our action.
+    /// Is the only way to proceed the gamestate after an event action.
+    /// MUST be called at the end of init event, otherwise game will hang.
+    /// </summary>
     protected async Task AdvanceInit()
     {
         await ToSignal(EventBus.Instance.GetTree().CreateTimer(.01), "timeout");
         GD.Print("DONE!");
         EventBus.Instance.EmitSignal(EventBus.SignalName.Triggered);
     }
+    /// <summary>
+    /// Calls the combat controller main combat handler again. If this is not called after
+    /// an OnUse trigger, the combat manager will literally not refresh or do anything.
+    /// MUST be called at the end of OnUse, or game will stop.
+    /// </summary>
 
     protected void AdvanceAfterAction()
     {
