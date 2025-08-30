@@ -119,11 +119,11 @@ public partial class CardLane : Node
         for (int i = 0; i < _cards.Count; i++)
         {
             var pos = _cards[i].Visual.GlobalPosition;
-            GD.Print($"Moving from {pos} to {_slots[i].GlobalPosition}");
+            //GD.Print($"Moving from {pos} to {_slots[i].GlobalPosition}");
             _cards[i].Reparent(_slots[i], false);
             _cards[i].Visual.SetOffset(pos);
             _cards[i].Visual.GlobalPosition = pos;
-            GD.Print($"Moving from {pos} to {_slots[i].GlobalPosition}");
+            //GD.Print($"Moving from {pos} to {_slots[i].GlobalPosition}");
             _cards[i].Visual.ToggleLerp(true);
             await ToSignal(GetTree().CreateTimer(.05), Timer.SignalName.Timeout);
         }

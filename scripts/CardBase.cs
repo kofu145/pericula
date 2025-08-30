@@ -88,7 +88,7 @@ public partial class CardBase : Control
                 originLane = parentSlot?.OwnerLane;
                 originIndex = originLane != null ? originLane.IndexOf(this) : -1;
             }
-            else if (mb.ButtonIndex == MouseButton.Left && mb.Pressed)
+            else if (mb.ButtonIndex == MouseButton.Right && mb.Pressed)
             {
                 OnRightClicked?.Invoke(this);
             }

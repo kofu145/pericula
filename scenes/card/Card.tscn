@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://di1yqf4q41ly7" path="res://scripts/CardVisual.cs" id="3_4cxr5"]
 [ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="4_3dwn4"]
 [ext_resource type="FontFile" uid="uid://d2e06h3tqexbl" path="res://assets/karmatic-arcade/ka1.ttf" id="4_u4wdl"]
-[ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="4_wcykg"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="4_wcykg"]
 [ext_resource type="Texture2D" uid="uid://c1lcfrpe2n26u" path="res://assets/art/empty.png" id="7_1oahe"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="8_y3kt5"]
 
@@ -415,27 +415,31 @@ libraries = {
 
 [node name="Health" type="Label" parent="Visual"]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 135.0
-offset_right = 115.0
+offset_left = 77.0
+offset_top = 133.0
+offset_right = 108.0
 offset_bottom = 153.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0.107714, 0.678551, 7.12335e-06, 1)
+theme_override_colors/font_shadow_color = Color(0.10091, 0.351419, 0.097345, 1)
 theme_override_fonts/font = ExtResource("4_u4wdl")
-theme_override_font_sizes/font_size = 12
-text = "10"
+theme_override_font_sizes/font_size = 10
+text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Attack" type="Label" parent="Visual"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 135.0
-offset_right = 40.0
-offset_bottom = 153.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+offset_left = 6.0
+offset_top = 134.0
+offset_right = 36.0
+offset_bottom = 151.0
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0.484068, 0.10549, 0.101686, 1)
+theme_override_colors/font_shadow_color = Color(0.947244, 0.393573, 0.359345, 1)
 theme_override_fonts/font = ExtResource("4_u4wdl")
-theme_override_font_sizes/font_size = 12
-text = "10"
+theme_override_font_sizes/font_size = 10
+text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -469,6 +473,7 @@ pivot_offset = Vector2(50, 50)
 texture = ExtResource("7_1oahe")
 
 [node name="CardBack" type="TextureRect" parent="."]
+visible = false
 z_index = -1
 layout_mode = 0
 offset_top = -2.0
