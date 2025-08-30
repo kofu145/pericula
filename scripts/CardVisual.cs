@@ -115,6 +115,8 @@ public partial class CardVisual : Control
 
     public void UpdateLabels()
     {
+        var green = new Color(34 / 255f, 139 / 255f, 34 / 255f);
+        var red = new Color(196 / 255f, 30 / 255f, 58 / 255f);
 
         attackLabel.Text = cardBase.Data.Attack.ToString();
         healthLabel.Text = cardBase.Data.HP.ToString();

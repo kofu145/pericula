@@ -50,7 +50,7 @@ public partial class PopupText : Node
         tween.TweenProperty(
             popup,
             "scale",
-            new Vector2(1.1f, 1.1f),
+            new Vector2(2f, 2f),
             0.25f
         ).SetEase(Tween.EaseType.Out);
         tween.TweenProperty(

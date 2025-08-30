@@ -67,6 +67,7 @@ public partial class BattleState : Node
     {
         triggerQueue.Dequeue().Call();
         await ToSignal(EventBus.Instance, EventBus.SignalName.Triggered);
+        GD.Print("signal done!");
     }
 
     public void QueueTrigger(Callable callable)

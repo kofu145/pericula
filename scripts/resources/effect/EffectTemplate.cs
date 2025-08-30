@@ -27,7 +27,7 @@ public partial class EffectTemplate : Resource
         var cardBase = param.State.GetSide(target).GetCardBaseByData(target);
         //await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.27), Timer.SignalName.Timeout);
         var damagePos = cardBase.GlobalPosition;
-        PopupText.Instance.ShowText(damagePos + new Vector2(0, 60), $"+{Attack}/+{HP}");
+        PopupText.Instance.ShowText(damagePos + new Vector2(30, 60), $"+{Attack}/+{HP}");
         cardBase.Visual.UpdateLabels();
     }
 
@@ -40,6 +40,7 @@ public partial class EffectTemplate : Resource
         param.State.ToggleLerp(false);
         await ToSignal(parent.animation, AnimationPlayer.SignalName.AnimationFinished);
         param.State.ToggleLerp(true);
+        ResetAnimation(parent.animation);
     }
 
     protected async Task DoTriggerAnimation(EffectParam param)
@@ -49,6 +50,19 @@ public partial class EffectTemplate : Resource
         param.State.ToggleLerp(false);
         await ToSignal(parent.animation, AnimationPlayer.SignalName.AnimationFinished);
         param.State.ToggleLerp(true);
+        ResetAnimation(parent.animation);
+    }
+
+    private void ResetAnimation(AnimationPlayer anim)
+    {
+        anim.Play("RESET");
+    }
+
+    protected async Task AdvanceInit()
+    {
+        await ToSignal(EventBus.Instance.GetTree().CreateTimer(.01), "timeout");
+        GD.Print("DONE!");
+        EventBus.Instance.EmitSignal(EventBus.SignalName.Triggered);
     }
 
     protected void AdvanceAfterAction()
