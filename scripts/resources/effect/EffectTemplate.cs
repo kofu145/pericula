@@ -15,10 +15,20 @@ public partial class EffectTemplate : Resource
 
     public virtual void Reset() { }
 
-    protected void DamageText(int damage, CardData target, EffectParam param)
+    protected async Task DamageText(int damage, CardData target, EffectParam param)
     {
+        await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.27), Timer.SignalName.Timeout);
         var damagePos = param.State.GetSide(target).GetCardBaseByData(target).GlobalPosition;
-        PopupText.Instance.ShowText(damagePos + new Vector2(70, 130), $"-{damage}");
+        PopupText.Instance.ShowText(damagePos + new Vector2(60, 125), $"-{damage}");
+    }
+
+    protected async Task BuffText(int HP, int Attack, CardData target, EffectParam param)
+    {
+        var cardBase = param.State.GetSide(target).GetCardBaseByData(target);
+        //await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.27), Timer.SignalName.Timeout);
+        var damagePos = cardBase.GlobalPosition;
+        PopupText.Instance.ShowText(damagePos + new Vector2(0, 60), $"+{Attack}/+{HP}");
+        cardBase.Visual.UpdateLabels();
     }
 
     protected async Task DoAttackAnimation(EffectParam param)

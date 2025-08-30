@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public partial class BattleState : Node
 {
@@ -9,6 +11,9 @@ public partial class BattleState : Node
     public CardLane PlayerLane;
     public CardLane EnemyLane;
     public Turn currentTurn;
+    public int QueueCount => triggerQueue.Count;
+
+    private Queue<Callable> triggerQueue = new();
     private Godot.Collections.Array<CardData> hasIntercept = new();
 
     public void Initialize(CardLane playerLane, CardLane enemyLane)
@@ -56,5 +61,16 @@ public partial class BattleState : Node
             return EnemyLane;
 
         return null;
+    }
+
+    public async Task PopTriggerQueue()
+    {
+        triggerQueue.Dequeue().Call();
+        await ToSignal(EventBus.Instance, EventBus.SignalName.Triggered);
+    }
+
+    public void QueueTrigger(Callable callable)
+    {
+        triggerQueue.Enqueue(callable);
     }
 }

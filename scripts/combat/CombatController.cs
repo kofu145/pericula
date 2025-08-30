@@ -1,4 +1,5 @@
 using Godot;
+using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 
@@ -11,9 +12,6 @@ public partial class CombatController : Node
 
     public Action<bool> OnShowdownEndPlayerWin;
 
-    private Godot.Collections.Array<Callable> actionQueue = new();
-    private Godot.Collections.Array<Callable> animationQueue = new();
-    private Godot.Collections.Array<EffectParam> queueParams = new();
     private BattleState battleState = new();
 
     public void Initialize()
@@ -74,11 +72,14 @@ public partial class CombatController : Node
         EventBus.Instance.ClearEvents();
     }
 
-    public void ShowdownHandler()
+    public async Task ShowdownHandler()
     {
         InitLane(true);
         InitLane(false);
         EventBus.Instance.RefreshBattleLoop += BattleRefreshHandler;
+
+        EventBus.Instance.InvokeShowdown();
+        await ClearActionQueue();
         DoBattle();
         //currLane.RemoveCardAtIndex(2);
         //actionQueue.Add(new Callable(this, MethodName.UpdateLanes));
@@ -152,6 +153,15 @@ public partial class CombatController : Node
                 effectParam.Initialize(battleState, targetLane.GetCardAtIndex(i));
                 effect.Initialize(effectParam);
             }
+        }
+    }
+
+    private async Task ClearActionQueue()
+    {
+        int count = battleState.QueueCount;
+        for (int i = 0; i < count; i++)
+        {
+            await battleState.PopTriggerQueue();
         }
     }
 
