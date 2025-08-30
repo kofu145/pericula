@@ -13,6 +13,7 @@ public partial class CardLane : Node
     [Export] private HBoxContainer lane;
 
     public int CardCount => _cards.Count;
+    public LaneSide Side => side;
 
     // Permissions
     [Export] private LaneSide side = LaneSide.Player;
@@ -71,6 +72,11 @@ public partial class CardLane : Node
         {
             GD.Print(card.Data);
         }
+    }
+
+    public bool Contains(CardData card)
+    {
+        return _cards.Contains(GetCardBaseByData(card));
     }
 
     public void ToggleVisualLerp(bool value)
