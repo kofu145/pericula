@@ -72,7 +72,7 @@ public partial class DeckManager : Node
 
     public void AddCardByID(int id)
     {
-        PlayerDeck.Cards.Add(CardLookup.GetCardByID(id));
+        PlayerDeck.Cards.Add(Lookup.GetCardByID(id));
     }
 
     public bool RemoveCardWithID(int id)
@@ -90,6 +90,13 @@ public partial class DeckManager : Node
         return true;
     }
 
+    public Godot.Collections.Array<CardData> GetUpgradableCardsInPlayerDeck()
+    {
+        Godot.Collections.Array<CardData> returnList = new();
+        foreach (var data in PlayerDeck.Cards)
+            if (data.Rarity != "Legendary") returnList.Add(data);
+        return returnList;
+    }
 
     /// <summary>
     /// Adds a random assortment of n cards to <seealso cref="Hand"/>.

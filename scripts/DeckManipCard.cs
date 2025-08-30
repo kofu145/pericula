@@ -2,10 +2,10 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class ShopCard : Control
+public partial class DeckManipCard : Control
 {
     [Export] CardDescription description;
-    int _cardID;
+    int _deckManipID;
     bool _disabled = false;
 
     const float TWEEN_INTENSITY = 1.25f;
@@ -29,33 +29,13 @@ public partial class ShopCard : Control
 
     public void Initialize(int id, Shop shop)
     {
-        _cardID = id;
+        _deckManipID = id;
         this.shop = shop;
 
         // TODO: Assign icon, text, etc.
-        CardData data = Lookup.GetCardByID(_cardID);
-        GetNode<Label>("CardBorder/Health").Text = data.BaseHP.ToString();
-        GetNode<Label>("CardBorder/Attack").Text = data.BaseAttack.ToString();
-
-        double _currentCost = 100;
-
-        // TODO: Update this later
-        switch (data.Rarity)
-        {
-            case "Rare":
-                _currentCost *= 1.5;
-                break;
-            case "Mythic":
-                _currentCost *= 2;
-                break;
-            case "Legendary":
-                _currentCost *= 2.5;
-                break;
-            default:
-                break;
-        }
-
-        GetNode<Label>("CardBorder/Cost").Text = Math.Round(_currentCost).ToString();
+        DeckManipData data = Lookup.GetDeckManipByID(_deckManipID);
+        GetNode<Label>("CardBorder/CardName").Text = data.DisplayName.ToString();
+        GetNode<Label>("CardBorder/Cost").Text = data.Cost.ToString();
         GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
     }
 
@@ -75,7 +55,7 @@ public partial class ShopCard : Control
             PopupText.Instance.ShowText(GlobalPosition, "Too expensive!");
             return;
         }
-        else if (ChipManager.Instance.Balance >= _cardID)
+        else if (ChipManager.Instance.Balance >= _deckManipID)
         {
             Buy();
         }
@@ -83,9 +63,9 @@ public partial class ShopCard : Control
 
     private void Buy()
     {
-        ChipManager.Instance.Deduct(_cardID);
-        DeckManager.Instance.AddCardByID(_cardID);
-        GD.Print(_cardID + " was selected!");
+        ChipManager.Instance.Deduct(_deckManipID);
+        DeckManager.Instance.AddCardByID(_deckManipID);
+        GD.Print(_deckManipID + " was selected!");
         GD.Print("Current Deck: " + string.Join(", ", DeckManager.Instance.PlayerDeck));
         PopupText.Instance.ShowText(GlobalPosition, "Purchased!");
 

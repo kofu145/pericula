@@ -18,9 +18,10 @@ resource_local_to_scene = true
 script = ExtResource("2_sru6r")
 id = 3
 DisplayName = "Club Pawn"
-Description = ""
+Description = "Test Description:
+Obscured: Knights Gain +2/+2"
 Rarity = "Starter"
-Trait = "Pawn"
+trait = 0
 BaseAttack = 7
 BaseHP = 5
 Texture = ExtResource("3_l0oew")

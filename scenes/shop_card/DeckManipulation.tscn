@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://nniabjsgwor0"]
+
+[ext_resource type="Script" uid="uid://ddrnb0vsmihyy" path="res://scripts/DeckManipCard.cs" id="1_81fa8"]
+[ext_resource type="Texture2D" uid="uid://cfslaiwa8d2qw" path="res://assets/card_alt.png" id="2_5gutp"]
+[ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="3_sj2sd"]
+[ext_resource type="Texture2D" uid="uid://e7jcgcd315dv" path="res://assets/empty.png" id="4_fo8cm"]
+[ext_resource type="FontFile" uid="uid://d2e06h3tqexbl" path="res://assets/karmatic-arcade/ka1.ttf" id="5_3nibc"]
+[ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="6_6on0k"]
+[ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="7_3d13v"]
+
+[node name="DeckManipulation" type="Control" node_paths=PackedStringArray("description")]
+modulate = Color(1, 0, 1, 1)
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 118.0
+script = ExtResource("1_81fa8")
+description = NodePath("CanvasLayer/CardDescription")
+
+[node name="CardBorder" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = -2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5gutp")
+
+[node name="CardName" type="Label" parent="CardBorder"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_top = 10.0
+offset_right = 53.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_sj2sd")
+theme_override_font_sizes/font_size = 12
+text = "Deck Manip"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="TextureRect" parent="CardBorder"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 32.0
+offset_right = 110.0
+offset_bottom = 153.0
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("4_fo8cm")
+
+[node name="Cost" type="Label" parent="CardBorder"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.5
+offset_top = -118.0
+offset_right = 18.5
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_3nibc")
+theme_override_font_sizes/font_size = 12
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="CardDescription" parent="CanvasLayer" instance=ExtResource("6_6on0k")]
+offset_left = 142.0
+offset_top = -9.0
+offset_right = 392.0
+offset_bottom = 83.0
+
+[node name="CardBack" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 118.0
+offset_bottom = 157.0
+pivot_offset = Vector2(60, 80)
+texture = ExtResource("7_3d13v")
+
+[connection signal="gui_input" from="." to="." method="OnInput"]
+[connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExited"]
