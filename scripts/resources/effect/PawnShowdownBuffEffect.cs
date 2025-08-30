@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class PawnAdvantageBuffEffect : EffectTemplate
+public partial class PawnShowdownBuffEffect : EffectTemplate
 {
     [Export] public int HPBuff = 2;
     [Export] public int DamageBuff = 2;
