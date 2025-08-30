@@ -6,4 +6,5 @@ public partial class EnemyData : Resource
 {
     [Export] public string DisplayName;
     [Export] public Deck deck;
+    [Export] public int Difficulty;
 }

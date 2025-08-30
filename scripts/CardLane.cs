@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 public partial class CardLane : Node
 {
@@ -102,7 +103,7 @@ public partial class CardLane : Node
         return target;
     }
 
-    public void RemoveCardAtIndex(int idx)
+    public async Task RemoveCardAtIndex(int idx)
     {
         if (idx < 0 || idx >= _cards.Count)
         {
@@ -117,17 +118,24 @@ public partial class CardLane : Node
 
         for (int i = 0; i < _cards.Count; i++)
         {
-            _cards[i].Reparent(_slots[i]);
+            var pos = _cards[i].Visual.GlobalPosition;
+            GD.Print($"Moving from {pos} to {_slots[i].GlobalPosition}");
+            _cards[i].Reparent(_slots[i], false);
+            _cards[i].Visual.SetOffset(pos);
+            _cards[i].Visual.GlobalPosition = pos;
+            GD.Print($"Moving from {pos} to {_slots[i].GlobalPosition}");
+            _cards[i].Visual.ToggleLerp(true);
+            await ToSignal(GetTree().CreateTimer(.05), Timer.SignalName.Timeout);
         }
 
     }
 
-    public void RemoveCard(CardData cardData)
+    public async Task RemoveCard(CardData cardData)
     {
         var target = GetCardBaseByData(cardData);
 
         int idx = IndexOf(target);
-        RemoveCardAtIndex(idx);
+        await RemoveCardAtIndex(idx);
     }
 
 

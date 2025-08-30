@@ -39,22 +39,6 @@ public partial class ShopCard : Control
 
         double _currentCost = 100;
 
-        // TODO: Update this later
-        switch (data.Rarity.RarityType)
-        {
-            case RarityType.Rare:
-                _currentCost *= 1.5;
-                break;
-            case RarityType.Mythic:
-                _currentCost *= 2;
-                break;
-            case RarityType.Legendary:
-                _currentCost *= 2.5;
-                break;
-            default:
-                break;
-        }
-
         GetNode<Label>("CardBorder/Cost").Text = Math.Round(_currentCost).ToString();
         GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
     }
