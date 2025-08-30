@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg1uml87phdfs"
-path.s3tc="res://.godot/imported/undead.png-c0bc6740b8b7437d631f939cf98aa60c.s3tc.ctex"
+uid="uid://bebqpdbr6ck3w"
+path.s3tc="res://.godot/imported/normal.jpg-2bd33d1e348ba3af2820a261314aa8ff.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/art/undead.png"
-dest_files=["res://.godot/imported/undead.png-c0bc6740b8b7437d631f939cf98aa60c.s3tc.ctex"]
+source_file="res://assets/UI/normal.jpg"
+dest_files=["res://.godot/imported/normal.jpg-2bd33d1e348ba3af2820a261314aa8ff.s3tc.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://assets/art/undead.png"
+roughness/src_normal="res://assets/UI/normal.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

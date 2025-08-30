@@ -7,10 +7,10 @@
 [resource]
 script = ExtResource("1_uhptm")
 tutorialImage = SubResource("PlaceholderTexture2D_uhptm")
-pageName = "The Flop"
+pageName = "Showdown"
 pageDescription = "The attack order alternates between you and your opponent.
 
 Only the leftmost units attack and when attacking, the units do not receive damage.
 
-The Flop ends when either side has no cards on their lanes."
+The Showdown ends when either side has no cards on their lanes."
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"

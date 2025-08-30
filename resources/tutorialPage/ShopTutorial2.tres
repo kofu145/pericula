@@ -7,6 +7,8 @@
 [resource]
 script = ExtResource("1_oyv03")
 tutorialImage = SubResource("PlaceholderTexture2D_jmt1o")
-pageName = "2nd shop page if needed"
-pageDescription = "some description."
+pageName = "Deck Manipulation"
+pageDescription = "A the bottom of the shop, you'll notice special deck manipulation cards. 
+
+Though effective in improving the quality of your deck, you might find it a bit costly to rely on them too much..."
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"
