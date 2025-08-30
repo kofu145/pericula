@@ -47,7 +47,7 @@ public partial class SceneManager : Node
 
         GetTree().ChangeSceneToFile(target);
 
-        UiOverlay.Instance.Refresh();   // refreshes the UI overlay
+        UiOverlay.Instance.Refresh(target);   // refreshes the UI overlay
 
         CurrentScene = target;
 

@@ -11,6 +11,7 @@ public partial class ShopCard : Control
     const float TWEEN_INTENSITY = 1.25f;
     const float TWEEN_DURATION = 0.25f;
     bool _isHovering = false;
+    CardData data;
     Shop shop;
 
     public override void _Ready()
@@ -33,13 +34,12 @@ public partial class ShopCard : Control
         this.shop = shop;
 
         // TODO: Assign icon, text, etc.
-        CardData data = Lookup.GetCardByID(_cardID);
+        data = Lookup.GetCardByID(_cardID);
         GetNode<Label>("CardBorder/Health").Text = data.BaseHP.ToString();
         GetNode<Label>("CardBorder/Attack").Text = data.BaseAttack.ToString();
 
-        double _currentCost = 100;
 
-        GetNode<Label>("CardBorder/Cost").Text = Math.Round(_currentCost).ToString();
+        GetNode<Label>("CardBorder/Cost").Text = ShopManager.Instance.GetCardPrice(data).ToString();
         GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
     }
 
@@ -58,7 +58,7 @@ public partial class ShopCard : Control
         {
             return;
         }
-        else if (ChipManager.Instance.Balance >= _cardID)
+        else if (ChipManager.Instance.Deduct(ShopManager.Instance.GetCardPrice(data)))
         {
             Buy();
         }
@@ -70,7 +70,6 @@ public partial class ShopCard : Control
 
     private void Buy()
     {
-        ChipManager.Instance.Deduct(_cardID);
         DeckManager.Instance.AddCardByID(_cardID);
         GD.Print(_cardID + " was selected!");
         GD.Print("Current Deck: " + string.Join(", ", DeckManager.Instance.PlayerDeck));
