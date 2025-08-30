@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://dst83iae10rla" path="res://resources/tutorialPage/CombatTutorial3.tres" id="11_132iy"]
 [ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="11_mwu67"]
 [ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="12_r8g7h"]
-[ext_resource type="Shader" uid="uid://qbun5diokmrm" path="res://scripts/shaders/connected_circles.gdshader" id="18_ak6aq"]
+[ext_resource type="Shader" path="res://scripts/shaders/connected_circles.gdshader" id="18_ak6aq"]
 [ext_resource type="Texture2D" uid="uid://b8ey5pfd8ckq" path="res://assets/UI/SimplexNoise2D.png" id="19_il00m"]
 [ext_resource type="Texture2D" uid="uid://do0eg8kbumt5o" path="res://assets/UI/main_panel.png" id="22_pgor7"]
 [ext_resource type="Texture2D" uid="uid://bmqh8jeds4yww" path="res://assets/UI/enemychip.png" id="22_r8g7h"]
@@ -92,6 +92,7 @@ playerLane = NodePath("../PlayerCardLane")
 enemyLane = NodePath("../EnemyCardLane")
 
 [node name="EnemyActionLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,7 +108,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 36
 text = "Enemy Action"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="EnemyCardLane" parent="." instance=ExtResource("4_mak3c")]
 layout_mode = 1
@@ -176,16 +177,16 @@ offset_bottom = -358.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("8_132iy")
-raiseButton = NodePath("HBoxContainer/Raise")
-callButton = NodePath("HBoxContainer/Call")
-checkButton = NodePath("HBoxContainer/Check")
-foldButton = NodePath("HBoxContainer/Fold")
-allInButton = NodePath("HBoxContainer/AllIn")
-raise1xButton = NodePath("HBoxContainer/1x")
-raise2xButton = NodePath("HBoxContainer/2x")
-raise5xButton = NodePath("HBoxContainer/5x")
+raiseButton = NodePath("VBoxContainer/Raise")
+callButton = NodePath("VBoxContainer/Call")
+checkButton = NodePath("VBoxContainer/Check")
+foldButton = NodePath("VBoxContainer/Fold")
+allInButton = NodePath("VBoxContainer/AllIn")
+raise1xButton = NodePath("VBoxContainer/1x")
+raise2xButton = NodePath("VBoxContainer/2x")
+raise5xButton = NodePath("VBoxContainer/5x")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="BetController"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BetController"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
@@ -195,9 +196,10 @@ offset_bottom = 700.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Raise" type="Button" parent="BetController/HBoxContainer"]
+[node name="Raise" type="Button" parent="BetController/VBoxContainer"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 20
@@ -206,9 +208,10 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ak6aq")
 theme_override_styles/normal = SubResource("StyleBoxTexture_il00m")
 text = "Match & Raise"
 
-[node name="Call" type="Button" parent="BetController/HBoxContainer"]
+[node name="Call" type="Button" parent="BetController/VBoxContainer"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("10_7qnt1")
@@ -216,9 +219,10 @@ theme_override_styles/pressed = ExtResource("11_mwu67")
 theme_override_styles/normal = ExtResource("12_r8g7h")
 text = "Call"
 
-[node name="Fold" type="Button" parent="BetController/HBoxContainer"]
+[node name="Fold" type="Button" parent="BetController/VBoxContainer"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("10_7qnt1")
@@ -226,9 +230,10 @@ theme_override_styles/pressed = ExtResource("11_mwu67")
 theme_override_styles/normal = ExtResource("12_r8g7h")
 text = "Fold"
 
-[node name="Check" type="Button" parent="BetController/HBoxContainer"]
+[node name="Check" type="Button" parent="BetController/VBoxContainer"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = SubResource("StyleBoxTexture_1c4m3")
@@ -236,9 +241,10 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_qriva")
 theme_override_styles/normal = SubResource("StyleBoxTexture_jof5a")
 text = "Check"
 
-[node name="1x" type="Button" parent="BetController/HBoxContainer"]
+[node name="1x" type="Button" parent="BetController/VBoxContainer"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("10_7qnt1")
@@ -246,9 +252,10 @@ theme_override_styles/pressed = ExtResource("11_mwu67")
 theme_override_styles/normal = ExtResource("12_r8g7h")
 text = "1x"
 
-[node name="2x" type="Button" parent="BetController/HBoxContainer"]
+[node name="2x" type="Button" parent="BetController/VBoxContainer"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("10_7qnt1")
@@ -256,9 +263,10 @@ theme_override_styles/pressed = ExtResource("11_mwu67")
 theme_override_styles/normal = ExtResource("12_r8g7h")
 text = "2x"
 
-[node name="5x" type="Button" parent="BetController/HBoxContainer"]
+[node name="5x" type="Button" parent="BetController/VBoxContainer"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
@@ -267,9 +275,10 @@ theme_override_styles/pressed = ExtResource("11_mwu67")
 theme_override_styles/normal = ExtResource("12_r8g7h")
 text = "5x"
 
-[node name="AllIn" type="Button" parent="BetController/HBoxContainer"]
+[node name="AllIn" type="Button" parent="BetController/VBoxContainer"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
@@ -375,6 +384,7 @@ mouse_filter = 2
 [node name="StartBetButton" type="Button" parent="PhaseButtons"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("10_7qnt1")
@@ -385,6 +395,7 @@ text = "Start Bet"
 [node name="ShowdownButton" type="Button" parent="PhaseButtons"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("10_7qnt1")
@@ -395,6 +406,7 @@ text = "SHOWDOWN"
 [node name="NextTurnButton" type="Button" parent="PhaseButtons"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("10_7qnt1")
@@ -405,6 +417,7 @@ text = "Next Turn"
 [node name="ContinueShopButton" type="Button" parent="PhaseButtons"]
 custom_minimum_size = Vector2(200, 84)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("6_b4pb0")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("10_7qnt1")

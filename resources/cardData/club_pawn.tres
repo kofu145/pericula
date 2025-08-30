@@ -21,7 +21,7 @@ DisplayName = "Club Pawn"
 Description = "Test Description:
 Obscured: Knights Gain +2/+2"
 Rarity = "Starter"
-trait = 0
+Trait = 0
 BaseAttack = 7
 BaseHP = 5
 Texture = ExtResource("3_l0oew")

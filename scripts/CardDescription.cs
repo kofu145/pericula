@@ -38,13 +38,13 @@ public partial class CardDescription : Control
         string hex = TraitAndKeywordColor.ToHtml(true);
 
         CardName.Text = data.DisplayName;
-        Class.Text = data.trait.ToString();
+        Class.Text = data.Trait.ToString();
 
         string desc = data.Description;
 
         foreach (var keyword in data.Keywords) desc = desc.Replace(keyword.DisplayName, $"[color={hex}]{keyword.DisplayName}[/color]");
 
-        string traitName = data.trait.ToString();
+        string traitName = data.Trait.ToString();
 
         string pattern = $@"\b{Regex.Escape(traitName)}(es|s)?\b";
         desc = Regex.Replace(

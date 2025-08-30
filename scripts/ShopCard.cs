@@ -40,15 +40,15 @@ public partial class ShopCard : Control
         double _currentCost = 100;
 
         // TODO: Update this later
-        switch (data.Rarity)
+        switch (data.Rarity.RarityType)
         {
-            case "Rare":
+            case RarityType.Rare:
                 _currentCost *= 1.5;
                 break;
-            case "Mythic":
+            case RarityType.Mythic:
                 _currentCost *= 2;
                 break;
-            case "Legendary":
+            case RarityType.Legendary:
                 _currentCost *= 2.5;
                 break;
             default:

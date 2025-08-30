@@ -26,5 +26,6 @@ public partial class TitleScreen : Panel
         ChipManager.Instance.StartNewRun(runConfig.playerStartingChips);
         StageManager.Instance.StartNewRun();
         DeckManager.Instance.StartNewRun(runConfig.playerStartingDeck);
+        ShopManager.Instance.StartNewRun();
     }
 }
