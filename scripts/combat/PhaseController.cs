@@ -103,11 +103,11 @@ public partial class PhaseController : Node
 
         // display next turn's buy in
         nextTurnBuyInLabel.Visible = currentTurn >= turnBuyInIncrease - 1;
-        nextTurnBuyInLabel.Text = $"Next Turn Buy In: {(int)Math.Ceiling(currentMinimumBuyIn * buyInIncreaseMultiplier)}";
+        nextTurnBuyInLabel.Text = $"{(int)Math.Ceiling(currentMinimumBuyIn * buyInIncreaseMultiplier)}";
 
         // shw the turn count
         turnLabel.Text = $"Turn: {currentTurn}";
-        buyInLabel.Text = $"Current Buy In: {currentMinimumBuyIn}";
+        buyInLabel.Text = $"{currentMinimumBuyIn}";
 
         // enemy and player pays the buyIn amount
         if (enemyChips.Balance < currentMinimumBuyIn) currentMinimumBuyIn = enemyChips.Balance;
@@ -272,18 +272,18 @@ public partial class PhaseController : Node
     {
         if (potLabel != null)
         {
-            potLabel.Text = $"Pot: {amount}";
+            potLabel.Text = $"{amount}";
             currentPot = amount;
         }
     }
     private void DisplayEnemyChips(int amount)
     {
-        enemyChipsLabel.Text = $"Chips: {amount}";
+        enemyChipsLabel.Text = $"{amount}";
     }
 
     private void DisplayPlayerChips(int amount)
     {
-        playerChipsLabel.Text = $"Chips: {amount}";
+        playerChipsLabel.Text = $"{amount}";
     }
 
     protected override void Dispose(bool disposing)
