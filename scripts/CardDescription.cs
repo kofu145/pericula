@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 public partial class CardDescription : Control
 {
@@ -12,7 +13,8 @@ public partial class CardDescription : Control
     [Export] PackedScene keywordTooltip;
     [Export] Control anchor;
     [Export] Vector2 tooltipOffset = new Vector2(20, 20);
-    
+    [Export] public Color TraitAndKeywordColor = new Color(0, 0, 0);
+
     Tween tween;
     const float FINAL_SCALE = 1f;
     private List<KeywordTooltip> keywords = new();
@@ -52,10 +54,28 @@ public partial class CardDescription : Control
         //         CardName.Theme.SetColor("RichTextLabel", "default_color", Colors.Gray);
         //         break;
         // }
-        
+        Description.BbcodeEnabled = true;
+        Class.BbcodeEnabled = true;
+        string hex = TraitAndKeywordColor.ToHtml(true);
+
         CardName.Text = data.DisplayName;
-        Description.Text = data.Description;
-        Class.Text = data.Trait;
+        Class.Text = data.trait.ToString();
+
+        string desc = data.Description;
+
+        foreach (var keyword in data.Keywords) desc = desc.Replace(keyword.DisplayName, $"[color={hex}]{keyword.DisplayName}[/color]");
+
+        string traitName = data.trait.ToString();
+
+        string pattern = $@"\b{Regex.Escape(traitName)}(es|s)?\b";
+        desc = Regex.Replace(
+            desc,
+            pattern,
+            m => $"[color={hex}]{m.Value}[/color]"
+        );
+
+
+        Description.Text = desc;
 
         foreach (var keyword in data.Keywords)
         {

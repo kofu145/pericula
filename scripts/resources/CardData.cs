@@ -1,17 +1,19 @@
 using Godot;
 using Godot.Collections;
 
+public enum Trait { Knight, Arcane, Citizen, Royalty, Beast, Mechanical, WildCard, Pawn };
+
 [GlobalClass]
 public partial class CardData : Resource
 {
     [Export] public int id;
     [Export] public string DisplayName;
-    [Export] public string Description;
+    [Export(PropertyHint.MultilineText)] public string Description;
 
     [Export(PropertyHint.Enum, "Common,Rare,Mythic,Legendary,Starter,Token")]
     public string Rarity;
-    [Export(PropertyHint.Enum, "Knight,Arcane,Citizen,Royalty,Beast,Mechanical,WildCard,Pawn")]
-    public string Trait;
+    [Export]
+    public Trait trait;
     public int HP;
     public int Attack;
     [Export] public int BaseAttack;
@@ -30,7 +32,7 @@ public partial class CardData : Resource
 
     public override string ToString()
     {
-        return $"{DisplayName} ({id}):\nHealth: {HP}/{BaseHP}, Attack: {Attack}/{BaseAttack}, Trait: {Trait}, Rarity: {Rarity}, Description: {Description}";
+        return $"{DisplayName} ({id}):\nHealth: {HP}/{BaseHP}, Attack: {Attack}/{BaseAttack}, Trait: {trait}, Rarity: {Rarity}, Description: {Description}";
     }
 
     public void ResetForBattle()
