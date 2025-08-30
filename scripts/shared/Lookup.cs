@@ -38,6 +38,8 @@ public partial class Lookup : Node
 
     public static Godot.Collections.Array<CardData> GetCardsByRarity(RarityType rarity)
     {
+
+        GD.Print(rarity);
         Godot.Collections.Array<CardData> result = new();
         foreach (var card in lookupList)
         {
