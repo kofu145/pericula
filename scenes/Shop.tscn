@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://crui1r41ywu27"]
+[gd_scene load_steps=12 format=3 uid="uid://crui1r41ywu27"]
 
 [ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_fpbbi"]
 [ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="2_fpbbi"]
 [ext_resource type="PackedScene" uid="uid://nniabjsgwor0" path="res://scenes/shop_card/DeckManipulation.tscn" id="3_fpbbi"]
 [ext_resource type="PackedScene" uid="uid://dyau1eaiah8c7" path="res://scenes/Tutorial.tscn" id="4_cimqq"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="4_eo1la"]
+[ext_resource type="StyleBox" uid="uid://cjuvxeskdxmr3" path="res://assets/stylebox_tex/button_hover.tres" id="5_toxd1"]
+[ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="6_47hci"]
 [ext_resource type="Resource" uid="uid://8av2eh3jeih" path="res://resources/tutorialPage/ShopTutorial1.tres" id="6_ht580"]
+[ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="7_hd80v"]
 [ext_resource type="Resource" uid="uid://duj0e3a67a1cp" path="res://resources/tutorialPage/ShopTutorial2.tres" id="7_skkvx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
@@ -12,7 +16,7 @@ bg_color = Color(0.151276, 0.151276, 0.151276, 1)
 expand_margin_top = 8.0
 expand_margin_bottom = 8.0
 
-[node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices", "manipChoices", "rerollButton")]
+[node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices", "manipChoices")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,25 +28,25 @@ shopChoices = NodePath("PanelContainer/ShopChoices")
 manipChoices = NodePath("PanelContainer2/DeckManipChoices")
 shopCardScene = ExtResource("2_fpbbi")
 manipScene = ExtResource("3_fpbbi")
-rerollButton = NodePath("RerollButton")
-testMode = true
 
 [node name="ToBattleButton" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = -291.0
-offset_right = 59.0
-offset_bottom = -220.0
+offset_left = -124.5
+offset_top = 72.0
+offset_right = 124.5
+offset_bottom = 217.0
 grow_horizontal = 2
-grow_vertical = 2
 size_flags_vertical = 8
 focus_mode = 0
-text = "Next Battle >>"
+theme_override_fonts/font = ExtResource("4_eo1la")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = ExtResource("5_toxd1")
+theme_override_styles/pressed = ExtResource("6_47hci")
+theme_override_styles/normal = ExtResource("7_hd80v")
+text = "PROCEED >>"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -88,12 +92,16 @@ alignment = 1
 layout_mode = 2
 offset_left = 895.0
 offset_top = 237.0
-offset_right = 1071.0
+offset_right = 1133.0
 offset_bottom = 413.0
 grow_vertical = 0
 size_flags_vertical = 8
 focus_mode = 0
+theme_override_fonts/font = ExtResource("4_eo1la")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = ExtResource("5_toxd1")
+theme_override_styles/pressed = ExtResource("6_47hci")
+theme_override_styles/normal = ExtResource("7_hd80v")
 text = "Reroll (200)"
 
 [node name="ShopTutorial" parent="." instance=ExtResource("4_cimqq")]

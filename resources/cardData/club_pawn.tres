@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=10 format=3 uid="uid://c3n8acwkxod23"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_5ak3o"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_ctqyn"]
+[ext_resource type="Resource" uid="uid://b4hxbmioyuby2" path="res://resources/keywords/Obscured.tres" id="2_5ak3o"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_sru6r"]
+[ext_resource type="Texture2D" uid="uid://c58o6pf7u2c2y" path="res://assets/cards/knight.png" id="3_l0oew"]
+[ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="4_5ak3o"]
+[ext_resource type="Script" uid="uid://6fq6brcnypag" path="res://scripts/resources/effect/PawnAdvantageBuffEffect.cs" id="4_bbcm7"]
+
+[sub_resource type="Resource" id="Resource_mjdb7"]
+resource_local_to_scene = true
+script = ExtResource("1_ctqyn")
+Damage = 0
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_dq81n"]
+script = ExtResource("4_bbcm7")
+HPBuff = 2
+DamageBuff = 2
+name = ""
+metadata/_custom_type_script = "uid://dgdrml3ghdm8w"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_sru6r")
+id = 3
+DisplayName = "Club Pawn"
+Description = "Test Description:
+Obscured: Knights Gain +2/+2"
+Rarity = ExtResource("4_5ak3o")
+Trait = 0
+BaseAttack = 7
+BaseHP = 5
+Texture = ExtResource("3_l0oew")
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = Array[Object]([SubResource("Resource_dq81n")])
+Keywords = Array[ExtResource("1_5ak3o")]([ExtResource("2_5ak3o")])
+metadata/_custom_type_script = "uid://clner77n1ff5a"
