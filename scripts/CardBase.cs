@@ -43,7 +43,6 @@ public partial class CardBase : Control
         //cardTex.Scale = new Vector2(3.125f, 3.125f);
         CardImage.Texture = Data.Texture;
         CardImage.Position = new Vector2(10, 32.5f);
-        SetHolo(data.Rarity.RarityType == RarityType.Mythic || data.Rarity.RarityType == RarityType.Legendary);
 
     }
 
@@ -122,23 +121,7 @@ public partial class CardBase : Control
         }
     }
 
-    public void SetHolo(bool isHolo)
-    {
-        if (isHolo)
-        {
-            Shader shader = GD.Load<Shader>("res://scripts/shaders/movingrainbow.gdshader");
-            ShaderMaterial shaderMat = new();
-            shaderMat.Shader = shader;
-            shaderMat.SetShaderParameter("strength", 0.12);
-            shaderMat.SetShaderParameter("speed", 0.3);
-            shaderMat.SetShaderParameter("angle", 45);
-            Visual.Material = shaderMat;
-        }
-        else
-        {
-            Visual.Material = null;
-        }
-    }
+
 
     public CardData GetCardData()
     {

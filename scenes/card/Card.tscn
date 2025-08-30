@@ -379,7 +379,7 @@ CardImage = NodePath("Visual/Image")
 Description = NodePath("Visual/CanvasLayer/CardDescription")
 animation = NodePath("Visual/AnimationPlayer")
 
-[node name="Visual" type="TextureRect" parent="." node_paths=PackedStringArray("NameLabel", "Base", "CardBack", "CardBorder")]
+[node name="Visual" type="TextureRect" parent="." node_paths=PackedStringArray("NameLabel", "cardBase", "cardBack", "cardBorder", "cardDescription", "attackLabel", "healthLabel")]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -391,9 +391,12 @@ pivot_offset = Vector2(60, 80)
 texture = ExtResource("2_y3kt5")
 script = ExtResource("3_4cxr5")
 NameLabel = NodePath("CardName")
-Base = NodePath("..")
-CardBack = NodePath("../CardBack")
-CardBorder = NodePath("Border")
+cardBase = NodePath("..")
+cardBack = NodePath("../CardBack")
+cardBorder = NodePath("Border")
+cardDescription = NodePath("CanvasLayer/CardDescription")
+attackLabel = NodePath("Attack")
+healthLabel = NodePath("Health")
 
 [node name="CardName" type="Label" parent="Visual"]
 layout_mode = 1
@@ -418,21 +421,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_u4wdl")
 }
 
-[node name="Health" type="Label" parent="Visual"]
-layout_mode = 0
-offset_left = 77.0
-offset_top = 133.0
-offset_right = 108.0
-offset_bottom = 153.0
-scale = Vector2(1.2, 1.2)
-theme_override_colors/font_color = Color(0.107714, 0.678551, 7.12335e-06, 1)
-theme_override_colors/font_shadow_color = Color(0.10091, 0.351419, 0.097345, 1)
-theme_override_fonts/font = ExtResource("4_u4wdl")
-theme_override_font_sizes/font_size = 10
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Attack" type="Label" parent="Visual"]
 layout_mode = 0
 offset_left = 6.0
@@ -442,6 +430,21 @@ offset_bottom = 151.0
 scale = Vector2(1.2, 1.2)
 theme_override_colors/font_color = Color(0.484068, 0.10549, 0.101686, 1)
 theme_override_colors/font_shadow_color = Color(0.947244, 0.393573, 0.359345, 1)
+theme_override_fonts/font = ExtResource("4_u4wdl")
+theme_override_font_sizes/font_size = 10
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="Visual"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 133.0
+offset_right = 108.0
+offset_bottom = 153.0
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0.107714, 0.678551, 7.12335e-06, 1)
+theme_override_colors/font_shadow_color = Color(0.10091, 0.351419, 0.097345, 1)
 theme_override_fonts/font = ExtResource("4_u4wdl")
 theme_override_font_sizes/font_size = 10
 text = "100"

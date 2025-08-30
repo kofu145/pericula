@@ -6,9 +6,12 @@ public partial class CardVisual : Control
     [Export] private Label NameLabel;
 
     // runtime refs
-    [Export] CardBase Base;
-    [Export] TextureRect CardBack;
-    [Export] TextureRect CardBorder;
+    [Export] CardBase cardBase;
+    [Export] TextureRect cardBack;
+    [Export] TextureRect cardBorder;
+    [Export] CardDescription cardDescription;
+    [Export] Label attackLabel;
+    [Export] Label healthLabel;
     public bool LerpSet => doLerp;
     public bool isFaceUp => faceUp;
 
@@ -23,15 +26,15 @@ public partial class CardVisual : Control
     {
         MouseFilter = MouseFilterEnum.Ignore;
         PivotOffset = Size / 2;
-        CardBack.Visible = false;
+        cardBack.Visible = false;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        if (Base == null) return;
+        if (cardBase == null) return;
 
-        var target = Base.GlobalPosition;
+        var target = cardBase.GlobalPosition;
         float t = 1f - Mathf.Exp(-FollowSpeed * (float)delta);
         if (doLerp)
         {
@@ -40,35 +43,37 @@ public partial class CardVisual : Control
         }
 
         else
-            GlobalPosition = Base.GlobalPosition;
+            GlobalPosition = cardBase.GlobalPosition;
         offsetPos = GlobalPosition;
 
         float ts = 1f - Mathf.Exp(-ScaleSpeed * (float)delta);
         if (doLerp)
-            Scale = Scale.Lerp(Base.Scale, ts);
+            Scale = Scale.Lerp(cardBase.Scale, ts);
 
-        CardBack.GlobalPosition = GlobalPosition;
-        CardBack.Scale = Scale;
+        cardBack.GlobalPosition = GlobalPosition;
+        cardBack.Scale = Scale;
     }
 
     public void Initialize(CardData data = null, float FollowSpeed = 0, float ScaleSpeed = 0)
     {
         if (data == null) return;
 
-        offsetPos = Base.Position;
+        offsetPos = cardBase.Position;
         NameLabel.Text = data.DisplayName;
-        CardBorder.Modulate = data.Rarity.RarityColor;
+        cardBorder.Modulate = data.Rarity.RarityColor;
 
         this.FollowSpeed = FollowSpeed;
         this.ScaleSpeed = ScaleSpeed;
 
-        if (Base != null)
+        if (cardBase != null)
         {
-            var baseData = Base.GetCardData();
-            GetNode<Label>("Health").Text = baseData.BaseHP.ToString();
-            GetNode<Label>("Attack").Text = baseData.BaseAttack.ToString();
-            GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(baseData);
+            var baseData = cardBase.GetCardData();
+            healthLabel.Text = baseData.BaseHP.ToString();
+            attackLabel.Text = baseData.BaseAttack.ToString();
+            cardDescription.Initialize(baseData);
         }
+
+        SetHolo(data.Rarity.RarityType == RarityType.Mythic || data.Rarity.RarityType == RarityType.Legendary);
     }
 
     public void SetOffset(Vector2 pos)
@@ -78,7 +83,7 @@ public partial class CardVisual : Control
 
     public void RebasePos(Vector2 newPos)
     {
-        Base.GlobalPosition = newPos;
+        cardBase.GlobalPosition = newPos;
     }
 
     public void ToggleLerp(bool value)
@@ -91,26 +96,45 @@ public partial class CardVisual : Control
     /// </summary>
     public async void FlipCard()
     {
-        CardBack.Visible = true;
+        cardBack.Visible = true;
         if (faceUp)
         {
-            Base.animation.Play("FlipCardToBack");
+            cardBase.animation.Play("FlipCardToBack");
             //await ToSignal(Base.animation, AnimationPlayer.SignalName.AnimationFinished);
             faceUp = false;
         }
         else
         {
-            Base.animation.Play("FlipCardToFront");
+            cardBase.animation.Play("FlipCardToFront");
             //await ToSignal(Base.animation, AnimationPlayer.SignalName.AnimationFinished);
             faceUp = true;
-            CardBack.Visible = false;
+            cardBack.Visible = false;
         }
     }
 
     public void UpdateLabels()
     {
 
-        GetNode<Label>("Health").Text = Base.Data.HP.ToString();
-        GetNode<Label>("Attack").Text = Base.Data.Attack.ToString();
+        attackLabel.Text = cardBase.Data.Attack.ToString();
+        healthLabel.Text = cardBase.Data.HP.ToString();
+    }
+
+    public void SetHolo(bool isHolo)
+    {
+        if (isHolo)
+        {
+            Shader shader = GD.Load<Shader>("res://scripts/shaders/movingrainbow.gdshader");
+            ShaderMaterial shaderMat = new();
+            shaderMat.Shader = shader;
+            shaderMat.SetShaderParameter("strength", 0.12);
+            shaderMat.SetShaderParameter("speed", 0.3);
+            shaderMat.SetShaderParameter("angle", 45);
+            Material = shaderMat;
+            cardBorder.Material = shaderMat;
+        }
+        else
+        {
+            Material = null;
+        }
     }
 }

@@ -134,6 +134,7 @@ public partial class ShopCard : Control
             shaderMat.SetShaderParameter("speed", 0.3);
             shaderMat.SetShaderParameter("angle", 45);
             baseCard.Material = shaderMat;
+            border.Material = shaderMat;
         }
         else
         {
