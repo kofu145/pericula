@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public partial class ShopCard : Control
 {
-    [Export] RichTextLabel labelId; // For testing purposes, to be removed
     [Export] CardDescription description;
     int _cardID;
     bool _disabled = false;
@@ -36,8 +35,8 @@ public partial class ShopCard : Control
 
         // TODO: Assign icon, text, etc.
         CardData data = CardLookup.GetCardByID(_cardID);
-        GetNode<Label>("Health").Text = data.BaseHP.ToString();
-        GetNode<Label>("Attack").Text = data.BaseAttack.ToString();
+        GetNode<Label>("CardBorder/Health").Text = data.BaseHP.ToString();
+        GetNode<Label>("CardBorder/Attack").Text = data.BaseAttack.ToString();
 
         double _currentCost = 100;
 
@@ -57,7 +56,7 @@ public partial class ShopCard : Control
                 break;
         }
 
-        GetNode<Label>("Cost").Text = Math.Round(_currentCost).ToString();
+        GetNode<Label>("CardBorder/Cost").Text = Math.Round(_currentCost).ToString();
         GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
     }
 

@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bki587v31okuf"]
+[gd_scene load_steps=8 format=3 uid="uid://bki587v31okuf"]
 
 [ext_resource type="Script" uid="uid://d2ajyw3o0u05g" path="res://scripts/ShopCard.cs" id="1_m5bcj"]
 [ext_resource type="Texture2D" uid="uid://cfslaiwa8d2qw" path="res://assets/card_alt.png" id="2_hscbs"]
 [ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="3_hscbs"]
+[ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="3_lkv26"]
+[ext_resource type="FontFile" uid="uid://d2e06h3tqexbl" path="res://assets/karmatic-arcade/ka1.ttf" id="4_fa6lo"]
+[ext_resource type="Texture2D" uid="uid://e7jcgcd315dv" path="res://assets/empty.png" id="4_myijq"]
+[ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="7_sk3ko"]
 
 [node name="ShopCard" type="Control" node_paths=PackedStringArray("description")]
-custom_minimum_size = Vector2(100, 118)
+custom_minimum_size = Vector2(120, 160)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 100.0
@@ -20,11 +24,81 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -2.0
 offset_top = -1.0
-offset_right = -4.0
-offset_bottom = 13.0
+offset_right = -2.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_hscbs")
+
+[node name="CardName" type="Label" parent="CardBorder"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_top = 10.0
+offset_right = 53.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_lkv26")
+theme_override_font_sizes/font_size = 12
+text = "Ruin Guard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="TextureRect" parent="CardBorder"]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 10.0
+offset_top = 32.0
+offset_right = 110.0
+offset_bottom = 134.0
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("4_myijq")
+
+[node name="Health" type="Label" parent="CardBorder"]
+offset_left = 80.0
+offset_top = 136.0
+offset_right = 117.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_fa6lo")
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack" type="Label" parent="CardBorder"]
+offset_left = 7.0
+offset_top = 136.0
+offset_right = 42.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_fa6lo")
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="CardBorder"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.5
+offset_top = -118.0
+offset_right = 18.5
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_fa6lo")
+theme_override_font_sizes/font_size = 12
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -35,41 +109,14 @@ offset_top = -9.0
 offset_right = 392.0
 offset_bottom = 83.0
 
-[node name="Health" type="Label" parent="."]
-layout_mode = 0
-offset_left = 69.0
-offset_top = 100.0
-offset_right = 90.0
-offset_bottom = 134.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Attack" type="Label" parent="."]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 99.0
-offset_right = 24.0
-offset_bottom = 133.0
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Cost" type="Label" parent="."]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 63.0
-offset_right = 52.0
-offset_bottom = 97.0
-theme_override_colors/font_color = Color(1, 0.794063, 0.349913, 1)
-theme_override_font_sizes/font_size = 24
-text = "1"
-horizontal_alignment = 2
-vertical_alignment = 1
+[node name="CardBack" type="TextureRect" parent="."]
+z_index = -1
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 118.0
+offset_bottom = 157.0
+pivot_offset = Vector2(60, 80)
+texture = ExtResource("7_sk3ko")
 
 [connection signal="gui_input" from="." to="." method="OnInput"]
 [connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
