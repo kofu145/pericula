@@ -49,7 +49,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 96
-theme_override_constants/margin_top = 96
+theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 96
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BottomPanel/MarginContainer"]

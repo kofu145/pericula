@@ -30,7 +30,14 @@ Class = NodePath("VBoxContainer/PanelContainer/VBoxContainer/CardClass")
 keywordTooltip = ExtResource("2_u02sh")
 anchor = NodePath("VBoxContainer")
 tooltipOffset = Vector2(0, 0)
-TraitAndKeywordColor = Color(0, 0.395, 0.79, 1)
+KnightColor = Color(0.15416, 0.1312, 0.82, 1)
+ArcaneColor = Color(0, 0.45098, 0.521569, 1)
+CitizenColor = Color(0, 0.644027, 0.270604, 1)
+RoyaltyColor = Color(0.814196, 0.509477, 7.70092e-07, 1)
+BeastColor = Color(0.946555, 0.414473, 0.490567, 1)
+MechanicalColor = Color(0.66, 0.59301, 0.5214, 1)
+PawnColor = Color(0.74, 0.507393, 0.3996, 1)
+UndeadColor = Color(0.265045, 0.605748, 0.390767, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
