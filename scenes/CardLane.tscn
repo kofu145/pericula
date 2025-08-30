@@ -6,6 +6,7 @@
 [node name="CardLane" type="Panel" node_paths=PackedStringArray("lane")]
 offset_right = 388.0
 offset_bottom = 64.0
+mouse_filter = 1
 script = ExtResource("1_motnv")
 CardScene = ExtResource("3_n0i63")
 lane = NodePath("HBoxContainer")
