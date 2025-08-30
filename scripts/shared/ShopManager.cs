@@ -24,6 +24,8 @@ public partial class ShopManager : Node
     public int GetRemovalCost() => (removalsUsed * config.RemovalCostIncrease) + config.baseRemovalCost;
     public int GetCreateRandomCardCost() => config.baseCreateRandomCardCost;
     public int GetDuplicateCost() => config.baseDuplicateCost;
+    public int GetCardPrice(CardData data) => data.Rarity.ShopCost;
+    public int GetCardPrice(Rarity rarity) => rarity.ShopCost;
 
     public bool TryRemoveCard(int playerChips)
     {
