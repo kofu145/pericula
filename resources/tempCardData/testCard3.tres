@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://by2sdw0c5ogsp"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_slh4d"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_s10e1"]
+[ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="3_n24hi"]
+[ext_resource type="Texture2D" uid="uid://dohcvin7paan5" path="res://assets/art/knight.png" id="4_7is0s"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="5_x47sl"]
+
+[sub_resource type="Resource" id="Resource_mjdb7"]
+resource_local_to_scene = true
+script = ExtResource("2_s10e1")
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("5_x47sl")
+id = 998
+DisplayName = "Mythic Card"
+Description = "Combat Start: test"
+Rarity = ExtResource("3_n24hi")
+Trait = 0
+BaseAttack = 1
+BaseHP = 1
+Texture = ExtResource("4_7is0s")
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+Keywords = Array[ExtResource("1_slh4d")]([])
+metadata/_custom_type_script = "uid://clner77n1ff5a"
