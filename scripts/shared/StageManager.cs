@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 public partial class StageManager : Node
@@ -67,6 +68,7 @@ public partial class StageManager : Node
 
             CurrentStageNumber = 0;
             CurrentAnte++;
+            currentAnteEnemies = GetEnemies();
             SceneManager.ChangeSceneToFile("Shop");
             return;
         }
@@ -77,36 +79,40 @@ public partial class StageManager : Node
 
     private Godot.Collections.Array<EnemyData> GetEnemies()
     {
-        Godot.Collections.Array<EnemyData> result = new();
+        var nonBosses = new Godot.Collections.Array<EnemyData>();
         EnemyData boss = null;
+
+        // Separate into boss + non-bosses
         foreach (var data in enemiesData)
         {
-            //GD.Print($"Ante is {CurrentAnte} and data is {data.Difficulty}");
             if (data.Difficulty == CurrentAnte)
             {
                 if (data.IsBoss)
-                {
                     boss = data;
-                }
                 else
-                    result.Add(data);
+                    nonBosses.Add(data);
             }
         }
-        //GD.Print(result);
-        // result.Shuffle(); // Better method - shuffle using godot rand 
 
-        // using fisher yates
-        int n = result.Count;
+        // Shuffle non-bosses (Fisher–Yates)
+        int n = nonBosses.Count;
         while (n > 1)
         {
             n--;
             int k = DeckManager.Instance.RndGen.Next(n + 1);
-            EnemyData val = result[k];
-            result[k] = result[n];
-            result[n] = val;
+            (nonBosses[n], nonBosses[k]) = (nonBosses[k], nonBosses[n]);
         }
+
+        // Take only as many as needed
+        var result = new Godot.Collections.Array<EnemyData>();
+        int count = Math.Min(nonBosses.Count, EnemiesPerAnte - 1);
+        for (int i = 0; i < count; i++)
+            result.Add(nonBosses[i]);
+
+        // Always add boss at the end if exists
         if (boss != null)
             result.Add(boss);
+
         return result;
     }
     public EnemyData GetEnemyAtIndex(int i)
