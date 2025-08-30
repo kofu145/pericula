@@ -72,12 +72,15 @@ public partial class ShopCard : Control
     {
         if (_disabled)
         {
-            PopupText.Instance.ShowText(GlobalPosition, "Too expensive!");
             return;
         }
         else if (ChipManager.Instance.Balance >= _cardID)
         {
             Buy();
+        }
+        else
+        {
+            PopupText.Instance.ShowText(GlobalPosition, "Too expensive!");
         }
     }
 

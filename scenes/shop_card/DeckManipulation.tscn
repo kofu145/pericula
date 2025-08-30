@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ddrnb0vsmihyy" path="res://scripts/DeckManipCard.cs" id="1_81fa8"]
 [ext_resource type="Texture2D" uid="uid://cfslaiwa8d2qw" path="res://assets/card_alt.png" id="2_5gutp"]
 [ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="3_sj2sd"]
-[ext_resource type="Texture2D" uid="uid://e7jcgcd315dv" path="res://assets/empty.png" id="4_fo8cm"]
+[ext_resource type="Texture2D" path="res://assets/empty.png" id="4_fo8cm"]
 [ext_resource type="FontFile" uid="uid://d2e06h3tqexbl" path="res://assets/karmatic-arcade/ka1.ttf" id="5_3nibc"]
 [ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="6_6on0k"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="7_3d13v"]
