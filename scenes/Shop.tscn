@@ -26,6 +26,7 @@ shopChoices = NodePath("PanelContainer/ShopChoices")
 manipChoices = NodePath("PanelContainer2/DeckManipChoices")
 shopCardScene = ExtResource("2_fpbbi")
 manipScene = ExtResource("3_fpbbi")
+testMode = true
 
 [node name="ToBattleButton" type="Button" parent="."]
 layout_mode = 1

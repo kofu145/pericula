@@ -51,7 +51,7 @@ public partial class DeckListView : Control
     {
         Visible = true;
         Refresh(mode, onClickHandler);
-        CloseButton.Visible = !CanClose.Contains(mode);
+        CloseButton.Visible = CanClose.Contains(mode);
     }
 
     private void Close()
@@ -125,7 +125,14 @@ public partial class DeckListView : Control
     private void SpawnCard(CardData data, Action<CardBase> onClickHandler)
     {
         var cardBase = CardScene.Instantiate<CardBase>();
-        if (onClickHandler != null) cardBase.OnLeftClicked += onClickHandler;
+        if (onClickHandler != null)
+        {
+            cardBase.OnLeftClicked += c =>
+            {
+                onClickHandler(c);  
+                Close(); 
+            };
+        }
         cardBase.EnableDefaultDrag = false;
         Grid.AddChild(cardBase);
         _cards.Add(cardBase);

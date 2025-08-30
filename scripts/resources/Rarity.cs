@@ -9,6 +9,6 @@ public partial class Rarity : Resource
     [Export] public string DisplayName;
     [Export] public RarityType RarityType;
     [Export] public int ShopCost;
-    [Export] public float Weights;
+    [Export] public int Weights;
     [Export] public Color RarityColor;
 }

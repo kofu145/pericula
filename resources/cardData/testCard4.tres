@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://c34uwwwi6smyv"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_rwljq"]
+[ext_resource type="Resource" uid="uid://dslug15eeqxwj" path="res://resources/keywords/FinalWager.tres" id="2_wqrd6"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_1cetp"]
+[ext_resource type="Resource" uid="uid://be2gy23cbidlv" path="res://resources/rarities/legendary.tres" id="4_rwljq"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="5_atfvc"]
+
+[sub_resource type="Resource" id="Resource_mjdb7"]
+resource_local_to_scene = true
+script = ExtResource("3_1cetp")
+Damage = 5
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("5_atfvc")
+id = 999
+DisplayName = "Legendary Card"
+Description = "Combat Start: test"
+Rarity = ExtResource("4_rwljq")
+Trait = 0
+BaseAttack = 1
+BaseHP = 1
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+Keywords = Array[ExtResource("1_rwljq")]([ExtResource("2_wqrd6")])
+metadata/_custom_type_script = "uid://clner77n1ff5a"

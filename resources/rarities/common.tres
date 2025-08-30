@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Rarity" load_steps=2 format=3 uid="uid://c085wma2ghi7d"]
 
-[ext_resource type="Script" uid="uid://d3u6vaerxchcc" path="res://scripts/resources/Rarity.cs" id="1_c3o38"]
+[ext_resource type="Script" uid="uid://d3u6vaerxchcc" path="res://scripts/resources/Rarity.cs" id="1_3y4yy"]
 
 [resource]
-script = ExtResource("1_c3o38")
+script = ExtResource("1_3y4yy")
 DisplayName = "Common"
 RarityType = 2
 ShopCost = 80
-Weights = 55.0
+Weights = 55
 RarityColor = Color(0.274369, 0.678644, 0, 1)

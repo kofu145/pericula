@@ -1,11 +1,13 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public partial class ShopManager : Node
 {
     public static ShopManager Instance;
     [Export] private RunConfig config;
+    [Export] Godot.Collections.Array<Rarity> rarities;
 
     // runtime refs of run info
     private int removalsUsed = 0;
@@ -42,18 +44,54 @@ public partial class ShopManager : Node
                 return 0;
         }
     }
+    
     public int GetCardPrice(CardData data) => data.Rarity.ShopCost;
     public int GetCardPrice(Rarity rarity) => rarity.ShopCost;
 
-    public bool TryRemoveCard(int playerChips)
+    public RarityType GenRarity()
     {
-        if (playerChips >= GetRemovalCost())
+        // 1-indexed
+        int currentAnte = StageManager.Instance.CurrentAnte + 1;
+
+        // Build candidate pool: only >0 weight and available at this ante
+        var candidates = new List<(Rarity rarity, int weight)>();
+        foreach (var r in rarities)
         {
-            // TODO: Remove card here from the DeckManager.Instance
-            removalsUsed++;
-            return true;
+            if (r.Weights <= 0) continue;
+
+            if (r.RarityType == RarityType.Mythic && currentAnte < config.mythicAvailableAtAnte)
+                continue;
+
+            if (r.RarityType == RarityType.Legendary && currentAnte < config.LegendaryAvailableAtAnte)
+                continue;
+
+            candidates.Add((r, r.Weights));
         }
-        return false;
+
+        // Safety: no eligible rarities
+        if (candidates.Count == 0)
+        {
+            GD.PushWarning("GenRarity: no eligible rarities at this ante; falling back to Common.");
+            return RarityType.Common; // or whatever your safe default is
+        }
+
+        // Sum weights
+        int totalWeight = 0;
+        foreach (var c in candidates)
+            totalWeight += c.weight;
+
+        // Roll and pick
+        int roll = DeckManager.Instance.RndGen.Next(totalWeight); // [0, totalWeight)
+        int cumulative = 0;
+        foreach (var c in candidates)
+        {
+            cumulative += c.weight;
+            if (roll < cumulative)
+                return c.rarity.RarityType;
+        }
+
+        // Fallback (should be unreachable)
+        return candidates[candidates.Count - 1].rarity.RarityType;
     }
 
 }

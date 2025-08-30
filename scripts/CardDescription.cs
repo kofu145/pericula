@@ -46,7 +46,11 @@ public partial class CardDescription : Control
 
         string traitName = data.Trait.ToString();
 
-        string pattern = $@"\b{Regex.Escape(traitName)}(es|s)?\b";
+        var traitNames = Enum.GetNames(typeof(Trait));
+        var escaped = Array.ConvertAll(traitNames, Regex.Escape);
+        string pattern = $@"\b({string.Join("|", escaped)})(es|s)?\b";
+
+        // Now replace all matches
         desc = Regex.Replace(
             desc,
             pattern,

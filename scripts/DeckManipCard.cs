@@ -86,6 +86,9 @@ public partial class DeckManipCard : Control
             case (int)Incantation.Upgrade:
                 UiOverlay.Instance.Upgrade(UpgradeCard);
                 break;
+            case (int)Incantation.Conjure:
+                DeckManager.Instance.AddRandomCard();
+                break;
         }
 
         PopupText.Instance.ShowText(GlobalPosition, "Purchased!");
@@ -95,17 +98,20 @@ public partial class DeckManipCard : Control
 
     private void RemoveCard(CardBase cardBase)
     {
-        
+        DeckManager.Instance.Remove(cardBase.Data);
+        GD.Print($"Remove card: {cardBase.Data.DisplayName}");
     }
 
     private void DuplicateCard(CardBase cardBase)
     {
-
+        DeckManager.Instance.DuplicateCard(cardBase.Data);
+        GD.Print($"duplicate card: {cardBase.Data.DisplayName}");
     }
 
     private void UpgradeCard(CardBase cardBase)
     {
-
+        DeckManager.Instance.Upgrade(cardBase.Data);
+        GD.Print($"Upgrade card: {cardBase.Data.DisplayName}");
     }
 
     private void StartTween(GodotObject @object, NodePath property, Variant finalValue, float duration, float delay = 0f)

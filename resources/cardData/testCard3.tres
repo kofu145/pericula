@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://w30r47do6yfe"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_ql2yi"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_1lfc0"]
+[ext_resource type="Resource" uid="uid://dslug15eeqxwj" path="res://resources/keywords/FinalWager.tres" id="2_774l5"]
+[ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="4_100to"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="4_rwcpk"]
+
+[sub_resource type="Resource" id="Resource_mjdb7"]
+resource_local_to_scene = true
+script = ExtResource("2_1lfc0")
+Damage = 5
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("4_rwcpk")
+id = 999
+DisplayName = "Mythic Card"
+Description = "Combat Start: test"
+Rarity = ExtResource("4_100to")
+Trait = 0
+BaseAttack = 1
+BaseHP = 1
+OnUse = Array[Object]([SubResource("Resource_mjdb7")])
+Passives = null
+Keywords = Array[ExtResource("1_ql2yi")]([ExtResource("2_774l5")])
+metadata/_custom_type_script = "uid://clner77n1ff5a"
