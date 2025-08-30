@@ -8,5 +8,5 @@
 script = ExtResource("1_frsb5")
 tutorialImage = SubResource("PlaceholderTexture2D_frsb5")
 pageName = "Bet Phase"
-pageDescription = "The bet starts with you, you can raise to increase the amount of chips in the pot."
+pageDescription = "The bet starts with you. Actions are akin to usual poker - you can bet if you like your hand based on the cards you see after the flop, or fold if you think the foe's hand will beat yours. "
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"

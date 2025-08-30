@@ -7,8 +7,9 @@
 [resource]
 script = ExtResource("1_0n6tn")
 tutorialImage = SubResource("PlaceholderTexture2D_0n6tn")
-pageName = "Draw Phase"
-pageDescription = "Draw cards to your hand and rearrange your card on your lane.
+pageName = "Flop Phase"
+pageDescription = "Welcome to Pericula!
+To start, rearrange your three leftmost cards that you'll show your foe - they will similarly show 3 of their cards for the flop. 
 
-The three leftmost cards are revealed to your opponent during the Bet Phase and the rest are hidden until the Flop."
+When you are done, press the \"Bet Phase\" button to start the bet phase."
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"
