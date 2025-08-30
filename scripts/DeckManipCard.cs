@@ -40,7 +40,6 @@ public partial class DeckManipCard : Control
         _deckManipID = id;
         this.shop = shop;
 
-        // TODO: Assign icon, text, etc.
         DeckManipData data = Lookup.GetDeckManipByID(_deckManipID);
         GetNode<Label>("CardBorder/CardName").Text = data.DisplayName.ToString();
         GetNode<Label>("CardBorder/Cost").Text = ShopManager.Instance.GetManipPrice(id).ToString();
@@ -62,7 +61,7 @@ public partial class DeckManipCard : Control
         {
             return;
         }
-        else if (ChipManager.Instance.Balance >= _deckManipID)
+        else if (ChipManager.Instance.Deduct(ShopManager.Instance.GetManipPrice(_deckManipID)))
         {
             Buy();
         }
@@ -74,7 +73,6 @@ public partial class DeckManipCard : Control
 
     private void Buy()
     {
-        ChipManager.Instance.Deduct(ShopManager.Instance.GetManipPrice(_deckManipID));
         switch (_deckManipID)
         {
             case (int)Incantation.Remove:
