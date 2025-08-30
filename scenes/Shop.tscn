@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://crui1r41ywu27"]
+[gd_scene load_steps=8 format=3 uid="uid://crui1r41ywu27"]
 
 [ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_fpbbi"]
 [ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="2_fpbbi"]
+[ext_resource type="PackedScene" uid="uid://nniabjsgwor0" path="res://scenes/shop_card/DeckManipulation.tscn" id="3_fpbbi"]
 [ext_resource type="PackedScene" uid="uid://dyau1eaiah8c7" path="res://scenes/Tutorial.tscn" id="4_cimqq"]
 [ext_resource type="Resource" uid="uid://8av2eh3jeih" path="res://resources/tutorialPage/ShopTutorial1.tres" id="6_ht580"]
 [ext_resource type="Resource" uid="uid://duj0e3a67a1cp" path="res://resources/tutorialPage/ShopTutorial2.tres" id="7_skkvx"]
@@ -62,7 +63,6 @@ theme_override_constants/separation = 8
 alignment = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -70,17 +70,23 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = 106.0
+offset_top = 130.0
 offset_right = 200.0
-offset_bottom = 224.0
+offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfvoa")
 
 [node name="DeckManipChoices" type="HBoxContainer" parent="PanelContainer2"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
 alignment = 1
+
+[node name="DeckManipulation" parent="PanelContainer2/DeckManipChoices" instance=ExtResource("3_fpbbi")]
+layout_mode = 2
+
+[node name="DeckManipulation2" parent="PanelContainer2/DeckManipChoices" instance=ExtResource("3_fpbbi")]
+layout_mode = 2
 
 [node name="RerollButton" type="Button" parent="."]
 layout_mode = 2

@@ -72,7 +72,7 @@ public partial class DeckManager : Node
 
     public void AddCardByID(int id)
     {
-        PlayerDeck.Cards.Add(CardLookup.GetCardByID(id));
+        PlayerDeck.Cards.Add(Lookup.GetCardByID(id));
     }
 
     public bool RemoveCardWithID(int id)
