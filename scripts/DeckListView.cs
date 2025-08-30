@@ -12,6 +12,7 @@ public partial class DeckListView : Control
     [Export] private Label headerLabel;
     [Export] private ScrollContainer Scroll;
     [Export] private GridContainer Grid;
+    [Export] private Button CloseButton;
 
     // Layout config
     [Export] private Vector2I CardSize = new(260, 360); // pixel size of each card cell
@@ -21,15 +22,15 @@ public partial class DeckListView : Control
     // runtime refs
     private List<CardBase> _cards = new();
 
-    private enum ViewMode { Closed, Deck, Draw, Discard, ShopRemove, ShopUpgrade, ShopDuplicate }
-    private ViewMode currentMode = ViewMode.Closed;
+    private enum ViewMode {Deck, Draw, Discard, ShopRemove, ShopUpgrade, ShopDuplicate }
+    private List<ViewMode> CanClose = new(){ViewMode.Deck, ViewMode.Draw, ViewMode.Discard};
 
-    public void OpenDeck() => Toggle(ViewMode.Deck);
-    public void OpenDraw() => Toggle(ViewMode.Draw);
-    public void OpenDiscard() => Toggle(ViewMode.Discard);
-    public void OpenShopRemove() => Toggle(ViewMode.ShopRemove);
-    public void OpenShopUpgrade() => Toggle(ViewMode.ShopUpgrade);
-    public void OpenShopDuplicate() => Toggle(ViewMode.ShopDuplicate);
+    public void OpenDeck() => Open(ViewMode.Deck);
+    public void OpenDraw() => Open(ViewMode.Draw);
+    public void OpenDiscard() => Open(ViewMode.Discard);
+    public void OpenShopRemove() => Open(ViewMode.ShopRemove);
+    public void OpenShopUpgrade() => Open(ViewMode.ShopUpgrade);
+    public void OpenShopDuplicate() => Open(ViewMode.ShopDuplicate);
 
 
     // Called when the node enters the scene tree for the first time.
@@ -42,27 +43,29 @@ public partial class DeckListView : Control
         if (Scroll != null) Scroll.Resized += UpdateColumns;
 
         CallDeferred(nameof(UpdateColumns));
-        // playerBattleDeck
-        // playerDisc
+
+        CloseButton.Pressed += Close;
     }
 
-    private void Toggle(ViewMode mode)
+    private void Open(ViewMode mode)
     {
-        // already opened
-        if (currentMode == mode && Visible == true) { Visible = false; return; }
-
-        currentMode = mode;
         Visible = true;
-        Refresh();
+        Refresh(mode);
+        CloseButton.Visible = CanClose.Contains(mode);
     }
 
-    private void Refresh()
+    private void Close()
+    {
+        Visible = false;
+    }
+
+    private void Refresh(ViewMode mode)
     {
         Clear();
 
         var dm = DeckManager.Instance;
 
-        Godot.Collections.Array<CardData> source = currentMode switch
+        Godot.Collections.Array<CardData> source = mode switch
         {
             ViewMode.Deck => dm.PlayerFullDeck,
             ViewMode.Draw => dm.PlayerDrawPile,
@@ -73,11 +76,14 @@ public partial class DeckListView : Control
             _ => DeckManager.Instance.PlayerFullDeck,
         };
 
-        headerLabel.Text = currentMode switch
+        headerLabel.Text = mode switch
         {
             ViewMode.Deck => "Player Deck",
             ViewMode.Draw => "Player Draw Pile",
             ViewMode.Discard => "Player Discard Pile",
+            ViewMode.ShopRemove => "Remove a Card",
+            ViewMode.ShopDuplicate => "Duplicate a Card",
+            ViewMode.ShopUpgrade => "Transform a Card",
             _ => ""
         };
 

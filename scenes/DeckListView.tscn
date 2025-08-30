@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmkb4"]
 bg_color = Color(0.05, 0.05, 0.05, 0.901961)
 
-[node name="DeckListView" type="Panel" node_paths=PackedStringArray("headerLabel", "Scroll", "Grid")]
+[node name="DeckListView" type="Panel" node_paths=PackedStringArray("headerLabel", "Scroll", "Grid", "CloseButton")]
 clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ CardScene = ExtResource("2_jmkb4")
 headerLabel = NodePath("Header")
 Scroll = NodePath("MarginContainer/ScrollContainer")
 Grid = NodePath("MarginContainer/ScrollContainer/GridContainer")
+CloseButton = NodePath("Button")
 CardSize = Vector2i(100, 118)
 HGap = 16
 VGap = 16
@@ -62,3 +63,11 @@ theme_override_font_sizes/font_size = 40
 text = "Deck Type Header"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 877.0
+offset_top = 28.0
+offset_right = 1107.0
+offset_bottom = 88.0
+text = "Close (arrow button)"

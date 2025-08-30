@@ -337,7 +337,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Canvas" type="CanvasLayer" parent="."]
-layer = 121
+layer = 119
 
 [node name="DeckListButtonContainer" type="Control" parent="Canvas" node_paths=PackedStringArray("drawPileButton", "discardPileButton")]
 layout_mode = 3
