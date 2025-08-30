@@ -5,7 +5,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_xjfqt")
-id = 0
+id = 1
 DisplayName = "Disintegrate"
 Description = "Remove a card from your deck."
 Cost = 200
