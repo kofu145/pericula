@@ -1,16 +1,11 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://x1s3hs3wqykm"]
+[gd_resource type="Resource" script_class="Deck" load_steps=5 format=3 uid="uid://x1s3hs3wqykm"]
 
+[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_SpadePawn.tres" id="1_an4hp"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
-[ext_resource type="Resource" uid="uid://ctl0nygqb8nbx" path="res://resources/cardData/diamond_pawn.tres" id="2_gsb5v"]
-[ext_resource type="Resource" uid="uid://c3n8acwkxod23" path="res://resources/cardData/club_pawn.tres" id="3_an4hp"]
-
-[sub_resource type="Resource" id="Resource_gsb5v"]
-metadata/__load_path__ = "res://resources/cardData/spade_pawn.tres"
-
-[sub_resource type="Resource" id="Resource_an4hp"]
-metadata/__load_path__ = "res://resources/cardData/spade_pawn.tres"
+[ext_resource type="Resource" uid="uid://cd14ulb4n153f" path="res://resources/cardData/1_DiamondPawn.tres" id="2_gsb5v"]
+[ext_resource type="Resource" uid="uid://np0ifctevug3" path="res://resources/cardData/2_HeartPawn.tres" id="3_an4hp"]
 
 [resource]
 script = ExtResource("1_qu2sd")
-Cards = Array[Object]([SubResource("Resource_gsb5v"), SubResource("Resource_an4hp"), ExtResource("3_an4hp"), ExtResource("3_an4hp"), ExtResource("2_gsb5v")])
+Cards = Array[Object]([ExtResource("1_an4hp"), ExtResource("2_gsb5v"), ExtResource("1_an4hp"), ExtResource("1_an4hp"), ExtResource("3_an4hp")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
