@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="3_hscbs"]
 [ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="3_lkv26"]
 [ext_resource type="FontFile" uid="uid://d2e06h3tqexbl" path="res://assets/karmatic-arcade/ka1.ttf" id="4_fa6lo"]
-[ext_resource type="Texture2D" uid="uid://e7jcgcd315dv" path="res://assets/empty.png" id="4_myijq"]
+[ext_resource type="Texture2D" uid="uid://e7jcgcd315dv" path="res://assets/cards/empty.png" id="4_myijq"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="7_sk3ko"]
 
 [node name="ShopCard" type="Control" node_paths=PackedStringArray("description")]
@@ -49,6 +49,7 @@ vertical_alignment = 1
 
 [node name="Image" type="TextureRect" parent="CardBorder"]
 custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
 offset_left = 10.0
 offset_top = 32.0
 offset_right = 110.0
@@ -57,6 +58,7 @@ pivot_offset = Vector2(50, 50)
 texture = ExtResource("4_myijq")
 
 [node name="Health" type="Label" parent="CardBorder"]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 136.0
 offset_right = 117.0
@@ -69,6 +71,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Attack" type="Label" parent="CardBorder"]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 136.0
 offset_right = 42.0
@@ -111,6 +114,7 @@ offset_bottom = 83.0
 
 [node name="CardBack" type="TextureRect" parent="."]
 z_index = -1
+layout_mode = 0
 offset_left = -2.0
 offset_top = -3.0
 offset_right = 118.0
