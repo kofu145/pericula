@@ -44,6 +44,15 @@ public partial class CombatController : Node
     }
 
     /// <summary>
+    /// Indicate to combat manager that bet phase has started.
+    /// </summary>
+    public void StartBetPhase()
+    {
+        playerLane.SetBetPhase();
+        enemyLane.SetBetPhase();
+    }
+
+    /// <summary>
     /// Ends the current turn in combat, enemy and player both discard their remaining hands.
     /// </summary>
     public void EndTurn()

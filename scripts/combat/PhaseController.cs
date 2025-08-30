@@ -137,6 +137,7 @@ public partial class PhaseController : Node
     {
         Hide(betPhaseButton);
         currentPhase = RoundPhase.Betting;
+        combatManager.StartBetPhase();
         betController.BeginPhase(currentMinimumBuyIn, enemyChips, currentPot);
     }
 

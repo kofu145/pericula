@@ -104,6 +104,23 @@ public partial class CardLane : Node
         return target;
     }
 
+    public void DisableInteraction()
+    {
+
+        foreach (var card in _cards)
+        {
+            card.EnableDefaultDrag = false;
+        }
+    }
+
+    public void EnableInteraction()
+    {
+        foreach (var card in _cards)
+        {
+            card.EnableDefaultDrag = true;
+        }
+    }
+
     public async Task RemoveCardAtIndex(int idx)
     {
         if (idx < 0 || idx >= _cards.Count)
@@ -179,8 +196,22 @@ public partial class CardLane : Node
         }
     }
 
+    public void SetBetPhase()
+    {
+        isFlopPhase = false;
+        DisableInteraction();
+        for (int i = 0; i < _cards.Count; i++)
+        {
+            if (i < 3 && !_cards[i].Visual.isFaceUp)
+            {
+                _cards[i].FlipCard();
+            }
+        }
+    }
+
     public void SetCombat()
     {
+        DisableInteraction();
         isFlopPhase = false;
         foreach (var card in _cards)
         {
