@@ -1,9 +1,10 @@
-[gd_resource type="Resource" load_steps=12 format=3 uid="uid://bwt0lm0awbt3m"]
+[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3 uid="uid://bwt0lm0awbt3m"]
 
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_2mo7f"]
 [ext_resource type="Resource" uid="uid://b4hxbmioyuby2" path="res://resources/keywords/Obscured.tres" id="1_15u53"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_kus6q"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_2mo7f"]
-[ext_resource type="Texture2D" uid="uid://c58o6pf7u2c2y" path="res://assets/knight.png" id="3_xvcie"]
+[ext_resource type="Texture2D" uid="uid://c58o6pf7u2c2y" path="res://assets/cards/knight.png" id="3_xvcie"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="4_islkc"]
 
 [sub_resource type="Resource" id="Resource_mjdb7"]
@@ -26,7 +27,7 @@ BaseHP = 5
 Texture = ExtResource("3_xvcie")
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-Keywords = [ExtResource("1_15u53")]
+Keywords = Array[ExtResource("1_2mo7f")]([ExtResource("1_15u53")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_vv3ys"]
@@ -42,7 +43,7 @@ BaseHP = 5
 Texture = ExtResource("3_xvcie")
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-Keywords = [ExtResource("1_15u53")]
+Keywords = Array[ExtResource("1_2mo7f")]([ExtResource("1_15u53")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_8hfgl"]
@@ -58,7 +59,7 @@ BaseHP = 5
 Texture = ExtResource("3_xvcie")
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-Keywords = [ExtResource("1_15u53")]
+Keywords = Array[ExtResource("1_2mo7f")]([ExtResource("1_15u53")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_w2aug"]
@@ -74,7 +75,7 @@ BaseHP = 5
 Texture = ExtResource("3_xvcie")
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-Keywords = [ExtResource("1_15u53")]
+Keywords = Array[ExtResource("1_2mo7f")]([ExtResource("1_15u53")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_htmrr"]
@@ -90,7 +91,7 @@ BaseHP = 5
 Texture = ExtResource("3_xvcie")
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-Keywords = [ExtResource("1_15u53")]
+Keywords = Array[ExtResource("1_2mo7f")]([ExtResource("1_15u53")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [resource]

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" load_steps=12 format=3 uid="uid://x1s3hs3wqykm"]
+[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3 uid="uid://x1s3hs3wqykm"]
 
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_gsb5v"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
 [ext_resource type="Resource" uid="uid://np0ifctevug3" path="res://resources/cardData/heart_pawn.tres" id="1_upxyf"]
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="2_5j4nb"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_an4hp"]
 [ext_resource type="Resource" uid="uid://bujtixc664anp" path="res://resources/cardData/club_pawn.tres" id="3_an4hp"]
 
@@ -25,7 +26,7 @@ BaseAttack = 5
 BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = null
-Keywords = []
+Keywords = Array[ExtResource("2_5j4nb")]([])
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_upxyf"]
@@ -47,7 +48,7 @@ BaseAttack = 5
 BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_upxyf")])
 Passives = null
-Keywords = []
+Keywords = Array[ExtResource("2_5j4nb")]([])
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [sub_resource type="Resource" id="Resource_kohqt"]
@@ -69,7 +70,7 @@ BaseAttack = 5
 BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_kohqt")])
 Passives = null
-Keywords = []
+Keywords = Array[ExtResource("2_5j4nb")]([])
 metadata/_custom_type_script = "uid://clner77n1ff5a"
 
 [resource]
