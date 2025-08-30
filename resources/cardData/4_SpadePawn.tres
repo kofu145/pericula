@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_jou0k"]
 [ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_2rtid"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_4idqb"]
-[ext_resource type="Script" uid="uid://dgdrml3ghdm8w" path="res://scripts/resources/effect/PawnAdvantageBuffEffect.cs" id="2_hh7ys"]
+[ext_resource type="Script" uid="uid://dgdrml3ghdm8w" path="res://scripts/resources/effect/PawnShowdownBuffEffect.cs" id="2_hh7ys"]
 [ext_resource type="Texture2D" uid="uid://c58o6pf7u2c2y" path="res://assets/cards/knight.png" id="3_hh7ys"]
 [ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="3_ifdj7"]
 
