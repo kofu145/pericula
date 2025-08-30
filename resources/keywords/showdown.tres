@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Keyword" load_steps=2 format=3 uid="uid://cshg215q640rj"]
 
-[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_5my5v"]
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_lp08e"]
 
 [resource]
-script = ExtResource("1_5my5v")
-DisplayName = "Combat Start"
+script = ExtResource("1_lp08e")
+DisplayName = "Showdown"
 Description = "Triggers an effect at the start of combat."

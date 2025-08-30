@@ -6,7 +6,7 @@
 resource_local_to_scene = true
 script = ExtResource("1_bruva")
 id = 3
-DisplayName = "Transmogify"
+DisplayName = "Transmogrify"
 Description = "Replace a card in your deck with a card of one higher rarity."
 Cost = 200
 metadata/_custom_type_script = "uid://clner77n1ff5a"
