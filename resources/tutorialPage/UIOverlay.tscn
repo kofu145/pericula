@@ -23,7 +23,6 @@ text = "View Deck"
 
 [node name="DeckListView" parent="." instance=ExtResource("1_cj1pm")]
 visible = false
-CardSize = Vector2i(50, 59)
 
 [node name="PlayerChipCount" type="Control" parent="."]
 visible = false
