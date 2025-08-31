@@ -1,6 +1,7 @@
 using Godot;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 public partial class EventBus : Node
 {
@@ -21,6 +22,7 @@ public partial class EventBus : Node
     public delegate void DamageEventHandler(CardData? victim);
     public delegate void AdvantageEventHandler(CardData? attacker);
     public delegate void FinalWagerHandler(DeathParam death);
+    public delegate void ObscuredEventHandler(List<CardData> obscured);
 
     //public event EventHandler OnDamage;
 
@@ -28,14 +30,14 @@ public partial class EventBus : Node
     public event Action ShowdownEvent;
     public event DamageEventHandler TakeDamageEvent;
     public event AdvantageEventHandler AdvantageEvent;
-    public event Action UnobscuredEvent;
+    public event ObscuredEventHandler ObscuredEvent;
     public event FinalWagerHandler FinalWagerEvent;
     public event Action ClearTriggerQueueEvent;
 
     public void RefreshBattle() => CombatManager.BattleRefreshHandler();
     public void InvokeTakeDamageEvent(CardData? card) => TakeDamageEvent?.Invoke(card);
     public void InvokeAdvantage(CardData? attacker) => AdvantageEvent?.Invoke(attacker);
-    public void InvokeObscured() => UnobscuredEvent?.Invoke();
+    public void InvokeObscured(List<CardData> obscured) => ObscuredEvent?.Invoke(obscured);
     public void InvokeShowdown() => ShowdownEvent?.Invoke();
     public void InvokeFinalWager(DeathParam death) => FinalWagerEvent?.Invoke(death);
     public async Task ClearTriggerQueue() => await CombatManager.ClearActionQueue();
@@ -45,7 +47,7 @@ public partial class EventBus : Node
         ShowdownEvent = null;
         TakeDamageEvent = null;
         AdvantageEvent = null;
-        UnobscuredEvent = null;
+        ObscuredEvent = null;
         FinalWagerEvent = null;
         ClearTriggerQueueEvent = null;
         RefreshBattleLoop = null;

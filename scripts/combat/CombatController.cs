@@ -77,8 +77,18 @@ public partial class CombatController : Node
     {
         InitLane(true);
         InitLane(false);
-
+        var obscuredList = new List<CardData>();
         EventBus.Instance.InvokeShowdown();
+        /*
+        for (int i = 0; i < playerLane.CardCount; i++)
+        {
+            if (i >= 3)
+            {
+                obscuredList.Add(playerLane.GetCardAtIndex(i));
+                obscuredList.Add(enemyLane.GetCardAtIndex(i));
+            }
+        }*/
+        EventBus.Instance.InvokeObscured(obscuredList);
         await ClearActionQueue();
         await UpdateLane(true);
         await UpdateLane(false);

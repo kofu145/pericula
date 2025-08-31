@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://x1s3hs3wqykm"]
+[gd_resource type="Resource" script_class="Deck" load_steps=5 format=3 uid="uid://x1s3hs3wqykm"]
 
 [ext_resource type="Resource" uid="uid://fasmj3v0ixuo" path="res://resources/cardData/1_diamond_pawn.tres" id="1_an4hp"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
-[ext_resource type="Resource" uid="uid://ck1o8ywot2pii" path="res://resources/cardData/28_revenant.tres" id="1_upxyf"]
-[ext_resource type="Resource" uid="uid://dpedequn6jabf" path="res://resources/cardData/19_battle_herald.tres" id="2_upxyf"]
-[ext_resource type="Resource" uid="uid://bglt5dyol4b8q" path="res://resources/cardData/29_bard.tres" id="4_upxyf"]
+[ext_resource type="Resource" uid="uid://bklsukimxnjdi" path="res://resources/cardData/18_rogue.tres" id="2_an4hp"]
+[ext_resource type="Resource" uid="uid://sfj7gjmd88cd" path="res://resources/cardData/31_trap_master.tres" id="3_upxyf"]
 
 [resource]
 script = ExtResource("1_qu2sd")
-Cards = Array[Object]([ExtResource("1_upxyf"), ExtResource("2_upxyf"), ExtResource("1_an4hp"), ExtResource("1_an4hp"), ExtResource("4_upxyf")])
+Cards = Array[Object]([ExtResource("1_an4hp"), ExtResource("1_an4hp"), ExtResource("1_an4hp"), ExtResource("2_an4hp"), ExtResource("3_upxyf")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"

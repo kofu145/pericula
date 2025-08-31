@@ -104,6 +104,7 @@ bus = &"BGM"
 [node name="SE" type="AudioStreamPlayer" parent="SoundManager"]
 stream = SubResource("AudioStreamPolyphonic_2rbph")
 volume_db = -6.0
+bus = &"SE"
 
 [node name="RunEndManager" type="Node" parent="." node_paths=PackedStringArray("runEndPanel")]
 script = ExtResource("19_4o0wa")
