@@ -17,7 +17,7 @@ bg_color = Color(0.151276, 0.151276, 0.151276, 1)
 expand_margin_top = 8.0
 expand_margin_bottom = 8.0
 
-[node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices", "manipChoices")]
+[node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices", "manipChoices", "rerollButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +29,7 @@ shopChoices = NodePath("PanelContainer/ShopChoices")
 manipChoices = NodePath("PanelContainer2/DeckManipChoices")
 shopCardScene = ExtResource("2_fpbbi")
 manipScene = ExtResource("3_fpbbi")
+rerollButton = NodePath("RerollButton")
 
 [node name="ToBattleButton" type="Button" parent="."]
 layout_mode = 1
