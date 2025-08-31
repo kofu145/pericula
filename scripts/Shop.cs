@@ -35,7 +35,6 @@ public partial class Shop : Control
 
     public void Initialize()
     {
-
         int _upgradeID;
         for (int i = 0; i < choicesAvailable; i++)
         {
@@ -89,10 +88,12 @@ public partial class Shop : Control
         if (!ChipManager.Instance.Deduct(currentRerollCost))
         {
             GD.Print("Not enough chips to reroll!");
+            SoundManager.PlaySE("fail");
             return;
         }
         else
         {
+            SoundManager.PlaySE("click");
             ChipManager.Instance.Deduct(currentRerollCost);
             ShopManager.Instance.Reroll();
             UpdateRerollCost();
@@ -104,6 +105,7 @@ public partial class Shop : Control
     public void EndShopPhase()
     {
         SceneManager.ChangeSceneToFile("PreCombat");
+        SoundManager.PlaySE("click");
     }
 
     private void UpdateRerollCost()

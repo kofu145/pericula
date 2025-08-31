@@ -80,6 +80,7 @@ public partial class ShopCard : Control
         else
         {
             PopupText.Instance.ShowText(GlobalPosition, "Too expensive!");
+            SoundManager.PlaySE("fail");
         }
     }
 
