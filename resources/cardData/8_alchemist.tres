@@ -9,6 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_se4ks"]
 script = ExtResource("2_c4d48")
+hitCount = 1
 name = ""
 metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 
