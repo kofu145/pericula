@@ -30,9 +30,6 @@ theme_override_styles/pressed = ExtResource("4_lkato")
 theme_override_styles/normal = ExtResource("5_ddc24")
 text = "View Deck"
 
-[node name="DeckListView" parent="." instance=ExtResource("1_cj1pm")]
-visible = false
-
 [node name="PlayerChipCount" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -58,6 +55,9 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("4_r3r3p")
 theme_override_font_sizes/font_size = 36
 text = "100"
+
+[node name="DeckListView" parent="." instance=ExtResource("1_cj1pm")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
