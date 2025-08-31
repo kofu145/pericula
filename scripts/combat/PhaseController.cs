@@ -151,7 +151,7 @@ public partial class PhaseController : Node
     private void StartShowdownPhase()
     {
         SoundManager.PlaySE("click");
-        SoundManager.PlaySE("FX01");
+        SoundManager.PlaySE("select_node");
         Hide(showdownButton);
         currentPhase = RoundPhase.Showdown;
         combatManager.ShowdownHandler();

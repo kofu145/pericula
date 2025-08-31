@@ -63,6 +63,7 @@ public partial class EffectTemplate : Resource
         var damagePos = cardBase.GlobalPosition;
         PopupText.Instance.ShowText(damagePos + new Vector2(0, 40), $"+{Attack}/+{HP}");
         cardBase.Visual.UpdateLabels();
+        SoundManager.PlaySE("buff");
     }
 
 

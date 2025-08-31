@@ -24,7 +24,7 @@ public partial class BuffOnFinalWager : EffectTemplate
         EventBus.FinalWagerHandler handler = null;
         handler = (DeathParam death) =>
         {
-            if (death.BaseData != param.Self) return;
+            if (death.Reference != param.Self) return;
             param.State.QueueTrigger(async () =>
             {
                 var lane = param.State.GetSide(param.Self);
