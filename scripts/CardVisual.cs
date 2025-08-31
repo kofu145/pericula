@@ -69,8 +69,8 @@ public partial class CardVisual : Control
         if (cardBase != null)
         {
             var baseData = cardBase.GetCardData();
-            healthLabel.Text = baseData.BaseHP.ToString();
-            attackLabel.Text = baseData.BaseAttack.ToString();
+            healthLabel.Text = baseData.BaseHpAfterCombatBuffs.ToString();
+            attackLabel.Text = baseData.BaseAttackAfterCombatBuffs.ToString();
             cardDescription.Initialize(baseData);
         }
         color = data.Rarity.RarityColor;
