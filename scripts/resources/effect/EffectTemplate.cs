@@ -38,6 +38,11 @@ public partial class EffectTemplate : Resource
         await DamageText(damage, target, param);
         EventBus.Instance.InvokeTakeDamageEvent(target);
         //await EventBus.Instance.ClearTriggerQueue();
+        if (target.HP <= 0)
+        {
+            GD.Print($"{target.DisplayName} died. Trying to trigger final wager if it has one");
+            EventBus.Instance.InvokeFinalWager(target);
+        }
     }
 
     /// <summary>
