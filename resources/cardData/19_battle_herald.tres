@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://btwwat5io72d2"]
+[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://btwwat5io72d2"]
 
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_het11"]
 [ext_resource type="Resource" uid="uid://dyb56i12g80ky" path="res://resources/keywords/final_wager.tres" id="2_hy21x"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_mn4cd"]
 [ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="2_vv8fo"]
@@ -33,5 +34,5 @@ BaseAttack = 7
 BaseHP = 10
 OnUse = Array[Object]([SubResource("Resource_k07xk")])
 Passives = Array[Object]([SubResource("Resource_3m8ua")])
-Keywords = [ExtResource("2_hy21x")]
+Keywords = Array[ExtResource("1_het11")]([ExtResource("2_hy21x")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"

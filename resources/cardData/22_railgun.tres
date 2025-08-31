@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://cilb14jnauoqx"]
+
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_ct554"]
+[ext_resource type="Resource" uid="uid://x6q04ojt20wv" path="res://resources/keywords/advantage.tres" id="1_g02au"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_br20d"]
+[ext_resource type="Script" uid="uid://sb3rjdshkdeh" path="res://scripts/resources/effect/HitColumnByTrait.cs" id="3_x2ebi"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="4_tgtev"]
+
+[sub_resource type="Resource" id="Resource_ak4in"]
+script = ExtResource("2_br20d")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_76pef"]
+script = ExtResource("3_x2ebi")
+Damage = 1
+BuffTrait = 4
+name = ""
+metadata/_custom_type_script = "uid://sb3rjdshkdeh"
+
+[resource]
+script = ExtResource("1_ct554")
+id = 22
+DisplayName = "Railgun"
+Description = "Advantage: Deal 1 damage to foe above this unit for every ally Mechanical unit."
+Rarity = ExtResource("4_tgtev")
+Trait = 4
+BaseAttack = 5
+BaseHP = 3
+OnUse = Array[Object]([SubResource("Resource_ak4in")])
+Passives = Array[Object]([SubResource("Resource_76pef")])
+Keywords = [ExtResource("1_g02au")]
+metadata/_custom_type_script = "uid://clner77n1ff5a"
