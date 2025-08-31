@@ -8,7 +8,7 @@
 script = ExtResource("2_cqoc4")
 id = 35
 DisplayName = "The Repear"
-Description = "Final Wager trigger twice"
+Description = "Friendly Final Wager trigger twice"
 Rarity = ExtResource("2_32isu")
 Trait = 8
 BaseAttack = 14

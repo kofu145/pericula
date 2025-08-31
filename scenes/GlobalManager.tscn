@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=32 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
 [ext_resource type="Script" uid="uid://bse2d7muju74w" path="res://scripts/shared/EventBus.cs" id="3_8tji2"]
 [ext_resource type="Resource" uid="uid://x1s3hs3wqykm" path="res://resources/decks/TestDeck.tres" id="3_ycd5x"]
+[ext_resource type="Resource" uid="uid://dhbl4f54eddhc" path="res://resources/cardData/15_blood_hound.tres" id="4_5lwj7"]
 [ext_resource type="Script" uid="uid://cnyblma4mqw1o" path="res://scripts/shared/SceneManager.cs" id="4_e58k3"]
 [ext_resource type="Resource" uid="uid://cn88yk5t0kdt" path="res://resources/cardData/5_wisp.tres" id="4_tltbq"]
 [ext_resource type="Resource" uid="uid://bbdxrgh6mewor" path="res://resources/cardData/11_Flagbearer.tres" id="5_6000c"]
@@ -32,7 +33,7 @@
 [sub_resource type="Resource" id="Resource_l76sc"]
 resource_local_to_scene = true
 script = ExtResource("5_bgvav")
-Cards = Array[Object]([ExtResource("4_tltbq"), ExtResource("4_tltbq"), ExtResource("5_6000c"), ExtResource("5_6000c"), ExtResource("6_bcam4")])
+Cards = Array[Object]([ExtResource("4_5lwj7"), ExtResource("4_5lwj7"), ExtResource("4_5lwj7"), ExtResource("4_5lwj7"), ExtResource("5_e4twu")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7a67w"]
