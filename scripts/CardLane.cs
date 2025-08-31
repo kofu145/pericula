@@ -110,6 +110,18 @@ public partial class CardLane : Node
         return target;
     }
 
+    public List<CardData> GetAllCardData()
+    {
+        List<CardData> returnList = new();
+
+        foreach (var card in _cards)
+        {
+            returnList.Add(card.Data);
+        }
+
+        return returnList;
+    }
+
     public void DisableInteraction()
     {
         foreach (var card in _cards)

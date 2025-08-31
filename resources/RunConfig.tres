@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_v7nrs")
-playerStartingChips = 100
+playerStartingChips = 80
 playerStartingDeck = ExtResource("1_ngmds")
 enemiesPerAnte = 1
 antesPerRun = 2
