@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cotrbpricgvli" path="res://assets/art/cardlane.png" id="8_toxd1"]
 [ext_resource type="Texture2D" uid="uid://dyu218r3i63pl" path="res://assets/UI/crackedpanel.png" id="9_abjrc"]
 [ext_resource type="Shader" uid="uid://qbun5diokmrm" path="res://scripts/shaders/connected_circles.gdshader" id="13_jccym"]
-[ext_resource type="Resource" uid="uid://brxf8m2y3jct" path="res://resources/tutorialPage/ShopTutorial3.tres" id="13_plhqw"]
-[ext_resource type="Resource" uid="uid://dxr3vtj6rwab7" path="res://resources/tutorialPage/ShopTutorial4.tres" id="14_a6yfk"]
+[ext_resource type="Resource" path="res://resources/tutorialPage/ShopTutorial3.tres" id="13_plhqw"]
+[ext_resource type="Resource" path="res://resources/tutorialPage/ShopTutorial4.tres" id="14_a6yfk"]
 [ext_resource type="Texture2D" uid="uid://b8ey5pfd8ckq" path="res://assets/UI/SimplexNoise2D.png" id="14_plhqw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a6yfk"]
