@@ -1,12 +1,11 @@
 [gd_resource type="Resource" script_class="TutorialPage" load_steps=3 format=3 uid="uid://bpeexath2soo5"]
 
 [ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="1_frsb5"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_frsb5"]
+[ext_resource type="Texture2D" uid="uid://cg504p21p2awd" path="res://assets/screenshots/combat_tutorial_2.png" id="2_535no"]
 
 [resource]
 script = ExtResource("1_frsb5")
-tutorialImage = SubResource("PlaceholderTexture2D_frsb5")
+tutorialImage = ExtResource("2_535no")
 pageName = "Bet Phase"
 pageDescription = "The bet starts with you. Actions are akin to usual poker - you can bet if you like your hand based on the cards you see after the flop, or fold if you think the foe's hand will beat yours. "
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"

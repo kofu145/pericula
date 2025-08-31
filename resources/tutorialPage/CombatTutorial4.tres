@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TutorialPage" load_steps=3 format=3 uid="uid://ct2ofbxe5x46j"]
+
+[ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="1_umoyf"]
+[ext_resource type="Texture2D" uid="uid://cpx36t786hn2l" path="res://assets/screenshots/combat_tutorial_4.png" id="2_c8utf"]
+
+[resource]
+script = ExtResource("1_umoyf")
+tutorialImage = ExtResource("2_c8utf")
+pageName = "Encounter"
+pageDescription = "The encounter ends when either you or your opponent run out of chips.
+
+For the next encounter, if you do not have enough money for the buy-in you will borrow the remaining amount.
+
+Starting from the 4th round, the buy-in will double."
+metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"

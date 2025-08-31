@@ -1,14 +1,13 @@
 [gd_resource type="Resource" script_class="TutorialPage" load_steps=3 format=3 uid="uid://duj0e3a67a1cp"]
 
 [ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="1_oyv03"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jmt1o"]
+[ext_resource type="Texture2D" uid="uid://c7tq8hyethvb6" path="res://assets/screenshots/shop_tutorial_2.png" id="2_c13qx"]
 
 [resource]
 script = ExtResource("1_oyv03")
-tutorialImage = SubResource("PlaceholderTexture2D_jmt1o")
+tutorialImage = ExtResource("2_c13qx")
 pageName = "Deck Manipulation"
-pageDescription = "A the bottom of the shop, you'll notice special deck manipulation cards. 
+pageDescription = "At the bottom of the shop, you'll notice special deck manipulation cards. 
 
 Though effective in improving the quality of your deck, you might find it a bit costly to rely on them too much..."
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"

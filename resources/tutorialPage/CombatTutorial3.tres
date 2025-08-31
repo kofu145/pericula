@@ -1,16 +1,15 @@
 [gd_resource type="Resource" script_class="TutorialPage" load_steps=3 format=3 uid="uid://dst83iae10rla"]
 
 [ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="1_uhptm"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uhptm"]
+[ext_resource type="Texture2D" uid="uid://csb8nqgiur55o" path="res://assets/screenshots/combat_tutorial_3.png" id="2_qx648"]
 
 [resource]
 script = ExtResource("1_uhptm")
-tutorialImage = SubResource("PlaceholderTexture2D_uhptm")
+tutorialImage = ExtResource("2_qx648")
 pageName = "Showdown"
-pageDescription = "The attack order alternates between you and your opponent.
+pageDescription = "The attack order alternates between you and your opponent. Only the leftmost units attack and when attacking, the units do not receive damage. 
 
-Only the leftmost units attack and when attacking, the units do not receive damage.
+Keep in mind that a lot of cards later on will have more more powerful effects that can shape the outcome of combat.
 
-The Showdown ends when either side has no cards on their lanes."
+The showdown ends when either side has no cards on their lanes."
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"

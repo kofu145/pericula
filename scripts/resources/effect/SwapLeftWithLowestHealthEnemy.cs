@@ -4,6 +4,7 @@ using System;
 [GlobalClass]
 public partial class SwapLeftWithLowestHealthEnemy : EffectTemplate
 {
+    [Export] public float swapDuration = 0.5f;
     public override void Initialize(EffectParam param)
     {
         Action handler = null;
@@ -12,7 +13,7 @@ public partial class SwapLeftWithLowestHealthEnemy : EffectTemplate
             param.State.QueueTrigger(
              async () =>
             {
-                (int index, int health) currentTarget = (0,int.MaxValue);
+                (int index, int health) currentTarget = (0, int.MaxValue);
                 var lane = param.State.OpposingLane(param.Self);
                 for (int i = 0; i < lane.CardCount; i++)
                 {
@@ -23,11 +24,12 @@ public partial class SwapLeftWithLowestHealthEnemy : EffectTemplate
                 var originalTarget = 0;
                 var finalTarget = currentTarget.index;
 
-                lane.Swap(originalTarget, finalTarget);
+                await DoTriggerAnimation(param);
+
+                await lane.Swap(originalTarget, finalTarget, swapDuration);
 
                 // GD.Print($"swapping with {finalTarget}");
 
-                await DoTriggerAnimation(param);
             });
             EventBus.Instance.ShowdownEvent -= handler;
         };

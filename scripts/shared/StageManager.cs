@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 public partial class StageManager : Node
 {
@@ -123,6 +124,7 @@ public partial class StageManager : Node
     public int GetEnemyStartingChips() => config.EnemyChipsPerAnte[CurrentAnte] + (CurrentStageNumber == EnemiesPerAnte - 1 ? config.bossBonusPerAnte[CurrentAnte] : 0);
     public int GetCurrentBuyIn() => config.baseBuyIn + (CurrentAnte * config.buyInIncreasePerAnte);
 
+    public EnemyData GetCurrentEnemy() => currentAnteEnemies[CurrentStageNumber];
     public Deck GetCurrentEnemyDeck()
     {
         return currentAnteEnemies[CurrentStageNumber].deck;
