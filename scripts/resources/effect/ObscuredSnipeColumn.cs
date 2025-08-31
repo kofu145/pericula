@@ -24,7 +24,7 @@ public partial class ObscuredSnipeColumn : EffectTemplate
                 var count = 0;
                 for (int i = 0; i < lane.CardCount; i++)
                 {
-                    if (lane.GetCardAtIndex(i).ObscureChar)
+                    if (lane.GetCardAtIndex(i).ObscureChar && i >= 3)
                         count++;
                 }
                 var idx = lane.IndexOf(lane.GetCardBaseByData(param.Self));
