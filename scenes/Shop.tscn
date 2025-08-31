@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crui1r41ywu27"]
+[gd_scene load_steps=16 format=3 uid="uid://crui1r41ywu27"]
 
 [ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_fpbbi"]
 [ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="2_fpbbi"]
@@ -11,11 +11,21 @@
 [ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="7_hd80v"]
 [ext_resource type="Resource" uid="uid://duj0e3a67a1cp" path="res://resources/tutorialPage/ShopTutorial2.tres" id="7_skkvx"]
 [ext_resource type="Texture2D" uid="uid://cotrbpricgvli" path="res://assets/art/cardlane.png" id="8_toxd1"]
+[ext_resource type="Texture2D" uid="uid://dyu218r3i63pl" path="res://assets/UI/crackedpanel.png" id="9_abjrc"]
+[ext_resource type="Shader" uid="uid://qbun5diokmrm" path="res://scripts/shaders/connected_circles.gdshader" id="13_jccym"]
+[ext_resource type="Texture2D" uid="uid://b8ey5pfd8ckq" path="res://assets/UI/SimplexNoise2D.png" id="14_plhqw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
-bg_color = Color(0.151276, 0.151276, 0.151276, 1)
-expand_margin_top = 8.0
-expand_margin_bottom = 8.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6yfk"]
+shader = ExtResource("13_jccym")
+shader_parameter/separation = 0.032
+shader_parameter/radius = 0.012
+shader_parameter/min_thick = 0.337
+shader_parameter/speed = 0.019
+shader_parameter/tilt_45 = true
+shader_parameter/direction = -45.0
+shader_parameter/noise_texture = ExtResource("14_plhqw")
+shader_parameter/color1 = Color(0.227451, 0.239216, 0.34902, 1)
+shader_parameter/color2 = Color(0.345162, 0.361311, 0.50698, 1)
 
 [node name="Shop" type="Control" node_paths=PackedStringArray("shopChoices", "manipChoices", "rerollButton")]
 layout_mode = 3
@@ -36,15 +46,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -217.0
-offset_top = 87.0
-offset_right = 83.0
-offset_bottom = 213.0
+offset_left = -361.0
+offset_top = 48.0
+offset_right = -61.0
+offset_bottom = 174.0
 grow_horizontal = 2
 size_flags_vertical = 8
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_eo1la")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 theme_override_styles/hover = ExtResource("5_toxd1")
 theme_override_styles/pressed = ExtResource("6_47hci")
 theme_override_styles/normal = ExtResource("7_hd80v")
@@ -57,10 +67,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -421.0
-offset_top = -79.0
-offset_right = 303.0
-offset_bottom = 81.0
+offset_left = -417.0
+offset_top = -123.0
+offset_right = 402.0
+offset_bottom = 137.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_toxd1")
@@ -68,43 +78,45 @@ stretch_mode = 5
 
 [node name="ShopChoices" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
-offset_left = 105.0
-offset_right = 618.0
+offset_left = 1.0
+offset_right = 514.0
 offset_bottom = 160.0
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="."]
+[node name="PanelContainer2" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = 130.0
-offset_right = 200.0
-offset_bottom = 290.0
+offset_left = -191.0
+offset_top = 164.0
+offset_right = 193.0
+offset_bottom = 292.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xfvoa")
+texture = ExtResource("9_abjrc")
 
 [node name="DeckManipChoices" type="HBoxContainer" parent="PanelContainer2"]
 layout_mode = 2
+offset_right = 383.0
+offset_bottom = 132.0
 theme_override_constants/separation = 24
 alignment = 1
 
 [node name="RerollButton" type="Button" parent="."]
 layout_mode = 2
-offset_left = 785.0
-offset_top = 280.0
-offset_right = 985.0
-offset_bottom = 364.0
+offset_left = 611.0
+offset_top = 47.0
+offset_right = 911.0
+offset_bottom = 173.0
 grow_vertical = 0
 size_flags_vertical = 8
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_eo1la")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 theme_override_styles/hover = ExtResource("5_toxd1")
 theme_override_styles/pressed = ExtResource("6_47hci")
 theme_override_styles/normal = ExtResource("7_hd80v")
@@ -113,6 +125,17 @@ text = "Reroll (200)"
 [node name="ShopTutorial" parent="." instance=ExtResource("4_cimqq")]
 tutorials = [ExtResource("6_ht580"), ExtResource("7_skkvx")]
 tutorialKey = "ShopTutorial"
+
+[node name="BackgroundEffect" type="Panel" parent="."]
+z_index = -50
+material = SubResource("ShaderMaterial_a6yfk")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
 
 [connection signal="pressed" from="ToBattleButton" to="." method="EndShopPhase"]
 [connection signal="pressed" from="RerollButton" to="." method="Reroll"]
