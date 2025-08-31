@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://dpedequn6jabf"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_a6je0"]
+[ext_resource type="Resource" uid="uid://dyb56i12g80ky" path="res://resources/keywords/final_wager.tres" id="2_hy21x"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_mn4cd"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="2_vv8fo"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_het11"]
+[ext_resource type="Script" uid="uid://bvdys8i4a0dm0" path="res://scripts/resources/effect/BuffOnFinalWager.cs" id="4_6d3jh"]
+
+[sub_resource type="Resource" id="Resource_k07xk"]
+script = ExtResource("3_het11")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_3m8ua"]
+script = ExtResource("4_6d3jh")
+HPBuff = 0
+AtkBuff = 3
+TargetTrait = false
+TraitToBuff = 0
+buffDuration = 0
+name = ""
+metadata/_custom_type_script = "uid://bvdys8i4a0dm0"
+
+[resource]
+script = ExtResource("2_mn4cd")
+id = 19
+DisplayName = "Battle Herald"
+Description = "Final Wager: All your units gain +3 attack"
+Rarity = ExtResource("2_vv8fo")
+Trait = 0
+BaseAttack = 7
+BaseHP = 10
+OnUse = Array[Object]([SubResource("Resource_k07xk")])
+Passives = Array[Object]([SubResource("Resource_3m8ua")])
+Keywords = Array[ExtResource("1_a6je0")]([ExtResource("2_hy21x")])
+metadata/_custom_type_script = "uid://clner77n1ff5a"
