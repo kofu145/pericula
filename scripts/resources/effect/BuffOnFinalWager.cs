@@ -33,11 +33,11 @@ public partial class BuffOnFinalWager : EffectTemplate
                     var card = lane.GetCardAtIndex(i);
                     if (ValidTarget(card, param))
                     {
-                        GD.Print($"Buffing {card.DisplayName}");
                         if (buffDuration == BuffDuration.CurrentShowdown)
                         {
                             card.HP += HPBuff;
                             card.Attack += AtkBuff;
+                            GD.Print($"Buffing {card.DisplayName}, now has encounter stats: {card.BaseAttackAfterCombatBuffs}/{card.BaseHpAfterCombatBuffs}. only buffed combat stat");
                         }
                         else if (buffDuration == BuffDuration.Encounter)
                         {
@@ -45,6 +45,7 @@ public partial class BuffOnFinalWager : EffectTemplate
                             card.Attack += AtkBuff;
                             card.BaseHpAfterCombatBuffs += HPBuff;
                             card.BaseAttackAfterCombatBuffs += AtkBuff;
+                            GD.Print($"Buffing {card.DisplayName}, now has encounter stats: {card.BaseAttackAfterCombatBuffs}/{card.BaseHpAfterCombatBuffs}");
                         }
 
                         BuffText(HPBuff, AtkBuff, card, param);
