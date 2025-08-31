@@ -143,4 +143,9 @@ public partial class CardVisual : Control
             Material = null;
         }
     }
+
+    public void PlayHitSound()
+    {
+        SoundManager.PlaySE("hit");
+    }
 }
