@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://bt7u4i3qchld" path="res://resources/cardData/2_heart_pawn.tres" id="5_bcam4"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="5_bgvav"]
 [ext_resource type="Resource" uid="uid://cb5ljb08t7swc" path="res://resources/cardData/3_club_pawn.tres" id="6_u8dp8"]
-[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spawn_pawn.tres" id="7_gl4ri"]
+[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="7_gl4ri"]
 [ext_resource type="Script" uid="uid://ckq7qoxv60uo8" path="res://scripts/shared/PopupText.cs" id="7_l76sc"]
 [ext_resource type="PackedScene" uid="uid://dha6a5my3cgt6" path="res://scenes/PopupText.tscn" id="9_s02d4"]
 [ext_resource type="Shader" uid="uid://d3717vds76o65" path="res://scripts/shaders/DiamondTransition.gdshader" id="10_ivlop"]
