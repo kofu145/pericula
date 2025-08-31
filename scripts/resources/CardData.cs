@@ -19,8 +19,8 @@ public partial class CardData : Resource
     public int Attack;
 
     // encounter stats
-    public int baseAttackAfterCombatBuffs;
-    public int baseHpAfterCombatBuffs;
+    public int BaseAttackAfterCombatBuffs;
+    public int BaseHpAfterCombatBuffs;
 
     // base stats
     [Export] public int BaseAttack;
@@ -34,6 +34,9 @@ public partial class CardData : Resource
     {
         HP = BaseHP;
         Attack = BaseAttack;
+
+        BaseAttackAfterCombatBuffs = BaseAttack;
+        BaseHpAfterCombatBuffs = BaseHP;
         //GD.Print(ToString() + "from CardData");
     }
 
@@ -44,8 +47,8 @@ public partial class CardData : Resource
 
     public void ResetForShowdown()
     {
-        HP = BaseHP;
-        Attack = BaseAttack;
+        HP = BaseHpAfterCombatBuffs;
+        Attack = BaseAttackAfterCombatBuffs;
         foreach (var effect in OnUse)
         {
             effect.Reset();
@@ -58,7 +61,10 @@ public partial class CardData : Resource
 
     public void ResetForEncounter()
     {
-        
+        BaseAttackAfterCombatBuffs = BaseAttack;
+        BaseHpAfterCombatBuffs = BaseHP;
+
+        ResetForShowdown();
     }
 
 }

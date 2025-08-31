@@ -220,6 +220,7 @@ public partial class DeckManager : Node
         foreach (var card in list)
         {
             var cardToAdd = (CardData)card.Duplicate(true);
+            cardToAdd.ResetForEncounter();
             targetList.Add(cardToAdd);
             cardToAdd.Initialize();
             //card.id = RndGen.Next(100);
