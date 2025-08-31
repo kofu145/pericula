@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqqs350nnamat"]
+[gd_scene load_steps=7 format=3 uid="uid://bqqs350nnamat"]
 
 [ext_resource type="Script" uid="uid://bp3r4cbe8ntmt" path="res://scripts/PreStagePanel.cs" id="1_5dvc7"]
+[ext_resource type="Texture2D" uid="uid://ydfu3xj42c1" path="res://assets/UI/long_name_panel.png" id="1_c2ppo"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="3_qpkmw"]
+[ext_resource type="StyleBox" uid="uid://cjuvxeskdxmr3" path="res://assets/stylebox_tex/button_hover.tres" id="4_lmxqp"]
+[ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="5_vkctj"]
+[ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="6_edful"]
 
-[node name="PreStagePanel" type="PanelContainer" node_paths=PackedStringArray("stageName", "stageNumber", "startRoundButton", "viewDeckButton")]
+[node name="PreStagePanel" type="TextureRect" node_paths=PackedStringArray("stageName", "stageNumber", "startRoundButton", "viewDeckButton")]
 custom_minimum_size = Vector2(1055, 152)
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+texture = ExtResource("1_c2ppo")
 script = ExtResource("1_5dvc7")
 stageName = NodePath("VBoxContainer/StageName")
 stageNumber = NodePath("VBoxContainer/RoundNumber")
@@ -21,6 +27,8 @@ viewDeckButton = NodePath("VBoxContainer/Control/DeckButton")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+offset_right = 1055.0
+offset_bottom = 164.0
 theme_override_constants/separation = 24
 alignment = 1
 
@@ -29,6 +37,7 @@ layout_mode = 2
 
 [node name="StageName" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_qpkmw")
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "Enemy"
@@ -39,6 +48,7 @@ vertical_alignment = 1
 
 [node name="RoundNumber" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_qpkmw")
 theme_override_font_sizes/normal_font_size = 24
 text = "Round 1"
 fit_content = true
@@ -55,21 +65,26 @@ layout_mode = 2
 
 [node name="StartRoundButton" type="Button" parent="VBoxContainer/Control"]
 layout_mode = 2
-offset_left = -241.0
-offset_top = 41.0
-offset_right = -36.0
-offset_bottom = 131.0
+offset_left = -249.0
+offset_top = 28.0
+offset_right = -33.0
+offset_bottom = 118.0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("3_qpkmw")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = ExtResource("4_lmxqp")
+theme_override_styles/pressed = ExtResource("5_vkctj")
+theme_override_styles/normal = ExtResource("6_edful")
 text = "START ROUND"
 
 [node name="DeckButton" type="Button" parent="VBoxContainer/Control"]
 layout_mode = 0
 offset_left = -379.0
-offset_top = 41.0
+offset_top = 31.0
 offset_right = -270.0
-offset_bottom = 131.0
+offset_bottom = 121.0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("3_qpkmw")
 theme_override_font_sizes/font_size = 24
 text = "Deck"
 
