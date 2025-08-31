@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyau1eaiah8c7"]
+[gd_scene load_steps=6 format=3 uid="uid://dyau1eaiah8c7"]
 
 [ext_resource type="Script" uid="uid://bddg2jsxk7acm" path="res://scripts/TutorialController.cs" id="1_ci5ev"]
+[ext_resource type="Texture2D" uid="uid://bdehjk7gj6o2u" path="res://assets/screenshots/combat_tutorial_1.png" id="2_ebau5"]
 [ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="2_pgr2e"]
 [ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="3_ebau5"]
 
@@ -27,9 +28,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ci5ev")
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 0
 offset_left = 92.0
-offset_top = 175.0
+offset_top = 120.0
 offset_right = 548.0
-offset_bottom = 543.0
+offset_bottom = 576.0
+texture = ExtResource("2_ebau5")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="Title" type="Label" parent="Panel"]
 layout_mode = 1
@@ -49,9 +53,9 @@ horizontal_alignment = 1
 [node name="Description" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 583.0
-offset_top = 144.0
+offset_top = 124.0
 offset_right = 1124.0
-offset_bottom = 513.0
+offset_bottom = 536.0
 theme_override_fonts/font = ExtResource("3_ebau5")
 theme_override_font_sizes/font_size = 28
 text = "Description"
@@ -61,9 +65,9 @@ autowrap_mode = 2
 [node name="Button" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 995.0
-offset_top = 530.0
+offset_top = 564.0
 offset_right = 1108.0
-offset_bottom = 593.0
+offset_bottom = 627.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ebau5")
 theme_override_font_sizes/font_size = 24

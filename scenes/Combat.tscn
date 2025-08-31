@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c4hr0e855ng1k"]
+[gd_scene load_steps=35 format=3 uid="uid://c4hr0e855ng1k"]
 
 [ext_resource type="Script" uid="uid://bplb755kutcb4" path="res://scripts/combat/PhaseController.cs" id="1_mak3c"]
 [ext_resource type="PackedScene" uid="uid://cbwoqka80h84c" path="res://scenes/card/CardLane.tscn" id="4_mak3c"]
@@ -18,6 +18,7 @@
 [ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="11_mwu67"]
 [ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="12_r8g7h"]
 [ext_resource type="Shader" uid="uid://qbun5diokmrm" path="res://scripts/shaders/connected_circles.gdshader" id="18_ak6aq"]
+[ext_resource type="Resource" uid="uid://ct2ofbxe5x46j" path="res://resources/tutorialPage/CombatTutorial4.tres" id="18_il00m"]
 [ext_resource type="Texture2D" uid="uid://b8ey5pfd8ckq" path="res://assets/UI/SimplexNoise2D.png" id="19_il00m"]
 [ext_resource type="Texture2D" uid="uid://do0eg8kbumt5o" path="res://assets/UI/main_panel.png" id="22_pgor7"]
 [ext_resource type="Texture2D" uid="uid://bmqh8jeds4yww" path="res://assets/UI/enemychip.png" id="22_r8g7h"]
@@ -478,7 +479,7 @@ theme_override_font_sizes/font_size = 24
 text = "Warning."
 
 [node name="CombatTutorial" parent="." instance=ExtResource("7_t74xm")]
-tutorials = Array[ExtResource("8_felwx")]([ExtResource("9_acsaf"), ExtResource("10_x8jxt"), ExtResource("11_132iy")])
+tutorials = Array[ExtResource("8_felwx")]([ExtResource("9_acsaf"), ExtResource("10_x8jxt"), ExtResource("11_132iy"), ExtResource("18_il00m")])
 
 [node name="BackgroundEffect" type="Panel" parent="."]
 z_index = -50

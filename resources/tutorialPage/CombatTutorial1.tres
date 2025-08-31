@@ -1,12 +1,11 @@
 [gd_resource type="Resource" script_class="TutorialPage" load_steps=3 format=3 uid="uid://cm5w1f2f4iueg"]
 
 [ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="1_0n6tn"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0n6tn"]
+[ext_resource type="Texture2D" uid="uid://bdehjk7gj6o2u" path="res://assets/screenshots/combat_tutorial_1.png" id="2_eyd26"]
 
 [resource]
 script = ExtResource("1_0n6tn")
-tutorialImage = SubResource("PlaceholderTexture2D_0n6tn")
+tutorialImage = ExtResource("2_eyd26")
 pageName = "Flop Phase"
 pageDescription = "Welcome to Pericula!
 To start, rearrange your three leftmost cards that you'll show your foe - they will similarly show 3 of their cards for the flop. 
