@@ -7,7 +7,6 @@ using System;
 public partial class SummonOnFinalWager : EffectTemplate
 {
     [Export] public CardData ToSummonToken;
-    [Export] public Trait TraitToBuff = Trait.Arcane;
 
     public override void Initialize(EffectParam param)
     {

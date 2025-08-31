@@ -26,14 +26,14 @@ public partial class ShowdownSelfAdjacentBuff : EffectTemplate
                     if (card == param.Self)
                     {
                         CardData target;
-                        if (i - 1 >= 0 && lane.GetCardAtIndex(i - 1).Trait == TraitToBuffSelf)
+                        if (i - 1 >= 0 && (lane.GetCardAtIndex(i - 1).Trait == TraitToBuffSelf || lane.GetCardAtIndex(i - 1).Trait == Trait.WildCard))
                         {
                             target = lane.GetCardAtIndex(i - 1);
                             totalHPBuff += target.HP;
                             totalAtkBuff += target.Attack;
 
                         }
-                        if (i + 1 < lane.CardCount && lane.GetCardAtIndex(i + 1).Trait == TraitToBuffSelf)
+                        if (i + 1 < lane.CardCount && (lane.GetCardAtIndex(i + 1).Trait == TraitToBuffSelf || lane.GetCardAtIndex(i + 1).Trait == Trait.WildCard))
                         {
                             target = lane.GetCardAtIndex(i + 1);
                             totalHPBuff += target.HP;

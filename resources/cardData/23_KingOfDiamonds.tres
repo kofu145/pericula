@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=10 format=3 uid="uid://6qpxpfwufbr"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_tb7t8"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_7er5x"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_dlr1v"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_44ycc"]
+[ext_resource type="Script" uid="uid://cvvvuo6t34yji" path="res://scripts/resources/effect/ShowdownBuffClass.cs" id="4_560w7"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="5_j0get"]
+
+[sub_resource type="Resource" id="Resource_448td"]
+script = ExtResource("3_44ycc")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_n6qha"]
+script = ExtResource("4_560w7")
+HPBuff = 2
+DamageBuff = 2
+TraitToBuff = 0
+name = ""
+metadata/_custom_type_script = "uid://cvvvuo6t34yji"
+
+[sub_resource type="Resource" id="Resource_8f7yi"]
+script = ExtResource("4_560w7")
+HPBuff = 5
+DamageBuff = 5
+TraitToBuff = 6
+name = ""
+metadata/_custom_type_script = "uid://cvvvuo6t34yji"
+
+[resource]
+script = ExtResource("2_7er5x")
+id = 23
+DisplayName = "King of Diamonds"
+Description = "Showdown: Knights gain +2/+2. Pawns gain +5/+5."
+Rarity = ExtResource("5_j0get")
+Trait = 3
+BaseAttack = 9
+BaseHP = 9
+OnUse = Array[Object]([SubResource("Resource_448td")])
+Passives = Array[Object]([SubResource("Resource_n6qha"), SubResource("Resource_8f7yi")])
+Keywords = Array[ExtResource("1_tb7t8")]([ExtResource("2_dlr1v")])
+metadata/_custom_type_script = "uid://clner77n1ff5a"

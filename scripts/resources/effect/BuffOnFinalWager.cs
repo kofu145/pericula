@@ -18,7 +18,7 @@ public partial class BuffOnFinalWager : EffectTemplate
     [Export] public BuffDuration buffDuration;
 
 
-    private bool ValidTarget(CardData card, EffectParam param) => ((TargetTrait && card.Trait == TraitToBuff) || !TargetTrait) && card != param.Self;
+    private bool ValidTarget(CardData card, EffectParam param) => ((TargetTrait && (card.Trait == TraitToBuff || card.Trait == Trait.WildCard)) || !TargetTrait) && card != param.Self;
 
     public override void Initialize(EffectParam param)
     {
