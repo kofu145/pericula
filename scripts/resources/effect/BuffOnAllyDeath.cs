@@ -13,25 +13,19 @@ public partial class BuffOnAllyDeath : EffectTemplate
 
     public override void Initialize(EffectParam param)
     {
-        EventBus.FinalWagerHandler handler = (CardData? victim) =>
+        EventBus.FinalWagerHandler handler = (DeathParam death) =>
         {
             param.State.QueueTrigger(async () =>
             {
                 if (param == null)
                     return;
-                if (victim == null)
-                    return;
                 var lane = param.State.GetSide(param.Self);
                 if (lane == null)
                     return;
 
-                GD.Print($"{victim.DisplayName} from lane {param.State.GetSide(victim)} died");
-                GD.Print($"unit is in Lane: {lane}");
-                GD.Print($"should buff unit: {lane == param.State.GetSide(victim)}");
 
-                if (lane == param.State.GetSide(victim))
+                if (lane.Side == death.Lane.Side)
                 {
-                    GD.Print($"buffing unit now");
                     if (Scope == BuffScope.Self)
                     {
                         param.Self.Attack += AtkBuff;
@@ -42,8 +36,9 @@ public partial class BuffOnAllyDeath : EffectTemplate
                     }
                     else if (Scope == BuffScope.Team)
                     {
-                        foreach (var targetBuff in lane.GetAllCardData())
+                        for (int i = 0; i < lane.CardCount; i++)
                         {
+                            var targetBuff = lane.GetCardAtIndex(i);
                             targetBuff.Attack += AtkBuff;
                             targetBuff.Attack += HPBuff;
                             BuffText(HPBuff, AtkBuff, targetBuff, param);

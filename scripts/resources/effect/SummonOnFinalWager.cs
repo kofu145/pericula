@@ -12,16 +12,15 @@ public partial class SummonOnFinalWager : EffectTemplate
     public override void Initialize(EffectParam param)
     {
         EventBus.FinalWagerHandler handler = null;
-        handler = (CardData? victim) =>
+        handler = (DeathParam victim) =>
         {
             param.State.QueueTrigger(async () =>
             {
                 var lane = param.State.GetSide(param.Self);
                 if (victim == null)
                     return;
-                if (param.Self == victim)
+                if (true)
                 {
-                    GenText($"Final Wager: Spawn {ToSummonToken.DisplayName}!", victim, param);
                     await DoTriggerAnimation(param);
                     var newUnit = (CardData)ToSummonToken.Duplicate(true);
                     var idx = lane.IndexOf(lane.GetCardBaseByData(param.Self));

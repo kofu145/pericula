@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://x1s3hs3wqykm"]
+[gd_resource type="Resource" script_class="Deck" load_steps=5 format=3 uid="uid://x1s3hs3wqykm"]
 
-[ext_resource type="Resource" uid="uid://bdsle7gxr2naj" path="res://resources/cardData/15_blood_hound.tres" id="1_gsb5v"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
-[ext_resource type="Resource" uid="uid://d3ilv4qyfm13l" path="res://resources/cardData/14_young_prince.tres" id="4_upxyf"]
-[ext_resource type="Resource" uid="uid://bnwbl7yvql0kc" path="res://resources/cardData/11_Flagbearer.tres" id="5_5j4nb"]
-[ext_resource type="Resource" uid="uid://cb8dkayygv0di" path="res://resources/cardData/12_crimson_zealot.tres" id="5_kgvsl"]
+[ext_resource type="Resource" uid="uid://rg1flebu43rj" path="res://resources/cardData/16_town_mayor.tres" id="2_upxyf"]
+[ext_resource type="Resource" uid="uid://c16xmx086gm2h" path="res://resources/cardData/17_constructive_construct.tres" id="3_5j4nb"]
+[ext_resource type="Resource" uid="uid://bearmqcq46w0g" path="res://resources/cardData/34_soul_collector.tres" id="4_kohqt"]
 
 [resource]
 script = ExtResource("1_qu2sd")
-Cards = Array[Object]([ExtResource("5_5j4nb"), ExtResource("1_gsb5v"), ExtResource("5_kgvsl"), ExtResource("4_upxyf"), ExtResource("1_gsb5v")])
+Cards = Array[Object]([ExtResource("2_upxyf"), ExtResource("2_upxyf"), ExtResource("2_upxyf"), ExtResource("3_5j4nb"), ExtResource("4_kohqt")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"

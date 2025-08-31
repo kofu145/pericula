@@ -20,7 +20,7 @@ public partial class EventBus : Node
 
     public delegate void DamageEventHandler(CardData? victim);
     public delegate void AdvantageEventHandler(CardData? attacker);
-    public delegate void FinalWagerHandler(CardData? victim);
+    public delegate void FinalWagerHandler(DeathParam death);
 
     //public event EventHandler OnDamage;
 
@@ -37,7 +37,7 @@ public partial class EventBus : Node
     public void InvokeAdvantage(CardData? attacker) => AdvantageEvent?.Invoke(attacker);
     public void InvokeObscured() => UnobscuredEvent?.Invoke();
     public void InvokeShowdown() => ShowdownEvent?.Invoke();
-    public void InvokeFinalWager(CardData? victim) => FinalWagerEvent?.Invoke(victim);
+    public void InvokeFinalWager(DeathParam death) => FinalWagerEvent?.Invoke(death);
     public async Task ClearTriggerQueue() => await CombatManager.ClearActionQueue();
 
     public void ClearEvents()
