@@ -80,6 +80,8 @@ public partial class CombatController : Node
 
         EventBus.Instance.InvokeShowdown();
         await ClearActionQueue();
+        await UpdateLane(true);
+        await UpdateLane(false);
         await DoBattle();
         //currLane.RemoveCardAtIndex(2);
         //actionQueue.Add(new Callable(this, MethodName.UpdateLanes));
@@ -124,6 +126,8 @@ public partial class CombatController : Node
         }
 
         await ClearActionQueue();
+        await UpdateLane(true);
+        await UpdateLane(false);
         await BattleRefreshHandler();
     }
 
@@ -157,8 +161,7 @@ public partial class CombatController : Node
         {
             await battleState.PopTriggerQueue();
         }
-        await UpdateLane(true);
-        await UpdateLane(false);
+
     }
 
     private async Task UpdateLane(bool player)
@@ -172,12 +175,16 @@ public partial class CombatController : Node
             {
                 GD.Print($"got a to remove at idx {i}");
                 toRemove.Add(targetLane.GetCardAtIndex(i));
-                EventBus.Instance.InvokeFinalWager(targetLane.GetCardAtIndex(i));
+                var deathReport = new DeathParam();
+                deathReport.Initialize(targetLane, targetLane.GetCardAtIndex(i).id);
+                EventBus.Instance.InvokeFinalWager(deathReport);
             }
 
             targetLane.GetBaseAtIndex(i).Visual.UpdateLabels();
 
         }
+
+        await ClearActionQueue();
         //GD.Print(DeckManager.Instance.EnemyHand);
         foreach (var remCard in toRemove)
         {

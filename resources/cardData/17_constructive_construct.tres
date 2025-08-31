@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://c16xmx086gm2h"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_1msrd"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_8s8rn"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_hw5eu"]
+[ext_resource type="Script" uid="uid://bw2gawneo3xxw" path="res://scripts/resources/effect/ShowdownSelfAdjacentBuff.cs" id="3_8kgfy"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="4_gkmhi"]
+
+[sub_resource type="Resource" id="Resource_jpi5d"]
+script = ExtResource("2_hw5eu")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_kqeyt"]
+script = ExtResource("3_8kgfy")
+TraitToBuffSelf = 4
+name = ""
+metadata/_custom_type_script = "uid://bw2gawneo3xxw"
+
+[resource]
+script = ExtResource("2_8s8rn")
+id = 17
+DisplayName = "Constructive Construct"
+Description = "Gains the Base Attack and Base HP of all adjacent mech units."
+Rarity = ExtResource("4_gkmhi")
+Trait = 4
+BaseAttack = 4
+BaseHP = 4
+OnUse = Array[Object]([SubResource("Resource_jpi5d")])
+Passives = Array[Object]([SubResource("Resource_kqeyt")])
+Keywords = Array[ExtResource("1_1msrd")]([])
+metadata/_custom_type_script = "uid://clner77n1ff5a"
