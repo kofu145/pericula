@@ -22,6 +22,11 @@ public partial class OnDamageDealRandomDamage : EffectTemplate
                     return;
                 if (lane.CardCount > 0 && victim == param.Self)
                 {
+                    var cardBase = lane.GetCardBaseByData(param.Self);
+                    if (cardBase.animation.IsPlaying())
+                    {
+                        await ToSignal(cardBase.animation, AnimationPlayer.SignalName.AnimationFinished);
+                    }
                     var opposed = param.State.OpposingLane(param.Self);
                     await DealDamage(Damage, opposed.GetCardAtIndex(DeckManager.Instance.RndGen.Next(opposed.CardCount)), param);
                     await DoTriggerAnimation(param);

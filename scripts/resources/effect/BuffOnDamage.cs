@@ -1,46 +1,49 @@
+
 using Godot;
-using System.Threading.Tasks;
 using System;
+using System.Threading.Tasks;
 
 [GlobalClass]
-public partial class BuffOnAdvantage : EffectTemplate
+public partial class BuffOnDamage : EffectTemplate
 {
     [Export] public int HPBuff = 0;
-    [Export] public int DamageBuff = 2;
+    [Export] public int AtkBuff = 2;
 
     public override void Initialize(EffectParam param)
     {
-        EventBus.AdvantageEventHandler handler = null;
-        handler = (CardData? attacker) =>
+        EventBus.DamageEventHandler handler = (CardData? victim) =>
         {
+
+
             param.State.QueueTrigger(async () =>
             {
+                if (param == null)
+                    return;
+                if (victim == null)
+                    return;
                 var lane = param.State.GetSide(param.Self);
                 if (lane == null)
                     return;
-                if (lane.CardCount <= 0)
-                    return;
-                if (param.State.GetSide(attacker) == param.State.GetSide(param.Self))
+
+                if (lane == param.State.GetSide(victim))
                 {
+                    victim.Attack += AtkBuff;
+                    victim.HP += HPBuff;
                     var cardBase = lane.GetCardBaseByData(param.Self);
                     if (cardBase.animation.IsPlaying())
                     {
                         await ToSignal(cardBase.animation, AnimationPlayer.SignalName.AnimationFinished);
                     }
-
-                    var targetAlly = lane.GetCardAtIndex(DeckManager.Instance.RndGen.Next(lane.CardCount));
-                    targetAlly.HP += HPBuff;
-                    targetAlly.Attack += DamageBuff;
-                    BuffText(HPBuff, DamageBuff, targetAlly, param);
+                    BuffText(HPBuff, AtkBuff, victim, param);
                     await DoTriggerAnimation(param);
                 }
 
 
-
             });
+
         };
 
-        EventBus.Instance.AdvantageEvent += handler;
+        EventBus.Instance.TakeDamageEvent += handler;
     }
     public override async Task OnUse(EffectParam param)
     {

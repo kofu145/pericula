@@ -10,7 +10,6 @@ public partial class DoDamageEffect : EffectTemplate
         var target = param.State.GetTarget(param.Self);
         await DealDamage(param.Self.Attack, target, param);
         await DoAttackAnimation(param);
-        AdvanceAfterAction();
     }
 
     public async override Task OnEnqueue(EffectParam param)

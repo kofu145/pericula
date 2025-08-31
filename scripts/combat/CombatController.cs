@@ -77,7 +77,6 @@ public partial class CombatController : Node
     {
         InitLane(true);
         InitLane(false);
-        EventBus.Instance.RefreshBattleLoop += BattleRefreshHandler;
 
         EventBus.Instance.InvokeShowdown();
         await ClearActionQueue();
@@ -86,7 +85,7 @@ public partial class CombatController : Node
         //actionQueue.Add(new Callable(this, MethodName.UpdateLanes));
     }
 
-    public async void BattleRefreshHandler()
+    public async Task BattleRefreshHandler()
     {
         await UpdateLane(true);
         await UpdateLane(false);
@@ -125,7 +124,7 @@ public partial class CombatController : Node
         }
 
         await ClearActionQueue();
-
+        await BattleRefreshHandler();
     }
 
     private void FlipTurn()
