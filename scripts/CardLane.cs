@@ -110,7 +110,7 @@ public partial class CardLane : Node
         return target;
     }
 
-    public void Swap(int from, int to)
+    public async Task Swap(int from, int to, float duration)
     {
         var fromCard = _cards[from];
         var toCard = _cards[to];
@@ -124,6 +124,8 @@ public partial class CardLane : Node
 
         fromCard.Visual.ToggleLerp(false);
         toCard.Visual.ToggleLerp(false);
+
+        await ToSignal(GetTree().CreateTimer(duration), "timeout");
     }
 
     public List<CardData> GetAllCardData()

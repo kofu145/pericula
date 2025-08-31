@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=10 format=3 uid="uid://do5p0egnldn0k"]
+[gd_resource type="Resource" script_class="CardData" load_steps=11 format=3 uid="uid://btcbs704gvlje"]
 
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_06hd6"]
-[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/Intercept.tres" id="1_p00nx"]
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_6jjx1"]
+[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/intercept.tres" id="1_p00nx"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_yfsq6"]
 [ext_resource type="Script" uid="uid://b1wp3na60tlfv" path="res://scripts/resources/effect/InterceptEffect.cs" id="3_dww6d"]
-[ext_resource type="Script" uid="uid://cwj143xgtyada" path="res://scripts/resources/effect/Guard.cs" id="4_ecymb"]
+[ext_resource type="Script" path="res://scripts/resources/effect/Guard.cs" id="4_ecymb"]
 [ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="5_bjjom"]
 
 [sub_resource type="Resource" id="Resource_86xpy"]
@@ -34,5 +35,5 @@ BaseAttack = 5
 BaseHP = 15
 OnUse = Array[Object]([SubResource("Resource_86xpy")])
 Passives = Array[Object]([SubResource("Resource_urcmn"), SubResource("Resource_gg4fk")])
-Keywords = [ExtResource("1_p00nx")]
+Keywords = Array[ExtResource("1_6jjx1")]([ExtResource("1_p00nx")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://ccn0npgcjdirg"]
+[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://dm0vvhnt57rjm"]
 
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_a2cf6"]
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_bohpy"]
 [ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="1_wl6a2"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_kn785"]
-[ext_resource type="Script" uid="uid://cny0kle4uttid" path="res://scripts/resources/effect/ShowdownScaleBuffClass.cs" id="3_p4pdu"]
+[ext_resource type="Script" path="res://scripts/resources/effect/ShowdownScaleBuffClass.cs" id="3_p4pdu"]
 [ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="4_kn785"]
 
 [sub_resource type="Resource" id="Resource_jum7n"]
@@ -32,5 +33,5 @@ BaseAttack = 8
 BaseHP = 8
 OnUse = Array[Object]([SubResource("Resource_jum7n")])
 Passives = Array[Object]([SubResource("Resource_bvdu2")])
-Keywords = [ExtResource("1_wl6a2")]
+Keywords = Array[ExtResource("1_bohpy")]([ExtResource("1_wl6a2")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"
