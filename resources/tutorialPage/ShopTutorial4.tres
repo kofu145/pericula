@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TutorialPage" load_steps=3 format=3 uid="uid://dxr3vtj6rwab7"]
+
+[ext_resource type="Script" uid="uid://bu7ltq0bt3tjx" path="res://scripts/resources/TutorialPage.cs" id="1_mlo17"]
+[ext_resource type="Texture2D" uid="uid://bnf38dk3fnsiu" path="res://assets/screenshots/shop_tutorial_4.png" id="2_5f35h"]
+
+[resource]
+script = ExtResource("1_mlo17")
+tutorialImage = ExtResource("2_5f35h")
+pageName = "Rarities"
+pageDescription = "Rarities determine how often a card appears in the shop. Green bordered cards are Common, blue bordered cards are Rare, red bordered cards are Mythic, and yellow bordered cards are Legendary.
+
+Mythic cards only start to appear from Ante 2. 
+
+Legendary cards only start to appear from Ante 3 and have a much lower chance of appearing in the shop."
+metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"

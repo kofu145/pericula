@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://crui1r41ywu27"]
+[gd_scene load_steps=18 format=3 uid="uid://crui1r41ywu27"]
 
 [ext_resource type="Script" uid="uid://c7thl4h2rmj32" path="res://scripts/Shop.cs" id="1_fpbbi"]
 [ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="2_fpbbi"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cotrbpricgvli" path="res://assets/art/cardlane.png" id="8_toxd1"]
 [ext_resource type="Texture2D" uid="uid://dyu218r3i63pl" path="res://assets/UI/crackedpanel.png" id="9_abjrc"]
 [ext_resource type="Shader" uid="uid://qbun5diokmrm" path="res://scripts/shaders/connected_circles.gdshader" id="13_jccym"]
+[ext_resource type="Resource" uid="uid://brxf8m2y3jct" path="res://resources/tutorialPage/ShopTutorial3.tres" id="13_plhqw"]
+[ext_resource type="Resource" uid="uid://dxr3vtj6rwab7" path="res://resources/tutorialPage/ShopTutorial4.tres" id="14_a6yfk"]
 [ext_resource type="Texture2D" uid="uid://b8ey5pfd8ckq" path="res://assets/UI/SimplexNoise2D.png" id="14_plhqw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a6yfk"]
@@ -131,7 +133,7 @@ theme_override_styles/normal = ExtResource("7_hd80v")
 text = "Reroll (200)"
 
 [node name="ShopTutorial" parent="." instance=ExtResource("4_cimqq")]
-tutorials = [ExtResource("6_ht580"), ExtResource("7_skkvx")]
+tutorials = [ExtResource("6_ht580"), ExtResource("7_skkvx"), ExtResource("13_plhqw"), ExtResource("14_a6yfk")]
 tutorialKey = "ShopTutorial"
 
 [node name="BackgroundEffect" type="Panel" parent="."]
