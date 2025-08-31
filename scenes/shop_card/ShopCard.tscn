@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://c1g82x6mbsiht" path="res://assets/Minercraftory.ttf" id="6_sk3ko"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="7_sk3ko"]
 
-[node name="ShopCard" type="Control" node_paths=PackedStringArray("description")]
+[node name="ShopCard" type="Control" node_paths=PackedStringArray("description", "border", "baseCard", "spriteImage", "nameLabel", "healthLabel", "attackLabel", "costLabel")]
 custom_minimum_size = Vector2(120, 160)
 layout_mode = 3
 anchors_preset = 0
@@ -18,6 +18,13 @@ offset_right = 100.0
 offset_bottom = 118.0
 script = ExtResource("1_m5bcj")
 description = NodePath("CanvasLayer/CardDescription")
+border = NodePath("Base/Border")
+baseCard = NodePath("Base")
+spriteImage = NodePath("Base/Image")
+nameLabel = NodePath("Base/CardName")
+healthLabel = NodePath("Base/Health")
+attackLabel = NodePath("Base/Attack")
+costLabel = NodePath("Panel/Cost")
 
 [node name="Base" type="TextureRect" parent="."]
 layout_mode = 1
