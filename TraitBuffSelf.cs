@@ -17,7 +17,7 @@ public partial class TraitBuffSelf : EffectTemplate
         for (int i = 0; i < lane.CardCount; i++)
         {
             var card = lane.GetCardAtIndex(i);
-            if (card.Trait == TraitToBuff && card != param.Self)
+            if ((card.Trait == TraitToBuff || card.Trait == Trait.WildCard) && card != param.Self)
             {
                 count++;
             }
