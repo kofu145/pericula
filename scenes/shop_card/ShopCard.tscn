@@ -1,14 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://bki587v31okuf"]
+[gd_scene load_steps=17 format=3 uid="uid://bki587v31okuf"]
 
 [ext_resource type="Script" uid="uid://d2ajyw3o0u05g" path="res://scripts/ShopCard.cs" id="1_m5bcj"]
 [ext_resource type="Texture2D" uid="uid://b5txekkfra7y6" path="res://assets/card_alt_borderless.png" id="2_lkv26"]
+[ext_resource type="Texture2D" uid="uid://dohcvin7paan5" path="res://assets/art/knight.png" id="2_unhab"]
+[ext_resource type="Texture2D" uid="uid://c514nc44wjj2" path="res://assets/art/arcane.png" id="3_4i4wy"]
 [ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="3_hscbs"]
 [ext_resource type="FontFile" uid="uid://d2e06h3tqexbl" path="res://assets/karmatic-arcade/ka1.ttf" id="4_fa6lo"]
+[ext_resource type="Texture2D" uid="uid://bljvkhbtemu6q" path="res://assets/art/citizen.png" id="4_i0d2a"]
 [ext_resource type="Texture2D" uid="uid://e7jcgcd315dv" path="res://assets/cards/empty.png" id="4_myijq"]
 [ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="5_lkv26"]
+[ext_resource type="Texture2D" uid="uid://7ptjuc7x4vqh" path="res://assets/art/royalty.png" id="5_x6xx0"]
+[ext_resource type="Texture2D" uid="uid://du8jpwu4ncu0w" path="res://assets/art/mechanical.png" id="6_kh7c6"]
 [ext_resource type="Texture2D" uid="uid://x15fynsqc0ae" path="res://assets/card_alt_border.png" id="6_myijq"]
 [ext_resource type="FontFile" uid="uid://c1g82x6mbsiht" path="res://assets/Minercraftory.ttf" id="6_sk3ko"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="7_sk3ko"]
+[ext_resource type="Texture2D" uid="uid://c26joxcyfd3xc" path="res://assets/art/wildcard.png" id="7_ulbgr"]
+[ext_resource type="Texture2D" uid="uid://setl0iw1vnf" path="res://assets/cards/death.png" id="8_73mkc"]
 
 [node name="ShopCard" type="Control" node_paths=PackedStringArray("description", "border", "baseCard", "spriteImage", "nameLabel", "healthLabel", "attackLabel", "costLabel")]
 custom_minimum_size = Vector2(120, 160)
@@ -25,6 +32,7 @@ nameLabel = NodePath("Base/CardName")
 healthLabel = NodePath("Base/Health")
 attackLabel = NodePath("Base/Attack")
 costLabel = NodePath("Panel/Cost")
+CardImages = Array[Texture2D]([ExtResource("2_unhab"), ExtResource("3_4i4wy"), ExtResource("4_i0d2a"), ExtResource("5_x6xx0"), ExtResource("6_kh7c6"), ExtResource("7_ulbgr"), ExtResource("8_73mkc"), ExtResource("8_73mkc")])
 
 [node name="Base" type="TextureRect" parent="."]
 layout_mode = 1
