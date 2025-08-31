@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://coyntyyf64no0"]
+[gd_scene load_steps=5 format=3 uid="uid://coyntyyf64no0"]
 
 [ext_resource type="Script" uid="uid://d3x06mp85iy38" path="res://scripts/Settings.cs" id="1_i47rn"]
 [ext_resource type="Script" uid="uid://bvfmw8occmkxk" path="res://scripts/AudioBusSlider.cs" id="1_rbmmp"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="3_46duy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4ih8"]
 bg_color = Color(0.06, 0.06, 0.06, 0.901961)
@@ -46,6 +47,7 @@ BusName = "BGM"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Music"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_46duy")
 text = "Music Volume"
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Music"]
@@ -66,6 +68,7 @@ BusName = "SE"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SoundEffects"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_46duy")
 text = "Sound Volume"
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer/SoundEffects"]
@@ -89,6 +92,7 @@ offset_top = 24.0
 offset_right = 174.5
 offset_bottom = 79.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_46duy")
 theme_override_font_sizes/font_size = 40
 text = "Settings"
 horizontal_alignment = 1
@@ -104,6 +108,7 @@ offset_top = -71.0
 offset_right = 155.0
 offset_bottom = -10.0
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_46duy")
 text = "Back"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Music/MusicSlider" to="MarginContainer/VBoxContainer/Music" method="OnValueChanged"]
