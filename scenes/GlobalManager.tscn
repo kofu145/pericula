@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
 [ext_resource type="Script" uid="uid://bse2d7muju74w" path="res://scripts/shared/EventBus.cs" id="3_8tji2"]
-[ext_resource type="Resource" path="res://resources/decks/StarterDeck.tres" id="3_yjcnp"]
+[ext_resource type="Resource" uid="uid://cw7jun8rlygcr" path="res://resources/decks/StarterDeck.tres" id="3_yjcnp"]
 [ext_resource type="Resource" uid="uid://dkgewqtkah5s2" path="res://resources/decks/ante 1/arcane.tres" id="4_6bm7o"]
 [ext_resource type="Script" uid="uid://cnyblma4mqw1o" path="res://scripts/shared/SceneManager.cs" id="4_e58k3"]
 [ext_resource type="Script" uid="uid://ckq7qoxv60uo8" path="res://scripts/shared/PopupText.cs" id="7_l76sc"]
