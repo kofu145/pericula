@@ -50,6 +50,7 @@ public partial class EffectTemplate : Resource
         await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.2), Timer.SignalName.Timeout);
         var damagePos = cardBase.GlobalPosition;
         PopupText.Instance.ShowText(damagePos + new Vector2(40, 100), $"-{damage}");
+        cardBase.hitParticle.Emitting = true;
         cardBase.Visual.UpdateLabels();
         SoundManager.PlaySE("hit");
     }

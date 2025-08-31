@@ -183,6 +183,7 @@ public partial class CombatController : Node
             //GD.Print($"Turn is player: {player} idx: {i} HP is {targetLane.GetCardAtIndex(i).HP}");
             if (targetLane.GetCardAtIndex(i).HP <= 0)
             {
+                SoundManager.PlaySE("death");
                 GD.Print($"got a to remove at idx {i}");
                 toRemove.Add(targetLane.GetCardAtIndex(i));
                 var deathReport = new DeathParam();
