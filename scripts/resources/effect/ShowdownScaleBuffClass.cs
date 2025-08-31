@@ -34,11 +34,15 @@ public partial class ShowdownScaleBuffClass : EffectTemplate
                     for (int i = 0; i < lane.CardCount; i++)
                     {
                         var member = lane.GetCardAtIndex(i);
-                        member.HP += HPBuff * count;
-                        member.Attack += DamageBuff * count;
-                        BuffText(HPBuff * count, DamageBuff * count, member, param);
+                        if (member.Trait == TraitToBuff)
+                        {
+                            member.HP += HPBuff * count;
+                            member.Attack += DamageBuff * count;
+                            BuffText(HPBuff * count, DamageBuff * count, member, param);
 
-                        await DoTriggerAnimation(param);
+                            await DoTriggerAnimation(param);
+                        }
+
 
                     }
                 }
