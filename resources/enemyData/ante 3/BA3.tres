@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://rexnjrot8cpu"]
+
+[ext_resource type="Resource" uid="uid://56ey43qruae4" path="res://resources/decks/ante3/advantage.tres" id="1_dr7ea"]
+[ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="1_tnar6"]
+
+[resource]
+script = ExtResource("1_tnar6")
+DisplayName = "Natural 20"
+deck = ExtResource("1_dr7ea")
+Difficulty = 2
+IsBoss = true
+metadata/_custom_type_script = "uid://bseo3sf3127a4"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://bu8m5j0m88u2"]
+
+[ext_resource type="Resource" uid="uid://b3w7lpos7p2rs" path="res://resources/decks/ante2/knights.tres" id="1_jwtrf"]
+[ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="1_qimp5"]
+
+[resource]
+script = ExtResource("1_qimp5")
+DisplayName = "L Shaped"
+deck = ExtResource("1_jwtrf")
+Difficulty = 1
+IsBoss = false
+metadata/_custom_type_script = "uid://bseo3sf3127a4"

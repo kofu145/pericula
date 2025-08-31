@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://busopry1py06d"]
+
+[ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="1_7gltm"]
+[ext_resource type="Resource" uid="uid://dcpulgjb7s42r" path="res://resources/decks/ante2/mech.tres" id="1_l5vpf"]
+
+[resource]
+script = ExtResource("1_7gltm")
+DisplayName = "이틀 동안 일어났다..."
+deck = ExtResource("1_l5vpf")
+Difficulty = 1
+IsBoss = false
+metadata/_custom_type_script = "uid://bseo3sf3127a4"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://yrmnlwn3w7w4"]
+
+[ext_resource type="Resource" uid="uid://fasmj3v0ixuo" path="res://resources/cardData/1_diamond_pawn.tres" id="1_jpgmi"]
+[ext_resource type="Resource" uid="uid://bt7u4i3qchld" path="res://resources/cardData/2_heart_pawn.tres" id="2_2oblw"]
+[ext_resource type="Resource" uid="uid://cb5ljb08t7swc" path="res://resources/cardData/3_club_pawn.tres" id="3_717cl"]
+[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="4_4g1ft"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="7_q5yee"]
+
+[resource]
+script = ExtResource("7_q5yee")
+Cards = Array[Object]([ExtResource("1_jpgmi"), ExtResource("1_jpgmi"), ExtResource("1_jpgmi"), ExtResource("2_2oblw"), ExtResource("2_2oblw"), ExtResource("2_2oblw"), ExtResource("3_717cl"), ExtResource("3_717cl"), ExtResource("3_717cl"), ExtResource("4_4g1ft"), ExtResource("4_4g1ft"), ExtResource("4_4g1ft")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"

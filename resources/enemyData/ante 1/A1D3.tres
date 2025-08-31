@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://bbjxo6auppqn3"]
+
+[ext_resource type="Resource" uid="uid://tb64as5k2wtx" path="res://resources/decks/ante 1/defender.tres" id="1_a41lu"]
+[ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="2_fcnhn"]
+
+[resource]
+script = ExtResource("2_fcnhn")
+DisplayName = "Football Lover"
+deck = ExtResource("1_a41lu")
+Difficulty = 0
+IsBoss = false
+metadata/_custom_type_script = "uid://bseo3sf3127a4"

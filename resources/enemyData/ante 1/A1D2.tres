@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://bmm7ctknsusy"]
+
+[ext_resource type="Resource" uid="uid://cpsk1l4tgymkv" path="res://resources/decks/ante 1/cannoneer.tres" id="1_kkn32"]
+[ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="2_hte6y"]
+
+[resource]
+script = ExtResource("2_hte6y")
+DisplayName = "88 millimeter"
+deck = ExtResource("1_kkn32")
+Difficulty = 0
+IsBoss = false
+metadata/_custom_type_script = "uid://bseo3sf3127a4"

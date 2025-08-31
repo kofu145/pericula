@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://wto2214meexu"]
+
+[ext_resource type="Resource" uid="uid://bdsle7gxr2naj" path="res://resources/cardData/15_blood_hound.tres" id="1_n421n"]
+[ext_resource type="Resource" uid="uid://bjt5hk57wavfi" path="res://resources/cardData/28_revenant.tres" id="2_o0ioy"]
+[ext_resource type="Resource" uid="uid://bearmqcq46w0g" path="res://resources/cardData/34_soul_collector.tres" id="3_v0dep"]
+[ext_resource type="Resource" uid="uid://btwwat5io72d2" path="res://resources/cardData/19_battle_herald.tres" id="4_6m3w3"]
+[ext_resource type="Resource" uid="uid://5v3if1uo26pq" path="res://resources/cardData/29_bard.tres" id="5_qmknt"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="6_lul67"]
+
+[resource]
+script = ExtResource("6_lul67")
+Cards = Array[Object]([ExtResource("1_n421n"), ExtResource("1_n421n"), ExtResource("1_n421n"), ExtResource("1_n421n"), ExtResource("2_o0ioy"), ExtResource("2_o0ioy"), ExtResource("2_o0ioy"), ExtResource("2_o0ioy"), ExtResource("3_v0dep"), ExtResource("3_v0dep"), ExtResource("4_6m3w3"), ExtResource("4_6m3w3"), ExtResource("5_qmknt"), ExtResource("5_qmknt")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"
