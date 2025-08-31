@@ -22,6 +22,8 @@ public partial class CardData : Resource
     public int BaseAttackAfterCombatBuffs;
     public int BaseHpAfterCombatBuffs;
 
+    public bool ObscureChar = false;
+
     // base stats
     [Export] public int BaseAttack;
     [Export] public int BaseHP;

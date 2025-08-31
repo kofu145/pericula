@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://sfj7gjmd88cd"]
+
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_1hevp"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_6uh8x"]
+[ext_resource type="Script" uid="uid://cn3q3iyk3ahn1" path="res://scripts/resources/effect/ObscuredSnipeColumn.cs" id="2_reak8"]
+[ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="3_skaji"]
+
+[sub_resource type="Resource" id="Resource_2p2k4"]
+script = ExtResource("1_1hevp")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_fhhll"]
+script = ExtResource("2_reak8")
+Damage = 10
+name = ""
+metadata/_custom_type_script = "uid://cn3q3iyk3ahn1"
+
+[resource]
+script = ExtResource("1_6uh8x")
+id = 31
+DisplayName = "Trap Master"
+Description = "Obscured: Deal 10 damage to above foe for each triggered ally obscured."
+Rarity = ExtResource("3_skaji")
+Trait = 2
+BaseAttack = 12
+BaseHP = 14
+OnUse = Array[Object]([SubResource("Resource_2p2k4")])
+Passives = Array[Object]([SubResource("Resource_fhhll")])
+Keywords = []
+metadata/_custom_type_script = "uid://clner77n1ff5a"
