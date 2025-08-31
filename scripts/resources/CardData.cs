@@ -14,8 +14,15 @@ public partial class CardData : Resource
     public Rarity Rarity;
     [Export]
     public Trait Trait;
+    // current runtime stats
     public int HP;
     public int Attack;
+
+    // encounter stats
+    public int baseAttackAfterCombatBuffs;
+    public int baseHpAfterCombatBuffs;
+
+    // base stats
     [Export] public int BaseAttack;
     [Export] public int BaseHP;
     [Export] public Texture2D Texture;
@@ -35,7 +42,7 @@ public partial class CardData : Resource
         return $"{DisplayName} ({id}):\nHealth: {HP}/{BaseHP}, Attack: {Attack}/{BaseAttack}, Trait: {Trait}, Rarity: {Rarity}, Description: {Description}";
     }
 
-    public void ResetForBattle()
+    public void ResetForShowdown()
     {
         HP = BaseHP;
         Attack = BaseAttack;
@@ -47,6 +54,11 @@ public partial class CardData : Resource
         {
             effect.Reset();
         }
+    }
+
+    public void ResetForEncounter()
+    {
+        
     }
 
 }

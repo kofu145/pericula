@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://d3ilv4qyfm13l"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_pdqq2"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_bceid"]
+
+[resource]
+script = ExtResource("2_bceid")
+id = 0
+DisplayName = ""
+Description = ""
+Trait = 0
+BaseAttack = 0
+BaseHP = 0
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_pdqq2")]([])
+metadata/_custom_type_script = "uid://clner77n1ff5a"

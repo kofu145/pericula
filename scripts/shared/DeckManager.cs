@@ -141,7 +141,7 @@ public partial class DeckManager : Node
         targetDisc.Add(c);
         foreach (var card in targetDisc)
         {
-            card.ResetForBattle();
+            card.ResetForShowdown();
         }
     }
 
@@ -236,7 +236,7 @@ public partial class DeckManager : Node
 
         foreach (var card in targetDisc)
         {
-            card.ResetForBattle();
+            card.ResetForShowdown();
         }
         targetDeck.AddRange(targetDisc);
         targetDisc.Clear();

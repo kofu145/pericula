@@ -25,9 +25,13 @@ public partial class BuffOnAllyDeath : EffectTemplate
                 if (lane == null)
                     return;
 
-                GD.Print($"{victim.DisplayName} died");
+                GD.Print($"{victim.DisplayName} from lane {param.State.GetSide(victim)} died");
+                GD.Print($"unit is in Lane: {lane}");
+                GD.Print($"should buff unit: {lane == param.State.GetSide(victim)}");
+
                 if (lane == param.State.GetSide(victim))
                 {
+                    GD.Print($"buffing unit now");
                     if (Scope == BuffScope.Self)
                     {
                         param.Self.Attack += AtkBuff;
