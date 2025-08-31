@@ -20,7 +20,6 @@ public partial class CardDescription : Control
     [Export] public Color ArcaneColor = new Color(1, 1, 1);
     [Export] public Color CitizenColor = new Color(1, 1, 1);
     [Export] public Color RoyaltyColor = new Color(1, 1, 1);
-    [Export] public Color BeastColor = new Color(1, 1, 1);
     [Export] public Color MechanicalColor = new Color(1, 1, 1);
     [Export] public Color WildCardColor = new Color(1, 1, 1);
     [Export] public Color PawnColor = new Color(1, 1, 1);

@@ -1,17 +1,27 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://d3ilv4qyfm13l"]
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://d3ilv4qyfm13l"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_pdqq2"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_bceid"]
+[ext_resource type="Resource" uid="uid://dyb56i12g80ky" path="res://resources/keywords/final_wager.tres" id="2_j6vx2"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="2_taq0o"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_j6vx2"]
+
+[sub_resource type="Resource" id="Resource_q5toe"]
+script = ExtResource("3_j6vx2")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 
 [resource]
 script = ExtResource("2_bceid")
-id = 0
-DisplayName = ""
-Description = ""
-Trait = 0
-BaseAttack = 0
-BaseHP = 0
-OnUse = null
-Passives = null
-Keywords = Array[ExtResource("1_pdqq2")]([])
+id = 14
+DisplayName = "Young Prince"
+Description = "Final Wager: Knights gain +2/+2 for the rest of this encounter"
+Rarity = ExtResource("2_taq0o")
+Trait = 3
+BaseAttack = 7
+BaseHP = 4
+OnUse = Array[Object]([SubResource("Resource_q5toe")])
+Passives = Array[Object]([])
+Keywords = Array[ExtResource("1_pdqq2")]([ExtResource("2_j6vx2")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"
