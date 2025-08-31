@@ -179,8 +179,9 @@ public partial class DeckManager : Node
     {
         // optional check for if it exists in deck?
         // if (PlayerDeck.Contains(card))
-
-        PlayerDeck.Cards.Add((CardData)card.Duplicate(true));
+        var newCard = (CardData)card.Duplicate(true);
+        newCard.Initialize();
+        PlayerDeck.Cards.Add(newCard);
     }
 
     public void Remove(CardData cardToRemove)
@@ -202,16 +203,20 @@ public partial class DeckManager : Node
         int target = RndGen.Next(targets.Count);
 
         Remove(card);
-        PlayerDeck.Cards.Add(targets[target]);
-
+        var newCard = targets[target];
+        newCard.Initialize();
+        PlayerDeck.Cards.Add(newCard);
     }
-    // need to initialize first
+    
     public void ConjureRandomCard()
     {
         int roll = RndGen.Next(100);
         RarityType target = roll < 5 ? RarityType.Legendary : RarityType.Mythic;
         var targets = Lookup.GetCardsByRarity(target);
-        PlayerDeck.Cards.Add(targets[RndGen.Next(targets.Count)]);
+
+        var conjuredCard = targets[RndGen.Next(targets.Count)];
+        conjuredCard.Initialize();
+        PlayerDeck.Cards.Add(conjuredCard);
     }
 
     // public void Discard(CardData c) => _discard.Add(c);
