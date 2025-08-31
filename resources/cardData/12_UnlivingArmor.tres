@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_fiwfm"]
 [ext_resource type="Resource" uid="uid://chq30kl4bopd6" path="res://resources/cardData/43_ghost.tres" id="3_ude7n"]
 [ext_resource type="Script" uid="uid://ccibnn7dfkyid" path="res://scripts/resources/effect/SummonOnFinalWager.cs" id="4_x5y5o"]
-[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="5_7x6w4"]
+[ext_resource type="Resource" uid="uid://ffhumvpf47af" path="res://resources/rarities/token.tres" id="5_gpqxq"]
 
 [sub_resource type="Resource" id="Resource_nl5j2"]
 script = ExtResource("2_fiwfm")
@@ -24,7 +24,7 @@ script = ExtResource("1_vu0au")
 id = 12
 DisplayName = "Unliving Armor"
 Description = "Final Wager: Summon a 9/3 Ghost in place of this unit"
-Rarity = ExtResource("5_7x6w4")
+Rarity = ExtResource("5_gpqxq")
 Trait = 8
 BaseAttack = 3
 BaseHP = 9
