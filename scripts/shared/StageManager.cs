@@ -114,6 +114,15 @@ public partial class StageManager : Node
         if (boss != null)
             result.Add(boss);
 
+        // initialize each cards
+        foreach (var enemy in result)
+        {
+            foreach (var card in enemy.deck.Cards)
+            {
+                card.Initialize();
+            }
+        }
+
         return result;
     }
     public EnemyData GetEnemyAtIndex(int i)

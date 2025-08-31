@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class DeckManager : Node
 {
@@ -11,6 +13,16 @@ public partial class DeckManager : Node
 
     [Export]
     public Deck EnemyDeck;
+
+    private static readonly Dictionary<RarityType, int> RarityRank = new()
+    {
+        { RarityType.Legendary, 5 },
+        { RarityType.Mythic,    4 },
+        { RarityType.Rare,      3 },
+        { RarityType.Common,    2 },
+        { RarityType.Starter,   1 },
+        { RarityType.Token,     0 },
+    };
 
     // Intermediary collections used when actually battling
     private Godot.Collections.Array<CardData> playerBattleDeck = new();
@@ -193,8 +205,8 @@ public partial class DeckManager : Node
         PlayerDeck.Cards.Add(targets[target]);
 
     }
-
-    public void AddRandomCard()
+    // need to initialize first
+    public void ConjureRandomCard()
     {
         int roll = RndGen.Next(100);
         RarityType target = roll < 5 ? RarityType.Legendary : RarityType.Mythic;
@@ -204,6 +216,28 @@ public partial class DeckManager : Node
 
     // public void Discard(CardData c) => _discard.Add(c);
     // public void DiscardRange(IEnumerable<CardData> cards) => _discard.AddRange(cards);
+
+    public Godot.Collections.Array<CardData> GetOrderedDrawPile()
+    {
+
+        if (PlayerDeck == null || PlayerDeck.Cards == null)
+            return new Godot.Collections.Array<CardData>();
+
+        // Build a UI-only sorted copy (does not change actual draw order)
+        var ordered = playerBattleDeck
+            .Where(c => c != null)
+            .OrderBy(c => c.Rarity != null ? RarityRank[c.Rarity.RarityType] : int.MaxValue)
+            .ThenBy(c => c.Trait) // enum comparison is fine directly
+            .ThenBy(c => c.id)
+            .ThenBy(c => c.DisplayName ?? string.Empty, StringComparer.Ordinal)
+            .ToList();
+
+        var result = new Godot.Collections.Array<CardData>();
+        foreach (var c in ordered)
+            result.Add(c);
+        return result;
+
+    }
 
     public void FinishAndReset()
     {

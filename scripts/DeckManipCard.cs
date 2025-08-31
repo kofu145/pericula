@@ -13,6 +13,8 @@ public partial class DeckManipCard : Control
 
     }
     [Export] CardDescription description;
+    [Export] Color BoughtColor;
+    [Export] TextureRect image;
     int _deckManipID;
     bool _disabled = false;
 
@@ -86,7 +88,7 @@ public partial class DeckManipCard : Control
                 UiOverlay.Instance.Upgrade(UpgradeCard);
                 break;
             case (int)Incantation.Conjure:
-                DeckManager.Instance.AddRandomCard();
+                DeckManager.Instance.ConjureRandomCard();
                 break;
         }
 
@@ -144,6 +146,7 @@ public partial class DeckManipCard : Control
     {
         OnMouseExited();
         _disabled = true;
-        Modulate = new Color(0.4f, 0.4f, 0.4f);
+        image.Material = null;
+        Modulate = BoughtColor;
     }
 }

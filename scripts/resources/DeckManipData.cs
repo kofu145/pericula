@@ -9,4 +9,5 @@ public partial class DeckManipData : Resource
     [Export(PropertyHint.MultilineText)] public string Description;
     [Export] public int Cost;
     [Export] public Texture2D Texture;
+    [Export] public Color color;
 }
