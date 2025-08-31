@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class PreStagePanel : PanelContainer
+public partial class PreStagePanel : TextureRect
 {
     [Export] RichTextLabel stageName;
     [Export] RichTextLabel stageNumber;

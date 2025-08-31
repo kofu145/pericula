@@ -6,10 +6,12 @@ public partial class TitleScreen : Panel
 
     // game config
     [Export] private RunConfig runConfig;
+    [Export] private AnimationPlayer animation;
 
     public override void _Ready()
     {
         startGameButton.Pressed += StartNewRun;
+        animation.Play("Start");
     }
 
     private void StartNewRun()
