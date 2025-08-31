@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://bcyhcskarek0o"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_j4wdi"]
+[ext_resource type="Resource" uid="uid://x6q04ojt20wv" path="res://resources/keywords/advantage.tres" id="2_g02au"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_id5ma"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_ugu6a"]
+
+[resource]
+script = ExtResource("2_ugu6a")
+id = 22
+DisplayName = "Railgun"
+Description = "Advantage: Deal 1 damage to foe above this unit for every ally Mechanical unit"
+Rarity = ExtResource("2_id5ma")
+Trait = 5
+BaseAttack = 5
+BaseHP = 3
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_j4wdi")]([ExtResource("2_g02au")])

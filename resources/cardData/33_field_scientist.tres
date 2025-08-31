@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://beob5nrrp1cxb"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_yg2ck"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_rkoqs"]
+[ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="2_u10ve"]
+
+[resource]
+script = ExtResource("2_rkoqs")
+id = 33
+DisplayName = "Field Scientist"
+Description = "Mechanical units don't take any damage the first time they are damaged"
+Rarity = ExtResource("2_u10ve")
+Trait = 2
+BaseAttack = 2
+BaseHP = 1
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_yg2ck")]([])

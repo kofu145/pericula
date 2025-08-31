@@ -60,8 +60,8 @@ public partial class CardVisual : Control
         if (data == null) return;
 
         offsetPos = cardBase.Position;
-        NameLabel.Text = data.DisplayName;
-        cardBorder.Modulate = data.Rarity.RarityColor;
+        if (NameLabel!= null) NameLabel.Text = data.DisplayName;
+        if (cardBorder != null) cardBorder.Modulate = data.Rarity.RarityColor;
 
         this.FollowSpeed = FollowSpeed;
         this.ScaleSpeed = ScaleSpeed;

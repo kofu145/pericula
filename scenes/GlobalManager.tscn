@@ -1,12 +1,14 @@
-[gd_scene load_steps=31 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=33 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
 [ext_resource type="Script" uid="uid://bse2d7muju74w" path="res://scripts/shared/EventBus.cs" id="3_8tji2"]
-[ext_resource type="Resource" uid="uid://bujtixc664anp" path="res://resources/cardData/3_ClubPawn.tres" id="3_wpjal"]
 [ext_resource type="Resource" uid="uid://x1s3hs3wqykm" path="res://resources/decks/TestDeck.tres" id="3_ycd5x"]
 [ext_resource type="Script" uid="uid://cnyblma4mqw1o" path="res://scripts/shared/SceneManager.cs" id="4_e58k3"]
+[ext_resource type="Resource" uid="uid://cn88yk5t0kdt" path="res://resources/cardData/5_wisp.tres" id="4_tltbq"]
+[ext_resource type="Resource" uid="uid://bbdxrgh6mewor" path="res://resources/cardData/11_flagbearer.tres" id="5_6000c"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="5_bgvav"]
+[ext_resource type="Resource" uid="uid://b6o30e385gw0q" path="res://resources/cardData/10_defender.tres" id="6_bcam4"]
 [ext_resource type="Script" uid="uid://ckq7qoxv60uo8" path="res://scripts/shared/PopupText.cs" id="7_l76sc"]
 [ext_resource type="PackedScene" uid="uid://dha6a5my3cgt6" path="res://scenes/PopupText.tscn" id="9_s02d4"]
 [ext_resource type="Shader" uid="uid://d3717vds76o65" path="res://scripts/shaders/DiamondTransition.gdshader" id="10_ivlop"]
@@ -30,7 +32,7 @@
 [sub_resource type="Resource" id="Resource_l76sc"]
 resource_local_to_scene = true
 script = ExtResource("5_bgvav")
-Cards = Array[Object]([ExtResource("3_wpjal"), ExtResource("3_wpjal"), ExtResource("3_wpjal"), ExtResource("3_wpjal"), ExtResource("3_wpjal")])
+Cards = Array[Object]([ExtResource("4_tltbq"), ExtResource("4_tltbq"), ExtResource("5_6000c"), ExtResource("5_6000c"), ExtResource("6_bcam4")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7a67w"]

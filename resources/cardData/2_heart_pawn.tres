@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://u16jr6k2nirv"]
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://d2780qhf08p78"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_3ilvi"]
+[ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="2_1kfne"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_txe4d"]
 
 [resource]
@@ -8,6 +9,7 @@ script = ExtResource("2_txe4d")
 id = 2
 DisplayName = "Heart Pawn"
 Description = ""
+Rarity = ExtResource("2_1kfne")
 Trait = 7
 BaseAttack = 5
 BaseHP = 8

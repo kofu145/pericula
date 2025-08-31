@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://b3jet3ho7lkmb"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_lb33l"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="2_aqb0b"]
+[ext_resource type="Resource" uid="uid://b4hxbmioyuby2" path="res://resources/keywords/obscured.tres" id="2_gspg2"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_viuen"]
+
+[resource]
+script = ExtResource("2_viuen")
+id = 18
+DisplayName = "Rogue"
+Description = "Obscured: Gain +6/+5"
+Rarity = ExtResource("2_aqb0b")
+Trait = 2
+BaseAttack = 6
+BaseHP = 5
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_lb33l")]([ExtResource("2_gspg2")])

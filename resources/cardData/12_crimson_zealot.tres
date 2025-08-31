@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://dmrk1wmykyil"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_q4kjg"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="2_8l6l6"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_khlku"]
+
+[resource]
+script = ExtResource("2_khlku")
+id = 12
+DisplayName = "Crimson Zealot"
+Description = "Allies gain +2/+0 whenever they take damage"
+Rarity = ExtResource("2_8l6l6")
+Trait = 1
+BaseAttack = 1
+BaseHP = 10
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_q4kjg")]([])

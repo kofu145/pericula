@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://cesafw1hopwp1"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_6jjx1"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_2k0k2"]
+[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/intercept.tres" id="2_dht2d"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_v6jbp"]
+
+[resource]
+script = ExtResource("2_v6jbp")
+id = 20
+DisplayName = "Ruin Guard"
+Description = "Intercept. Other Allies take -1 Damage"
+Rarity = ExtResource("2_2k0k2")
+Trait = 5
+BaseAttack = 0
+BaseHP = 5
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_6jjx1")]([ExtResource("2_dht2d")])

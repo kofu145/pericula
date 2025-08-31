@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://b25bqgnkit6v3"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_ukern"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_1rwhr"]
+[ext_resource type="Resource" uid="uid://dyb56i12g80ky" path="res://resources/keywords/final_wager.tres" id="2_4lmf0"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_mhh55"]
+
+[resource]
+script = ExtResource("2_mhh55")
+id = 28
+DisplayName = "Revenant"
+Description = "Final Wager: Give all allies +3/+3"
+Rarity = ExtResource("2_1rwhr")
+Trait = 8
+BaseAttack = 4
+BaseHP = 5
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_ukern")]([ExtResource("2_4lmf0")])

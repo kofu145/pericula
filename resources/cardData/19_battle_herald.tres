@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://8g3nsufgu7tb"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_a6je0"]
+[ext_resource type="Resource" uid="uid://dyb56i12g80ky" path="res://resources/keywords/final_wager.tres" id="2_hy21x"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_mn4cd"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="2_vv8fo"]
+
+[resource]
+script = ExtResource("2_mn4cd")
+id = 19
+DisplayName = "Battle Herald"
+Description = "Final Wager: All your units gain +3 attack"
+Rarity = ExtResource("2_vv8fo")
+Trait = 0
+BaseAttack = 7
+BaseHP = 10
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_a6je0")]([ExtResource("2_hy21x")])

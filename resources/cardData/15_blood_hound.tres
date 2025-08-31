@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://dhbl4f54eddhc"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_hgeod"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="2_erenc"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_xrjd6"]
+
+[resource]
+script = ExtResource("2_xrjd6")
+id = 15
+DisplayName = "Blood Hound"
+Description = "Whenever an Ally dies, gain +2/+0"
+Rarity = ExtResource("2_erenc")
+Trait = 8
+BaseAttack = 0
+BaseHP = 12
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_hgeod")]([])

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://di5iy0wn4mk23"]
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://dyl5sq0hveey2"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_ofg7w"]
+[ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="2_0k530"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_ks4qj"]
 
 [resource]
@@ -8,6 +9,7 @@ script = ExtResource("2_ks4qj")
 id = 1
 DisplayName = "Diamond Pawn"
 Description = ""
+Rarity = ExtResource("2_0k530")
 Trait = 7
 BaseAttack = 5
 BaseHP = 7

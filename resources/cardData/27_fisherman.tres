@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://d0vgc5hd40ii"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_gtjh8"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_aa71q"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_bm2hp"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_eqyxf"]
+
+[resource]
+script = ExtResource("2_bm2hp")
+id = 27
+DisplayName = "Fisherman"
+Description = "Showdown: Swap leftmost foe with foe that has lowest HP."
+Rarity = ExtResource("2_eqyxf")
+Trait = 2
+BaseAttack = 3
+BaseHP = 5
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_gtjh8")]([ExtResource("2_aa71q")])

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://btes2egvt117q"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_jehx0"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_baoch"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_ijtrr"]
+
+[resource]
+script = ExtResource("2_baoch")
+id = 24
+DisplayName = "The Watchful Eye"
+Description = "Whenever an Ally attacks, deal 3 to a random enemy"
+Rarity = ExtResource("2_ijtrr")
+Trait = 5
+BaseAttack = 8
+BaseHP = 2
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_jehx0")]([])

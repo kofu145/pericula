@@ -1,47 +1,65 @@
-ID	NAME	RARITY	CLASS	ATTACK	HEALTH	DESCRIPTION	Keywords	Archetypes	Other Notes/Comments about this Card
-1	Diamond Pawn	Starter	Pawn	5	7			Starter Cards	Basic card, probably not obtainable through shops
-2	Heart Pawn	Starter	Pawn	5	8			Starter Cards	Basic card, probably not obtainable through shops
-3	Club Pawn	Starter	Pawn	7	5			Starter Cards	Basic card, probably not obtainable through shops
-4	Spade Pawn	Starter	Pawn	4	7	Combat Start: If there is another Spade Pawn played with this card, gain +2/+2	Combat Start	Starter Cards	Basic card, probably not obtainable through shops
-5	Wisp	Starter	Arcane	4	5	Combat Start: Friendly Arcane units gain +1/+1	Combat Start		
-6	Robo-dog	Starter	Mechanical	3	3	Combat Start: Give adjacent units +2/+2.	Combat Start		Basic card, much stronger than the pawns but will basic deck will only contain 1 copy
-7	Living Spellbook	Common	Arcane	4	9	Combat Start: Deal 2 damage to a random Foe. Repeat for each friendly Arcane unit.	Combat Start	Multi-hit	
-8	Alchemist	Common	Arcane	6	6	Combat Start: Your left-most unit gains +4/+4	Combat Start	General	
-9	Crazy Cannoneer	Common	Citizen	1	7	When damaged, deal 8 damage to a random Foe		Take Damage Build	
-10	Diamond Defender	Common	Knight	1	17	Intercept	Intercept	General, Take Damage Build	
-11	Flagbearer	Common	Knight	7	7	Advantage: give random Ally +2/+0	Advantage	General, Multi-hit	
-12	Unliving Armor	Common	Undead	3	9	Final Wager: Summon a 9/3 Ghost in place of this unit	Final Wager	Token	
-13	Crimson Zealot	Common	Arcane	1	10	Allies gain +2/+0 whenever they take damage		Take Damage Build	
-14	Diamond Fencer	Common	Citizen	5	8	This unit attacks twice		Multi-hit	
-15	Young Prince	Common	Royalty	7	4	Final Wager: Knights gain +2/+2 for the rest of this encounter	Final Wager	On-Combat Scaling	
-16	Blood Hound	Common	Undead	0	12	Whenever an Ally dies, gain +2/+0		Final Wager, Token	
-17	Town Mayor	Common	Citizen	4	10	Combat Start: If there are 2+ other friendly Citizens, gain +5/+5 and Intercept.	Combat Start	General	
-18	Constructive Construct	Common	Mechanical	4	4	Gains the Base Attack and Base HP of all adjacent mech units.			
-19	Rogue	Common	Citizen	6	5	Obscured: Gain +6/+5	Obscured	General	
-20	Battle Herald	Common	Knight	7	10	Final Wager: All your units gain +3 attack	Final Wager	General	
-21	Ruin Guard	Rare	Mechanical	0	5	Intercept. Other Allies take -1 Damage	Intercept	General	
-22	Clanker Army	Rare	Mechanical	8	8	Combat Start: If 2+ Mechanical units, all mech units gain +2/+2 for each mech unit	Combat Start		
-23	Railgun	Rare	Mechanical	5	3	Advantage: Deal 1 damage to foe above this unit for every ally Mechanical unit	Advantage	Multi-hit	
-24	King of Diamonds	Rare	Royalty	9	9	Combat Start: Knights gain +2/+2. Pawns gain +5/+5.	Combat Start	General	
-25	The Watchful Eye	Rare	Mechanical	8	2	Whenever an Ally attacks, deal 3 to a random enemy		Multi-hit	Should trigger the Giant's attack for every instance of damage, so on a full board, would trigger 10x
-26	Duelist	Rare	Royalty	18	4			General	
-27	Blade Instructor	Rare	Royalty	4	2	Combat Start: The unit on the left attacks twice	Combat Start		
-28	Fisherman	Rare	Citizen	3	5	Combat Start: Swap leftmost foe with foe that has lowest HP.	Combat Start		In case of ties, decide based on least health. If health is tied, decide based on left-most unit
-29	Chariot	Rare	Royalty	9	11	Final Wager: Summon 2/2 squires on your missing card slots	Final Wager	Token	
-30	Revenant	Rare	Undead	4	5	Final Wager: Give all allies +3/+3	Final Wager	General, Final Wager	
-31	Bard	Rare	Citizen	0	10	On Use: Give all allies +1/+1	On Use	General	
-32	Trap Trick	Rare	Mechanical	6	6	Combat Start: Retrigger all triggered ally obscured effects this combat.	Combat Start		
-33	Trap Master	Mythic	Citizen	12	14	Obscured: Deal 10 damage to above foe for each triggered ally obscured.	Obscured		
-34	Inspiring Shaman	Mythic	Arcane	1	2	Whenever an Ally is summoned during combat, give all tokens +2/+0		Token	
-35	Living Cactus	Mythic	Arcane	0	12	Deal damage to attacking Foe equal to its attack		General	
-36	Field Scientist	Mythic	Citizen	2	1	Mechanical units don't take any damage the first time they are damaged			
-37	Phoenix	Mythic	Beast	8	14	Final Wager: Summons a 0/1 Phoenix Egg with "Final Wager: Summon a 8/14 Risen Phoenix.	Final Wager	Token, Final Wager	
-38	Joker	Legendary	Wild Card	1	1	Copies the stats and effect of the unit on its left. Cannot copy another Joker		General	
-39	Dragon	Legendary	Beast			Friendly Beast attacks Cleave	Cleave	Cleave	
-40	The Repear	Legendary	Undead	14	12	Final Wager trigger twice	Final Wager	Final Wager	
-41	Divine Executioner	Legendary	Royalty	4	14	When this unit kills a foe, attacks again.		On-Combat Scaling, Multi-hit	
-42	Risen	Token	Undead	1	1				
-43	Ghost	Token	Undead	9	3				
-44	Squire	Token	Knight	2	2				
-45	Phoenix Egg	Token	Beast	0	1	Final Wager: Summon a Phoenix on the current slot.	Final Wager		
-46	Risen Phoenix	Token	Beast	8	14				
+ID	NAME	RARITY	IsDone	CLASS	ATTACK	HEALTH	DESCRIPTION	Keywords	Archetypes	Other Notes/Comments about this Card
+1	Diamond Pawn	Starter	TRUE	Pawn	5	7			Starter Cards	Basic card, probably not obtainable through shops
+2	Heart Pawn	Starter	TRUE	Pawn	5	8			Starter Cards	Basic card, probably not obtainable through shops
+3	Club Pawn	Starter	TRUE	Pawn	7	5			Starter Cards	Basic card, probably not obtainable through shops
+4	Spade Pawn	Starter	TRUE	Pawn	4	7	Showdown: If there is another Spade Pawn played with this card, gain +2/+2	Showdown	Starter Cards	Basic card, probably not obtainable through shops
+5	Wisp	Starter	TRUE	Arcane	4	5	Showdown: Friendly Arcane units gain +1/+1	Showdown		
+6	Robo-dog	Starter	TRUE	Mechanical	3	3	Showdown: Give adjacent units +2/+2.	Showdown		Basic card, much stronger than the pawns but will basic deck will only contain 1 copy
+7	Living Spellbook	Common	TRUE	Arcane	4	9	Showdown: Deal 2 damage to a random Foe. Repeat for each friendly Arcane unit.	Showdown	Multi-hit	
+8	Alchemist	Common	TRUE	Arcane	6	6	Showdown: Your left-most unit gains +4/+4	Showdown	General	
+9	Crazy Cannoneer	Common	TRUE	Citizen	1	7	When damaged, deal 3 damage to a random Foe		Take Damage Build	
+10	Defender	Common	TRUE	Knight	1	17	Intercept	Intercept	General, Take Damage Build	
+11	Flagbearer	Common	TRUE	Knight	7	7	Advantage: give random Ally +2/+0	Advantage	General, Multi-hit	
+12	Crimson Zealot	Common	TRUE	Arcane	1	10	Allies gain +2/+0 whenever they take damage		Take Damage Build	
+13	Diamond Fencer	Common	FALSE	Citizen	5	8	This unit attacks twice		Multi-hit	
+14	Young Prince	Common	FALSE	Royalty	7	4	Final Wager: Knights gain +2/+2 for the rest of this encounter	Final Wager	On-Combat Scaling	
+15	Blood Hound	Common	FALSE	Undead	0	12	Whenever an Ally dies, gain +2/+0		Final Wager, Token	
+16	Town Mayor	Common	FALSE	Citizen	4	10	Showdown: If there are 2+ other friendly Citizens, gain +5/+5 and Intercept.	Showdown	General	
+17	Constructive Construct	Common	FALSE	Mechanical	4	4	Gains the Base Attack and Base HP of all adjacent mech units.			
+18	Rogue	Common	FALSE	Citizen	6	5	Obscured: Gain +6/+5	Obscured	General	
+19	Battle Herald	Common	FALSE	Knight	7	10	Final Wager: All your units gain +3 attack	Final Wager	General	
+20	Ruin Guard	Rare	FALSE	Mechanical	0	5	Intercept. Other Allies take -1 Damage	Intercept	General	
+21	Clanker Army	Rare	FALSE	Mechanical	8	8	Showdown: If 2+ Mechanical units, all mech units gain +2/+2 for each mech unit	Showdown		
+22	Railgun	Rare	FALSE	Mechanical	5	3	Advantage: Deal 1 damage to foe above this unit for every ally Mechanical unit	Advantage	Multi-hit	
+23	King of Diamonds	Rare	FALSE	Royalty	9	9	Showdown: Knights gain +2/+2. Pawns gain +5/+5.	Showdown	General	
+24	The Watchful Eye	Rare	FALSE	Mechanical	8	2	Whenever an Ally attacks, deal 3 to a random enemy		Multi-hit	Should trigger the Giant's attack for every instance of damage, so on a full board, would trigger 10x
+25	Duelist	Rare	FALSE	Royalty	18	4			General	
+26	Blade Instructor	Rare	FALSE	Royalty	4	2	Showdown: The unit on the left attacks twice	Showdown		
+27	Fisherman	Rare	FALSE	Citizen	3	5	Showdown: Swap leftmost foe with foe that has lowest HP.	Showdown		In case of ties, decide based on least health. If health is tied, decide based on left-most unit
+28	Revenant	Rare	FALSE	Undead	4	5	Final Wager: Give all allies +3/+3	Final Wager	General, Final Wager	
+29	Bard	Rare	FALSE	Citizen	0	10	On Use: Give all allies +1/+1	On Use	General	
+30	Trap Trick	Rare	FALSE	Mechanical	6	6	Showdown: Retrigger all triggered ally obscured effects this combat.	Showdown		
+31	Trap Master	Mythic	FALSE	Citizen	12	14	Obscured: Deal 10 damage to above foe for each triggered ally obscured.	Obscured		
+32	Living Cactus	Mythic	FALSE	Arcane	0	12	Deal damage to attacking Foe equal to its attack		General	
+33	Field Scientist	Mythic	FALSE	Citizen	2	1	Mechanical units don't take any damage the first time they are damaged			
+34	Joker	Legendary	FALSE	Wild Card	1	1	Copies the stats and effect of the unit on its left. Cannot copy another Joker		General	
+35	The Repear	Legendary	FALSE	Undead	14	12	Final Wager trigger twice	Final Wager	Final Wager	
+36	Divine Executioner	Legendary	FALSE	Royalty	4	14	When this unit kills a foe, attacks again.		On-Combat Scaling, Multi-hit	
+37	Risen	Token	FALSE	Undead	1	1				
+38	Ghost	Token	FALSE	Undead	9	3				
+39	Squire	Token	FALSE	Knight	2	2				
+40			FALSE							
+41	Heart Martyr	Common	FALSE	Knight	5	8	Final Wager: Give this unit's health to the unit on its right	Final Wager	General	
+42	Unliving Armor	Common	FALSE	Undead	3	9	Final Wager: Summon a 9/3 Ghost in place of this unit	Final Wager	Token	
+43	Blood Jester		FALSE		1	4	Whenever an Ally takes damage, deal 1 to a random Foe		Take Damage Build	
+44	Magician		FALSE	Arcane	3	2	Showdown: Swap the order of units	Showdown	General	Two Magicians cancel each other out
+45	Conscious Cloud	Rare	FALSE	Arcane	6	6	Obscured: Double this unit's stats for this stage	Obscured	On-Combat Scaling	
+46			FALSE							
+47		Mythic	FALSE							
+48			FALSE				Showdown: Give all allies +2/+2		General	
+49	Risen Phoenix	Token	FALSE	Beast	8	14				
+50	Chariot	Rare	FALSE	Royalty	9	11	Final Wager: Summon 2/2 squires on your missing card slots	Final Wager	Token	
+51	Phoenix Egg	Token	FALSE	Beast	0	1	Final Wager: Summon a Phoenix on the current slot.	Final Wager		
+52	Dragon	Legendary	FALSE	Beast			Friendly Beast attacks Cleave	Cleave	Cleave	
+53	Inspiring Shaman	Mythic	FALSE	Arcane	1	2	Whenever an Ally is summoned during combat, give all tokens +2/+0		Token	
+54	Phoenix	Mythic	FALSE	Beast	8	14	Final Wager: Summons a 0/1 Phoenix Egg with "Final Wager: Summon a 8/14 Risen Phoenix.	Final Wager	Token, Final Wager	
+55	Necromancer	Legendary	FALSE	Undead	2	4	Whenever an non-Risen Ally with Final Wager dies, summon a 1/1 Risen with the same Final Wager effect in its place.		Token, Final Wager	
+56	Vampire	Mythic	FALSE	Undead	4	3	Showdown: One friendly unit transforms into a Vampire for this stage. Gain +2/+2 for each friendly Vampire.			
+57	Flying Fan	Rare	FALSE	Mechanical	5	3	If Unobscured, reveal the enemy's left-most Obscured unit			
+58	Poacher	Rare	FALSE	Citizen	8	8	Showdown: Mark the lowest attack enemy. If this unit kills the marked enemy, permanently gain +2/+2		Permanent Stat Scaler	
+59	Giant	Rare	FALSE	Beast	8	12	After attacking, deal 1 Damage to ALL units		Multi-hit, Cleave, Take Damage Build	
+60	Rusted Construct	Rare	FALSE	Mechanical	7	8	This unit's attacks do no damage until it has attacked at least two times		Multi-hit	
+61	Tax Collector	Common	FALSE	Citizen	5	10	Gain +1/+1 for amount of buy-ins that are in pot		Chips/Gambling	Have the scale the amount based on the ante
+62	Clockwork Construct	Common	FALSE	Mechanical	0	1	Gains +1/+1 for each round that has passed this encounter		General	
+63	Cultist	Common	FALSE	Arcane	2	2	Showdown: Kill the unit on the right and permanently gain +2/+2		On-Combat Scaling, Final Wager	
+64	Gambler	Rare	FALSE	Citizen	2	4	If Unobscured, whenever you Raise, deal 1 to a random unobscured Foe		Chips/Gambling	

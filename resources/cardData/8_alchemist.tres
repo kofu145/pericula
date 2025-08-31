@@ -1,16 +1,19 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dgtwb15n7l1dy"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://clwebmlr8bvyk"]
 
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="1_4ctxu"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_4dkc3"]
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_c4d48"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="4_c4d48"]
 
 [resource]
 script = ExtResource("1_4dkc3")
 id = 8
 DisplayName = "Alchemist"
-Description = "Combat Start: Your left-most unit gains +4/+4"
+Description = "Showdown: Your left-most unit gains +4/+4"
+Rarity = ExtResource("4_c4d48")
 Trait = 1
 BaseAttack = 6
 BaseHP = 6
 OnUse = null
 Passives = null
-Keywords = Array[ExtResource("1_c4d48")]([])
+Keywords = Array[ExtResource("1_c4d48")]([ExtResource("1_4ctxu")])

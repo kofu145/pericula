@@ -1,16 +1,19 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://3ho5p3btsygp"]
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://dplpgqnwu53ex"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_e4op3"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_rx01b"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_tbvo2"]
+[ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="2_yckig"]
 
 [resource]
 script = ExtResource("2_tbvo2")
 id = 4
 DisplayName = "Spade Pawn"
-Description = "Combat Start: If there is another Spade Pawn played with this card, gain +2/+2"
+Description = "Showdown: If there is another Spade Pawn played with this card, gain +2/+2"
+Rarity = ExtResource("2_yckig")
 Trait = 7
 BaseAttack = 4
 BaseHP = 7
 OnUse = null
 Passives = null
-Keywords = Array[ExtResource("1_e4op3")]([])
+Keywords = Array[ExtResource("1_e4op3")]([ExtResource("2_rx01b")])

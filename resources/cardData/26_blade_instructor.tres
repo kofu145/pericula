@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://cfbb5t3k5yfdw"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_fj04v"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_m8ght"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_xxien"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="3_m8ght"]
+
+[resource]
+script = ExtResource("2_xxien")
+id = 26
+DisplayName = "Blade Instructor"
+Description = "Showdown: The unit on the left attacks twice"
+Rarity = ExtResource("3_m8ght")
+Trait = 3
+BaseAttack = 4
+BaseHP = 2
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_fj04v")]([ExtResource("2_m8ght")])

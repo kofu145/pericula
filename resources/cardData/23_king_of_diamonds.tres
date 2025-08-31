@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://bcandgk7t5nh1"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_330mm"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_l0sqn"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_nqlgj"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_shc2j"]
+
+[resource]
+script = ExtResource("2_shc2j")
+id = 23
+DisplayName = "King of Diamonds"
+Description = "Showdown: Knights gain +2/+2. Pawns gain +5/+5."
+Rarity = ExtResource("2_l0sqn")
+Trait = 3
+BaseAttack = 9
+BaseHP = 9
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_330mm")]([ExtResource("2_nqlgj")])
