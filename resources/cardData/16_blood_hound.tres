@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://bl1a8vg186t8r"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_ljyhb"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_rs785"]
+
+[resource]
+script = ExtResource("2_rs785")
+id = 16
+DisplayName = "Blood Hound"
+Description = "Whenever an Ally dies, gain +2/+0"
+Trait = 8
+BaseAttack = 0
+BaseHP = 12
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_ljyhb")]([])

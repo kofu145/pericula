@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://8fea7t4q2i34"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_j7iw4"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_o08pt"]
+
+[resource]
+script = ExtResource("2_o08pt")
+id = 35
+DisplayName = "Living Cactus"
+Description = "Deal damage to attacking Foe equal to its attack"
+Trait = 1
+BaseAttack = 0
+BaseHP = 12
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_j7iw4")]([])

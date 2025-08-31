@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dlj345quihdaf"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_mbeqo"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_rw6ja"]
+
+[resource]
+script = ExtResource("2_rw6ja")
+id = 42
+DisplayName = "Risen"
+Description = ""
+Trait = 8
+BaseAttack = 1
+BaseHP = 1
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_mbeqo")]([])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://tfb2y8xu8m34"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_5gsrr"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_n7vjh"]
+
+[resource]
+script = ExtResource("2_n7vjh")
+id = 30
+DisplayName = "Revenant"
+Description = "Final Wager: Give all allies +3/+3"
+Trait = 8
+BaseAttack = 4
+BaseHP = 5
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_5gsrr")]([])

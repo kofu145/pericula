@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://xh6ytla53hva"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_x7jm4"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_xn8xk"]
+
+[resource]
+script = ExtResource("2_xn8xk")
+id = 22
+DisplayName = "Clanker Army"
+Description = "Combat Start: If 2+ Mechanical units, all mech units gain +2/+2 for each mech unit"
+Trait = 5
+BaseAttack = 8
+BaseHP = 8
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_x7jm4")]([])

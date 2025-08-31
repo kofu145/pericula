@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://brl2dh2hbdysf"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_yefxa"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_3dhfm"]
+
+[resource]
+script = ExtResource("2_3dhfm")
+id = 20
+DisplayName = "Battle Herald"
+Description = "Final Wager: All your units gain +3 attack"
+Trait = 0
+BaseAttack = 7
+BaseHP = 10
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_yefxa")]([])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dcrkyy4exkqkw"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_72xgx"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_ocgnd"]
+
+[resource]
+script = ExtResource("2_ocgnd")
+id = 29
+DisplayName = "Chariot"
+Description = "Final Wager: Summon 2/2 squires on your missing card slots"
+Trait = 3
+BaseAttack = 9
+BaseHP = 11
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_72xgx")]([])

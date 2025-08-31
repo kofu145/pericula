@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://bcmnaannfc8k8"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_0ba7k"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_kmud2"]
+
+[resource]
+script = ExtResource("2_kmud2")
+id = 7
+DisplayName = "Living Spellbook"
+Description = "Combat Start: Deal 2 damage to a random Foe. Repeat for each friendly Arcane unit."
+Trait = 1
+BaseAttack = 4
+BaseHP = 9
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_0ba7k")]([])

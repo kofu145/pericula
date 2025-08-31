@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://bxks6f3uect3g"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_tnw2h"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_lkx8u"]
+
+[resource]
+script = ExtResource("2_lkx8u")
+id = 14
+DisplayName = "Diamond Fencer"
+Description = "This unit attacks twice"
+Trait = 2
+BaseAttack = 5
+BaseHP = 8
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_tnw2h")]([])

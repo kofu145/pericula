@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://185vp47fks7v"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_yctlu"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_bswm1"]
+
+[resource]
+script = ExtResource("2_bswm1")
+id = 41
+DisplayName = "Divine Executioner"
+Description = "When this unit kills a foe, attacks again."
+Trait = 3
+BaseAttack = 4
+BaseHP = 14
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_yctlu")]([])

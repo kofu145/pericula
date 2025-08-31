@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://d02pg2nhdq3bu"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_vy0j6"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_l5eef"]
+
+[resource]
+script = ExtResource("2_l5eef")
+id = 19
+DisplayName = "Rogue"
+Description = "Obscured: Gain +6/+5"
+Trait = 2
+BaseAttack = 6
+BaseHP = 5
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_vy0j6")]([])

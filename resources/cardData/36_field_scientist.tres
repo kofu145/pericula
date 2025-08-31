@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dhi0jntv0gc1q"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_bubuj"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_mdhqr"]
+
+[resource]
+script = ExtResource("2_mdhqr")
+id = 36
+DisplayName = "Field Scientist"
+Description = "Mechanical units don't take any damage the first time they are damaged"
+Trait = 2
+BaseAttack = 2
+BaseHP = 1
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_bubuj")]([])

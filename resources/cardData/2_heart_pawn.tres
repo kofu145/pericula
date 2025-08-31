@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://u16jr6k2nirv"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_3ilvi"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_txe4d"]
+
+[resource]
+script = ExtResource("2_txe4d")
+id = 2
+DisplayName = "Heart Pawn"
+Description = ""
+Trait = 7
+BaseAttack = 5
+BaseHP = 8
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_3ilvi")]([])
