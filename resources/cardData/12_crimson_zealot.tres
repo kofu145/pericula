@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://yydst0j7obg7"]
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://cb8dkayygv0di"]
 
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_6bw7t"]
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_14uiv"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://xino1slc58yu"]
+[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://ofosglcf6k2c"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_gu4uk"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_nhv1q"]
