@@ -32,6 +32,7 @@ public partial class PreStagePanel : TextureRect
 
     public void OnStartRoundClicked()
     {
+        SoundManager.PlaySE("click");
         StageManager.Instance.BeginStage();
     }
 
