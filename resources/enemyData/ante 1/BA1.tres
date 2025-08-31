@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://b6yn2t6uy7nu2"]
+
+[ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="1_klol7"]
+[ext_resource type="Resource" uid="uid://dkgewqtkah5s2" path="res://resources/decks/ante 1/arcane.tres" id="1_o82gk"]
+
+[resource]
+script = ExtResource("1_klol7")
+DisplayName = "Shadow Wiz $ Gang"
+deck = ExtResource("1_o82gk")
+Difficulty = 0
+IsBoss = true
+metadata/_custom_type_script = "uid://bseo3sf3127a4"

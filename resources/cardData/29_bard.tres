@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://bglt5dyol4b8q"]
+[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://5v3if1uo26pq"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_0r3yp"]
 [ext_resource type="Script" uid="uid://bv0l48rc6l1vi" path="res://scripts/resources/effect/DoBuffEffect.cs" id="2_8il60"]

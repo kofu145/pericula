@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=10 format=3 uid="uid://cuomevswdb2xq"]
+
+[ext_resource type="Resource" uid="uid://bt7u4i3qchld" path="res://resources/cardData/2_heart_pawn.tres" id="1_e6cbt"]
+[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="2_nxefu"]
+[ext_resource type="Resource" uid="uid://snsmpslkxn0f" path="res://resources/cardData/6_robo-dog.tres" id="3_uo7yw"]
+[ext_resource type="Resource" uid="uid://c16xmx086gm2h" path="res://resources/cardData/17_constructive_construct.tres" id="4_8vg1i"]
+[ext_resource type="Resource" uid="uid://do5p0egnldn0k" path="res://resources/cardData/20_ruin_guard.tres" id="5_1aawl"]
+[ext_resource type="Resource" uid="uid://btwwat5io72d2" path="res://resources/cardData/19_battle_herald.tres" id="6_im5tw"]
+[ext_resource type="Resource" uid="uid://ccn0npgcjdirg" path="res://resources/cardData/21_clanker_army.tres" id="7_dwtem"]
+[ext_resource type="Resource" uid="uid://cilb14jnauoqx" path="res://resources/cardData/22_railgun.tres" id="8_ky0am"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="9_5h4w6"]
+
+[resource]
+script = ExtResource("9_5h4w6")
+Cards = Array[Object]([ExtResource("1_e6cbt"), ExtResource("2_nxefu"), ExtResource("3_uo7yw"), ExtResource("1_e6cbt"), ExtResource("4_8vg1i"), ExtResource("4_8vg1i"), ExtResource("5_1aawl"), ExtResource("6_im5tw"), ExtResource("1_e6cbt"), ExtResource("7_dwtem"), ExtResource("1_e6cbt"), ExtResource("8_ky0am"), ExtResource("1_e6cbt"), ExtResource("1_e6cbt")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"

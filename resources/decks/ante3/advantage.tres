@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://56ey43qruae4"]
+
+[ext_resource type="Resource" uid="uid://bnwbl7yvql0kc" path="res://resources/cardData/11_Flagbearer.tres" id="1_3ejr0"]
+[ext_resource type="Resource" uid="uid://bfehhn0gkla0e" path="res://resources/cardData/24_watchful_eye.tres" id="2_rqc8k"]
+[ext_resource type="Resource" uid="uid://cilb14jnauoqx" path="res://resources/cardData/22_railgun.tres" id="4_fh0tq"]
+[ext_resource type="Resource" uid="uid://ofosglcf6k2c" path="res://resources/cardData/13_diamond_fencer.tres" id="4_rqc8k"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="5_lxkvv"]
+
+[resource]
+script = ExtResource("5_lxkvv")
+Cards = Array[Object]([ExtResource("1_3ejr0"), ExtResource("1_3ejr0"), ExtResource("1_3ejr0"), ExtResource("1_3ejr0"), ExtResource("4_fh0tq"), ExtResource("4_fh0tq"), ExtResource("2_rqc8k"), ExtResource("2_rqc8k"), ExtResource("2_rqc8k"), ExtResource("2_rqc8k"), ExtResource("2_rqc8k"), ExtResource("4_rqc8k"), ExtResource("4_rqc8k"), ExtResource("4_rqc8k"), ExtResource("4_rqc8k"), ExtResource("4_rqc8k")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"

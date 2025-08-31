@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=8 format=3 uid="uid://lf8j06o7t70y"]
+
+[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="2_l58f4"]
+[ext_resource type="Resource" uid="uid://bnwbl7yvql0kc" path="res://resources/cardData/11_Flagbearer.tres" id="2_qagla"]
+[ext_resource type="Resource" path="res://resources/cardData/23_King_of_diamonds.tres" id="3_ra0b1"]
+[ext_resource type="Resource" uid="uid://rg1flebu43rj" path="res://resources/cardData/16_town_mayor.tres" id="4_lopsk"]
+[ext_resource type="Resource" uid="uid://d3ilv4qyfm13l" path="res://resources/cardData/14_young_prince.tres" id="5_l58f4"]
+[ext_resource type="Resource" uid="uid://ofosglcf6k2c" path="res://resources/cardData/13_diamond_fencer.tres" id="6_kc6r6"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="9_5hj7k"]
+
+[resource]
+script = ExtResource("9_5hj7k")
+Cards = Array[Object]([ExtResource("2_l58f4"), ExtResource("2_l58f4"), ExtResource("2_l58f4"), ExtResource("2_l58f4"), ExtResource("2_qagla"), ExtResource("2_qagla"), ExtResource("2_qagla"), ExtResource("3_ra0b1"), ExtResource("3_ra0b1"), ExtResource("3_ra0b1"), ExtResource("4_lopsk"), ExtResource("4_lopsk"), ExtResource("5_l58f4"), ExtResource("5_l58f4"), ExtResource("6_kc6r6"), ExtResource("6_kc6r6")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"

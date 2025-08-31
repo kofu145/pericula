@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=9 format=3 uid="uid://dcpulgjb7s42r"]
+
+[ext_resource type="Resource" uid="uid://bt7u4i3qchld" path="res://resources/cardData/2_heart_pawn.tres" id="1_guf4v"]
+[ext_resource type="Resource" uid="uid://btwwat5io72d2" path="res://resources/cardData/19_battle_herald.tres" id="3_01fhm"]
+[ext_resource type="Resource" uid="uid://snsmpslkxn0f" path="res://resources/cardData/6_robo-dog.tres" id="3_jthth"]
+[ext_resource type="Resource" uid="uid://c16xmx086gm2h" path="res://resources/cardData/17_constructive_construct.tres" id="4_01fhm"]
+[ext_resource type="Resource" uid="uid://do5p0egnldn0k" path="res://resources/cardData/20_ruin_guard.tres" id="5_ixh4d"]
+[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="6_fmrhe"]
+[ext_resource type="Resource" uid="uid://cilb14jnauoqx" path="res://resources/cardData/22_railgun.tres" id="7_kxjqd"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="8_ktmuy"]
+
+[resource]
+script = ExtResource("8_ktmuy")
+Cards = Array[Object]([ExtResource("1_guf4v"), ExtResource("6_fmrhe"), ExtResource("3_jthth"), ExtResource("1_guf4v"), ExtResource("4_01fhm"), ExtResource("4_01fhm"), ExtResource("5_ixh4d"), ExtResource("3_01fhm"), ExtResource("3_01fhm"), ExtResource("1_guf4v"), ExtResource("1_guf4v"), ExtResource("7_kxjqd"), ExtResource("1_guf4v"), ExtResource("1_guf4v")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"
