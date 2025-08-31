@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://x1s3hs3wqykm"]
 
-[ext_resource type="Resource" uid="uid://6qpxpfwufbr" path="res://resources/cardData/23_King_of_diamonds.tres" id="1_5j4nb"]
+[ext_resource type="Resource" uid="uid://do5p0egnldn0k" path="res://resources/cardData/20_ruin_guard.tres" id="1_5j4nb"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
-[ext_resource type="Resource" uid="uid://8cw3smssm4oj" path="res://resources/cardData/28_fisherman.tres" id="3_5j4nb"]
-[ext_resource type="Resource" uid="uid://btubqms6f8qc8" path="res://resources/cardData/35_joker.tres" id="4_kohqt"]
-[ext_resource type="Resource" uid="uid://bglt5dyol4b8q" path="res://resources/cardData/29_bard.tres" id="4_upxyf"]
-[ext_resource type="Resource" uid="uid://c21op0lph4uj2" path="res://resources/cardData/7_living_spellbook.tres" id="5_kgvsl"]
+[ext_resource type="Resource" uid="uid://bc4rs2h6253da" path="res://resources/cardData/10_Defender.tres" id="3_5j4nb"]
+[ext_resource type="Resource" uid="uid://ccn0npgcjdirg" path="res://resources/cardData/21_clanker_army.tres" id="3_kohqt"]
+[ext_resource type="Resource" uid="uid://6qpxpfwufbr" path="res://resources/cardData/23_KingOfDiamonds.tres" id="4_5j4nb"]
+[ext_resource type="Resource" uid="uid://cilb14jnauoqx" path="res://resources/cardData/22_railgun.tres" id="4_kgvsl"]
 
 [resource]
 script = ExtResource("1_qu2sd")
-Cards = Array[Object]([ExtResource("1_5j4nb"), ExtResource("4_upxyf"), ExtResource("3_5j4nb"), ExtResource("4_kohqt"), ExtResource("5_kgvsl")])
+Cards = Array[Object]([ExtResource("1_5j4nb"), ExtResource("3_5j4nb"), ExtResource("3_kohqt"), ExtResource("4_kgvsl"), ExtResource("4_5j4nb")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"

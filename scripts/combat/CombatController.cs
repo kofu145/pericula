@@ -56,6 +56,7 @@ public partial class CombatController : Node
     /// </summary>
     public void EndTurn()
     {
+        battleState.Reset();
         playerLane.EndRound();
         enemyLane.EndRound();
         EventBus.Instance.ClearEvents();
@@ -66,6 +67,7 @@ public partial class CombatController : Node
     /// </summary>
     public void EndCombat()
     {
+        battleState.Reset();
         playerLane.EndRound();
         enemyLane.EndRound();
 

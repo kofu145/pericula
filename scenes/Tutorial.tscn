@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyau1eaiah8c7"]
+[gd_scene load_steps=5 format=3 uid="uid://dyau1eaiah8c7"]
 
 [ext_resource type="Script" uid="uid://bddg2jsxk7acm" path="res://scripts/TutorialController.cs" id="1_ci5ev"]
+[ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="2_pgr2e"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="3_ebau5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ci5ev"]
 bg_color = Color(0.08, 0.08, 0.08, 0.94902)
 
 [node name="TutorialCavnas" type="CanvasLayer" node_paths=PackedStringArray("texture", "header", "description", "nextPageButton")]
 layer = 128
-visible = false
 follow_viewport_enabled = true
 script = ExtResource("1_ci5ev")
 texture = NodePath("Panel/TextureRect")
@@ -40,6 +41,7 @@ offset_top = 28.0
 offset_right = 535.0
 offset_bottom = 95.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_pgr2e")
 theme_override_font_sizes/font_size = 48
 text = "Header"
 horizontal_alignment = 1
@@ -50,6 +52,7 @@ offset_left = 583.0
 offset_top = 144.0
 offset_right = 1124.0
 offset_bottom = 513.0
+theme_override_fonts/font = ExtResource("3_ebau5")
 theme_override_font_sizes/font_size = 28
 text = "Description"
 vertical_alignment = 1
@@ -60,6 +63,8 @@ layout_mode = 0
 offset_left = 995.0
 offset_top = 530.0
 offset_right = 1108.0
-offset_bottom = 572.0
+offset_bottom = 593.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_ebau5")
 theme_override_font_sizes/font_size = 24
 text = "Next"

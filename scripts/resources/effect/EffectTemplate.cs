@@ -40,7 +40,9 @@ public partial class EffectTemplate : Resource
 
     protected async Task DealDamage(int damage, CardData target, EffectParam param)
     {
-        target.HP -= damage;
+        var isPlayer = param.State.GetSide(target).Side == LaneSide.Player;
+        var def = isPlayer ? param.State.PlayerDefense : param.State.EnemyDefense;
+        target.HP -= (damage - def);
         await DamageText(damage, target, param);
         EventBus.Instance.InvokeTakeDamageEvent(target);
         //await EventBus.Instance.ClearTriggerQueue();
@@ -85,7 +87,6 @@ public partial class EffectTemplate : Resource
         var damagePos = cardBase.GlobalPosition;
         PopupText.Instance.ShowText(damagePos + new Vector2(0, 20), text);
         cardBase.Visual.UpdateLabels();
-        SoundManager.PlaySE("info");
     }
 
     /// <summary>

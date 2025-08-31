@@ -68,6 +68,7 @@ public partial class DeckManipCard : Control
         else
         {
             PopupText.Instance.ShowText(GlobalPosition, "Too expensive!");
+            SoundManager.PlaySE("fail");
         }
     }
 

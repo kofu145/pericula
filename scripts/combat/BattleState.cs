@@ -15,12 +15,22 @@ public partial class BattleState : Node
 
     private Queue<Func<Task>> triggerQueue = new();
     private List<CardData> hasIntercept = new();
+    public int PlayerDefense;
+    public int EnemyDefense;
 
     public void Initialize(CardLane playerLane, CardLane enemyLane)
     {
         PlayerLane = playerLane;
         EnemyLane = enemyLane;
         currentTurn = Turn.Player;
+        PlayerDefense = 0;
+        EnemyDefense = 0;
+    }
+
+    public void Reset()
+    {
+        PlayerDefense = 0;
+        EnemyDefense = 0;
     }
 
     public void ToggleLerp(bool value)
@@ -35,20 +45,27 @@ public partial class BattleState : Node
         var selfLane = GetSide(self);
         var opposingLane = selfLane.Side == LaneSide.Player ? EnemyLane : PlayerLane;
         CardData target = opposingLane.GetCardAtIndex(0);
-        var found = false;
-        for (int i = 0; i < opposingLane.CardCount; i++)
+        if (hasIntercept.Count > 0)
         {
+            CardData leftmostIntercept = null;
+            int lowestIndex = int.MaxValue;
+
             foreach (var card in hasIntercept)
             {
-                if (opposingLane.GetCardAtIndex(i) == card)
+                if (opposingLane.GetCardBaseByData(card) != null)
                 {
-                    target = card;
-                    break;
-
+                    int idx = opposingLane.IndexOf(opposingLane.GetCardBaseByData(card));
+                    if (idx >= 0 && idx < lowestIndex) // make sure the card is actually in lane
+                    {
+                        lowestIndex = idx;
+                        leftmostIntercept = card;
+                    }
                 }
+
             }
-            if (found)
-                break;
+
+            if (leftmostIntercept != null)
+                target = leftmostIntercept;
         }
 
         return target;

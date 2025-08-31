@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://djkgyuhdqygsw"]
+[gd_scene load_steps=27 format=3 uid="uid://djkgyuhdqygsw"]
 
 [ext_resource type="Script" uid="uid://ohvegxjxbqxu" path="res://scripts/CardBase.cs" id="1_s5r67"]
 [ext_resource type="Texture2D" uid="uid://dohcvin7paan5" path="res://assets/art/knight.png" id="2_2bi35"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c1lcfrpe2n26u" path="res://assets/art/empty.png" id="7_1oahe"]
 [ext_resource type="Texture2D" uid="uid://c26joxcyfd3xc" path="res://assets/art/wildcard.png" id="7_58vbl"]
 [ext_resource type="Texture2D" uid="uid://setl0iw1vnf" path="res://assets/cards/death.png" id="8_2bi35"]
+[ext_resource type="Texture2D" uid="uid://bfbjj72gfgh0j" path="res://assets/art/pawn.png" id="8_5on5x"]
 [ext_resource type="Texture2D" uid="uid://x15fynsqc0ae" path="res://assets/card_alt_border.png" id="8_8dt14"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="8_y3kt5"]
 
@@ -399,6 +400,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 0.122173, 0.0]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visual")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PlayInfoTriggerSound"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u4wdl"]
 _data = {
@@ -431,7 +446,7 @@ CardImage = NodePath("Visual/Image")
 Description = NodePath("Visual/CanvasLayer/CardDescription")
 animation = NodePath("Visual/AnimationPlayer")
 hitParticle = NodePath("Visual/HitParticle")
-CardImages = Array[Texture2D]([ExtResource("2_2bi35"), ExtResource("3_5on5x"), ExtResource("4_ua25p"), ExtResource("5_52o0g"), ExtResource("6_eca8j"), ExtResource("7_58vbl"), ExtResource("8_2bi35"), ExtResource("8_2bi35")])
+CardImages = Array[Texture2D]([ExtResource("2_2bi35"), ExtResource("3_5on5x"), ExtResource("4_ua25p"), ExtResource("5_52o0g"), ExtResource("6_eca8j"), ExtResource("7_58vbl"), ExtResource("8_5on5x"), ExtResource("8_2bi35")])
 
 [node name="Visual" type="TextureRect" parent="." node_paths=PackedStringArray("NameLabel", "cardBase", "cardBack", "cardBorder", "cardDescription", "attackLabel", "healthLabel")]
 z_index = 2

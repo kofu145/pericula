@@ -144,8 +144,8 @@ public partial class CardVisual : Control
         }
     }
 
-    public void PlayHitSound()
+    public void PlayInfoTriggerSound()
     {
-        SoundManager.PlaySE("hit");
+        SoundManager.PlaySE("info");
     }
 }
