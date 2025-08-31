@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_p4pdu"]
 [ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="1_wl6a2"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_kn785"]
-[ext_resource type="Script" path="res://scripts/resources/effect/ShowdownScaleBuffClass.cs" id="3_p4pdu"]
+[ext_resource type="Script" uid="uid://cny0kle4uttid" path="res://scripts/resources/effect/ShowdownScaleBuffClass.cs" id="3_p4pdu"]
 [ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="4_kn785"]
 
 [sub_resource type="Resource" id="Resource_jum7n"]

@@ -16,6 +16,7 @@ public partial class PhaseController : Node
     [Export] private BetController betController;
 
     // UI refs
+    [Export] private Label enemyNameLabel;
     [Export] private Label actionLabel;
     [Export] private Label playerChipsLabel;
     [Export] private Label negativeBalanceWarningLabel;
@@ -53,6 +54,7 @@ public partial class PhaseController : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        enemyNameLabel.Text = StageManager.Instance.GetCurrentEnemy().DisplayName;
         actionLabel.Visible = false;
         combatManager.Initialize();
 
