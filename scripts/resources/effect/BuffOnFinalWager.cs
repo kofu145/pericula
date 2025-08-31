@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+public enum BuffDuration
+{ CurrentShowdown, Encounter }
+
 [GlobalClass]
 public partial class BuffOnFinalWager : EffectTemplate
 {
@@ -12,8 +15,6 @@ public partial class BuffOnFinalWager : EffectTemplate
     [Export] public bool TargetTrait;
     [Export] public Trait TraitToBuff;
 
-    public enum BuffDuration
-    { CurrentShowdown, Encounter }
     [Export] public BuffDuration buffDuration;
 
 
