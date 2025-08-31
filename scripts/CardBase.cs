@@ -103,6 +103,7 @@ public partial class CardBase : Control
                     OnEndDrag?.Invoke(this);
                     _dragging = false;
 
+                    SoundManager.PlaySE("book_drop");
                     // Try to place/swap into hovered slot
                     // var targetSlot = GetHoveredSlot();
 

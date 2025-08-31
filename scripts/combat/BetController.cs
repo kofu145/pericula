@@ -128,6 +128,7 @@ public partial class BetController : Node
         if ((!betOpen && PlayerBalance < minimumBuyIn) || (betOpen && AffordableRaise < minimumBuyIn))
             return;
 
+        SoundManager.PlaySE("click");
         choosingRaiseAmount = true;
         UpdateButtons();
     }
@@ -145,6 +146,7 @@ public partial class BetController : Node
         }
 
         raiseAmount = Math.Min(raiseAmount, maxRaise + ToCall);  // clamp to max affordable
+        SoundManager.PlaySE("click");
         ApplyPlayerRaise(raiseAmount);
     }
 
@@ -203,6 +205,7 @@ public partial class BetController : Node
         playerPut += spend;
         pot += spend;
 
+        SoundManager.PlaySE("click");
         lastPlayerAction = BetAction.Call;
         EndPhase();
     }
@@ -226,6 +229,7 @@ public partial class BetController : Node
             return;
         }
 
+        SoundManager.PlaySE("click");
         turn = Turn.Enemy;
         UpdateButtons();
         UpdatePotLabel();
@@ -239,6 +243,7 @@ public partial class BetController : Node
         lastPlayerAction = BetAction.Fold;
         endedWithFold = true;
         foldedByPlayer = true;
+        SoundManager.PlaySE("click");
         EndPhase();
     }
 
@@ -260,6 +265,7 @@ public partial class BetController : Node
         lastPlayerAction = BetAction.AllIn;
 
         turn = Turn.Enemy;
+        SoundManager.PlaySE("click");
         UpdateButtons();
         UpdatePotLabel();
         EnemyAct();
