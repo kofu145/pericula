@@ -17,6 +17,7 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 script = ExtResource("4_q5toe")
 HPBuff = 2
 AtkBuff = 2
+TargetTrait = true
 TraitToBuff = 0
 buffDuration = 1
 name = ""

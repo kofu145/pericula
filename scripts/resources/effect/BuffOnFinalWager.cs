@@ -22,8 +22,9 @@ public partial class BuffOnFinalWager : EffectTemplate
     public override void Initialize(EffectParam param)
     {
         EventBus.FinalWagerHandler handler = null;
-        handler = (CardData? victim) =>
+        handler = (DeathParam death) =>
         {
+            if (death.BaseData != param.Self) return;
             param.State.QueueTrigger(async () =>
             {
                 var lane = param.State.GetSide(param.Self);
@@ -32,6 +33,7 @@ public partial class BuffOnFinalWager : EffectTemplate
                     var card = lane.GetCardAtIndex(i);
                     if (ValidTarget(card, param))
                     {
+                        GD.Print($"Buffing {card.DisplayName}");
                         if (buffDuration == BuffDuration.CurrentShowdown)
                         {
                             card.HP += HPBuff;
@@ -48,8 +50,6 @@ public partial class BuffOnFinalWager : EffectTemplate
                         await DoTriggerAnimation(param);
                     }
                 }
-
-
             });
             EventBus.Instance.FinalWagerEvent -= handler;
         };
