@@ -135,6 +135,7 @@ public partial class PhaseController : Node
 
     public void StartBetPhase()
     {
+        SoundManager.PlaySE("click");
         Hide(betPhaseButton);
         currentPhase = RoundPhase.Betting;
         combatManager.StartBetPhase();
@@ -149,6 +150,8 @@ public partial class PhaseController : Node
 
     private void StartShowdownPhase()
     {
+        SoundManager.PlaySE("click");
+        SoundManager.PlaySE("FX01");
         Hide(showdownButton);
         currentPhase = RoundPhase.Showdown;
         combatManager.ShowdownHandler();
@@ -192,6 +195,7 @@ public partial class PhaseController : Node
 
     private void StartNextTurn()
     {
+        SoundManager.PlaySE("click");
         combatManager.EndTurn();
         currentTurn++;
         StartCombatEncounter();
