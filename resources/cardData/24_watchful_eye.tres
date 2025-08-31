@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://dbakpk4hmqkc8"]
+
+[ext_resource type="Resource" uid="uid://x6q04ojt20wv" path="res://resources/keywords/advantage.tres" id="1_ar8uq"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_sw8ut"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_yigjs"]
+[ext_resource type="Script" uid="uid://cnsjtealaq0p8" path="res://scripts/resources/effect/AttackOnAdvantage.cs" id="2_ar8uq"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="3_q0m42"]
+
+[sub_resource type="Resource" id="Resource_g2os7"]
+script = ExtResource("1_sw8ut")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_h6jdp"]
+script = ExtResource("2_ar8uq")
+Damage = 3
+name = ""
+metadata/_custom_type_script = "uid://cnsjtealaq0p8"
+
+[resource]
+script = ExtResource("1_yigjs")
+id = 24
+DisplayName = "Watchful Eye"
+Description = "Advantage: Deal 3 damage to a random enemy"
+Rarity = ExtResource("3_q0m42")
+Trait = 4
+BaseAttack = 8
+BaseHP = 2
+OnUse = Array[Object]([SubResource("Resource_g2os7")])
+Passives = Array[Object]([SubResource("Resource_h6jdp")])
+Keywords = [ExtResource("1_ar8uq")]
+metadata/_custom_type_script = "uid://clner77n1ff5a"

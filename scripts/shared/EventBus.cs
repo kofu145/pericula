@@ -53,6 +53,12 @@ public partial class EventBus : Node
         RefreshBattleLoop = null;
     }
 
+    public async Task UpdateLane()
+    {
+        await CombatManager.UpdateLane(true);
+        await CombatManager.UpdateLane(false);
+    }
+
 
 
 }

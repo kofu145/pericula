@@ -132,6 +132,8 @@ public partial class CombatController : Node
             await eff.OnUse(effectParam);
             await eff.OnEnqueue(effectParam);
             EventBus.Instance.InvokeAdvantage(currCard);
+            await UpdateLane(true);
+            await UpdateLane(false);
             //GD.Print("waiting?");
         }
 
@@ -174,7 +176,7 @@ public partial class CombatController : Node
 
     }
 
-    private async Task UpdateLane(bool player)
+    public async Task UpdateLane(bool player)
     {
         List<CardData> toRemove = [];
         var targetLane = player ? playerLane : enemyLane;
