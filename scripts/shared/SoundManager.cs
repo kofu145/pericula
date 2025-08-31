@@ -44,6 +44,5 @@ public partial class SoundManager : Node
         BGMPlayer = GetNode<AudioStreamPlayer>("BGM");
         SEPlayer = GetNode<AudioStreamPlayer>("SE");
         SEPlayer.Play();
-        PlayBGM("sygil_suda");
     }
 }
