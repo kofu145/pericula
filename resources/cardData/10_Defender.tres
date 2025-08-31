@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://bc4rs2h6253da"]
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://bc4rs2h6253da"]
 
-[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/intercept.tres" id="1_8ienh"]
+[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/Intercept.tres" id="1_8ienh"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_gm3lb"]
-[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_pf7a8"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_i1jle"]
 [ext_resource type="Script" uid="uid://b1wp3na60tlfv" path="res://scripts/resources/effect/InterceptEffect.cs" id="3_4ejtn"]
 [ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="4_47uaf"]
@@ -29,5 +28,5 @@ BaseAttack = 1
 BaseHP = 17
 OnUse = Array[Object]([SubResource("Resource_uk07d")])
 Passives = Array[Object]([SubResource("Resource_24syo")])
-Keywords = Array[ExtResource("1_pf7a8")]([ExtResource("1_8ienh")])
+Keywords = [ExtResource("1_8ienh")]
 metadata/_custom_type_script = "uid://clner77n1ff5a"

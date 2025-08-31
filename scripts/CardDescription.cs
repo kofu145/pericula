@@ -160,7 +160,6 @@ public partial class CardDescription : Control
             { Trait.Arcane, ArcaneColor },
             { Trait.Citizen, CitizenColor },
             { Trait.Royalty, RoyaltyColor },
-            { Trait.Beast, BeastColor },
             { Trait.Mechanical, MechanicalColor },
             { Trait.WildCard, WildCardColor },
             { Trait.Pawn, PawnColor },

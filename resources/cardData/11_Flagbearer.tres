@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://bnwbl7yvql0kc"]
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://bnwbl7yvql0kc"]
 
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_2x8pf"]
-[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_8b8e7"]
 [ext_resource type="Resource" uid="uid://x6q04ojt20wv" path="res://resources/keywords/advantage.tres" id="1_jxwa6"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_8b8e7"]
 [ext_resource type="Script" uid="uid://bsbutv31nanh7" path="res://scripts/resources/effect/BuffOnAdvantage.cs" id="3_8q3bo"]
@@ -31,5 +30,5 @@ BaseAttack = 7
 BaseHP = 7
 OnUse = Array[Object]([SubResource("Resource_j24mr")])
 Passives = Array[Object]([SubResource("Resource_y1wqw")])
-Keywords = Array[ExtResource("1_8b8e7")]([ExtResource("1_jxwa6")])
+Keywords = [ExtResource("1_jxwa6")]
 metadata/_custom_type_script = "uid://clner77n1ff5a"
