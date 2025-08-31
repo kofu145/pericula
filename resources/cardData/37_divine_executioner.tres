@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://h4176h6n42ac"]
+
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_s7mmh"]
+
+[resource]
+script = ExtResource("1_s7mmh")
+id = 0
+DisplayName = ""
+Description = ""
+Trait = 0
+BaseAttack = 0
+BaseHP = 0
+OnUse = null
+Passives = null
+Keywords = []
+metadata/_custom_type_script = "uid://clner77n1ff5a"
