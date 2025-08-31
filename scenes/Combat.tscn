@@ -357,17 +357,27 @@ discardPileButton = NodePath("DiscardPileButton")
 layout_mode = 0
 offset_left = -1.0
 offset_top = 74.0
-offset_right = 122.0
-offset_bottom = 105.0
-text = "View Draw Pile"
+offset_right = 170.0
+offset_bottom = 117.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_styles/hover = ExtResource("10_7qnt1")
+theme_override_styles/pressed = ExtResource("11_mwu67")
+theme_override_styles/normal = ExtResource("12_r8g7h")
+text = "Draw Pile"
 
 [node name="DiscardPileButton" type="Button" parent="Canvas/DeckListButtonContainer"]
 layout_mode = 0
 offset_left = -1.0
 offset_top = 122.0
-offset_right = 139.0
-offset_bottom = 153.0
-text = "View Discard Pile"
+offset_right = 170.0
+offset_bottom = 165.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_b4pb0")
+theme_override_styles/hover = ExtResource("10_7qnt1")
+theme_override_styles/pressed = ExtResource("11_mwu67")
+theme_override_styles/normal = ExtResource("12_r8g7h")
+text = "Discard Pile"
 
 [node name="PhaseButtons" type="VBoxContainer" parent="."]
 layout_mode = 1

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdnquf255b8dn"]
+[gd_scene load_steps=4 format=3 uid="uid://bdnquf255b8dn"]
 
 [ext_resource type="Script" uid="uid://c16njbemom5e" path="res://scripts/PreCombat.cs" id="1_433f5"]
 [ext_resource type="PackedScene" uid="uid://bqqs350nnamat" path="res://scenes/pre_combat/PreStagePanel.tscn" id="1_fdsa5"]
+[ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="3_c1843"]
 
 [node name="PreCombat" type="Control" node_paths=PackedStringArray("StageList", "anteCountLabel")]
 layout_mode = 3
@@ -22,13 +23,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -60.5
-offset_top = -50.0
-offset_right = 60.5
+offset_left = -60.0
+offset_top = -64.0
+offset_right = 61.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("3_c1843")
 theme_override_font_sizes/normal_font_size = 36
-text = "Ante: 1"
+bbcode_enabled = true
+text = "[wave]Ante: 1"
 fit_content = true
 autowrap_mode = 0
 
