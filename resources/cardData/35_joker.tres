@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://btubqms6f8qc8"]
+
+[ext_resource type="Script" uid="uid://dhtkkts0gkmvs" path="res://scripts/resources/effect/CopyLeft.cs" id="1_3cdkh"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_r6t5d"]
+[ext_resource type="Resource" uid="uid://be2gy23cbidlv" path="res://resources/rarities/legendary.tres" id="2_v6udt"]
+
+[sub_resource type="Resource" id="Resource_whedi"]
+script = ExtResource("1_3cdkh")
+name = ""
+metadata/_custom_type_script = "uid://dhtkkts0gkmvs"
+
+[resource]
+script = ExtResource("1_r6t5d")
+id = 35
+DisplayName = "Joker"
+Description = "Copies the stats and effect of the unit on its left. Cannot copy another Joker."
+Rarity = ExtResource("2_v6udt")
+Trait = 5
+BaseAttack = 1
+BaseHP = 1
+OnUse = Array[Object]([])
+Passives = Array[Object]([SubResource("Resource_whedi")])
+Keywords = []
+metadata/_custom_type_script = "uid://clner77n1ff5a"

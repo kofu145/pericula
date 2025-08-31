@@ -12,6 +12,7 @@ public partial class ShopCard : Control
     [Export] private Label healthLabel;
     [Export] private Label attackLabel;
     [Export] private Label costLabel;
+    [Export] public Godot.Collections.Array<Texture2D> CardImages;
     int _cardID;
     bool _disabled = false;
 
@@ -46,7 +47,8 @@ public partial class ShopCard : Control
         healthLabel.Text = data.BaseHP.ToString();
         attackLabel.Text = data.BaseAttack.ToString();
         border.Modulate = data.Rarity.RarityColor;
-        spriteImage.Texture = data.Texture;
+        spriteImage.Texture = CardImages[(int)data.Trait];
+        spriteImage.Position = new Vector2(10, 32.5f);
         color = data.Rarity.RarityColor;
 
         costLabel.Text = ShopManager.Instance.GetCardPrice(data).ToString();
