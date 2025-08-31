@@ -18,7 +18,7 @@
 [ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="11_mwu67"]
 [ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="12_r8g7h"]
 [ext_resource type="Shader" uid="uid://qbun5diokmrm" path="res://scripts/shaders/connected_circles.gdshader" id="18_ak6aq"]
-[ext_resource type="Resource" path="res://resources/tutorialPage/CombatTutorial4.tres" id="18_il00m"]
+[ext_resource type="Resource" uid="uid://ct2ofbxe5x46j" path="res://resources/tutorialPage/CombatTutorial4.tres" id="18_il00m"]
 [ext_resource type="Texture2D" uid="uid://b8ey5pfd8ckq" path="res://assets/UI/SimplexNoise2D.png" id="19_il00m"]
 [ext_resource type="Texture2D" uid="uid://do0eg8kbumt5o" path="res://assets/UI/main_panel.png" id="22_pgor7"]
 [ext_resource type="Texture2D" uid="uid://bmqh8jeds4yww" path="res://assets/UI/enemychip.png" id="22_r8g7h"]
@@ -94,7 +94,6 @@ playerLane = NodePath("../PlayerCardLane")
 enemyLane = NodePath("../EnemyCardLane")
 
 [node name="EnemyActionLabel" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -102,9 +101,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -400.0
-offset_top = 259.0
-offset_right = 122.0
-offset_bottom = 309.0
+offset_top = 209.0
+offset_right = 89.0
+offset_bottom = 259.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_b4pb0")
@@ -469,7 +468,7 @@ vertical_alignment = 1
 
 [node name="NegativeBalanceWarningLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 15.0
+offset_left = 146.0
 offset_top = 613.0
 offset_right = 680.0
 offset_bottom = 643.0

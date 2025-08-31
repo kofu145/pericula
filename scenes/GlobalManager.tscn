@@ -1,15 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=37 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
 [ext_resource type="Script" uid="uid://bse2d7muju74w" path="res://scripts/shared/EventBus.cs" id="3_8tji2"]
-[ext_resource type="Resource" uid="uid://x1s3hs3wqykm" path="res://resources/decks/StarterDeck.tres" id="3_ycd5x"]
-[ext_resource type="Resource" uid="uid://fasmj3v0ixuo" path="res://resources/cardData/1_diamond_pawn.tres" id="4_6000c"]
+[ext_resource type="Resource" path="res://resources/decks/StarterDeck.tres" id="3_yjcnp"]
+[ext_resource type="Resource" uid="uid://dkgewqtkah5s2" path="res://resources/decks/ante 1/arcane.tres" id="4_6bm7o"]
 [ext_resource type="Script" uid="uid://cnyblma4mqw1o" path="res://scripts/shared/SceneManager.cs" id="4_e58k3"]
-[ext_resource type="Resource" uid="uid://bt7u4i3qchld" path="res://resources/cardData/2_heart_pawn.tres" id="5_bcam4"]
-[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="5_bgvav"]
-[ext_resource type="Resource" uid="uid://cb5ljb08t7swc" path="res://resources/cardData/3_club_pawn.tres" id="6_u8dp8"]
-[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="7_gl4ri"]
 [ext_resource type="Script" uid="uid://ckq7qoxv60uo8" path="res://scripts/shared/PopupText.cs" id="7_l76sc"]
 [ext_resource type="PackedScene" uid="uid://dha6a5my3cgt6" path="res://scenes/PopupText.tscn" id="9_s02d4"]
 [ext_resource type="Shader" uid="uid://d3717vds76o65" path="res://scripts/shaders/DiamondTransition.gdshader" id="10_ivlop"]
@@ -39,12 +35,6 @@
 [ext_resource type="Resource" uid="uid://rexnjrot8cpu" path="res://resources/enemyData/ante 3/BA3.tres" id="27_w5rnj"]
 [ext_resource type="AudioStream" uid="uid://dt18bcbyb8hgc" path="res://assets/audio/sygil_suda.ogg" id="28_bcam4"]
 
-[sub_resource type="Resource" id="Resource_l76sc"]
-resource_local_to_scene = true
-script = ExtResource("5_bgvav")
-Cards = Array[Object]([ExtResource("4_6000c"), ExtResource("4_6000c"), ExtResource("5_bcam4"), ExtResource("6_u8dp8"), ExtResource("7_gl4ri")])
-metadata/_custom_type_script = "uid://dnh88quxuv4le"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7a67w"]
 shader = ExtResource("10_ivlop")
 shader_parameter/progress = 0.0
@@ -59,8 +49,8 @@ script = ExtResource("1_kacr6")
 
 [node name="DeckManager" type="Node" parent="."]
 script = ExtResource("2_kacr6")
-PlayerDeck = ExtResource("3_ycd5x")
-EnemyDeck = SubResource("Resource_l76sc")
+PlayerDeck = ExtResource("3_yjcnp")
+EnemyDeck = ExtResource("4_6bm7o")
 
 [node name="EventBus" type="Node" parent="."]
 script = ExtResource("3_8tji2")
