@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ibxg7th6h5c6"]
+[gd_scene load_steps=6 format=3 uid="uid://ibxg7th6h5c6"]
 
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="1_cj1pm"]
 [ext_resource type="Script" uid="uid://csmcdyn34vwy2" path="res://scripts/UiOverlay.cs" id="1_ridxj"]
-[ext_resource type="Texture2D" uid="uid://c2ripng40bwm0" path="res://assets/Chips.png" id="2_nohtj"]
+[ext_resource type="Texture2D" uid="uid://7r215rf117lm" path="res://assets/UI/chip.png" id="3_xviqy"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="4_r3r3p"]
 [ext_resource type="PackedScene" uid="uid://coyntyyf64no0" path="res://scenes/Settings.tscn" id="4_xviqy"]
 
 [node name="UIOverlay" type="CanvasLayer" node_paths=PackedStringArray("chips", "chipsCountLabel", "deckButton", "deckListView")]
@@ -25,7 +26,6 @@ text = "View Deck"
 visible = false
 
 [node name="PlayerChipCount" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1000.0
@@ -34,21 +34,22 @@ offset_right = 1000.0
 offset_bottom = 600.0
 
 [node name="Icon" type="Sprite2D" parent="PlayerChipCount"]
+position = Vector2(-29, -1)
 scale = Vector2(2, 2)
-texture = ExtResource("2_nohtj")
+texture = ExtResource("3_xviqy")
 
 [node name="Count" type="Label" parent="PlayerChipCount"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_left = 38.0
-offset_top = -26.0
-offset_right = 100.0
-offset_bottom = 24.0
+offset_left = 15.0
+offset_top = -22.0
+offset_right = 197.0
+offset_bottom = 15.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_r3r3p")
 theme_override_font_sizes/font_size = 36
 text = "100"
-horizontal_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
