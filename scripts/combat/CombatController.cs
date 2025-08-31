@@ -172,6 +172,7 @@ public partial class CombatController : Node
             {
                 GD.Print($"got a to remove at idx {i}");
                 toRemove.Add(targetLane.GetCardAtIndex(i));
+                EventBus.Instance.InvokeFinalWager(targetLane.GetCardAtIndex(i));
             }
 
             targetLane.GetBaseAtIndex(i).Visual.UpdateLabels();

@@ -25,6 +25,7 @@ public partial class BuffOnAllyDeath : EffectTemplate
                 if (lane == null)
                     return;
 
+                GD.Print($"{victim.DisplayName} died");
                 if (lane == param.State.GetSide(victim))
                 {
                     if (Scope == BuffScope.Self)
@@ -35,16 +36,16 @@ public partial class BuffOnAllyDeath : EffectTemplate
                         BuffText(HPBuff, AtkBuff, param.Self, param);
                         await DoTriggerAnimation(param);
                     }
-                    // else if (Scope == BuffScope.Team)
-                    // {
-                    //     foreach (var targetBuff in lane.GetAllCardData())
-                    //     {
-                    //         targetBuff.Attack += AtkBuff;
-                    //         targetBuff.Attack += HPBuff;
-                    //         BuffText(HPBuff, AtkBuff, targetBuff, param);
-                    //         await DoTriggerAnimation(param);
-                    //     }
-                    // }
+                    else if (Scope == BuffScope.Team)
+                    {
+                        foreach (var targetBuff in lane.GetAllCardData())
+                        {
+                            targetBuff.Attack += AtkBuff;
+                            targetBuff.Attack += HPBuff;
+                            BuffText(HPBuff, AtkBuff, targetBuff, param);
+                            await DoTriggerAnimation(param);
+                        }
+                    }
 
                 }
 
