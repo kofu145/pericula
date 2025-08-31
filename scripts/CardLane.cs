@@ -110,6 +110,22 @@ public partial class CardLane : Node
         return target;
     }
 
+    public void Swap(int from, int to)
+    {
+        var fromCard = _cards[from];
+        var toCard = _cards[to];
+
+        fromCard.Visual.ToggleLerp(true);
+        toCard.Visual.ToggleLerp(true);
+
+        fromCard.Reparent(_slots[to]);
+        toCard.Reparent(_slots[from]);
+        (_cards[from], _cards[to]) = (_cards[to], _cards[from]);
+
+        fromCard.Visual.ToggleLerp(false);
+        toCard.Visual.ToggleLerp(false);
+    }
+
     public List<CardData> GetAllCardData()
     {
         List<CardData> returnList = new();

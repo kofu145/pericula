@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://8cw3smssm4oj"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_rs4k6"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_1xdk5"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_k4u6a"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_5rhdv"]
+[ext_resource type="Script" uid="uid://d2clmun5x6veo" path="res://scripts/resources/effect/SwapLeftWithLowestHealthEnemy.cs" id="4_5rhdv"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="4_c20ne"]
+
+[sub_resource type="Resource" id="Resource_sb5wi"]
+script = ExtResource("3_5rhdv")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_c20ne"]
+script = ExtResource("4_5rhdv")
+name = ""
+metadata/_custom_type_script = "uid://d2clmun5x6veo"
+
+[resource]
+script = ExtResource("2_k4u6a")
+id = 28
+DisplayName = "Fisherman"
+Description = "Showdown: Swap leftmost foe with foe that has lowest HP."
+Rarity = ExtResource("4_c20ne")
+Trait = 2
+BaseAttack = 3
+BaseHP = 5
+OnUse = Array[Object]([SubResource("Resource_sb5wi")])
+Passives = Array[Object]([SubResource("Resource_c20ne")])
+Keywords = Array[ExtResource("1_rs4k6")]([ExtResource("2_1xdk5")])
+metadata/_custom_type_script = "uid://clner77n1ff5a"
