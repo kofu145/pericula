@@ -400,6 +400,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 0.122173, 0.0]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visual")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PlayInfoTriggerSound"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u4wdl"]
 _data = {

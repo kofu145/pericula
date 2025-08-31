@@ -87,7 +87,6 @@ public partial class EffectTemplate : Resource
         var damagePos = cardBase.GlobalPosition;
         PopupText.Instance.ShowText(damagePos + new Vector2(0, 20), text);
         cardBase.Visual.UpdateLabels();
-        SoundManager.PlaySE("info");
     }
 
     /// <summary>
