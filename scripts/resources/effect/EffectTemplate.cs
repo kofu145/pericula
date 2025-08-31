@@ -35,7 +35,7 @@ public partial class EffectTemplate : Resource
     protected async Task DealDamage(int damage, CardData target, EffectParam param)
     {
         target.HP -= damage;
-        DamageText(damage, target, param);
+        await DamageText(damage, target, param);
         EventBus.Instance.InvokeTakeDamageEvent(target);
         //await EventBus.Instance.ClearTriggerQueue();
     }
@@ -47,7 +47,7 @@ public partial class EffectTemplate : Resource
     protected async Task DamageText(int damage, CardData target, EffectParam param)
     {
         var cardBase = param.State.GetSide(target).GetCardBaseByData(target);
-        await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.27), Timer.SignalName.Timeout);
+        await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.2), Timer.SignalName.Timeout);
         var damagePos = cardBase.GlobalPosition;
         PopupText.Instance.ShowText(damagePos + new Vector2(40, 100), $"-{damage}");
         cardBase.Visual.UpdateLabels();
