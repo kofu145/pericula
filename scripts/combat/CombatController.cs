@@ -176,7 +176,7 @@ public partial class CombatController : Node
                 GD.Print($"got a to remove at idx {i}");
                 toRemove.Add(targetLane.GetCardAtIndex(i));
                 var deathReport = new DeathParam();
-                deathReport.Initialize(targetLane, targetLane.GetCardAtIndex(i).id);
+                deathReport.Initialize(targetLane, targetLane.GetCardAtIndex(i).id, targetLane.GetCardAtIndex(i));
                 EventBus.Instance.InvokeFinalWager(deathReport);
             }
 

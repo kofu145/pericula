@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://bl14bfiyewpnb"]
+
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_8hqye"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_eyc55"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_fsd58"]
+
+[sub_resource type="Resource" id="Resource_bayy5"]
+script = ExtResource("1_8hqye")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[resource]
+script = ExtResource("1_eyc55")
+id = 25
+DisplayName = "Duelist"
+Description = ""
+Rarity = ExtResource("2_fsd58")
+Trait = 3
+BaseAttack = 18
+BaseHP = 4
+OnUse = Array[Object]([SubResource("Resource_bayy5")])
+Passives = null
+Keywords = []
+metadata/_custom_type_script = "uid://clner77n1ff5a"
