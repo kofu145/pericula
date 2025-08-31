@@ -15,9 +15,11 @@ public partial class Execution : EffectTemplate
             await DoAttackAnimation(param);
             if (target.HP <= 0)
             {
-                hitCount += 1;
+                hitCount++;
+                await EventBus.Instance.UpdateLane();
             }
         }
+
     }
 
     public async override Task OnEnqueue(EffectParam param)

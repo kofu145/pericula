@@ -132,6 +132,8 @@ public partial class CombatController : Node
             await eff.OnUse(effectParam);
             await eff.OnEnqueue(effectParam);
             EventBus.Instance.InvokeAdvantage(currCard);
+            await UpdateLane(true);
+            await UpdateLane(false);
             //GD.Print("waiting?");
         }
 
@@ -174,7 +176,7 @@ public partial class CombatController : Node
 
     }
 
-    private async Task UpdateLane(bool player)
+    public async Task UpdateLane(bool player)
     {
         List<CardData> toRemove = [];
         var targetLane = player ? playerLane : enemyLane;
@@ -183,6 +185,7 @@ public partial class CombatController : Node
             //GD.Print($"Turn is player: {player} idx: {i} HP is {targetLane.GetCardAtIndex(i).HP}");
             if (targetLane.GetCardAtIndex(i).HP <= 0)
             {
+                SoundManager.PlaySE("death");
                 GD.Print($"got a to remove at idx {i}");
                 toRemove.Add(targetLane.GetCardAtIndex(i));
                 var deathReport = new DeathParam();

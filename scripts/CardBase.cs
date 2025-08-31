@@ -13,6 +13,7 @@ public partial class CardBase : Control
     public CardData Data;
     [Export] public CardDescription Description;
     [Export] public AnimationPlayer animation;
+    [Export] public CpuParticles2D hitParticle;
     [Export] public Godot.Collections.Array<Texture2D> CardImages;
 
     public bool EnableHoverScale { get; set; } = true;
