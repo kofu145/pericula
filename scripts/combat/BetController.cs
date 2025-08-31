@@ -136,7 +136,7 @@ public partial class BetController : Node
         if (turn != Turn.Player) return;
 
         int raiseAmount = minimumBuyIn * Math.Max(1, multiplier);
-        int maxRaise = AffordableRaise;
+        int maxRaise = AffordableRaise;     // maxRaise capped to enemy balance, if enemy is the one who raised, it should cap to enemyBalance - ToCall
 
         if (maxRaise <= 0)
         {
@@ -144,7 +144,7 @@ public partial class BetController : Node
             return;
         }
 
-        raiseAmount = Math.Min(raiseAmount, maxRaise);  // clamp to max affordable
+        raiseAmount = Math.Min(raiseAmount, maxRaise + ToCall);  // clamp to max affordable
         ApplyPlayerRaise(raiseAmount);
     }
 
@@ -249,12 +249,12 @@ public partial class BetController : Node
         int balance = PlayerBalance;
         if (balance <= 0) return;
 
-        balance = Math.Min(balance, EnemyBalance);
+        balance = Math.Min(balance, EnemyBalance + ToCall);
 
         if (!playerChips.Deduct(balance)) return;
         pot += balance;
-        currentBet = Math.Max(playerPut + balance, enemyPut);
         playerPut += balance;
+        currentBet = Math.Max(playerPut, enemyPut);
 
 
         lastPlayerAction = BetAction.AllIn;
@@ -276,7 +276,7 @@ public partial class BetController : Node
             // player went all in, enemy must Call or Fold
             // TODO: Replace with AI logic and not random logic
             var choice = rng.RandiRange(0, 1); // 0 = call, 1 = fold
-
+            
             if (choice == 0)   // call
             {
                 int amountToCall = Math.Max(0, currentBet - enemyPut);
@@ -328,7 +328,6 @@ public partial class BetController : Node
             var choice = rng.RandiRange(0, 1); // 0 = Check, 1 = Raise
 
             if (!CanBet) choice = 0;    // force a check, because player cannot afford any bet
-
 
             if (choice == 0)    // check
             {
@@ -496,7 +495,7 @@ public partial class BetController : Node
             case Turn.Player:
                 if (allInButton != null)
                 {
-                    allInButton.Text = $"All-In ($ {Math.Max(0, Math.Min(PlayerBalance, EnemyBalance))})";
+                    allInButton.Text = $"All-In ($ {Math.Max(0, Math.Min(PlayerBalance, EnemyBalance + ToCall))})";
                     if (CanBet) Show(allInButton);
                 }
                 if (choosingRaiseAmount)
