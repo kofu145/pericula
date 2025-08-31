@@ -22,6 +22,6 @@ public partial class AudioBusSlider : Node
 
     public void SoundFinishedChanging(bool value_changed)
     {
-        SoundManager.PlaySE("FX01");
+        SoundManager.PlaySE("select_node");
     }
 }
