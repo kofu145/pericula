@@ -19,7 +19,7 @@ float get_line(vec2 uv, vec2 point1, vec2 point2, vec2 dir) {
 	float t = dot(uv - point1, point2 - point1) / dot(point2 - point1, point2 - point1);
 	// sample the noise midpoint at the midpoint of the line
 	vec2 midpoint = (point1 + point2) / 2.0;
-	float sample = smoothstep(0.0, 1.0, texture(noise_texture, 
+	float sample = smoothstep(0.0, 1.0, texture(noise_texture,
 		midpoint + -dir * speed * TIME
 		).r);
 	// calculate our thickness range
