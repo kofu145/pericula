@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://c4n2qwj54kkvw"]
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://cb5ljb08t7swc"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_343ch"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_uc0eq"]
@@ -9,6 +9,7 @@
 [sub_resource type="Resource" id="Resource_mjdb7"]
 resource_local_to_scene = true
 script = ExtResource("2_uc0eq")
+hitCount = 1
 name = ""
 metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 
