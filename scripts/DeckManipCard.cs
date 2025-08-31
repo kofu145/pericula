@@ -90,7 +90,7 @@ public partial class DeckManipCard : Control
         }
 
         PopupText.Instance.ShowText(GlobalPosition, "Purchased!");
-
+        SoundManager.PlaySE("bought_item");
         RemoveFromShop();
     }
 
