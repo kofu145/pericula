@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=34 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -41,16 +41,6 @@ metadata/_custom_type_script = "uid://dnh88quxuv4le"
 shader = ExtResource("10_ivlop")
 shader_parameter/progress = 0.0
 shader_parameter/diamondPixelSize = 32.0
-
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_2rbph"]
-clip_count = 3
-clip_0/name = &"base"
-clip_0/stream = ExtResource("28_bcam4")
-clip_0/auto_advance = 0
-clip_1/name = &"game_over"
-clip_1/auto_advance = 0
-clip_2/name = &"title"
-clip_2/auto_advance = 0
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_2rbph"]
 
@@ -107,8 +97,9 @@ rarities = Array[Object]([ExtResource("20_5lwj7"), ExtResource("21_e4twu"), ExtR
 script = ExtResource("16_wpjal")
 
 [node name="BGM" type="AudioStreamPlayer" parent="SoundManager"]
-stream = SubResource("AudioStreamInteractive_2rbph")
+stream = ExtResource("28_bcam4")
 volume_db = -6.0
+bus = &"BGM"
 
 [node name="SE" type="AudioStreamPlayer" parent="SoundManager"]
 stream = SubResource("AudioStreamPolyphonic_2rbph")
