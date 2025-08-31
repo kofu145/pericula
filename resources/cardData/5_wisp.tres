@@ -9,6 +9,7 @@
 [sub_resource type="Resource" id="Resource_mjdb7"]
 resource_local_to_scene = true
 script = ExtResource("3_k65ct")
+hitCount = 1
 name = ""
 metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 

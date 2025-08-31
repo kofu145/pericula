@@ -73,7 +73,7 @@ _data = {
 &"Start": SubResource("Animation_1vfo2")
 }
 
-[node name="TitleScreen" type="Panel" node_paths=PackedStringArray("startGameButton")]
+[node name="TitleScreen" type="Panel" node_paths=PackedStringArray("startGameButton", "animation")]
 material = SubResource("ShaderMaterial_w20ru")
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,6 +84,7 @@ mouse_filter = 2
 script = ExtResource("1_qyuap")
 startGameButton = NodePath("StartRunButton")
 runConfig = ExtResource("2_ch40n")
+animation = NodePath("AnimationPlayer")
 
 [node name="GameNameLabel" type="Label" parent="."]
 layout_mode = 1

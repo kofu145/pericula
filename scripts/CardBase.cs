@@ -42,6 +42,8 @@ public partial class CardBase : Control
         //cardTex.Texture = Data.Texture;
         //cardTex.Position = new Vector2(60, 82);
         //cardTex.Scale = new Vector2(3.125f, 3.125f);
+        GD.Print(Data.DisplayName);
+        GD.Print(Data.Trait);
         CardImage.Texture = CardImages[(int)Data.Trait];
         CardImage.Position = new Vector2(10, 32.5f);
 
