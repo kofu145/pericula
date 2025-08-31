@@ -1,15 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://nniabjsgwor0"]
+[gd_scene load_steps=11 format=3 uid="uid://nniabjsgwor0"]
 
 [ext_resource type="Script" uid="uid://ddrnb0vsmihyy" path="res://scripts/DeckManipCard.cs" id="1_81fa8"]
 [ext_resource type="Texture2D" uid="uid://cfslaiwa8d2qw" path="res://assets/card_alt.png" id="2_5gutp"]
+[ext_resource type="Shader" uid="uid://bpcyg88hmoewt" path="res://scripts/shaders/holo.gdshader" id="2_sj2sd"]
 [ext_resource type="FontFile" uid="uid://dt5sbscr2jjd7" path="res://assets/karma/Karma Future.otf" id="3_sj2sd"]
 [ext_resource type="Texture2D" uid="uid://setl0iw1vnf" path="res://assets/cards/death.png" id="4_fo8cm"]
 [ext_resource type="FontFile" uid="uid://d2e06h3tqexbl" path="res://assets/karmatic-arcade/ka1.ttf" id="5_3nibc"]
 [ext_resource type="PackedScene" uid="uid://baprw7he5vf61" path="res://scenes/card/CardDescription.tscn" id="6_6on0k"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="7_3d13v"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo8cm"]
+shader = ExtResource("2_sj2sd")
+shader_parameter/strength = 0.352
+shader_parameter/speed = 0.2
+shader_parameter/color1 = Color(0.602486, 0.620255, 0.994007, 1)
+shader_parameter/color2 = Color(0.165439, 0.174037, 1, 1)
+shader_parameter/x_target = 0.0
+shader_parameter/y_target = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gutp"]
+shader = ExtResource("2_sj2sd")
+shader_parameter/strength = 0.22
+shader_parameter/speed = 0.5
+shader_parameter/color1 = Color(1, 0, 0, 1)
+shader_parameter/color2 = Color(1, 0.616667, 0, 1)
+shader_parameter/x_target = 0.5
+shader_parameter/y_target = 0.5
+
 [node name="DeckManipulation" type="Control" node_paths=PackedStringArray("description")]
-modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(120, 160)
 layout_mode = 3
 anchors_preset = 0
@@ -19,6 +37,7 @@ script = ExtResource("1_81fa8")
 description = NodePath("CanvasLayer/CardDescription")
 
 [node name="CardBorder" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_fo8cm")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,6 +68,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Image" type="TextureRect" parent="CardBorder"]
+material = SubResource("ShaderMaterial_5gutp")
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
 offset_left = 10.0

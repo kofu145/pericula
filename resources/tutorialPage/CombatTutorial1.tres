@@ -7,8 +7,7 @@
 script = ExtResource("1_0n6tn")
 tutorialImage = ExtResource("2_eyd26")
 pageName = "Flop Phase"
-pageDescription = "Welcome to Pericula!
-To start, rearrange your three leftmost cards that you'll show your foe - they will similarly show 3 of their cards for the flop. 
+pageDescription = "To start, rearrange your three leftmost cards that you'll show your foe - they will similarly show 3 of their cards for the flop. 
 
 When you are done, press the \"Bet Phase\" button to start the bet phase."
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"
