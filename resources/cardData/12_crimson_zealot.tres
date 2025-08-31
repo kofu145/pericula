@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://bundfnd3mjbpn"
 
 [resource]
 script = ExtResource("1_floxy")
-id = 13
+id = 12
 DisplayName = "Crimson Zealot"
 Description = "Allies gain +2/+0 whenever they take damage"
 Rarity = ExtResource("3_ev0mo")
