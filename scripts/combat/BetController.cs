@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public enum Turn { Player, Enemy, None }
 public enum BetAction { None, Check, Raise, Call, Fold, CallAndRaise, AllIn }
@@ -18,7 +19,8 @@ public partial class BetController : Node
     [Export] private Button raise2xButton;
     [Export] private Button raise5xButton;
 
-    // Config
+    [Export] private float opponentDelayAfterPlayerBet = 0.5f;
+
     private int minimumBuyIn;
 
     // public events
@@ -272,9 +274,10 @@ public partial class BetController : Node
     }
 
     // ============ Enemy Logic (Temporary) =============
-    private void EnemyAct()
+    private async Task EnemyAct()
     {
         if (turn != Turn.Enemy) return;
+        await WaitFor(opponentDelayAfterPlayerBet);
         GD.Print("Player last action: " + lastPlayerAction);
 
         if (lastPlayerAction == BetAction.AllIn)
@@ -282,7 +285,7 @@ public partial class BetController : Node
             // player went all in, enemy must Call or Fold
             // TODO: Replace with AI logic and not random logic
             var choice = rng.RandiRange(0, 1); // 0 = call, 1 = fold
-            
+
             if (choice == 0)   // call
             {
                 int amountToCall = Math.Max(0, currentBet - enemyPut);
@@ -319,6 +322,7 @@ public partial class BetController : Node
                 endedWithFold = true;
                 foldedByPlayer = false;
             }
+
             EndPhase();
             return;
         }
@@ -560,5 +564,12 @@ public partial class BetController : Node
     private void UpdatePotLabel()
     {
         OnChipsChanged?.Invoke(pot);
+    }
+
+    // delay
+    private async Task WaitFor(float seconds)
+    {
+        var timer = GetTree().CreateTimer(seconds);
+        await ToSignal(timer, "timeout");
     }
 }
