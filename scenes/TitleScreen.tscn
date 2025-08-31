@@ -1,30 +1,119 @@
-[gd_scene load_steps=3 format=3 uid="uid://b876nkswrot5m"]
+[gd_scene load_steps=13 format=3 uid="uid://b876nkswrot5m"]
 
+[ext_resource type="Shader" uid="uid://cr6cjrhii7xb1" path="res://scripts/shaders/diamond.gdshader" id="1_85feu"]
 [ext_resource type="Script" uid="uid://nrlv13nr5v60" path="res://scripts/TitleScreen.cs" id="1_qyuap"]
 [ext_resource type="Resource" uid="uid://ck2dnlghav1xg" path="res://resources/RunConfig.tres" id="2_ch40n"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="3_dfj8j"]
+[ext_resource type="FontFile" uid="uid://c1g82x6mbsiht" path="res://assets/Minercraftory.ttf" id="5_66w26"]
+[ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="6_3ej01"]
+[ext_resource type="StyleBox" uid="uid://cjuvxeskdxmr3" path="res://assets/stylebox_tex/button_hover.tres" id="6_w20ru"]
+[ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="7_1vfo2"]
 
-[node name="TitleScreen" type="Panel" node_paths=PackedStringArray("startGameButton")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w20ru"]
+shader = ExtResource("1_85feu")
+
+[sub_resource type="Animation" id="Animation_hjcsb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartRunButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(380, 418)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameNameLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(306.5, 120)]
+}
+
+[sub_resource type="Animation" id="Animation_1vfo2"]
+resource_name = "Start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartRunButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.466667, 1.36667),
+"transitions": PackedFloat32Array(4.92458, 1),
+"update": 0,
+"values": [Vector2(380, 700), Vector2(380, 418)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameNameLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(0.183011, 6.06287),
+"update": 0,
+"values": [Vector2(306.5, -120), Vector2(306.5, 120)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ktle"]
+_data = {
+&"RESET": SubResource("Animation_hjcsb"),
+&"Start": SubResource("Animation_1vfo2")
+}
+
+[node name="TitleScreen" type="Panel" node_paths=PackedStringArray("startGameButton", "animation")]
+material = SubResource("ShaderMaterial_w20ru")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_qyuap")
-startGameButton = NodePath("ButtonsContainer/StartRunButton")
+startGameButton = NodePath("StartRunButton")
 runConfig = ExtResource("2_ch40n")
+animation = NodePath("AnimationPlayer")
 
 [node name="GameNameLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -233.0
+offset_left = -269.5
 offset_top = 120.0
-offset_right = 234.0
+offset_right = 270.5
 offset_bottom = 285.0
 grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dfj8j")
 theme_override_font_sizes/font_size = 120
 text = "Pericula"
+
+[node name="StartRunButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 380.0
+offset_top = 418.0
+offset_right = 764.0
+offset_bottom = 578.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("5_66w26")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = ExtResource("6_w20ru")
+theme_override_styles/pressed = ExtResource("7_1vfo2")
+theme_override_styles/normal = ExtResource("6_3ej01")
+text = "Start Run"
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -33,15 +122,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.5
+offset_left = -90.5
 offset_top = 105.0
-offset_right = 40.5
-offset_bottom = 171.0
+offset_right = 109.5
+offset_bottom = 195.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 20
 
-[node name="StartRunButton" type="Button" parent="ButtonsContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Start Run"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2ktle")
+}
