@@ -8,6 +8,12 @@ public partial class EffectTemplate : Resource
 
     [Export] public string name;
 
+    // this is basically just for joker
+    public virtual void PreInit(EffectParam param)
+    {
+
+    }
+
     /// <summary>
     /// Called after OnUse. Legacy method that you probably won't need to touch.
     /// </summary>

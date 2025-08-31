@@ -75,6 +75,23 @@ public partial class CombatController : Node
 
     public async Task ShowdownHandler()
     {
+
+
+        for (int i = 0; i < playerLane.CardCount; i++)
+        {
+            var effectParam = new EffectParam();
+            effectParam.Initialize(battleState, playerLane.GetCardAtIndex(i));
+
+            if (playerLane.GetCardAtIndex(i).Passives.Count > 0)
+                playerLane.GetCardAtIndex(i).Passives[0].PreInit(effectParam);
+
+            var enemyeffectParam = new EffectParam();
+            enemyeffectParam.Initialize(battleState, enemyLane.GetCardAtIndex(i));
+
+            if (enemyLane.GetCardAtIndex(i).Passives.Count > 0)
+                enemyLane.GetCardAtIndex(i).Passives[0].PreInit(enemyeffectParam);
+        }
+
         InitLane(true);
         InitLane(false);
         var obscuredList = new List<CardData>();
