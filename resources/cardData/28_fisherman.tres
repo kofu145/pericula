@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://dywcsem840mua"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_rs4k6"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_k4u6a"]
+
+[resource]
+script = ExtResource("2_k4u6a")
+id = 28
+DisplayName = "Fisherman"
+Description = "Combat Start: Swap leftmost foe with foe that has lowest HP."
+Trait = 2
+BaseAttack = 3
+BaseHP = 5
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_rs4k6")]([])

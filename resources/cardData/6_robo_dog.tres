@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://d0ue46gw64b7h"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_fbqhk"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_by1cx"]
+
+[resource]
+script = ExtResource("2_by1cx")
+id = 6
+DisplayName = "Robo-dog"
+Description = "Combat Start: Give adjacent units +2/+2."
+Trait = 5
+BaseAttack = 3
+BaseHP = 3
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_fbqhk")]([])

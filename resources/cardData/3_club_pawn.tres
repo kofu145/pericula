@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://kblr8fsco7xi"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_piweb"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_wd43c"]
+
+[resource]
+script = ExtResource("2_wd43c")
+id = 3
+DisplayName = "Club Pawn"
+Description = ""
+Trait = 7
+BaseAttack = 7
+BaseHP = 5
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_piweb")]([])

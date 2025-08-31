@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://bfca7et1ylw5s"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_wqk0v"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_q6cg2"]
+
+[resource]
+script = ExtResource("2_q6cg2")
+id = 45
+DisplayName = "Phoenix Egg"
+Description = "Final Wager: Summon a Phoenix on the current slot."
+Trait = 4
+BaseAttack = 0
+BaseHP = 1
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_wqk0v")]([])

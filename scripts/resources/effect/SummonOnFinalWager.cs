@@ -19,13 +19,14 @@ public partial class SummonOnFinalWager : EffectTemplate
                 var lane = param.State.GetSide(param.Self);
                 if (victim == null)
                     return;
+                GD.Print($"self: {param.Self.DisplayName}, {victim.DisplayName}");
                 if (param.Self == victim)
                 {
                     GenText($"Final Wager: Spawn {ToSummonToken.DisplayName}!", victim, param);
                     await DoTriggerAnimation(param);
                     var newUnit = (CardData)ToSummonToken.Duplicate(true);
                     var idx = lane.IndexOf(lane.GetCardBaseByData(param.Self));
-                    lane.RemoveCard(param.Self, false);
+                    await lane.RemoveCard(param.Self, false);
                     lane.SpawnCard(newUnit, idx);
                 }
 

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://cald1r51h8a8b"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_6pxlt"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_ob0kh"]
+
+[resource]
+script = ExtResource("2_ob0kh")
+id = 32
+DisplayName = "Trap Trick"
+Description = "Combat Start: Retrigger all triggered ally obscured effects this combat."
+Trait = 5
+BaseAttack = 6
+BaseHP = 6
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_6pxlt")]([])

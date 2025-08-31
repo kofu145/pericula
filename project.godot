@@ -30,7 +30,7 @@ project/assembly_name="pericula"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/data_importer/plugin.cfg")
 
 [input]
 

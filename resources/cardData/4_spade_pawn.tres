@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://3ho5p3btsygp"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_e4op3"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_tbvo2"]
+
+[resource]
+script = ExtResource("2_tbvo2")
+id = 4
+DisplayName = "Spade Pawn"
+Description = "Combat Start: If there is another Spade Pawn played with this card, gain +2/+2"
+Trait = 7
+BaseAttack = 4
+BaseHP = 7
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_e4op3")]([])

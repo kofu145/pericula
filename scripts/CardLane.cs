@@ -51,7 +51,7 @@ public partial class CardLane : Node
     {
         var cardBase = CardScene.Instantiate<CardBase>();
         _slots[index].AddChild(cardBase);
-        _cards.Add(cardBase);
+        _cards.Insert(index, cardBase);
 
         cardBase.Initialize(data);
         cardBase.IsPlayer = side == LaneSide.Player;

@@ -1,33 +1,16 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://b762ove8ug21p"]
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://b762ove8ug21p"]
 
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_2x8pf"]
-[ext_resource type="Resource" uid="uid://x6q04ojt20wv" path="res://resources/keywords/advantage.tres" id="1_jxwa6"]
-[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_8b8e7"]
-[ext_resource type="Script" uid="uid://bsbutv31nanh7" path="res://scripts/resources/effect/BuffOnAdvantage.cs" id="3_8q3bo"]
-[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="4_vtvkq"]
-
-[sub_resource type="Resource" id="Resource_j24mr"]
-script = ExtResource("2_8b8e7")
-name = ""
-metadata/_custom_type_script = "uid://bwshk6hkqmscd"
-
-[sub_resource type="Resource" id="Resource_y1wqw"]
-script = ExtResource("3_8q3bo")
-HPBuff = 0
-DamageBuff = 2
-name = ""
-metadata/_custom_type_script = "uid://bsbutv31nanh7"
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_cbwdn"]
 
 [resource]
 script = ExtResource("1_2x8pf")
 id = 11
 DisplayName = "Flagbearer"
 Description = "Advantage: give random Ally +2/+0"
-Rarity = ExtResource("4_vtvkq")
 Trait = 0
 BaseAttack = 7
 BaseHP = 7
-OnUse = Array[Object]([SubResource("Resource_j24mr")])
-Passives = Array[Object]([SubResource("Resource_y1wqw")])
-Keywords = [ExtResource("1_jxwa6")]
-metadata/_custom_type_script = "uid://clner77n1ff5a"
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_cbwdn")]([])
