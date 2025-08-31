@@ -2,9 +2,9 @@
 
 [ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_SpadePawn.tres" id="1_15u53"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_kus6q"]
-[ext_resource type="Resource" uid="uid://bujtixc664anp" path="res://resources/cardData/3_ClubPawn.tres" id="2_2mo7f"]
-[ext_resource type="Resource" uid="uid://np0ifctevug3" path="res://resources/cardData/2_HeartPawn.tres" id="3_xvcie"]
-[ext_resource type="Resource" uid="uid://cd14ulb4n153f" path="res://resources/cardData/1_DiamondPawn.tres" id="4_islkc"]
+[ext_resource type="Resource" uid="uid://c4n2qwj54kkvw" path="res://resources/cardData/3_ClubPawn.tres" id="2_2mo7f"]
+[ext_resource type="Resource" uid="uid://bt7u4i3qchld" path="res://resources/cardData/2_HeartPawn.tres" id="3_xvcie"]
+[ext_resource type="Resource" uid="uid://fasmj3v0ixuo" path="res://resources/cardData/1_DiamondPawn.tres" id="4_islkc"]
 
 [resource]
 resource_local_to_scene = true

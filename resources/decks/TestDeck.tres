@@ -2,8 +2,8 @@
 
 [ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_SpadePawn.tres" id="1_an4hp"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
-[ext_resource type="Resource" uid="uid://dgtwb15n7l1dy" path="res://resources/cardData/8_alchemist.tres" id="4_kohqt"]
-[ext_resource type="Resource" uid="uid://b762ove8ug21p" path="res://resources/cardData/11_Flagbearer.tres" id="5_5j4nb"]
+[ext_resource type="Resource" uid="uid://clwebmlr8bvyk" path="res://resources/cardData/8_alchemist.tres" id="4_kohqt"]
+[ext_resource type="Resource" uid="uid://bbdxrgh6mewor" path="res://resources/cardData/11_Flagbearer.tres" id="5_5j4nb"]
 [ext_resource type="Resource" uid="uid://s6lftcyqsmxt" path="res://resources/cardData/9_crazycannoneer.tres" id="5_kgvsl"]
 [ext_resource type="Resource" uid="uid://yydst0j7obg7" path="res://resources/cardData/13_CrimsonZealot.tres" id="5_kohqt"]
 
