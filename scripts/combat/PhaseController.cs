@@ -79,9 +79,8 @@ public partial class PhaseController : Node
 
         // force update when scene is first loaded
         UpdatePot(0);
-        DisplayPlayerChips(playerChips.Balance);
-        DisplayEnemyChips(enemyChips.Balance);
-
+        enemyChipsLabel.Text = enemyChips.Balance.ToString();
+        playerChipsLabel.Text = playerChips.Balance.ToString();
 
         StartCombatEncounter();
     }
@@ -284,11 +283,35 @@ public partial class PhaseController : Node
     }
     private void DisplayEnemyChips(int amount)
     {
+        int previousAmount = enemyChipsLabel.Text.ToInt();
+        int difference = amount - previousAmount;
+        if (difference > 0)
+        {
+            PopupText.Instance.ShowText(enemyChipsLabel.GlobalPosition, $"+{difference}");
+        }
+        else
+        {
+            PopupText.Instance.ShowText(enemyChipsLabel.GlobalPosition, $"{difference}");
+        }
+
+        SoundManager.PlaySE("chip_drop");
         enemyChipsLabel.Text = $"{amount}";
     }
 
     private void DisplayPlayerChips(int amount)
     {
+        int previousAmount = playerChipsLabel.Text.ToInt();
+        int difference = amount - previousAmount;
+        if (difference > 0)
+        {
+            PopupText.Instance.ShowText(playerChipsLabel.GlobalPosition, $"+{difference}");
+        }
+        else
+        {
+            PopupText.Instance.ShowText(playerChipsLabel.GlobalPosition, $"{difference}");
+        }
+
+        SoundManager.PlaySE("chip_drop");
         playerChipsLabel.Text = $"{amount}";
     }
 

@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://c1lcfrpe2n26u" path="res://assets/art/empty.png" id="7_1oahe"]
 [ext_resource type="Texture2D" uid="uid://c26joxcyfd3xc" path="res://assets/art/wildcard.png" id="7_58vbl"]
 [ext_resource type="Texture2D" uid="uid://setl0iw1vnf" path="res://assets/cards/death.png" id="8_2bi35"]
-[ext_resource type="Texture2D" uid="uid://bfbjj72gfgh0j" path="res://assets/art/pawn.png" id="8_5on5x"]
 [ext_resource type="Texture2D" uid="uid://x15fynsqc0ae" path="res://assets/card_alt_border.png" id="8_8dt14"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="8_y3kt5"]
 
@@ -413,7 +412,11 @@ _data = {
 
 [sub_resource type="Theme" id="Theme_y3kt5"]
 
-[node name="Card" type="Control" node_paths=PackedStringArray("Visual", "CardImage", "Description", "animation")]
+[sub_resource type="Curve" id="Curve_2bi35"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.988281, 0.00389111), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Card" type="Control" node_paths=PackedStringArray("Visual", "CardImage", "Description", "animation", "hitParticle")]
 custom_minimum_size = Vector2(120, 160)
 layout_mode = 3
 anchors_preset = 0
@@ -427,7 +430,8 @@ Visual = NodePath("Visual")
 CardImage = NodePath("Visual/Image")
 Description = NodePath("Visual/CanvasLayer/CardDescription")
 animation = NodePath("Visual/AnimationPlayer")
-CardImages = Array[Texture2D]([ExtResource("2_2bi35"), ExtResource("3_5on5x"), ExtResource("4_ua25p"), ExtResource("5_52o0g"), ExtResource("6_eca8j"), ExtResource("7_58vbl"), ExtResource("8_5on5x"), ExtResource("8_2bi35")])
+hitParticle = NodePath("Visual/HitParticle")
+CardImages = Array[Texture2D]([ExtResource("2_2bi35"), ExtResource("3_5on5x"), ExtResource("4_ua25p"), ExtResource("5_52o0g"), ExtResource("6_eca8j"), ExtResource("7_58vbl"), ExtResource("8_2bi35"), ExtResource("8_2bi35")])
 
 [node name="Visual" type="TextureRect" parent="." node_paths=PackedStringArray("NameLabel", "cardBase", "cardBack", "cardBorder", "cardDescription", "attackLabel", "healthLabel")]
 z_index = 2
@@ -538,6 +542,21 @@ offset_right = 120.0
 offset_bottom = 160.0
 theme = SubResource("Theme_y3kt5")
 texture = ExtResource("8_8dt14")
+
+[node name="HitParticle" type="CPUParticles2D" parent="Visual"]
+position = Vector2(63, 77)
+emitting = false
+amount = 24
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+scale_amount_min = 8.0
+scale_amount_max = 16.0
+scale_amount_curve = SubResource("Curve_2bi35")
 
 [node name="CardBack" type="TextureRect" parent="."]
 visible = false
