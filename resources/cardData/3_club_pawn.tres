@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://bsirxj2plbfpl"]
+[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://bsirxj2plbfpl"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_piweb"]
 [ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="2_csymg"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_vqrwd"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_wd43c"]
+
+[sub_resource type="Resource" id="Resource_ueg7s"]
+script = ExtResource("2_vqrwd")
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 
 [resource]
 script = ExtResource("2_wd43c")
@@ -13,6 +19,6 @@ Rarity = ExtResource("2_csymg")
 Trait = 7
 BaseAttack = 7
 BaseHP = 5
-OnUse = null
+OnUse = Array[Object]([SubResource("Resource_ueg7s")])
 Passives = null
 Keywords = Array[ExtResource("1_piweb")]([])

@@ -1,9 +1,23 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://dplpgqnwu53ex"]
+[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://dplpgqnwu53ex"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_e4op3"]
 [ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_rx01b"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_tbvo2"]
 [ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="2_yckig"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_llb5s"]
+[ext_resource type="Script" uid="uid://dgdrml3ghdm8w" path="res://scripts/resources/effect/PawnShowdownBuffEffect.cs" id="4_0xk5f"]
+
+[sub_resource type="Resource" id="Resource_ueg7s"]
+script = ExtResource("3_llb5s")
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_ydhds"]
+script = ExtResource("4_0xk5f")
+HPBuff = 2
+DamageBuff = 2
+name = ""
+metadata/_custom_type_script = "uid://dgdrml3ghdm8w"
 
 [resource]
 script = ExtResource("2_tbvo2")
@@ -14,6 +28,6 @@ Rarity = ExtResource("2_yckig")
 Trait = 7
 BaseAttack = 4
 BaseHP = 7
-OnUse = null
-Passives = null
+OnUse = Array[Object]([SubResource("Resource_ueg7s")])
+Passives = Array[Object]([SubResource("Resource_ydhds")])
 Keywords = Array[ExtResource("1_e4op3")]([ExtResource("2_rx01b")])

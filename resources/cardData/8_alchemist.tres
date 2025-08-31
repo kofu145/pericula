@@ -1,9 +1,18 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://clwebmlr8bvyk"]
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://clwebmlr8bvyk"]
 
 [ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="1_4ctxu"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_4dkc3"]
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_c4d48"]
+[ext_resource type="Script" uid="uid://dy2swtld1p1fs" path="res://scripts/resources/effect/ShowdownBuffPosition.cs" id="3_58vjj"]
 [ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="4_c4d48"]
+
+[sub_resource type="Resource" id="Resource_c4d48"]
+script = ExtResource("3_58vjj")
+HPBuff = 4
+AtkBuff = 4
+PositionToBuff = 0
+name = ""
+metadata/_custom_type_script = "uid://dy2swtld1p1fs"
 
 [resource]
 script = ExtResource("1_4dkc3")
@@ -14,6 +23,6 @@ Rarity = ExtResource("4_c4d48")
 Trait = 1
 BaseAttack = 6
 BaseHP = 6
-OnUse = null
-Passives = null
+OnUse = Array[Object]([])
+Passives = Array[Object]([SubResource("Resource_c4d48")])
 Keywords = Array[ExtResource("1_c4d48")]([ExtResource("1_4ctxu")])
