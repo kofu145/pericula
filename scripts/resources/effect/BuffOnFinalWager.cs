@@ -41,6 +41,8 @@ public partial class BuffOnFinalWager : EffectTemplate
                         }
                         else if (buffDuration == BuffDuration.Encounter)
                         {
+                            card.HP += HPBuff;
+                            card.Attack += AtkBuff;
                             card.BaseHpAfterCombatBuffs += HPBuff;
                             card.BaseAttackAfterCombatBuffs += AtkBuff;
                         }
