@@ -13,6 +13,7 @@ public partial class CardBase : Control
     public CardData Data;
     [Export] public CardDescription Description;
     [Export] public AnimationPlayer animation;
+    [Export] public Godot.Collections.Array<Texture2D> CardImages;
 
     public bool EnableHoverScale { get; set; } = true;
     public bool EnableDefaultDrag { get; set; } = true;
@@ -41,7 +42,7 @@ public partial class CardBase : Control
         //cardTex.Texture = Data.Texture;
         //cardTex.Position = new Vector2(60, 82);
         //cardTex.Scale = new Vector2(3.125f, 3.125f);
-        CardImage.Texture = Data.Texture;
+        CardImage.Texture = CardImages[(int)Data.Trait];
         CardImage.Position = new Vector2(10, 32.5f);
 
     }
