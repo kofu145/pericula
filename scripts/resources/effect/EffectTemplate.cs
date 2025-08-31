@@ -59,9 +59,22 @@ public partial class EffectTemplate : Resource
     protected async Task BuffText(int HP, int Attack, CardData target, EffectParam param)
     {
         var cardBase = param.State.GetSide(target).GetCardBaseByData(target);
-        await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.1), Timer.SignalName.Timeout);
+        await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.05), Timer.SignalName.Timeout);
         var damagePos = cardBase.GlobalPosition;
         PopupText.Instance.ShowText(damagePos + new Vector2(0, 40), $"+{Attack}/+{HP}");
+        cardBase.Visual.UpdateLabels();
+    }
+
+
+    /// <summary>
+    /// Standard popup text..
+    /// </summary>
+    protected async Task GenText(string text, CardData target, EffectParam param)
+    {
+        var cardBase = param.State.GetSide(target).GetCardBaseByData(target);
+        await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.05), Timer.SignalName.Timeout);
+        var damagePos = cardBase.GlobalPosition;
+        PopupText.Instance.ShowText(damagePos + new Vector2(0, 20), text);
         cardBase.Visual.UpdateLabels();
     }
 

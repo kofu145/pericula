@@ -367,7 +367,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_y3kt5"]
 resource_name = "Trigger"
-length = 0.8
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

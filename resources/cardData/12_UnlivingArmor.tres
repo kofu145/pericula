@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://blpls1psidkkk"]
+
+[ext_resource type="Resource" uid="uid://dyb56i12g80ky" path="res://resources/keywords/final_wager.tres" id="1_gpqxq"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_vu0au"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_fiwfm"]
+[ext_resource type="Resource" uid="uid://chq30kl4bopd6" path="res://resources/cardData/43_ghost.tres" id="3_ude7n"]
+[ext_resource type="Script" uid="uid://ccibnn7dfkyid" path="res://scripts/resources/effect/SummonOnFinalWager.cs" id="4_x5y5o"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="5_7x6w4"]
+
+[sub_resource type="Resource" id="Resource_nl5j2"]
+script = ExtResource("2_fiwfm")
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_rbtaf"]
+script = ExtResource("4_x5y5o")
+ToSummonToken = ExtResource("3_ude7n")
+TraitToBuff = 1
+name = ""
+metadata/_custom_type_script = "uid://ccibnn7dfkyid"
+
+[resource]
+script = ExtResource("1_vu0au")
+id = 12
+DisplayName = "Unliving Armor"
+Description = "Final Wager: Summon a 9/3 Ghost in place of this unit"
+Rarity = ExtResource("5_7x6w4")
+Trait = 8
+BaseAttack = 3
+BaseHP = 9
+OnUse = Array[Object]([SubResource("Resource_nl5j2")])
+Passives = Array[Object]([SubResource("Resource_rbtaf")])
+Keywords = [ExtResource("1_gpqxq")]
+metadata/_custom_type_script = "uid://clner77n1ff5a"

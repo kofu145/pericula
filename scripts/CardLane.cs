@@ -128,7 +128,7 @@ public partial class CardLane : Node
         }
     }
 
-    public async Task RemoveCardAtIndex(int idx)
+    public async Task RemoveCardAtIndex(int idx, bool doReparent = true)
     {
         if (idx < 0 || idx >= _cards.Count)
         {
@@ -141,26 +141,29 @@ public partial class CardLane : Node
         cardToRemove.QueueFree();
 
 
-        for (int i = 0; i < _cards.Count; i++)
+        if (doReparent)
         {
-            var pos = _cards[i].Visual.GlobalPosition;
-            //GD.Print($"Moving from {pos} to {_slots[i].GlobalPosition}");
-            _cards[i].Reparent(_slots[i], false);
-            _cards[i].Visual.SetOffset(pos);
-            _cards[i].Visual.GlobalPosition = pos;
-            //GD.Print($"Moving from {pos} to {_slots[i].GlobalPosition}");
-            _cards[i].Visual.ToggleLerp(true);
-            await ToSignal(GetTree().CreateTimer(.05), Timer.SignalName.Timeout);
+            for (int i = 0; i < _cards.Count; i++)
+            {
+                var pos = _cards[i].Visual.GlobalPosition;
+                //GD.Print($"Moving from {pos} to {_slots[i].GlobalPosition}");
+                _cards[i].Reparent(_slots[i], false);
+                _cards[i].Visual.SetOffset(pos);
+                _cards[i].Visual.GlobalPosition = pos;
+                //GD.Print($"Moving from {pos} to {_slots[i].GlobalPosition}");
+                _cards[i].Visual.ToggleLerp(true);
+                await ToSignal(GetTree().CreateTimer(.05), Timer.SignalName.Timeout);
+            }
         }
 
     }
 
-    public async Task RemoveCard(CardData cardData)
+    public async Task RemoveCard(CardData cardData, bool doReparent = true)
     {
         var target = GetCardBaseByData(cardData);
 
         int idx = IndexOf(target);
-        await RemoveCardAtIndex(idx);
+        await RemoveCardAtIndex(idx, doReparent);
     }
 
 

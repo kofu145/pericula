@@ -88,8 +88,8 @@ public partial class CombatController : Node
 
     public async void BattleRefreshHandler()
     {
-        UpdateLane(true);
-        UpdateLane(false);
+        await UpdateLane(true);
+        await UpdateLane(false);
         FlipTurn();
         if (playerLane.CardCount <= 0)
         {
@@ -158,11 +158,11 @@ public partial class CombatController : Node
         {
             await battleState.PopTriggerQueue();
         }
-        UpdateLane(true);
-        UpdateLane(false);
+        await UpdateLane(true);
+        await UpdateLane(false);
     }
 
-    private async void UpdateLane(bool player)
+    private async Task UpdateLane(bool player)
     {
         List<CardData> toRemove = [];
         var targetLane = player ? playerLane : enemyLane;
@@ -176,6 +176,7 @@ public partial class CombatController : Node
             }
 
             targetLane.GetBaseAtIndex(i).Visual.UpdateLabels();
+
         }
         //GD.Print(DeckManager.Instance.EnemyHand);
         foreach (var remCard in toRemove)

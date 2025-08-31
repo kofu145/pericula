@@ -14,11 +14,13 @@ public partial class EventBus : Node
     public delegate void TriggeredEventHandler();
     public CombatController CombatManager;
 
+
     //[Signal]
     public delegate void EventHandler();
 
     public delegate void DamageEventHandler(CardData? victim);
     public delegate void AdvantageEventHandler(CardData? attacker);
+    public delegate void FinalWagerHandler(CardData? victim);
 
     //public event EventHandler OnDamage;
 
@@ -27,7 +29,7 @@ public partial class EventBus : Node
     public event DamageEventHandler TakeDamageEvent;
     public event AdvantageEventHandler AdvantageEvent;
     public event Action UnobscuredEvent;
-    public event Action FinalWager;
+    public event FinalWagerHandler FinalWagerEvent;
     public event Action ClearTriggerQueueEvent;
 
     public void RefreshBattle() => CombatManager.BattleRefreshHandler();
@@ -35,6 +37,7 @@ public partial class EventBus : Node
     public void InvokeAdvantage(CardData? attacker) => AdvantageEvent?.Invoke(attacker);
     public void InvokeObscured() => UnobscuredEvent?.Invoke();
     public void InvokeShowdown() => ShowdownEvent?.Invoke();
+    public void InvokeFinalWager(CardData? victim) => FinalWagerEvent?.Invoke(victim);
     public async Task ClearTriggerQueue() => await CombatManager.ClearActionQueue();
 
     public void ClearEvents()
@@ -43,7 +46,7 @@ public partial class EventBus : Node
         TakeDamageEvent = null;
         AdvantageEvent = null;
         UnobscuredEvent = null;
-        FinalWager = null;
+        FinalWagerEvent = null;
         ClearTriggerQueueEvent = null;
         RefreshBattleLoop = null;
     }
