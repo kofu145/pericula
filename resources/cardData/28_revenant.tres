@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://ck1o8ywot2pii"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_ukern"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_1rwhr"]
+[ext_resource type="Resource" uid="uid://dyb56i12g80ky" path="res://resources/keywords/final_wager.tres" id="2_4lmf0"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_mhh55"]
+[ext_resource type="Script" uid="uid://bvdys8i4a0dm0" path="res://scripts/resources/effect/BuffOnFinalWager.cs" id="3_4lmf0"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_boare"]
+
+[sub_resource type="Resource" id="Resource_8j53s"]
+script = ExtResource("3_boare")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_y6hyo"]
+script = ExtResource("3_4lmf0")
+HPBuff = 3
+AtkBuff = 3
+TargetTrait = false
+TraitToBuff = 0
+buffDuration = 0
+name = ""
+metadata/_custom_type_script = "uid://bvdys8i4a0dm0"
+
+[resource]
+script = ExtResource("2_mhh55")
+id = 28
+DisplayName = "Revenant"
+Description = "Final Wager: All your units gain +3/+3"
+Rarity = ExtResource("2_1rwhr")
+Trait = 7
+BaseAttack = 4
+BaseHP = 5
+OnUse = Array[Object]([SubResource("Resource_8j53s")])
+Passives = Array[Object]([SubResource("Resource_y6hyo")])
+Keywords = Array[ExtResource("1_ukern")]([ExtResource("2_4lmf0")])
+metadata/_custom_type_script = "uid://clner77n1ff5a"
