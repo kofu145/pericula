@@ -42,6 +42,8 @@ public partial class ChipManager : Node
             OnChipsChanged?.Invoke(balance);
             ChipsUsed += amount;
         }
+
+        SoundManager.PlaySE("chipsdrop");
         return valid;
     }
 
