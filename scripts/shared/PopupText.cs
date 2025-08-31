@@ -19,7 +19,7 @@ public partial class PopupText : Node
 
     public async void ShowText(Vector2 at, string text)
     {
-        var popup = PopupTextScene.Instantiate<Label>();
+        var popup = (Label)PopupTextScene.Instantiate<Label>().Duplicate();
         popup.GlobalPosition = at;
         popup.ZIndex = 1000;
         popup.Text = text;

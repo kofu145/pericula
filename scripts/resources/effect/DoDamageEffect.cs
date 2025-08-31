@@ -11,9 +11,10 @@ public partial class DoDamageEffect : EffectTemplate
         for (int i = 0; i < hitCount; i++)
         {
             var target = param.State.GetTarget(param.Self);
+            DealDamage(param.Self.Attack, target, param);
+
             await DoAttackAnimation(param);
-            await DealDamage(param.Self.Attack, target, param);
-            
+
         }
     }
 
