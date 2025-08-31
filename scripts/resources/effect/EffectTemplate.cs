@@ -38,7 +38,6 @@ public partial class EffectTemplate : Resource
         await DamageText(damage, target, param);
         EventBus.Instance.InvokeTakeDamageEvent(target);
         //await EventBus.Instance.ClearTriggerQueue();
-
     }
 
     /// <summary>
