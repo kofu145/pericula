@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://val1rx1uwe82"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_kq8ay"]
+[ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="2_0osa1"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_8fg6d"]
+
+[resource]
+script = ExtResource("2_8fg6d")
+id = 32
+DisplayName = "Living Cactus"
+Description = "Deal damage to attacking Foe equal to its attack"
+Rarity = ExtResource("2_0osa1")
+Trait = 1
+BaseAttack = 0
+BaseHP = 12
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_kq8ay")]([])

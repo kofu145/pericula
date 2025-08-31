@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://x1s3hs3wqykm"]
 
-[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_SpadePawn.tres" id="1_an4hp"]
+[ext_resource type="Resource" uid="uid://cn88yk5t0kdt" path="res://resources/cardData/5_wisp.tres" id="1_5j4nb"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
-[ext_resource type="Resource" uid="uid://dgtwb15n7l1dy" path="res://resources/cardData/8_alchemist.tres" id="4_kohqt"]
-[ext_resource type="Resource" uid="uid://b762ove8ug21p" path="res://resources/cardData/11_Flagbearer.tres" id="5_5j4nb"]
-[ext_resource type="Resource" uid="uid://s6lftcyqsmxt" path="res://resources/cardData/9_crazycannoneer.tres" id="5_kgvsl"]
-[ext_resource type="Resource" uid="uid://yydst0j7obg7" path="res://resources/cardData/13_CrimsonZealot.tres" id="5_kohqt"]
+[ext_resource type="Resource" uid="uid://bode810lu5vbm" path="res://resources/cardData/6_robo_dog.tres" id="2_5j4nb"]
+[ext_resource type="Resource" uid="uid://clwebmlr8bvyk" path="res://resources/cardData/8_alchemist.tres" id="4_kohqt"]
+[ext_resource type="Resource" uid="uid://bbdxrgh6mewor" path="res://resources/cardData/11_flagbearer.tres" id="5_5j4nb"]
+[ext_resource type="Resource" uid="uid://jeu3cojgfg8h" path="res://resources/cardData/9_crazy_cannoneer.tres" id="5_kohqt"]
 
 [resource]
 script = ExtResource("1_qu2sd")
-Cards = Array[Object]([ExtResource("1_an4hp"), ExtResource("4_kohqt"), ExtResource("5_kgvsl"), ExtResource("5_5j4nb"), ExtResource("5_kohqt")])
+Cards = Array[Object]([ExtResource("5_5j4nb"), ExtResource("2_5j4nb"), ExtResource("1_5j4nb"), ExtResource("4_kohqt"), ExtResource("5_kohqt")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"

@@ -4,7 +4,7 @@ using System.Collections;
 
 public partial class DeckManager : Node
 {
-    public static readonly int seed = 100000;
+    public static readonly int seed = Guid.NewGuid().GetHashCode();
 
     [Export]
     public Deck PlayerDeck;
@@ -68,6 +68,8 @@ public partial class DeckManager : Node
         }
         CloneTempDeck(PlayerDeck.Cards, playerBattleDeck);
         CloneTempDeck(EnemyDeck.Cards, enemyBattleDeck);
+        Shuffle(true);
+        Shuffle(false);
     }
 
     public void AddCardByID(int id)

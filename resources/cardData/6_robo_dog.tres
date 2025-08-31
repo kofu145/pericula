@@ -1,16 +1,33 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://d0ue46gw64b7h"]
+[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://bode810lu5vbm"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_fbqhk"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_by1cx"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_hgm63"]
+[ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="2_qwky5"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_uax11"]
+[ext_resource type="Script" uid="uid://dahvharh5oyel" path="res://scripts/resources/effect/ShowdownAdjacentBuff.cs" id="4_qt1p5"]
+
+[sub_resource type="Resource" id="Resource_ueg7s"]
+script = ExtResource("3_uax11")
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_4fmwh"]
+script = ExtResource("4_qt1p5")
+HPBuff = 2
+DamageBuff = 2
+name = ""
+metadata/_custom_type_script = "uid://dahvharh5oyel"
 
 [resource]
 script = ExtResource("2_by1cx")
 id = 6
 DisplayName = "Robo-dog"
-Description = "Combat Start: Give adjacent units +2/+2."
+Description = "Showdown: Give adjacent units +2/+2."
+Rarity = ExtResource("2_qwky5")
 Trait = 5
 BaseAttack = 3
 BaseHP = 3
-OnUse = null
-Passives = null
-Keywords = Array[ExtResource("1_fbqhk")]([])
+OnUse = Array[Object]([SubResource("Resource_ueg7s")])
+Passives = Array[Object]([SubResource("Resource_4fmwh")])
+Keywords = Array[ExtResource("1_fbqhk")]([ExtResource("2_hgm63")])

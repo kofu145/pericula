@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://cbuv4sa7nqt2x"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_3myw4"]
+[ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="2_1hevp"]
+[ext_resource type="Resource" uid="uid://b4hxbmioyuby2" path="res://resources/keywords/obscured.tres" id="2_reak8"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_w8wct"]
+
+[resource]
+script = ExtResource("2_w8wct")
+id = 31
+DisplayName = "Trap Master"
+Description = "Obscured: Deal 10 damage to above foe for each triggered ally obscured."
+Rarity = ExtResource("2_1hevp")
+Trait = 2
+BaseAttack = 12
+BaseHP = 14
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_3myw4")]([ExtResource("2_reak8")])

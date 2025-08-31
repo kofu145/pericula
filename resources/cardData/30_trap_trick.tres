@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://bfwue1wll4o6x"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_qcetl"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_1g2ww"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_dfri4"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_nwjib"]
+[ext_resource type="Resource" uid="uid://b4hxbmioyuby2" path="res://resources/keywords/obscured.tres" id="3_rdh1d"]
+
+[resource]
+script = ExtResource("2_1g2ww")
+id = 30
+DisplayName = "Trap Trick"
+Description = "Showdown: Retrigger all triggered ally obscured effects this combat."
+Rarity = ExtResource("2_dfri4")
+Trait = 5
+BaseAttack = 6
+BaseHP = 6
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_qcetl")]([ExtResource("2_nwjib"), ExtResource("3_rdh1d")])

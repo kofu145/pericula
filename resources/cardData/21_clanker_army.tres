@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=5 format=3 uid="uid://dqhdbflysxaf0"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_bohpy"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_cgsfr"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_kn785"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_wl6a2"]
+
+[resource]
+script = ExtResource("2_cgsfr")
+id = 21
+DisplayName = "Clanker Army"
+Description = "Showdown: If 2+ Mechanical units, all mech units gain +2/+2 for each mech unit"
+Rarity = ExtResource("2_wl6a2")
+Trait = 5
+BaseAttack = 8
+BaseHP = 8
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_bohpy")]([ExtResource("2_kn785")])

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://dni3w4x6odpxi"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_hbc8q"]
+[ext_resource type="Resource" uid="uid://be2gy23cbidlv" path="res://resources/rarities/legendary.tres" id="2_32isu"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_cqoc4"]
+
+[resource]
+script = ExtResource("2_cqoc4")
+id = 35
+DisplayName = "The Repear"
+Description = "Final Wager trigger twice"
+Rarity = ExtResource("2_32isu")
+Trait = 8
+BaseAttack = 14
+BaseHP = 12
+OnUse = null
+Passives = null
+Keywords = Array[ExtResource("1_hbc8q")]([])
