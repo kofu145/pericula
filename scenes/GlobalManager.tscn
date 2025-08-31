@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=35 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -29,6 +29,7 @@
 [ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="21_e4twu"]
 [ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="22_tltbq"]
 [ext_resource type="Resource" uid="uid://be2gy23cbidlv" path="res://resources/rarities/legendary.tres" id="23_6000c"]
+[ext_resource type="AudioStream" uid="uid://dt18bcbyb8hgc" path="res://assets/audio/sygil_suda.ogg" id="28_bcam4"]
 
 [sub_resource type="Resource" id="Resource_l76sc"]
 resource_local_to_scene = true
@@ -44,6 +45,7 @@ shader_parameter/diamondPixelSize = 32.0
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_2rbph"]
 clip_count = 3
 clip_0/name = &"base"
+clip_0/stream = ExtResource("28_bcam4")
 clip_0/auto_advance = 0
 clip_1/name = &"game_over"
 clip_1/auto_advance = 0
