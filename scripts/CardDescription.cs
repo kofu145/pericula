@@ -2,22 +2,34 @@ using Godot;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
 public partial class CardDescription : Control
 {
+    // UI refs
     [Export] RichTextLabel CardName;
     [Export] RichTextLabel Description;
     [Export] RichTextLabel Class;
     [Export] RichTextLabel Rarity;
 
     [Export] PackedScene keywordTooltip;
+
+    // optional parameter to offset tooltip from the mouse position
     [Export] Control anchor;
     [Export] Vector2 tooltipOffset = new Vector2(20, 20);
+
+    // lookup for all rarities and keywords
+    [Export] private Godot.Collections.Array<Rarity> rarities;
+    [Export] private Godot.Collections.Array<Keyword> keywords;
+
+    // color settings for the word 'Rarity'
+    [Export] public Color rarityWordColor = new Color(0, 0, 0);
+    // color settings for keywords
     [Export] public Color keywordColor = new Color(0, 0, 0);
 
-
+    // color settings for each traits
     [Export] public Color KnightColor = new Color(1, 1, 1);
     [Export] public Color ArcaneColor = new Color(1, 1, 1);
     [Export] public Color CitizenColor = new Color(1, 1, 1);
@@ -27,12 +39,11 @@ public partial class CardDescription : Control
     [Export] public Color PawnColor = new Color(1, 1, 1);
     [Export] public Color UndeadColor = new Color(1, 1, 1);
 
+    // mapping of trait to color
     private Dictionary<Trait, Color> traitColors = new();
-
 
     Tween tween;
     const float FINAL_SCALE = 1f;
-    private List<KeywordTooltip> keywords = new();
 
     public override void _Ready()
     {
@@ -60,6 +71,16 @@ public partial class CardDescription : Control
         foreach (var keyword in data.Keywords)
             desc = desc.Replace(keyword.DisplayName, $"[color={keywordHex}]{keyword.DisplayName}[/color]");
 
+        // ------------------ Update description -----------
+
+        // replace the word 'Rarity'
+        desc = Regex.Replace(
+            desc,
+            @"\brarity\b",
+            m => $"[color={rarityWordColor.ToHtml(true)}]{m.Value}[/color]",
+            RegexOptions.IgnoreCase | RegexOptions.CultureInvariant
+        );
+
         // Ensure trait color map is ready 
         if (traitColors == null || traitColors.Count == 0)
             BuildTraitToColorDictionary();
@@ -79,7 +100,6 @@ public partial class CardDescription : Control
         var traitNames = Enum.GetNames(typeof(Trait));
         var escaped = Array.ConvertAll(traitNames, Regex.Escape);
         string pattern = $@"\b({string.Join("|", escaped)})(es|s)?\b";
-
 
         desc = Regex.Replace(
                    desc,
@@ -101,7 +121,42 @@ public partial class CardDescription : Control
                );
 
 
+        // replace rarity to rarity color in description
+        if (rarities != null && rarities.Count > 0)
+        {
+            foreach (var r in rarities)
+            {
+                if (r == null || string.IsNullOrWhiteSpace(r.DisplayName)) continue;
+
+                string name = r.DisplayName;
+                string hex = r.RarityColor.ToHtml(true);
+
+                string pat;
+                if (name.EndsWith("y", StringComparison.OrdinalIgnoreCase))
+                {
+                    // e.g., legendary / legendaries
+                    var stem = Regex.Escape(name.Substring(0, name.Length - 1));
+                    pat = $@"\b{stem}(?:y|ies)\b";
+                }
+                else
+                {
+                    // e.g., common(s), rare(s), mythic(s)
+                    var escapedName = Regex.Escape(name);
+                    pat = $@"\b{escapedName}s?\b";
+                }
+
+                desc = Regex.Replace(
+                    desc,
+                    pat,
+                    m => $"[color={hex}]{m.Value}[/color]",
+                    RegexOptions.IgnoreCase | RegexOptions.CultureInvariant
+                );
+            }
+        }
+
         Description.Text = desc;
+        // -------------------------------------
+
         var rarityColor = data.Rarity.RarityColor.ToHtml(true);
         Rarity.Text = $"[color={rarityColor}]{data.Rarity.DisplayName}[/color]";
 
@@ -110,7 +165,6 @@ public partial class CardDescription : Control
             var tooltip = keywordTooltip.Instantiate<KeywordTooltip>();
             tooltip.Initialize(keyword);
             anchor.AddChild(tooltip);
-            keywords.Add(tooltip);
         }
     }
 
@@ -118,8 +172,49 @@ public partial class CardDescription : Control
     {
         Rarity.Visible = false;
         CardName.Text = data.DisplayName;
-        Description.Text = data.Description;
         Class.Text = "Incantation";
+        var desc = data.Description;
+
+        // replace the word 'Rarity'
+        desc = Regex.Replace(
+            desc,
+            @"\brarity\b",
+            m => $"[color={rarityWordColor.ToHtml(true)}]{m.Value}[/color]",
+            RegexOptions.IgnoreCase | RegexOptions.CultureInvariant
+        );
+        
+        if (rarities != null && rarities.Count > 0)
+        {
+            foreach (var r in rarities)
+            {
+                if (r == null || string.IsNullOrWhiteSpace(r.DisplayName)) continue;
+
+                string name = r.DisplayName;
+                string hex = r.RarityColor.ToHtml(true);
+
+                string pat;
+                if (name.EndsWith("y", StringComparison.OrdinalIgnoreCase))
+                {
+                    // e.g., legendary / legendaries
+                    var stem = Regex.Escape(name.Substring(0, name.Length - 1));
+                    pat = $@"\b{stem}(?:y|ies)\b";
+                }
+                else
+                {
+                    // e.g., common(s), rare(s), mythic(s)
+                    var escapedName = Regex.Escape(name);
+                    pat = $@"\b{escapedName}s?\b";
+                }
+
+                desc = Regex.Replace(
+                    desc,
+                    pat,
+                    m => $"[color={hex}]{m.Value}[/color]",
+                    RegexOptions.IgnoreCase | RegexOptions.CultureInvariant
+                );
+            }
+        }
+        Description.Text = desc;
     }
 
     public void Display()

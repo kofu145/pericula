@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://dnohqen14mpox"]
+[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://dnohqen14mpox"]
 
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_g5fe8"]
 [ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_1xdk5"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_k4u6a"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_5rhdv"]
@@ -29,5 +30,5 @@ BaseAttack = 3
 BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_sb5wi")])
 Passives = Array[Object]([SubResource("Resource_c20ne")])
-Keywords = [ExtResource("2_1xdk5")]
+Keywords = Array[ExtResource("1_g5fe8")]([ExtResource("2_1xdk5")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"

@@ -1,8 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://baprw7he5vf61"]
+[gd_scene load_steps=19 format=3 uid="uid://baprw7he5vf61"]
 
 [ext_resource type="Script" uid="uid://5tw62lr861wl" path="res://scripts/CardDescription.cs" id="1_r66ow"]
 [ext_resource type="PackedScene" uid="uid://cnq6knfh85wt4" path="res://scenes/keyword_tooltip.tscn" id="2_u02sh"]
 [ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="3_8ikbw"]
+[ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="3_oy1dk"]
+[ext_resource type="Resource" uid="uid://ffhumvpf47af" path="res://resources/rarities/token.tres" id="4_ldvcx"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="5_r1xwj"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="6_8ignw"]
+[ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="7_2b13q"]
+[ext_resource type="Resource" uid="uid://be2gy23cbidlv" path="res://resources/rarities/legendary.tres" id="8_yv1v3"]
+[ext_resource type="Resource" uid="uid://x6q04ojt20wv" path="res://resources/keywords/advantage.tres" id="9_68m7r"]
+[ext_resource type="Resource" uid="uid://da0mnxj3qgg1p" path="res://resources/keywords/cleave.tres" id="10_0a6e3"]
+[ext_resource type="Resource" uid="uid://dyb56i12g80ky" path="res://resources/keywords/final_wager.tres" id="11_w7ax0"]
+[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/intercept.tres" id="12_oblq0"]
+[ext_resource type="Resource" uid="uid://b4hxbmioyuby2" path="res://resources/keywords/obscured.tres" id="13_57fcd"]
+[ext_resource type="Resource" uid="uid://cgdc6mqkues3w" path="res://resources/keywords/on_use.tres" id="14_0yn5c"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="15_oadtf"]
+[ext_resource type="Resource" uid="uid://be7kxoyeabiix" path="res://resources/keywords/wild_card.tres" id="16_thqs2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r66ow"]
 bg_color = Color(0.197937, 0.197937, 0.197937, 1)
@@ -31,6 +45,9 @@ Rarity = NodePath("VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/Card
 keywordTooltip = ExtResource("2_u02sh")
 anchor = NodePath("VBoxContainer")
 tooltipOffset = Vector2(0, 0)
+rarities = Array[Object]([ExtResource("3_oy1dk"), ExtResource("4_ldvcx"), ExtResource("5_r1xwj"), ExtResource("6_8ignw"), ExtResource("7_2b13q"), ExtResource("8_yv1v3")])
+keywords = Array[Object]([ExtResource("9_68m7r"), ExtResource("10_0a6e3"), ExtResource("11_w7ax0"), ExtResource("12_oblq0"), ExtResource("13_57fcd"), ExtResource("14_0yn5c"), ExtResource("15_oadtf"), ExtResource("16_thqs2")])
+rarityWordColor = Color(1, 0.244802, 0.686106, 1)
 keywordColor = Color(0.565134, 0.407894, 0.411424, 1)
 KnightColor = Color(0.517514, 0.478235, 1, 1)
 ArcaneColor = Color(0, 0.45098, 0.521569, 1)
@@ -63,6 +80,7 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_8ikbw")
 theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
 text = "Name"
 fit_content = true
 horizontal_alignment = 1
@@ -71,6 +89,7 @@ horizontal_alignment = 1
 layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_8ikbw")
+bbcode_enabled = true
 text = "Description"
 fit_content = true
 horizontal_alignment = 1
