@@ -127,6 +127,6 @@ public partial class DeckListView : Control
         Grid.AddChild(cardBase);
         _cards.Add(cardBase);
 
-        cardBase.Initialize(data);
+        cardBase.Initialize(data, true);
     }
 }

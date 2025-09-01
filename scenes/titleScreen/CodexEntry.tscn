@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgymledqft3m0"]
+
+[ext_resource type="Texture2D" uid="uid://b3dg7h8i42hs2" path="res://assets/UI/codex_slot.png" id="1_yy7sv"]
+[ext_resource type="Script" uid="uid://d4nd465x5wciw" path="res://scripts/CodexEntry.cs" id="2_dmc64"]
+[ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/Card.tscn" id="3_io4u1"]
+
+[node name="CodexEntry" type="TextureRect" node_paths=PackedStringArray("cardBase")]
+custom_minimum_size = Vector2(140, 180)
+offset_right = 140.0
+offset_bottom = 180.0
+size_flags_horizontal = 3
+texture = ExtResource("1_yy7sv")
+stretch_mode = 5
+script = ExtResource("2_dmc64")
+cardBase = NodePath("Card")
+
+[node name="Card" parent="." instance=ExtResource("3_io4u1")]
+layout_mode = 1
+HoverScale = 1.0
+FollowSpeed = 99999.0
+ScaleSpeed = 99999.0
