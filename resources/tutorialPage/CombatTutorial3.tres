@@ -7,7 +7,7 @@
 script = ExtResource("1_uhptm")
 tutorialImage = ExtResource("2_qx648")
 pageName = "Showdown"
-pageDescription = "The attack order alternates between you and your opponent. Only the leftmost units attack and when attacking, the units do not receive damage. 
+pageDescription = "The attack order alternates between you and your opponent. Only the leftmost card will see combat; each cards has an Attack  (left) and HP (right) that they will use to fight.
 
 Keep in mind that a lot of cards later on will have more more powerful effects that can shape the outcome of combat.
 
