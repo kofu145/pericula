@@ -22,15 +22,15 @@ metadata/_custom_type_script = "uid://dko1xag2hprj2"
 
 [resource]
 script = ExtResource("1_tt6qw")
-id = 18
-DisplayName = "Rogue"
-Description = "Obscured: Gain +6/+5"
 Rarity = ExtResource("3_bn1n0")
 Trait = 2
-AIPriority = 2
+AIPriority = 5
 BaseAttack = 6
 BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_hf2oi")])
 Passives = Array[Object]([SubResource("Resource_wsfp7")])
 Keywords = Array[ExtResource("1_bn1n0")]([ExtResource("1_gspg2")])
+id = 18
+DisplayName = "Rogue"
+Description = "Obscured: Gain +6/+5"
 metadata/_custom_type_script = "uid://clner77n1ff5a"

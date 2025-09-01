@@ -375,7 +375,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_y3kt5"]
 resource_name = "Trigger"
-length = 0.45
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -458,9 +458,15 @@ CardImages = Array[Texture2D]([ExtResource("2_2bi35"), ExtResource("3_5on5x"), E
 [node name="Visual" type="TextureRect" parent="." node_paths=PackedStringArray("NameLabel", "cardBase", "cardBack", "cardBorder", "cardDescription", "attackLabel", "healthLabel")]
 z_index = 2
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -80.0
+offset_right = 60.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(60, 80)
@@ -552,7 +558,7 @@ layout_mode = 0
 offset_left = 10.0
 offset_top = 32.0
 offset_right = 110.0
-offset_bottom = 134.0
+offset_bottom = 133.0
 pivot_offset = Vector2(50, 50)
 mouse_filter = 2
 texture = ExtResource("7_1oahe")
@@ -569,7 +575,7 @@ theme = SubResource("Theme_y3kt5")
 texture = ExtResource("8_8dt14")
 
 [node name="HitParticle" type="CPUParticles2D" parent="Visual"]
-position = Vector2(63, 77)
+position = Vector2(63, 80)
 emitting = false
 amount = 24
 lifetime = 0.5
