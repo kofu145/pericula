@@ -15,21 +15,22 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 [sub_resource type="Resource" id="Resource_y6c2o"]
 script = ExtResource("3_2s4xq")
 HPBuff = 1
-AtkBuff = 2
+AtkBuff = 1
 Scope = 1
 name = ""
 metadata/_custom_type_script = "uid://dadm7j54m2eaw"
 
 [resource]
 script = ExtResource("2_2cgae")
-id = 34
-DisplayName = "Soul Collector"
-Description = "Whenever an Ally dies, all Allies gain +1/+2"
 Rarity = ExtResource("4_eqpob")
 Trait = 7
+AIPriority = 2
 BaseAttack = 7
 BaseHP = 7
 OnUse = Array[Object]([SubResource("Resource_kvab3")])
 Passives = Array[Object]([SubResource("Resource_y6c2o")])
 Keywords = Array[ExtResource("1_bly0d")]([])
+id = 34
+DisplayName = "Soul Collector"
+Description = "Whenever an Ally dies, all Allies gain +1/+1"
 metadata/_custom_type_script = "uid://clner77n1ff5a"

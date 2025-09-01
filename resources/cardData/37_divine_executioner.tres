@@ -13,14 +13,15 @@ metadata/_custom_type_script = "uid://bi1qvsb1mwffb"
 
 [resource]
 script = ExtResource("1_s7mmh")
-id = 37
-DisplayName = "Divine Executioner"
-Description = "When this unit kills a foe, attacks again."
 Rarity = ExtResource("1_wml4m")
 Trait = 3
+AIPriority = 3
 BaseAttack = 7
 BaseHP = 14
 OnUse = Array[Object]([SubResource("Resource_few7a")])
 Passives = null
 Keywords = Array[ExtResource("1_few7a")]([])
+id = 37
+DisplayName = "Divine Executioner"
+Description = "When this unit kills a foe, attacks again."
 metadata/_custom_type_script = "uid://clner77n1ff5a"
