@@ -11,6 +11,8 @@ public partial class CardData : CodexItemData
     public Rarity Rarity;
     [Export]
     public Trait Trait;
+    [Export]
+    public int AIPriority = 2;
     // current runtime stats
     public int HP;
     public int Attack;

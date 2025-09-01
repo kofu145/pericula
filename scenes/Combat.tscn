@@ -18,7 +18,7 @@
 [ext_resource type="StyleBox" uid="uid://d3fmbrxyrouuq" path="res://assets/stylebox_tex/button_down.tres" id="11_mwu67"]
 [ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="12_r8g7h"]
 [ext_resource type="Shader" uid="uid://qbun5diokmrm" path="res://scripts/shaders/connected_circles.gdshader" id="18_ak6aq"]
-[ext_resource type="Resource" uid="uid://ct2ofbxe5x46j" path="res://resources/tutorialPage/CombatTutorial4.tres" id="18_il00m"]
+[ext_resource type="Resource" path="res://resources/tutorialPage/CombatTutorial4.tres" id="18_il00m"]
 [ext_resource type="Texture2D" uid="uid://b8ey5pfd8ckq" path="res://assets/UI/SimplexNoise2D.png" id="19_il00m"]
 [ext_resource type="Texture2D" uid="uid://do0eg8kbumt5o" path="res://assets/UI/main_panel.png" id="22_pgor7"]
 [ext_resource type="Texture2D" uid="uid://bmqh8jeds4yww" path="res://assets/UI/enemychip.png" id="22_r8g7h"]
@@ -147,7 +147,7 @@ text = "100
 "
 horizontal_alignment = 1
 
-[node name="BetController" type="Control" parent="." node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "allInButton", "raise1xButton", "raise2xButton", "raise5xButton")]
+[node name="BetController" type="Control" parent="." node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "allInButton", "raise1xButton", "raise2xButton", "raise5xButton", "combatManager")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -169,6 +169,7 @@ allInButton = NodePath("VBoxContainer/AllIn")
 raise1xButton = NodePath("VBoxContainer/1x")
 raise2xButton = NodePath("VBoxContainer/2x")
 raise5xButton = NodePath("VBoxContainer/5x")
+combatManager = NodePath("../CombatController")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BetController"]
 layout_mode = 1

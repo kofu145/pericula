@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_7gltm")
-DisplayName = "이틀 동안 일어났다..."
+DisplayName = "Giantfall lite"
 deck = ExtResource("1_l5vpf")
 Difficulty = 1
 IsBoss = false

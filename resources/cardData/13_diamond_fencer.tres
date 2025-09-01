@@ -24,6 +24,7 @@ DisplayName = "Diamond Fencer"
 Description = "This unit attacks twice"
 Rarity = ExtResource("2_q71of")
 Trait = 2
+AIPriority = 1
 BaseAttack = 5
 BaseHP = 8
 OnUse = Array[Object]([SubResource("Resource_q71of"), SubResource("Resource_nhv1q")])

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://ckcqyit1hvgbp"]
+
+[ext_resource type="Resource" uid="uid://c21op0lph4uj2" path="res://resources/cardData/7_living_spellbook.tres" id="1_pwfbu"]
+[ext_resource type="Resource" uid="uid://cyxdvajquq4n5" path="res://resources/cardData/5_wisp.tres" id="2_gm0un"]
+[ext_resource type="Resource" uid="uid://bxtepq81tqx5y" path="res://resources/cardData/8_alchemist.tres" id="3_5nmiu"]
+[ext_resource type="Resource" uid="uid://bc4rs2h6253da" path="res://resources/cardData/10_Defender.tres" id="4_syjgi"]
+[ext_resource type="Resource" uid="uid://cb8dkayygv0di" path="res://resources/cardData/12_crimson_zealot.tres" id="6_v8lyq"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="7_avltp"]
+
+[resource]
+script = ExtResource("7_avltp")
+Cards = Array[Object]([ExtResource("1_pwfbu"), ExtResource("1_pwfbu"), ExtResource("1_pwfbu"), ExtResource("1_pwfbu"), ExtResource("1_pwfbu"), ExtResource("1_pwfbu"), ExtResource("2_gm0un"), ExtResource("2_gm0un"), ExtResource("2_gm0un"), ExtResource("3_5nmiu"), ExtResource("3_5nmiu"), ExtResource("3_5nmiu"), ExtResource("3_5nmiu"), ExtResource("4_syjgi"), ExtResource("4_syjgi"), ExtResource("6_v8lyq"), ExtResource("6_v8lyq"), ExtResource("6_v8lyq")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"

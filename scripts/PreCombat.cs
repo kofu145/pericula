@@ -11,7 +11,7 @@ public partial class PreCombat : Control
     {
         base._Ready();
         CreatePreStagePanels();
-        anteCountLabel.Text = $"Ante: {StageManager.Instance.CurrentAnte + 1} / {StageManager.Instance.AnteCount}";
+        anteCountLabel.Text = $"Act: {StageManager.Instance.CurrentAnte + 1} / {StageManager.Instance.AnteCount}";
     }
 
     public void CreatePreStagePanels()

@@ -45,7 +45,10 @@ public partial class DeckManipCard : Control
 
         DeckManipData data = Lookup.GetDeckManipByID(_deckManipID);
         GetNode<Label>("CardBorder/CardName").Text = data.DisplayName.ToString();
-        cost.Text = ShopManager.Instance.GetManipPrice(id).ToString();
+        var instance = ShopManager.Instance;
+        var price = instance.GetManipPrice(id);
+        var text = price.ToString();
+        cost.Text = text;
         GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
     }
 
@@ -87,6 +90,11 @@ public partial class DeckManipCard : Control
         switch (_deckManipID)
         {
             case (int)Incantation.Remove:
+                if (DeckManager.Instance.PlayerDeck.Cards.Count <= 1)
+                {
+                    PopupText.Instance.ShowText(GlobalPosition, "Can't remove your last card!");
+                    break;
+                }
                 UiOverlay.Instance.Remove(RemoveCard);
                 break;
             case (int)Incantation.Duplicate:

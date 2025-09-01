@@ -126,6 +126,12 @@ public partial class DeckManager : Node
         var targetList = isPlayer ? Hand : EnemyHand;
         var targetDeck = isPlayer ? playerBattleDeck : enemyBattleDeck;
         var targetDisc = isPlayer ? playerDisc : enemyDisc;
+        if (n > targetDeck.Count)
+        {
+            RecycleDiscardIntoDraw(isPlayer);
+        }
+        if (n > targetDeck.Count)
+            n = targetDeck.Count;
 
         for (int i = 0; i < n; i++)
         {
@@ -247,6 +253,17 @@ public partial class DeckManager : Node
         playerDisc.Clear();
         enemyDisc.Clear();
         initialized = false;
+    }
+
+    public void SortByPriority()
+    {
+        var copyArr = new List<CardData>();
+        // sort enemy hand by priority 
+        for (int ci = 0; ci < EnemyHand.Count; ci++) copyArr.Add(EnemyHand[ci]);
+
+        var sorted = copyArr.OrderBy(e => e.AIPriority).ToList();
+
+        for (int ci = 0; ci < EnemyHand.Count; ci++) EnemyHand[ci] = sorted[ci];
     }
 
     public void PrintData()

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://5v3if1uo26pq"]
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://5v3if1uo26pq"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_0r3yp"]
+[ext_resource type="Resource" uid="uid://cgdc6mqkues3w" path="res://resources/keywords/on_use.tres" id="2_2llg4"]
 [ext_resource type="Script" uid="uid://bv0l48rc6l1vi" path="res://scripts/resources/effect/DoBuffEffect.cs" id="2_8il60"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_civaa"]
 [ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="2_ux3vx"]
@@ -18,12 +19,12 @@ metadata/_custom_type_script = "uid://bv0l48rc6l1vi"
 script = ExtResource("2_civaa")
 id = 29
 DisplayName = "Bard"
-Description = "On Use: Give all allies +1/+1"
+Description = "On Use: Gives all allies +1/+1"
 Rarity = ExtResource("2_ux3vx")
 Trait = 2
 BaseAttack = 0
 BaseHP = 10
 OnUse = Array[Object]([SubResource("Resource_2llg4")])
 Passives = null
-Keywords = Array[ExtResource("1_0r3yp")]([])
+Keywords = Array[ExtResource("1_0r3yp")]([ExtResource("2_2llg4")])
 metadata/_custom_type_script = "uid://clner77n1ff5a"

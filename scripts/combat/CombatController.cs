@@ -2,6 +2,7 @@ using Godot;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public enum LaneSide { Player, Enemy }
 
@@ -28,8 +29,14 @@ public partial class CombatController : Node
         //GD.Print(DeckManager.Instance.EnemyHand);
         for (int i = 0; i < 2; i++)
         {
-            var drawn = i == 0 ? DeckManager.Instance.Hand : DeckManager.Instance.EnemyHand;
-            GD.Print(drawn.Count);
+            var isPlayer = i == 0;
+            var drawn = isPlayer ? DeckManager.Instance.Hand : DeckManager.Instance.EnemyHand;
+            //GD.Print(drawn.Count);
+            if (!isPlayer)
+            {
+                DeckManager.Instance.SortByPriority();
+            }
+
             for (int j = 0; j < drawn.Count; j++)
             {
                 var lane = i == 0 ? playerLane : enemyLane;
@@ -97,6 +104,7 @@ public partial class CombatController : Node
         InitLane(true);
         InitLane(false);
         var obscuredList = new List<CardData>();
+        EventBus.Instance.InvokeObscured(obscuredList);
         EventBus.Instance.InvokeShowdown();
         /*
         for (int i = 0; i < playerLane.CardCount; i++)
@@ -107,7 +115,6 @@ public partial class CombatController : Node
                 obscuredList.Add(enemyLane.GetCardAtIndex(i));
             }
         }*/
-        EventBus.Instance.InvokeObscured(obscuredList);
         await ClearActionQueue();
         await UpdateLane(true);
         await UpdateLane(false);
@@ -135,6 +142,30 @@ public partial class CombatController : Node
         }
         else
             await DoBattle();
+    }
+
+    public int CalculateHandScore(bool laneIsPlayer, int n = 3)
+    {
+        var targetLane = laneIsPlayer ? playerLane : enemyLane;
+        var cardCount = Math.Min(n, targetLane.CardCount);
+        int score = 0;
+
+        int[] traits = new int[20];
+        for (int i = 0; i < cardCount; i++)
+        {
+            var card = targetLane.GetCardAtIndex(i);
+            score += (int)card.Rarity.RarityType;
+            if (card.Trait != Trait.Pawn)
+                traits[(int)card.Trait]++;
+        }
+        foreach (var count in traits)
+        {
+            var toAdd = 2 * (count - 1);
+            if (toAdd > 0)
+                score += toAdd;
+        }
+        return score;
+
     }
 
     private async Task DoBattle()
@@ -209,7 +240,7 @@ public partial class CombatController : Node
             if (targetLane.GetCardAtIndex(i).HP <= 0)
             {
                 SoundManager.PlaySE("death");
-                GD.Print($"got a to remove at idx {i}");
+                //GD.Print($"got a to remove at idx {i}");
                 toRemove.Add(targetLane.GetCardAtIndex(i));
                 var deathReport = new DeathParam();
                 deathReport.Initialize(targetLane, targetLane.GetCardAtIndex(i).id, targetLane.GetCardAtIndex(i));
@@ -242,4 +273,5 @@ public partial class CombatController : Node
         button.Visible = true;
         button.Disabled = false;
     }
+
 }

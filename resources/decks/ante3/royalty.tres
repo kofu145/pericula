@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://wto2214meexu"]
+[gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://062p6t1200ll"]
 
-[ext_resource type="Resource" uid="uid://bdsle7gxr2naj" path="res://resources/cardData/15_blood_hound.tres" id="1_n421n"]
-[ext_resource type="Resource" uid="uid://bjt5hk57wavfi" path="res://resources/cardData/28_revenant.tres" id="2_o0ioy"]
-[ext_resource type="Resource" uid="uid://bearmqcq46w0g" path="res://resources/cardData/34_soul_collector.tres" id="3_v0dep"]
-[ext_resource type="Resource" uid="uid://btwwat5io72d2" path="res://resources/cardData/19_battle_herald.tres" id="4_6m3w3"]
-[ext_resource type="Resource" uid="uid://5v3if1uo26pq" path="res://resources/cardData/29_bard.tres" id="5_qmknt"]
-[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="6_lul67"]
+[ext_resource type="Resource" uid="uid://4kdoym5vf8gu" path="res://resources/cardData/25_duelist.tres" id="1_hfkjt"]
+[ext_resource type="Resource" uid="uid://dnohqen14mpox" path="res://resources/cardData/27_fisherman.tres" id="2_hfkjt"]
+[ext_resource type="Resource" uid="uid://bfehhn0gkla0e" path="res://resources/cardData/24_watchful_eye.tres" id="3_vv7wo"]
+[ext_resource type="Resource" uid="uid://ofosglcf6k2c" path="res://resources/cardData/13_diamond_fencer.tres" id="4_u12kk"]
+[ext_resource type="Resource" uid="uid://cahubma6ql5v1" path="res://resources/cardData/23_King_of_diamonds.tres" id="5_kao11"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="6_y01aw"]
 
 [resource]
-script = ExtResource("6_lul67")
-Cards = Array[Object]([ExtResource("1_n421n"), ExtResource("1_n421n"), ExtResource("1_n421n"), ExtResource("1_n421n"), ExtResource("2_o0ioy"), ExtResource("2_o0ioy"), ExtResource("2_o0ioy"), ExtResource("2_o0ioy"), ExtResource("3_v0dep"), ExtResource("3_v0dep"), ExtResource("4_6m3w3"), ExtResource("4_6m3w3"), ExtResource("5_qmknt"), ExtResource("5_qmknt")])
+script = ExtResource("6_y01aw")
+Cards = Array[Object]([ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("2_hfkjt"), ExtResource("2_hfkjt"), ExtResource("2_hfkjt"), ExtResource("3_vv7wo"), ExtResource("3_vv7wo"), ExtResource("4_u12kk"), ExtResource("4_u12kk"), ExtResource("5_kao11"), ExtResource("5_kao11")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"

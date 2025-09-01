@@ -30,6 +30,7 @@ DisplayName = "Young Prince"
 Description = "Final Wager: Knights gain +2/+2 for the rest of this encounter"
 Rarity = ExtResource("2_taq0o")
 Trait = 3
+AIPriority = 0
 BaseAttack = 7
 BaseHP = 4
 OnUse = Array[Object]([SubResource("Resource_q5toe")])

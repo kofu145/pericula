@@ -27,6 +27,7 @@ DisplayName = "Living Spellbook"
 Description = "Showdown: Deal 2 damage to a random Foe. Repeat for each friendly Arcane unit."
 Rarity = ExtResource("2_b5rix")
 Trait = 1
+AIPriority = 4
 BaseAttack = 4
 BaseHP = 9
 OnUse = Array[Object]([SubResource("Resource_rey00")])

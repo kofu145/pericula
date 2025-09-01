@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://bifttlhcoa4xt"]
+
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_foayh"]
+[ext_resource type="Resource" uid="uid://bc4rs2h6253da" path="res://resources/cardData/10_Defender.tres" id="1_k4gmd"]
+[ext_resource type="Resource" uid="uid://do5p0egnldn0k" path="res://resources/cardData/20_ruin_guard.tres" id="2_36dx5"]
+[ext_resource type="Resource" uid="uid://4kdoym5vf8gu" path="res://resources/cardData/25_duelist.tres" id="3_7ouje"]
+[ext_resource type="Resource" uid="uid://ofosglcf6k2c" path="res://resources/cardData/13_diamond_fencer.tres" id="4_0rugd"]
+[ext_resource type="Resource" uid="uid://bxtepq81tqx5y" path="res://resources/cardData/8_alchemist.tres" id="5_iulxh"]
+
+[resource]
+script = ExtResource("1_foayh")
+Cards = Array[Object]([ExtResource("1_k4gmd"), ExtResource("1_k4gmd"), ExtResource("1_k4gmd"), ExtResource("1_k4gmd"), ExtResource("2_36dx5"), ExtResource("2_36dx5"), ExtResource("2_36dx5"), ExtResource("2_36dx5"), ExtResource("3_7ouje"), ExtResource("3_7ouje"), ExtResource("3_7ouje"), ExtResource("4_0rugd"), ExtResource("4_0rugd"), ExtResource("5_iulxh"), ExtResource("5_iulxh"), ExtResource("5_iulxh")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"

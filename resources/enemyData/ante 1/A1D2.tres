@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_hte6y")
-DisplayName = "88 millimeter"
+DisplayName = "Card TD7"
 deck = ExtResource("1_kkn32")
 Difficulty = 0
 IsBoss = false

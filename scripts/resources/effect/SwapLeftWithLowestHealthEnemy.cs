@@ -24,9 +24,9 @@ public partial class SwapLeftWithLowestHealthEnemy : EffectTemplate
                 var originalTarget = 0;
                 var finalTarget = currentTarget.index;
 
+                await lane.Swap(originalTarget, finalTarget, swapDuration);
                 await DoTriggerAnimation(param);
 
-                await lane.Swap(originalTarget, finalTarget, swapDuration);
 
                 // GD.Print($"swapping with {finalTarget}");
 
