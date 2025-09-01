@@ -221,6 +221,7 @@ public partial class PhaseController : Node
     // loss handler
     private void EndCurrentRun()
     {
+        UnbindEvents();
         RunEndManager.Instance.LoseRun();
     }
 
