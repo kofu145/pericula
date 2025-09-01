@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_e7enx")
-DisplayName = "Morning! Nice Day for..."
+DisplayName = "Morn'! Nice Day for..."
 deck = ExtResource("1_n8fi5")
 Difficulty = 3
 IsBoss = false

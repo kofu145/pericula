@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_fcnhn")
-DisplayName = "Football Intercepted"
+DisplayName = "NFL Interception"
 deck = ExtResource("1_a41lu")
 Difficulty = 0
 IsBoss = false
