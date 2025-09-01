@@ -114,10 +114,11 @@ public partial class Lookup : Node
 
     public static List<CardData> GetCardLibrary()
     {
-        var orderedList = lookupList;
+        var ordered = lookupList
+        .Where(c => c != null)
+        .OrderBy(c => c.GetSortKey());
 
-        orderedList.OrderBy(c => c.id);
-
-        return orderedList.ToList();
+        return ordered.ToList();
     }
+
 }
