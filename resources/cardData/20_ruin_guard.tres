@@ -26,15 +26,15 @@ metadata/_custom_type_script = "uid://cwj143xgtyada"
 
 [resource]
 script = ExtResource("1_06hd6")
-id = 20
-DisplayName = "Ruin Guard"
-Description = "Intercept. Other Allies take -1 Damage from direct attacks for this round."
 Rarity = ExtResource("5_bjjom")
 Trait = 4
-AIPriority = 2
+AIPriority = 3
 BaseAttack = 5
 BaseHP = 15
 OnUse = Array[Object]([SubResource("Resource_86xpy")])
 Passives = Array[Object]([SubResource("Resource_urcmn"), SubResource("Resource_gg4fk")])
 Keywords = Array[ExtResource("1_yfsq6")]([ExtResource("1_p00nx")])
+id = 20
+DisplayName = "Ruin Guard"
+Description = "Intercept. Other Allies take -1 Damage from direct attacks for this round."
 metadata/_custom_type_script = "uid://clner77n1ff5a"

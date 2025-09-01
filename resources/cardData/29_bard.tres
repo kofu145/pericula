@@ -9,8 +9,8 @@
 [sub_resource type="Resource" id="Resource_2llg4"]
 script = ExtResource("2_8il60")
 HPBuff = 2
-AtkBuff = 2
-buffSelf = true
+AtkBuff = 1
+buffSelf = false
 buffDuration = 0
 name = ""
 metadata/_custom_type_script = "uid://bv0l48rc6l1vi"
