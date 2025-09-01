@@ -509,7 +509,7 @@ public partial class BetController : Node
     private int GetWeightedAction()
     {
         var toCallIfGoodHand = 95;
-        var toCallifBadHand = 25;
+        var toCallifBadHand = 50;
         int chance = enemyHandScore > playerHandScore ? toCallIfGoodHand : toCallifBadHand;
         // If enemy hand stronger, 95% chance to return call
         // if enemy hand weaker/equal, 40% chance to call, 60% chance to fold 

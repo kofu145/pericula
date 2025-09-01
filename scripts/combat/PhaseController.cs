@@ -118,6 +118,8 @@ public partial class PhaseController : Node
         currentPot = enemyContributionThisTurn + playerContributionThisTurn;
 
         UpdatePot(currentPot);
+        turnLabel.Text = $"Turn: {currentTurn}";
+        buyInLabel.Text = $"{currentMinimumBuyIn}";
 
         if (playerChips.Balance <= 0)
             negativeBalanceWarningLabel.Text = $"Warning. Losing next Showdown will lose you the run.";
