@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://bycb8ymucbd7h"]
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://bycb8ymucbd7h"]
 
-[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_cwq2l"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_jo00k"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_s4xc6"]
 [ext_resource type="Script" uid="uid://dc5ekohnw0nwk" path="res://scripts/resources/effect/OnDamageDealRandomDamage.cs" id="2_lifqa"]
@@ -22,12 +21,12 @@ metadata/_custom_type_script = "uid://dc5ekohnw0nwk"
 script = ExtResource("1_jo00k")
 id = 9
 DisplayName = "Crazy Cannoneer"
-Description = "When damaged, deal 8 damage to a random Foe."
+Description = "When damaged, deal 3 damage to a random Foe."
 Rarity = ExtResource("3_8d0ty")
 Trait = 2
 BaseAttack = 1
 BaseHP = 7
 OnUse = Array[Object]([SubResource("Resource_tpkkg")])
 Passives = Array[Object]([SubResource("Resource_ibr18")])
-Keywords = Array[ExtResource("1_cwq2l")]([])
+Keywords = []
 metadata/_custom_type_script = "uid://clner77n1ff5a"

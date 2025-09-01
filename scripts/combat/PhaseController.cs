@@ -5,8 +5,6 @@ public enum RoundPhase { PreRound, Betting, Showdown }
 public partial class PhaseController : Node
 {
     [Export] private int startingDraw = 5;
-    [Export] private float displayDuration = 1.5f;
-
     // buy in config
     [Export] private int turnBuyInIncrease = 4;
     [Export] private float buyInIncreaseMultiplier = 2;
@@ -17,7 +15,6 @@ public partial class PhaseController : Node
 
     // UI refs
     [Export] private Label enemyNameLabel;
-    [Export] private Label actionLabel;
     [Export] private Label playerChipsLabel;
     [Export] private Label negativeBalanceWarningLabel;
     [Export] private Label enemyChipsLabel;
@@ -25,6 +22,8 @@ public partial class PhaseController : Node
     [Export] private Label turnLabel;
     [Export] private Label buyInLabel;
     [Export] private Label nextTurnBuyInLabel;
+
+    [Export] private Control popupAnchor;
 
     // phase buttons
     [Export] private Button betPhaseButton;
@@ -55,7 +54,6 @@ public partial class PhaseController : Node
     public override void _Ready()
     {
         enemyNameLabel.Text = StageManager.Instance.GetCurrentEnemy().DisplayName;
-        actionLabel.Visible = false;
         combatManager.Initialize();
 
         betPhaseButton.Pressed += StartBetPhase;
@@ -262,19 +260,8 @@ public partial class PhaseController : Node
             _ => ""
         };
 
-        ShowActionLabel(text, displayDuration);
+        PopupText.Instance.ShowText(popupAnchor.Position, text);
     }
-
-    private async void ShowActionLabel(string text, float duration)
-    {
-        actionLabel.Text = text;
-        actionLabel.Visible = true;
-
-        await ToSignal(GetTree().CreateTimer(duration), "timeout");
-
-        actionLabel.Visible = false;
-    }
-
     private void UpdatePot(int amount)
     {
         if (potLabel != null)
@@ -317,18 +304,6 @@ public partial class PhaseController : Node
         playerChipsLabel.Text = $"{amount}";
     }
 
-    protected override void Dispose(bool disposing)
-    {
-        // betController.OnBetPhaseEnd -= EndBetPhase;
-        // betController.OnEnemyAction -= DisplayEnemyAction;
-        // betController.OnChipsChanged -= DisplayPot;
-
-        // combatManager.OnShowdownEndPlayerWin -= EndShowdownPhase;
-
-        // enemyChips.OnChipsChanged = null;
-        // ChipManager.Instance.OnChipsChanged = null;
-        // base.Dispose(disposing);
-    }
 
     private void UnbindEvents()
     {

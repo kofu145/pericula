@@ -516,7 +516,11 @@ public partial class BetController : Node
                 }
                 else if (betOpen)
                 {
-                    if (CanCall && ToCall != PlayerBalance) Show(callButton);
+                    if (CanCall && ToCall != PlayerBalance)
+                    {
+                        Show(callButton);
+                        callButton.Text = $"Call ($ {ToCall})";
+                    }
                     if (CanRaiseOverCall) Show(raiseButton);
                     if (CanBet) Show(foldButton);
                 }
