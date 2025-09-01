@@ -9,11 +9,18 @@ public partial class Lookup : Node
     const string CARD_DATA_PATH = "res://resources/cardData/";
     const string DECK_MANIP_PATH = "res://resources/deckManipData/";
 
+    [Export]
+    public Godot.Collections.Array<CardData> table = new();
+    [Export]
+    public Godot.Collections.Array<DeckManipData> deckmanipData = new();
+
     private static Godot.Collections.Array<CardData> lookupList = new();
+    private static Godot.Collections.Array<DeckManipData> deckManipList = new();
 
     public override void _Ready()
     {
         Instance = this;
+        /*
         foreach (string filepath in DirAccess.GetFilesAt(CARD_DATA_PATH))
         {
             if (filepath.EndsWith(".tres"))
@@ -21,6 +28,15 @@ public partial class Lookup : Node
                 var cardData = GD.Load<CardData>(CARD_DATA_PATH + filepath);
                 lookupList.Add(cardData);
             }
+        }*/
+        foreach (var card in table)
+        {
+            lookupList.Add(card);
+        }
+
+        foreach (var card in deckmanipData)
+        {
+            deckManipList.Add(card);
         }
     }
 
@@ -52,6 +68,12 @@ public partial class Lookup : Node
 
     public static DeckManipData GetDeckManipByID(int id)
     {
+
+        foreach (var card in deckManipList)
+        {
+            if (card.id == id)
+                return card;
+        }
         foreach (string filePath in DirAccess.GetFilesAt(DECK_MANIP_PATH))
         {
             if (filePath.EndsWith(".tres"))

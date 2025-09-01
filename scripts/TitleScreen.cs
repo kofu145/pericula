@@ -19,7 +19,7 @@ public partial class TitleScreen : Panel
         // reset globalManagers
         ResetManagers();
         startGameButton.Pressed -= StartNewRun;
-        SceneManager.ChangeSceneToFile("PreCombat");
+        SceneManager.ChangeSceneToFile("Shop");
         SoundManager.PlaySE("click");
     }
 
