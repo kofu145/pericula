@@ -59,7 +59,7 @@
 [ext_resource type="Resource" uid="uid://cahubma6ql5v1" path="res://resources/cardData/23_King_of_diamonds.tres" id="47_xn6fi"]
 [ext_resource type="Resource" uid="uid://bfehhn0gkla0e" path="res://resources/cardData/24_watchful_eye.tres" id="48_tsenr"]
 [ext_resource type="Resource" uid="uid://4kdoym5vf8gu" path="res://resources/cardData/25_duelist.tres" id="49_dpwcq"]
-[ext_resource type="Resource" uid="uid://cjh01yohv6gtc" path="res://resources/cardData/27_fisherman.tres" id="50_3u3ux"]
+[ext_resource type="Resource" path="res://resources/cardData/27_fisherman.tres" id="50_h1eqs"]
 [ext_resource type="Resource" uid="uid://bjt5hk57wavfi" path="res://resources/cardData/28_revenant.tres" id="51_w7r4l"]
 [ext_resource type="Resource" uid="uid://5v3if1uo26pq" path="res://resources/cardData/29_bard.tres" id="52_j5ow4"]
 [ext_resource type="Resource" uid="uid://sfj7gjmd88cd" path="res://resources/cardData/31_trap_master.tres" id="53_t01kv"]
@@ -120,7 +120,7 @@ enemiesData = Array[Object]([ExtResource("16_ag4le"), ExtResource("17_wttq5"), E
 
 [node name="CardLookup" type="Node" parent="."]
 script = ExtResource("14_2svbd")
-table = [ExtResource("25_twb20"), ExtResource("26_6juf7"), ExtResource("27_x1vfv"), ExtResource("28_uu40f"), ExtResource("29_5w8ab"), ExtResource("30_h1eqs"), ExtResource("31_njser"), ExtResource("32_fdv0k"), ExtResource("33_67doc"), ExtResource("34_eb70u"), ExtResource("35_yvfio"), ExtResource("36_f646v"), ExtResource("37_0srjh"), ExtResource("38_g1nbn"), ExtResource("39_hwp20"), ExtResource("40_086pc"), ExtResource("41_q2slt"), ExtResource("42_4juhj"), ExtResource("43_yv07b"), ExtResource("44_22i45"), ExtResource("45_vjlfu"), ExtResource("46_o8d0u"), ExtResource("47_xn6fi"), ExtResource("48_tsenr"), ExtResource("49_dpwcq"), ExtResource("50_3u3ux"), ExtResource("51_w7r4l"), ExtResource("52_j5ow4"), ExtResource("53_t01kv"), ExtResource("54_xer8t"), ExtResource("55_mfs4r"), ExtResource("56_eseo6")]
+table = [ExtResource("25_twb20"), ExtResource("26_6juf7"), ExtResource("27_x1vfv"), ExtResource("28_uu40f"), ExtResource("29_5w8ab"), ExtResource("30_h1eqs"), ExtResource("31_njser"), ExtResource("32_fdv0k"), ExtResource("33_67doc"), ExtResource("34_eb70u"), ExtResource("35_yvfio"), ExtResource("36_f646v"), ExtResource("37_0srjh"), ExtResource("38_g1nbn"), ExtResource("39_hwp20"), ExtResource("40_086pc"), ExtResource("41_q2slt"), ExtResource("42_4juhj"), ExtResource("43_yv07b"), ExtResource("44_22i45"), ExtResource("45_vjlfu"), ExtResource("46_o8d0u"), ExtResource("47_xn6fi"), ExtResource("48_tsenr"), ExtResource("49_dpwcq"), ExtResource("50_h1eqs"), ExtResource("51_w7r4l"), ExtResource("52_j5ow4"), ExtResource("53_t01kv"), ExtResource("54_xer8t"), ExtResource("55_mfs4r"), ExtResource("56_eseo6")]
 deckmanipData = Array[ExtResource("57_h1eqs")]([ExtResource("58_njser"), ExtResource("59_fdv0k"), ExtResource("60_67doc"), ExtResource("61_eb70u")])
 
 [node name="UIOverlay" parent="." instance=ExtResource("15_2rbph")]
