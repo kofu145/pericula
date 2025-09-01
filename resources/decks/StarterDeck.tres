@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=10 format=3 uid="uid://cw7jun8rlygcr"]
+[gd_resource type="Resource" script_class="Deck" load_steps=9 format=3 uid="uid://cw7jun8rlygcr"]
 
 [ext_resource type="Resource" uid="uid://fasmj3v0ixuo" path="res://resources/cardData/1_diamond_pawn.tres" id="1_lf1hd"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
@@ -7,10 +7,9 @@
 [ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="4_1nrt6"]
 [ext_resource type="Resource" uid="uid://mmusc2kxfo1b" path="res://resources/cardData/6_robo-dog.tres" id="5_yvrcg"]
 [ext_resource type="Resource" uid="uid://cyxdvajquq4n5" path="res://resources/cardData/5_wisp.tres" id="6_ipv4y"]
-[ext_resource type="Resource" uid="uid://bxtepq81tqx5y" path="res://resources/cardData/8_alchemist.tres" id="7_14c0o"]
-[ext_resource type="Resource" uid="uid://bc4rs2h6253da" path="res://resources/cardData/10_Defender.tres" id="8_1nrt6"]
+[ext_resource type="Resource" uid="uid://bhfplsl3brrel" path="res://resources/cardData/66_shield_bearer.tres" id="7_d6i7i"]
 
 [resource]
 script = ExtResource("1_qu2sd")
-Cards = Array[Object]([ExtResource("1_lf1hd"), ExtResource("1_lf1hd"), ExtResource("2_d6i7i"), ExtResource("2_d6i7i"), ExtResource("3_14c0o"), ExtResource("3_14c0o"), ExtResource("4_1nrt6"), ExtResource("4_1nrt6"), ExtResource("5_yvrcg"), ExtResource("5_yvrcg"), ExtResource("5_yvrcg"), ExtResource("6_ipv4y"), ExtResource("6_ipv4y"), ExtResource("6_ipv4y"), ExtResource("7_14c0o"), ExtResource("8_1nrt6")])
+Cards = Array[Object]([ExtResource("1_lf1hd"), ExtResource("1_lf1hd"), ExtResource("2_d6i7i"), ExtResource("2_d6i7i"), ExtResource("3_14c0o"), ExtResource("3_14c0o"), ExtResource("4_1nrt6"), ExtResource("4_1nrt6"), ExtResource("5_yvrcg"), ExtResource("5_yvrcg"), ExtResource("5_yvrcg"), ExtResource("6_ipv4y"), ExtResource("6_ipv4y"), ExtResource("6_ipv4y"), ExtResource("7_d6i7i")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
