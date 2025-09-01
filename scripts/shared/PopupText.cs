@@ -17,13 +17,18 @@ public partial class PopupText : Node
         ShowText(at, number.ToString());
     }
 
-    public async void ShowText(Vector2 at, string text, float scale = 2f)
+    public async void ShowText(Vector2 at, string text, float scale = 2f, float scaleMidpoint = .25f, bool centered = false)
     {
         var popup = (Label)PopupTextScene.Instantiate<Label>().Duplicate();
         popup.GlobalPosition = at;
         popup.ZIndex = 1000;
         popup.Text = text;
         popup.PivotOffset = popup.Size / 2;
+        if (centered)
+        {
+            popup.HorizontalAlignment = HorizontalAlignment.Center;
+            popup.VerticalAlignment = VerticalAlignment.Center;
+        }
         GetTree().Root.AddChild(popup);
 
         var tween = GetTree().CreateTween();
@@ -51,13 +56,13 @@ public partial class PopupText : Node
             popup,
             "scale",
             new Vector2(scale, scale),
-            0.25f
+            scaleMidpoint
         ).SetEase(Tween.EaseType.Out);
         tween.TweenProperty(
             popup,
             "scale",
             Vector2.Zero,
-            0.5f
+            scaleMidpoint * 2
         ).SetEase(Tween.EaseType.Out).SetDelay(0.25f);
 
         await ToSignal(tween, "finished");

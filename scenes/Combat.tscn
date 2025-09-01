@@ -612,7 +612,7 @@ texture = ExtResource("23_pgor7")
 
 [node name="EnemyActionPopupAnchor" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 71.0
-offset_top = 189.0
-offset_right = 119.0
-offset_bottom = 233.0
+offset_left = 323.0
+offset_top = 216.0
+offset_right = 371.0
+offset_bottom = 260.0

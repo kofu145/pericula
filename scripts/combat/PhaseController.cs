@@ -260,7 +260,7 @@ public partial class PhaseController : Node
             _ => ""
         };
 
-        PopupText.Instance.ShowText(popupAnchor.Position, text, 4);
+        PopupText.Instance.ShowText(popupAnchor.Position, text, 5, .6f, true);
     }
     private void UpdatePot(int amount)
     {
