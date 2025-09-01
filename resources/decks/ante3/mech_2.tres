@@ -1,13 +1,21 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://062p6t1200ll"]
+[gd_resource type="Resource" script_class="Deck" load_steps=9 format=3 uid="uid://062p6t1200ll"]
 
 [ext_resource type="Resource" uid="uid://4kdoym5vf8gu" path="res://resources/cardData/25_duelist.tres" id="1_hfkjt"]
-[ext_resource type="Resource" uid="uid://cjh01yohv6gtc" path="res://resources/cardData/27_fisherman.tres" id="2_ughq8"]
 [ext_resource type="Resource" uid="uid://bfehhn0gkla0e" path="res://resources/cardData/24_watchful_eye.tres" id="3_vv7wo"]
 [ext_resource type="Resource" uid="uid://ofosglcf6k2c" path="res://resources/cardData/13_diamond_fencer.tres" id="4_u12kk"]
 [ext_resource type="Resource" uid="uid://cahubma6ql5v1" path="res://resources/cardData/23_King_of_diamonds.tres" id="5_kao11"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="6_y01aw"]
 
+[sub_resource type="Resource" id="Resource_sax7e"]
+metadata/__load_path__ = "res://resources/cardData/27_fisherman.tres"
+
+[sub_resource type="Resource" id="Resource_hfkjt"]
+metadata/__load_path__ = "res://resources/cardData/27_fisherman.tres"
+
+[sub_resource type="Resource" id="Resource_ughq8"]
+metadata/__load_path__ = "res://resources/cardData/27_fisherman.tres"
+
 [resource]
 script = ExtResource("6_y01aw")
-Cards = Array[Object]([ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("2_ughq8"), ExtResource("2_ughq8"), ExtResource("2_ughq8"), ExtResource("3_vv7wo"), ExtResource("3_vv7wo"), ExtResource("4_u12kk"), ExtResource("4_u12kk"), ExtResource("5_kao11"), ExtResource("5_kao11")])
+Cards = Array[Object]([ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), ExtResource("1_hfkjt"), SubResource("Resource_sax7e"), SubResource("Resource_hfkjt"), SubResource("Resource_ughq8"), ExtResource("3_vv7wo"), ExtResource("3_vv7wo"), ExtResource("4_u12kk"), ExtResource("4_u12kk"), ExtResource("5_kao11"), ExtResource("5_kao11")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
