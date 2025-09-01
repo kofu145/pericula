@@ -40,10 +40,11 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Music" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Music" type="HBoxContainer" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("slider")]
 layout_mode = 2
 script = ExtResource("1_rbmmp")
 BusName = "BGM"
+slider = NodePath("MusicSlider")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Music"]
 layout_mode = 2
@@ -61,10 +62,11 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="SoundEffects" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="SoundEffects" type="HBoxContainer" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("slider")]
 layout_mode = 2
 script = ExtResource("1_rbmmp")
 BusName = "SE"
+slider = NodePath("SoundSlider")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SoundEffects"]
 layout_mode = 2
