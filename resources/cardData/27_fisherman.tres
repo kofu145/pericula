@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://d2clmun5x6veo"
 
 [resource]
 script = ExtResource("2_k4u6a")
-id = 28
+id = 27
 DisplayName = "Fisherman"
 Description = "Showdown: Swap leftmost foe with foe that has lowest HP."
 Rarity = ExtResource("4_c20ne")
