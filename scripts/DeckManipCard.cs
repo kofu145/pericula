@@ -15,6 +15,7 @@ public partial class DeckManipCard : Control
     [Export] CardDescription description;
     [Export] Color BoughtColor;
     [Export] TextureRect image;
+    [Export] Label cost;
     int _deckManipID;
     bool _disabled = false;
 
@@ -44,7 +45,7 @@ public partial class DeckManipCard : Control
 
         DeckManipData data = Lookup.GetDeckManipByID(_deckManipID);
         GetNode<Label>("CardBorder/CardName").Text = data.DisplayName.ToString();
-        GetNode<Label>("CardBorder/Cost").Text = ShopManager.Instance.GetManipPrice(id).ToString();
+        cost.Text = ShopManager.Instance.GetManipPrice(id).ToString();
         GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
     }
 

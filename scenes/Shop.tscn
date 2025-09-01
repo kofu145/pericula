@@ -37,22 +37,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fpbbi")
-shopChoices = NodePath("PanelContainer/ShopChoices")
-manipChoices = NodePath("PanelContainer2/DeckManipChoices")
+shopChoices = NodePath("VBoxContainer/PanelContainer/ShopChoices")
+manipChoices = NodePath("VBoxContainer/PanelContainer2/DeckManipChoices")
 shopCardScene = ExtResource("2_fpbbi")
 manipScene = ExtResource("3_fpbbi")
-rerollButton = NodePath("RerollButton")
+rerollButton = NodePath("VBoxContainer/HBoxContainer/RerollButton")
 
-[node name="ToBattleButton" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -361.0
-offset_top = 48.0
-offset_right = -61.0
-offset_bottom = 174.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 126)
+layout_mode = 2
+theme_override_constants/separation = 46
+alignment = 1
+
+[node name="RerollButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 126)
+layout_mode = 2
+size_flags_vertical = 8
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_eo1la")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/hover = ExtResource("5_toxd1")
+theme_override_styles/pressed = ExtResource("6_47hci")
+theme_override_styles/normal = ExtResource("7_hd80v")
+text = "Reroll (200)"
+
+[node name="ToBattleButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 126)
+layout_mode = 2
 size_flags_vertical = 8
 focus_mode = 0
 theme_override_fonts/font = ExtResource("4_eo1la")
@@ -62,23 +83,13 @@ theme_override_styles/pressed = ExtResource("6_47hci")
 theme_override_styles/normal = ExtResource("7_hd80v")
 text = "PROCEED >>"
 
-[node name="PanelContainer" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -100.0
-offset_right = 320.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PanelContainer" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(640, 200)
+layout_mode = 2
 texture = ExtResource("8_toxd1")
 stretch_mode = 5
 
-[node name="ShopChoices" type="HBoxContainer" parent="PanelContainer"]
+[node name="ShopChoices" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,45 +105,30 @@ grow_vertical = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="PanelContainer2" type="TextureRect" parent="."]
+[node name="PanelContainer2" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(384, 160)
+layout_mode = 2
+texture = ExtResource("9_abjrc")
+stretch_mode = 5
+
+[node name="DeckManipChoices" type="HBoxContainer" parent="VBoxContainer/PanelContainer2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -191.0
-offset_top = 136.0
-offset_right = 193.0
-offset_bottom = 296.0
+offset_left = -191.5
+offset_top = -66.0
+offset_right = 191.5
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_abjrc")
-
-[node name="DeckManipChoices" type="HBoxContainer" parent="PanelContainer2"]
-layout_mode = 2
-offset_right = 383.0
-offset_bottom = 132.0
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="RerollButton" type="Button" parent="."]
-layout_mode = 2
-offset_left = 611.0
-offset_top = 47.0
-offset_right = 911.0
-offset_bottom = 173.0
-grow_vertical = 0
-size_flags_vertical = 8
-focus_mode = 0
-theme_override_fonts/font = ExtResource("4_eo1la")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/hover = ExtResource("5_toxd1")
-theme_override_styles/pressed = ExtResource("6_47hci")
-theme_override_styles/normal = ExtResource("7_hd80v")
-text = "Reroll (200)"
-
 [node name="ShopTutorial" parent="." instance=ExtResource("4_cimqq")]
+visible = false
 tutorials = [ExtResource("6_ht580"), ExtResource("7_skkvx"), ExtResource("13_plhqw"), ExtResource("14_a6yfk")]
 tutorialKey = "ShopTutorial"
 
@@ -149,5 +145,5 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[connection signal="pressed" from="ToBattleButton" to="." method="EndShopPhase"]
-[connection signal="pressed" from="RerollButton" to="." method="Reroll"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RerollButton" to="." method="Reroll"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ToBattleButton" to="." method="EndShopPhase"]

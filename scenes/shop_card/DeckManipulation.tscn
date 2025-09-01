@@ -27,8 +27,7 @@ shader_parameter/color2 = Color(1, 0.616667, 0, 1)
 shader_parameter/x_target = 0.5
 shader_parameter/y_target = 0.5
 
-[node name="DeckManipulation" type="Control" node_paths=PackedStringArray("description", "image")]
-modulate = Color(0, 0, 0, 1)
+[node name="DeckManipulation" type="Control" node_paths=PackedStringArray("description", "image", "cost")]
 custom_minimum_size = Vector2(120, 160)
 layout_mode = 3
 anchors_preset = 0
@@ -38,6 +37,7 @@ script = ExtResource("1_81fa8")
 description = NodePath("CanvasLayer/CardDescription")
 BoughtColor = Color(0.14902, 0.14902, 0.14902, 1)
 image = NodePath("CardBorder/Image")
+cost = NodePath("Panel/Cost")
 
 [node name="CardBorder" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_fo8cm")
@@ -81,26 +81,6 @@ offset_bottom = 153.0
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("4_fo8cm")
 
-[node name="Cost" type="Label" parent="CardBorder"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -18.5
-offset_top = -118.0
-offset_right = 18.5
-offset_bottom = -100.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_3nibc")
-theme_override_font_sizes/font_size = 12
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
@@ -121,6 +101,37 @@ offset_right = 118.0
 offset_bottom = 157.0
 pivot_offset = Vector2(60, 80)
 texture = ExtResource("7_3d13v")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -57.0
+offset_bottom = -19.0
+grow_horizontal = 2
+
+[node name="Cost" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -12.0
+offset_right = 25.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.74902, 0.368627, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("5_3nibc")
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="OnInput"]
 [connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
