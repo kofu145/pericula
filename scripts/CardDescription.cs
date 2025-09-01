@@ -10,6 +10,8 @@ public partial class CardDescription : Control
     [Export] RichTextLabel CardName;
     [Export] RichTextLabel Description;
     [Export] RichTextLabel Class;
+    [Export] RichTextLabel Rarity;
+
     [Export] PackedScene keywordTooltip;
     [Export] Control anchor;
     [Export] Vector2 tooltipOffset = new Vector2(20, 20);
@@ -100,6 +102,8 @@ public partial class CardDescription : Control
 
 
         Description.Text = desc;
+        var rarityColor = data.Rarity.RarityColor.ToHtml(true);
+        Rarity.Text = $"[color={rarityColor}]{data.Rarity.DisplayName}[/color]";
 
         foreach (var keyword in data.Keywords)
         {
@@ -112,6 +116,7 @@ public partial class CardDescription : Control
 
     public void Initialize(DeckManipData data)
     {
+        Rarity.Visible = false;
         CardName.Text = data.DisplayName;
         Description.Text = data.Description;
         Class.Text = "Incantation";
