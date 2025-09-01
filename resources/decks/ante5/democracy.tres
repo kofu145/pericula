@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://blc24qhdg6gku"]
+[gd_resource type="Resource" script_class="Deck" load_steps=9 format=3 uid="uid://blc24qhdg6gku"]
 
 [ext_resource type="Resource" uid="uid://ofosglcf6k2c" path="res://resources/cardData/13_diamond_fencer.tres" id="1_fjser"]
 [ext_resource type="Resource" uid="uid://rg1flebu43rj" path="res://resources/cardData/16_town_mayor.tres" id="2_dqkbm"]
+[ext_resource type="Resource" uid="uid://5v3if1uo26pq" path="res://resources/cardData/29_bard.tres" id="2_ihu2d"]
 [ext_resource type="Resource" uid="uid://bklsukimxnjdi" path="res://resources/cardData/18_rogue.tres" id="3_ihu2d"]
-[ext_resource type="Resource" uid="uid://bycb8ymucbd7h" path="res://resources/cardData/9_crazy_cannoneer.tres" id="4_xy332"]
+[ext_resource type="Resource" uid="uid://btubqms6f8qc8" path="res://resources/cardData/35_joker.tres" id="4_xy332"]
 [ext_resource type="Resource" uid="uid://dnohqen14mpox" path="res://resources/cardData/27_fisherman.tres" id="5_tbhor"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="6_05qed"]
+[ext_resource type="Resource" uid="uid://bxtepq81tqx5y" path="res://resources/cardData/8_alchemist.tres" id="6_tbhor"]
 
 [resource]
 script = ExtResource("6_05qed")
-Cards = Array[Object]([ExtResource("1_fjser"), ExtResource("1_fjser"), ExtResource("1_fjser"), ExtResource("1_fjser"), ExtResource("2_dqkbm"), ExtResource("2_dqkbm"), ExtResource("2_dqkbm"), ExtResource("2_dqkbm"), ExtResource("3_ihu2d"), ExtResource("3_ihu2d"), ExtResource("3_ihu2d"), ExtResource("4_xy332"), ExtResource("4_xy332"), ExtResource("4_xy332"), ExtResource("5_tbhor"), ExtResource("5_tbhor")])
+Cards = Array[Object]([ExtResource("1_fjser"), ExtResource("1_fjser"), ExtResource("1_fjser"), ExtResource("2_ihu2d"), ExtResource("2_dqkbm"), ExtResource("2_dqkbm"), ExtResource("2_dqkbm"), ExtResource("2_dqkbm"), ExtResource("4_xy332"), ExtResource("3_ihu2d"), ExtResource("3_ihu2d"), ExtResource("6_tbhor"), ExtResource("6_tbhor"), ExtResource("2_ihu2d"), ExtResource("2_ihu2d"), ExtResource("5_tbhor")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"

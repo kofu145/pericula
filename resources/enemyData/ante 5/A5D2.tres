@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_w43vg")
-DisplayName = "I love Democracy"
+DisplayName = "Vote If Sus"
 deck = ExtResource("1_i6mel")
 Difficulty = 4
 IsBoss = false
