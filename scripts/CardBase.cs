@@ -35,10 +35,10 @@ public partial class CardBase : Control
     private int originIndex;
     private CardLane originLane;
 
-    public void Initialize(CardData data)
+    public void Initialize(CardData data, bool lockIntoPositionWhenInstantiated = false)
     {
         Data = data;
-        if (Visual != null) Visual.Initialize(data, FollowSpeed, ScaleSpeed);
+        if (Visual != null) Visual.Initialize(data, FollowSpeed, ScaleSpeed, lockIntoPositionWhenInstantiated);
         var cardTex = new Godot.Sprite2D();
         //cardTex.Texture = Data.Texture;
         //cardTex.Position = new Vector2(60, 82);

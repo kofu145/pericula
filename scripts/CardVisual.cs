@@ -55,7 +55,7 @@ public partial class CardVisual : Control
         cardBack.Scale = Scale;
     }
 
-    public void Initialize(CardData data = null, float FollowSpeed = 0, float ScaleSpeed = 0)
+    public void Initialize(CardData data = null, float FollowSpeed = 0, float ScaleSpeed = 0, bool lockIntoPositionWhenInstantiated = false)
     {
         if (data == null) return;
 
@@ -65,6 +65,8 @@ public partial class CardVisual : Control
 
         this.FollowSpeed = FollowSpeed;
         this.ScaleSpeed = ScaleSpeed;
+
+        if (lockIntoPositionWhenInstantiated) Position = cardBase.Position; 
 
         if (cardBase != null)
         {

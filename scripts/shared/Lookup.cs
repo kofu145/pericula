@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class Lookup : Node
 {
@@ -109,5 +110,14 @@ public partial class Lookup : Node
         }
 
         return cardList;
+    }
+
+    public static List<CardData> GetCardLibrary()
+    {
+        var orderedList = lookupList;
+
+        orderedList.OrderBy(c => c.id);
+
+        return orderedList.ToList();
     }
 }
