@@ -17,7 +17,7 @@ public partial class PopupText : Node
         ShowText(at, number.ToString());
     }
 
-    public async void ShowText(Vector2 at, string text)
+    public async void ShowText(Vector2 at, string text, float scale = 2f)
     {
         var popup = (Label)PopupTextScene.Instantiate<Label>().Duplicate();
         popup.GlobalPosition = at;
@@ -50,7 +50,7 @@ public partial class PopupText : Node
         tween.TweenProperty(
             popup,
             "scale",
-            new Vector2(2f, 2f),
+            new Vector2(scale, scale),
             0.25f
         ).SetEase(Tween.EaseType.Out);
         tween.TweenProperty(

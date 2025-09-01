@@ -144,6 +144,8 @@ public partial class CombatController : Node
         foreach (var eff in currCard.OnUse)
         {
             //GD.Print("called in onuse!");
+            if (playerLane.CardCount == 0 || enemyLane.CardCount == 0)
+                break;
 
             var effectParam = new EffectParam();
             effectParam.Initialize(battleState, currCard);
@@ -199,6 +201,8 @@ public partial class CombatController : Node
     {
         List<CardData> toRemove = [];
         var targetLane = player ? playerLane : enemyLane;
+        if (targetLane.CardCount == 0)
+            return;
         for (int i = 0; i < targetLane.CardCount; i++)
         {
             //GD.Print($"Turn is player: {player} idx: {i} HP is {targetLane.GetCardAtIndex(i).HP}");
