@@ -15,6 +15,10 @@ public partial class PreStagePanel : TextureRect
 
         stageName.Text = $"[wave]{data.DisplayName}[/wave]";
         this.stageNumber.Text = $"Round {stageNumber + 1}";
+        if (StageManager.Instance.IsFinalEncounterOfRun)
+        {
+            this.stageNumber.Text = "Boss";
+        }
 
         if (stageNumber > StageManager.Instance.CurrentStageNumber)
         {

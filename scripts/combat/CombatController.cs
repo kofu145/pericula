@@ -150,7 +150,7 @@ public partial class CombatController : Node
         var cardCount = Math.Min(n, targetLane.CardCount);
         int score = 0;
 
-        int[] traits = new int[7];
+        int[] traits = new int[20];
         for (int i = 0; i < cardCount; i++)
         {
             var card = targetLane.GetCardAtIndex(i);

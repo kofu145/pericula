@@ -26,6 +26,7 @@ DisplayName = "Fisherman"
 Description = "Showdown: Swap leftmost foe with foe that has lowest HP."
 Rarity = ExtResource("4_c20ne")
 Trait = 2
+AIPriority = 2
 BaseAttack = 3
 BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_sb5wi")])
