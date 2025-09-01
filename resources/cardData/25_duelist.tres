@@ -18,6 +18,7 @@ DisplayName = "Duelist"
 Description = ""
 Rarity = ExtResource("2_fsd58")
 Trait = 3
+AIPriority = 1
 BaseAttack = 18
 BaseHP = 4
 OnUse = Array[Object]([SubResource("Resource_bayy5")])

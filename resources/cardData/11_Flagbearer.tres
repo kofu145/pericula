@@ -27,6 +27,7 @@ DisplayName = "Flagbearer"
 Description = "Advantage: give random Ally +2/+0"
 Rarity = ExtResource("4_vtvkq")
 Trait = 0
+AIPriority = 5
 BaseAttack = 7
 BaseHP = 7
 OnUse = Array[Object]([SubResource("Resource_j24mr")])

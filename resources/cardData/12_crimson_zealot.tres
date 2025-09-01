@@ -26,6 +26,7 @@ DisplayName = "Crimson Zealot"
 Description = "Allies gain +2/+0 whenever they take damage"
 Rarity = ExtResource("3_ev0mo")
 Trait = 1
+AIPriority = 5
 BaseAttack = 1
 BaseHP = 10
 OnUse = Array[Object]([SubResource("Resource_eonq0")])

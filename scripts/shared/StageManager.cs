@@ -117,7 +117,7 @@ public partial class StageManager : Node
         // initialize each cards
         foreach (var enemy in result)
         {
-            foreach (var card in enemy.deck.Cards)
+            foreach (CardData card in enemy.deck.Cards)
             {
                 card.Initialize();
             }
@@ -127,7 +127,6 @@ public partial class StageManager : Node
     }
     public EnemyData GetEnemyAtIndex(int i)
     {
-        GD.Print($"Accessing at {i}");
         return currentAnteEnemies[i];
     }
     public int GetEnemyStartingChips() => config.EnemyChipsPerAnte[CurrentAnte] + (CurrentStageNumber == EnemiesPerAnte - 1 ? config.bossBonusPerAnte[CurrentAnte] : 0);

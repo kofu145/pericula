@@ -14,8 +14,7 @@ public partial class ShopManager : Node
 
     public override void _Ready()
     {
-        if (Instance == null) Instance = this;
-        else if (Instance != this) { QueueFree(); return; }
+        Instance = this;
     }
 
     public void StartNewRun()

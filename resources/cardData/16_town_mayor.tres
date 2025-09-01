@@ -30,6 +30,7 @@ DisplayName = "Town Mayor"
 Description = "Showdown: If there are 2+ other friendly Citizens, gain +5/+5 and Intercept."
 Rarity = ExtResource("4_kogii")
 Trait = 2
+AIPriority = 3
 BaseAttack = 4
 BaseHP = 10
 OnUse = Array[Object]([SubResource("Resource_usx0b")])

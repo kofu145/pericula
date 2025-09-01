@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://bw2gawneo3xxw"
 [resource]
 script = ExtResource("2_8s8rn")
 id = 17
-DisplayName = "Construct Construct"
+DisplayName = "Con. Construct"
 Description = "Gains the Base Attack and Base HP of all adjacent mech units."
 Rarity = ExtResource("4_gkmhi")
 Trait = 4

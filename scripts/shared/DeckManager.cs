@@ -126,6 +126,12 @@ public partial class DeckManager : Node
         var targetList = isPlayer ? Hand : EnemyHand;
         var targetDeck = isPlayer ? playerBattleDeck : enemyBattleDeck;
         var targetDisc = isPlayer ? playerDisc : enemyDisc;
+        if (n > targetDeck.Count)
+        {
+            RecycleDiscardIntoDraw(isPlayer);
+        }
+        if (n > targetDeck.Count)
+            n = targetDeck.Count;
 
         for (int i = 0; i < n; i++)
         {
@@ -207,7 +213,7 @@ public partial class DeckManager : Node
         newCard.Initialize();
         PlayerDeck.Cards.Add(newCard);
     }
-    
+
     public void ConjureRandomCard()
     {
         int roll = RndGen.Next(100);

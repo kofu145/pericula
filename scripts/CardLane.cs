@@ -269,7 +269,6 @@ public partial class CardLane : Node
     private void ClearLane()
     {
         DeckManager.Instance.ClearHand(side == LaneSide.Player);
-        GD.Print("free");
         foreach (var c in _cards) c.QueueFree(); // don't want to free the children carddata, we use them elsewhere in deck
 
         _cards.Clear();

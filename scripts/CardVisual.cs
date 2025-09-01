@@ -137,10 +137,12 @@ public partial class CardVisual : Control
             shaderMat.SetShaderParameter("green", color.G);
             Material = shaderMat;
             cardBorder.Material = shaderMat;
+            cardBase.CardImage.Material = shaderMat;
         }
         else
         {
             Material = null;
+            cardBase.CardImage.Material = null;
         }
     }
 

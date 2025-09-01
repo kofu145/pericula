@@ -25,6 +25,7 @@ DisplayName = "Crazy Cannoneer"
 Description = "When damaged, deal 3 damage to a random Foe."
 Rarity = ExtResource("3_8d0ty")
 Trait = 2
+AIPriority = 1
 BaseAttack = 1
 BaseHP = 7
 OnUse = Array[Object]([SubResource("Resource_tpkkg")])

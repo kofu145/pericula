@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=8 format=3 uid="uid://dkgewqtkah5s2"]
+[gd_resource type="Resource" script_class="Deck" load_steps=9 format=3 uid="uid://dkgewqtkah5s2"]
 
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_5xtci"]
 [ext_resource type="Resource" uid="uid://cyxdvajquq4n5" path="res://resources/cardData/5_wisp.tres" id="1_42ubu"]
 [ext_resource type="Resource" uid="uid://c21op0lph4uj2" path="res://resources/cardData/7_living_spellbook.tres" id="2_2kdnt"]
+[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="3_2kdnt"]
 [ext_resource type="Resource" uid="uid://bxtepq81tqx5y" path="res://resources/cardData/8_alchemist.tres" id="3_ot1v8"]
 [ext_resource type="Resource" uid="uid://cb8dkayygv0di" path="res://resources/cardData/12_crimson_zealot.tres" id="4_6t8b4"]
 [ext_resource type="Resource" uid="uid://fasmj3v0ixuo" path="res://resources/cardData/1_diamond_pawn.tres" id="5_b2mp4"]
@@ -10,5 +11,5 @@
 
 [resource]
 script = ExtResource("1_5xtci")
-Cards = Array[Object]([ExtResource("1_42ubu"), ExtResource("1_42ubu"), ExtResource("1_42ubu"), ExtResource("1_42ubu"), ExtResource("2_2kdnt"), ExtResource("2_2kdnt"), ExtResource("2_2kdnt"), ExtResource("3_ot1v8"), ExtResource("3_ot1v8"), ExtResource("3_ot1v8"), ExtResource("4_6t8b4"), ExtResource("4_6t8b4"), ExtResource("4_6t8b4"), ExtResource("5_b2mp4"), ExtResource("5_b2mp4"), ExtResource("5_b2mp4"), ExtResource("6_lefp4"), ExtResource("6_lefp4"), ExtResource("6_lefp4"), ExtResource("6_lefp4")])
+Cards = Array[Object]([ExtResource("1_42ubu"), ExtResource("1_42ubu"), ExtResource("1_42ubu"), ExtResource("1_42ubu"), ExtResource("2_2kdnt"), ExtResource("2_2kdnt"), ExtResource("3_2kdnt"), ExtResource("3_ot1v8"), ExtResource("3_ot1v8"), ExtResource("4_6t8b4"), ExtResource("4_6t8b4"), ExtResource("5_b2mp4"), ExtResource("5_b2mp4"), ExtResource("5_b2mp4"), ExtResource("6_lefp4"), ExtResource("6_lefp4"), ExtResource("6_lefp4"), ExtResource("6_lefp4")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"

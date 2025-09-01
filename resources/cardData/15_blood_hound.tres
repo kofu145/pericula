@@ -27,6 +27,7 @@ DisplayName = "Blood Hound"
 Description = "Whenever an Ally dies, gain +2/+0"
 Rarity = ExtResource("2_erenc")
 Trait = 7
+AIPriority = 5
 BaseAttack = 0
 BaseHP = 12
 OnUse = Array[Object]([SubResource("Resource_q5end")])

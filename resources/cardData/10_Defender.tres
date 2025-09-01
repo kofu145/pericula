@@ -25,6 +25,7 @@ DisplayName = "Defender"
 Description = "Intercept"
 Rarity = ExtResource("4_47uaf")
 Trait = 0
+AIPriority = 3
 BaseAttack = 1
 BaseHP = 17
 OnUse = Array[Object]([SubResource("Resource_uk07d")])

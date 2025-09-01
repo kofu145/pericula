@@ -21,6 +21,8 @@ public partial class BetController : Node
 
     [Export] private float opponentDelayAfterPlayerBet = 0.5f;
 
+    [Export] public CombatController combatManager;
+
     private int minimumBuyIn;
 
     // public events
@@ -51,9 +53,9 @@ public partial class BetController : Node
 
     private ChipManager playerChips;
 
-
-    // temp implementation
-    private RandomNumberGenerator rng;
+    private int playerHandScore = 0;
+    private int enemyHandScore = 0;
+    private int CallChance = 50;
 
     // ====================================
     private int PlayerBalance => playerChips.Balance;                               // player's current chip balance
@@ -86,9 +88,6 @@ public partial class BetController : Node
     }
     public void BeginPhase(int minBuyIn, EnemyChips enemyChips, int startingPot)
     {
-        // temp implementation of rng
-        rng = new();
-        rng.Randomize();
 
         minimumBuyIn = minBuyIn;
         this.enemyChips = enemyChips;
@@ -112,6 +111,7 @@ public partial class BetController : Node
         foldedByPlayer = false;
 
         choosingRaiseAmount = false;
+        CalcScoreAndSetOdds();
 
         HideAll();
         Show(checkButton);
@@ -284,7 +284,7 @@ public partial class BetController : Node
         {
             // player went all in, enemy must Call or Fold
             // TODO: Replace with AI logic and not random logic
-            var choice = rng.RandiRange(0, 1); // 0 = call, 1 = fold
+            var choice = GetWeightedAction(); // 0 = call, 1 = fold
 
             if (choice == 0)   // call
             {
@@ -335,11 +335,11 @@ public partial class BetController : Node
             // TODO: replace implementation when player has <= 0 chips
             // if player cannot call or raise (if PlayerBalance <= 0)
             // then the player will check, no other options
-            var choice = rng.RandiRange(0, 1); // 0 = Check, 1 = Raise
+            var choice = GetWeightedAction(); // 1 = Check, 0 = Raise
 
             if (!CanBet) choice = 0;    // force a check, because player cannot afford any bet
 
-            if (choice == 0)    // check
+            if (choice == 1)    // check
             {
                 GD.Print("Enemy Checked");
                 lastEnemyAction = BetAction.Check;
@@ -355,7 +355,7 @@ public partial class BetController : Node
                 turn = Turn.Player;
                 UpdateButtons();
             }
-            else    // check and raise
+            else    // raise 
             {
                 int amount = EnemyPickRaiseAmount();
                 ApplyEnemyRaise(amount);
@@ -363,17 +363,22 @@ public partial class BetController : Node
             UpdatePotLabel();
             return;
         }
-
-
-        // TODO: Replace with AI logic and not random logic
-        // Bet is open -> enemy randomly Call / Raise / Fold
-
         // TODO: replace implementation when player has <= 0 chips
         // if player cannot call or raise (if PlayerBalance <= 0)
 
         int r = 0;
-        if (CanBet) r = rng.RandiRange(0, 2); // 0=Call, 1=Fold, 2=Raise
-        else if (!CanBet) r = rng.RandiRange(0, 1); // 0=Call, 1=Fold
+        if (CanBet)
+        {
+            // 0=Call, 1=Fold, 2=Raise
+            int action = GetWeightedAction();
+            if (action == 0)
+            {
+                action = PercentChance(50) ? 0 : 2;
+            }
+            r = action;
+
+        }
+        else if (!CanBet) r = GetWeightedAction(); // 0=Call, 1=Fold
 
         if (r == 0)
         {
@@ -424,7 +429,7 @@ public partial class BetController : Node
     private int EnemyPickRaiseAmount()
     {
         int[] mults = { 1, 2, 5 };
-        int m = mults[rng.RandiRange(0, mults.Length - 1)];
+        int m = mults[DeckManager.Instance.RndGen.Next(mults.Length)];
         // cap the value to the lower of the enemyBalance or playerBalance and clamp to 0.
         int betCap = Math.Max(0, Math.Min(EnemyBalance, PlayerBalance));
         return Math.Min(minimumBuyIn * m, betCap);
@@ -537,6 +542,39 @@ public partial class BetController : Node
             case Turn.None:
                 break;
         }
+    }
+
+    // chance to call 
+    // 0 = call, 1 = fold - flipped false 
+    // 0 = check, 1= raise - flipped true 
+    private int GetWeightedAction()
+    {
+        var toCallIfGoodHand = 95;
+        var toCallifBadHand = 25;
+        int chance = enemyHandScore > playerHandScore ? toCallIfGoodHand : toCallifBadHand;
+        // If enemy hand stronger, 95% chance to return call
+        // if enemy hand weaker/equal, 40% chance to call, 60% chance to fold 
+        bool hitChance = PercentChance(chance);
+
+        //   - When facing all-in or open bet:   0 = Call, 1 = Fold
+        //   - When no bet is open:              0 = Raise, 1 = Check
+        return hitChance ? 0 : 1;
+    }
+
+    private void CalcScoreAndSetOdds()
+    {
+        // we evaluate the full hand of ourselves for score, but only 3 of theirs
+        // to make up the difference we add an average amount to estimate what it might be
+        int playerBonus = 8;
+        playerHandScore = combatManager.CalculateHandScore(true) + playerBonus;
+        enemyHandScore = combatManager.CalculateHandScore(false, 5);
+        GD.Print($"is enemy hand better? {enemyHandScore > playerHandScore}");
+
+    }
+
+    private bool PercentChance(int percentage)
+    {
+        return DeckManager.Instance.RndGen.Next(100) < percentage;
     }
 
     private void HideAll()

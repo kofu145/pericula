@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RunConfig" load_steps=3 format=3 uid="uid://ck2dnlghav1xg"]
 
-[ext_resource type="Resource" uid="uid://cw7jun8rlygcr" path="res://resources/decks/StarterDeck.tres" id="1_ngmds"]
+[ext_resource type="Resource" uid="uid://dpeu46y1cn0b" path="res://resources/decks/test.tres" id="1_ngmds"]
 [ext_resource type="Script" uid="uid://ca6ooknqy7pvf" path="res://scripts/resources/RunConfig.cs" id="1_v7nrs"]
 
 [resource]

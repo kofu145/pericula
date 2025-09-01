@@ -147,7 +147,7 @@ text = "100
 "
 horizontal_alignment = 1
 
-[node name="BetController" type="Control" parent="." node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "allInButton", "raise1xButton", "raise2xButton", "raise5xButton")]
+[node name="BetController" type="Control" parent="." node_paths=PackedStringArray("raiseButton", "callButton", "checkButton", "foldButton", "allInButton", "raise1xButton", "raise2xButton", "raise5xButton", "combatManager")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -169,6 +169,7 @@ allInButton = NodePath("VBoxContainer/AllIn")
 raise1xButton = NodePath("VBoxContainer/1x")
 raise2xButton = NodePath("VBoxContainer/2x")
 raise5xButton = NodePath("VBoxContainer/5x")
+combatManager = NodePath("../CombatController")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BetController"]
 layout_mode = 1
