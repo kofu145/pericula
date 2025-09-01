@@ -70,5 +70,23 @@ public partial class CardData : Resource
 
         ResetForShowdown();
     }
-
+    public int GetTraitOrder()
+    {
+        return Trait switch
+        {
+            Trait.Pawn => 0,
+            Trait.Knight => 1,
+            Trait.Royalty => 2,
+            Trait.Citizen => 3,
+            Trait.Undead => 4,
+            Trait.Arcane => 5,
+            Trait.Mechanical => 6,
+            Trait.WildCard => 7,
+            _ => int.MaxValue
+        };
+    }
+        public (int rarity, int trait, int id) GetSortKey()
+    {
+        return ((int)Rarity.RarityType, GetTraitOrder(), id);
+    }
 }

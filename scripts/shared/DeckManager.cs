@@ -237,11 +237,7 @@ public partial class DeckManager : Node
         // Build a UI-only sorted copy (does not change actual draw order)
         var ordered = playerBattleDeck
             .Where(c => c != null)
-            .OrderBy(c => c.Rarity != null ? RarityRank[c.Rarity.RarityType] : int.MaxValue)
-            .ThenBy(c => c.Trait) // enum comparison is fine directly
-            .ThenBy(c => c.id)
-            .ThenBy(c => c.DisplayName ?? string.Empty, StringComparer.Ordinal)
-            .ToList();
+            .OrderBy(c => c.GetSortKey());
 
         var result = new Godot.Collections.Array<CardData>();
         foreach (var c in ordered)
