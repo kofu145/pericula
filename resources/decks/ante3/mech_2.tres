@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://062p6t1200ll"]
 
 [ext_resource type="Resource" uid="uid://4kdoym5vf8gu" path="res://resources/cardData/25_duelist.tres" id="1_hfkjt"]
-[ext_resource type="Resource" uid="uid://cjh01yohv6gtc" path="res://resources/cardData/28_fisherman.tres" id="2_ughq8"]
+[ext_resource type="Resource" uid="uid://cjh01yohv6gtc" path="res://resources/cardData/27_fisherman.tres" id="2_ughq8"]
 [ext_resource type="Resource" uid="uid://bfehhn0gkla0e" path="res://resources/cardData/24_watchful_eye.tres" id="3_vv7wo"]
 [ext_resource type="Resource" uid="uid://ofosglcf6k2c" path="res://resources/cardData/13_diamond_fencer.tres" id="4_u12kk"]
 [ext_resource type="Resource" uid="uid://cahubma6ql5v1" path="res://resources/cardData/23_King_of_diamonds.tres" id="5_kao11"]

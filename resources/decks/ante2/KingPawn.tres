@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="2_l58f4"]
 [ext_resource type="Resource" uid="uid://bnwbl7yvql0kc" path="res://resources/cardData/11_Flagbearer.tres" id="2_qagla"]
-[ext_resource type="Resource" path="res://resources/cardData/23_King_of_diamonds.tres" id="3_ra0b1"]
+[ext_resource type="Resource" uid="uid://cahubma6ql5v1" path="res://resources/cardData/23_King_of_diamonds.tres" id="3_ra0b1"]
 [ext_resource type="Resource" uid="uid://rg1flebu43rj" path="res://resources/cardData/16_town_mayor.tres" id="4_lopsk"]
 [ext_resource type="Resource" uid="uid://d3ilv4qyfm13l" path="res://resources/cardData/14_young_prince.tres" id="5_l58f4"]
 [ext_resource type="Resource" uid="uid://ofosglcf6k2c" path="res://resources/cardData/13_diamond_fencer.tres" id="6_kc6r6"]

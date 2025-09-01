@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Deck" load_steps=8 format=3 uid="uid://dkgewqtkah5s2"]
 
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_5xtci"]
-[ext_resource type="Resource" uid="uid://bxswubflm34u4" path="res://resources/cardData/5_wisp.tres" id="1_42ubu"]
+[ext_resource type="Resource" uid="uid://cyxdvajquq4n5" path="res://resources/cardData/5_wisp.tres" id="1_42ubu"]
 [ext_resource type="Resource" uid="uid://c21op0lph4uj2" path="res://resources/cardData/7_living_spellbook.tres" id="2_2kdnt"]
 [ext_resource type="Resource" uid="uid://bxtepq81tqx5y" path="res://resources/cardData/8_alchemist.tres" id="3_ot1v8"]
 [ext_resource type="Resource" uid="uid://cb8dkayygv0di" path="res://resources/cardData/12_crimson_zealot.tres" id="4_6t8b4"]

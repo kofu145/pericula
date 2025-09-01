@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://cb5ljb08t7swc" path="res://resources/cardData/3_club_pawn.tres" id="3_sckkm"]
 [ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="4_1c7ye"]
 [ext_resource type="Resource" uid="uid://bycb8ymucbd7h" path="res://resources/cardData/9_crazy_cannoneer.tres" id="5_1c7ye"]
-[ext_resource type="Resource" uid="uid://bxswubflm34u4" path="res://resources/cardData/5_wisp.tres" id="6_r7wi6"]
+[ext_resource type="Resource" uid="uid://cyxdvajquq4n5" path="res://resources/cardData/5_wisp.tres" id="6_r7wi6"]
 [ext_resource type="Resource" uid="uid://bnwbl7yvql0kc" path="res://resources/cardData/11_Flagbearer.tres" id="7_1pfli"]
 
 [resource]

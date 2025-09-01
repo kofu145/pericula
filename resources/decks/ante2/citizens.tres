@@ -5,12 +5,12 @@
 [ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="2_pkbgu"]
 [ext_resource type="Resource" uid="uid://ofosglcf6k2c" path="res://resources/cardData/13_diamond_fencer.tres" id="3_wftvl"]
 [ext_resource type="Resource" uid="uid://bycb8ymucbd7h" path="res://resources/cardData/9_crazy_cannoneer.tres" id="4_age1b"]
-[ext_resource type="Resource" path="res://resources/cardData/29_bard.tres" id="6_rmgwg"]
-[ext_resource type="Resource" path="res://resources/cardData/28_fisherman.tres" id="7_dbcbo"]
+[ext_resource type="Resource" uid="uid://5v3if1uo26pq" path="res://resources/cardData/29_bard.tres" id="6_rmgwg"]
+[ext_resource type="Resource" uid="uid://cjh01yohv6gtc" path="res://resources/cardData/27_fisherman.tres" id="7_dbcbo"]
 [ext_resource type="Resource" uid="uid://bklsukimxnjdi" path="res://resources/cardData/18_rogue.tres" id="8_mxyxu"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="9_kirtm"]
 
 [resource]
 script = ExtResource("9_kirtm")
-Cards = Array[Object]([ExtResource("1_pkbgu"), ExtResource("1_pkbgu"), ExtResource("2_pkbgu"), ExtResource("3_wftvl"), ExtResource("3_wftvl"), ExtResource("3_wftvl"), ExtResource("4_age1b"), ExtResource("2_pkbgu"), ExtResource("1_qarhw"), ExtResource("6_rmgwg"), ExtResource("7_dbcbo"), ExtResource("8_mxyxu"), ExtResource("1_qarhw"), ExtResource("1_qarhw")])
+Cards = Array[Object]([ExtResource("1_pkbgu"), ExtResource("1_pkbgu"), ExtResource("2_pkbgu"), ExtResource("3_wftvl"), ExtResource("3_wftvl"), ExtResource("4_age1b"), ExtResource("4_age1b"), ExtResource("6_rmgwg"), ExtResource("6_rmgwg"), ExtResource("6_rmgwg"), ExtResource("7_dbcbo"), ExtResource("8_mxyxu"), ExtResource("1_qarhw"), ExtResource("1_qarhw")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"

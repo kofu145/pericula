@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://bt7u4i3qchld" path="res://resources/cardData/2_heart_pawn.tres" id="1_e6cbt"]
 [ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="2_nxefu"]
-[ext_resource type="Resource" uid="uid://snsmpslkxn0f" path="res://resources/cardData/6_robo-dog.tres" id="3_uo7yw"]
+[ext_resource type="Resource" uid="uid://mmusc2kxfo1b" path="res://resources/cardData/6_robo-dog.tres" id="3_uo7yw"]
 [ext_resource type="Resource" uid="uid://c16xmx086gm2h" path="res://resources/cardData/17_constructive_construct.tres" id="4_8vg1i"]
 [ext_resource type="Resource" uid="uid://do5p0egnldn0k" path="res://resources/cardData/20_ruin_guard.tres" id="5_1aawl"]
 [ext_resource type="Resource" uid="uid://btwwat5io72d2" path="res://resources/cardData/19_battle_herald.tres" id="6_im5tw"]
