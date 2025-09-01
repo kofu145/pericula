@@ -34,13 +34,7 @@ public partial class CombatController : Node
             //GD.Print(drawn.Count);
             if (!isPlayer)
             {
-                var copyArr = new List<CardData>();
-                // sort enemy hand by priority 
-                for (int ci = 0; ci < drawn.Count; ci++) copyArr.Add(drawn[ci]);
-
-                copyArr.OrderBy(e => e.AIPriority);
-
-                for (int ci = 0; ci < drawn.Count; ci++) drawn[ci] = copyArr[ci];
+                DeckManager.Instance.SortByPriority();
             }
 
             for (int j = 0; j < drawn.Count; j++)

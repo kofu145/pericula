@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://c7r2bnaw3tctu"]
+
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_0jccm"]
+[ext_resource type="Resource" uid="uid://dnohqen14mpox" path="res://resources/cardData/27_fisherman.tres" id="1_ohnyh"]
+[ext_resource type="Resource" uid="uid://rg1flebu43rj" path="res://resources/cardData/16_town_mayor.tres" id="2_flm3v"]
+[ext_resource type="Resource" uid="uid://ofosglcf6k2c" path="res://resources/cardData/13_diamond_fencer.tres" id="3_lf7uo"]
+[ext_resource type="Resource" uid="uid://4kdoym5vf8gu" path="res://resources/cardData/25_duelist.tres" id="4_wlj5f"]
+[ext_resource type="Resource" uid="uid://5v3if1uo26pq" path="res://resources/cardData/29_bard.tres" id="5_fmtuw"]
+
+[resource]
+script = ExtResource("1_0jccm")
+Cards = Array[Object]([ExtResource("1_ohnyh"), ExtResource("1_ohnyh"), ExtResource("1_ohnyh"), ExtResource("1_ohnyh"), ExtResource("1_ohnyh"), ExtResource("2_flm3v"), ExtResource("3_lf7uo"), ExtResource("3_lf7uo"), ExtResource("4_wlj5f"), ExtResource("4_wlj5f"), ExtResource("5_fmtuw"), ExtResource("5_fmtuw"), ExtResource("4_wlj5f"), ExtResource("4_wlj5f")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"

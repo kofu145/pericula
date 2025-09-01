@@ -259,6 +259,17 @@ public partial class DeckManager : Node
         initialized = false;
     }
 
+    public void SortByPriority()
+    {
+        var copyArr = new List<CardData>();
+        // sort enemy hand by priority 
+        for (int ci = 0; ci < EnemyHand.Count; ci++) copyArr.Add(EnemyHand[ci]);
+
+        var sorted = copyArr.OrderBy(e => e.AIPriority).ToList();
+
+        for (int ci = 0; ci < EnemyHand.Count; ci++) EnemyHand[ci] = sorted[ci];
+    }
+
     public void PrintData()
     {
         GD.Print($"Player Deck: {PlayerDeck} Player Disc: {playerDisc} Player Hand {Hand},\\n EnemyDeck{enemyBattleDeck}, enemyDisc: {enemyDisc}, EnemyHand: {EnemyHand}");

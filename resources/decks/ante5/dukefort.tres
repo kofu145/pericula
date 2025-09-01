@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=7 format=3 uid="uid://cuxnn03kg47cn"]
+
+[ext_resource type="Resource" uid="uid://mmusc2kxfo1b" path="res://resources/cardData/6_robo-dog.tres" id="1_ye0a6"]
+[ext_resource type="Resource" uid="uid://ccn0npgcjdirg" path="res://resources/cardData/21_clanker_army.tres" id="2_b4gl1"]
+[ext_resource type="Resource" uid="uid://cilb14jnauoqx" path="res://resources/cardData/22_railgun.tres" id="3_863cw"]
+[ext_resource type="Resource" uid="uid://bfehhn0gkla0e" path="res://resources/cardData/24_watchful_eye.tres" id="4_qs7pj"]
+[ext_resource type="Resource" uid="uid://do5p0egnldn0k" path="res://resources/cardData/20_ruin_guard.tres" id="5_k78l0"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="6_7qv04"]
+
+[resource]
+script = ExtResource("6_7qv04")
+Cards = Array[Object]([ExtResource("1_ye0a6"), ExtResource("1_ye0a6"), ExtResource("1_ye0a6"), ExtResource("1_ye0a6"), ExtResource("2_b4gl1"), ExtResource("2_b4gl1"), ExtResource("2_b4gl1"), ExtResource("2_b4gl1"), ExtResource("3_863cw"), ExtResource("3_863cw"), ExtResource("3_863cw"), ExtResource("3_863cw"), ExtResource("4_qs7pj"), ExtResource("4_qs7pj"), ExtResource("4_qs7pj"), ExtResource("5_k78l0"), ExtResource("5_k78l0"), ExtResource("5_k78l0")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"

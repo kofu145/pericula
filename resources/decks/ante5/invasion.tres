@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=2 format=3 uid="uid://k0t558lb42hj"]
+
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_133vb"]
+
+[resource]
+script = ExtResource("1_133vb")
+Cards = null
+metadata/_custom_type_script = "uid://dnh88quxuv4le"

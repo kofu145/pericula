@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=81 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -29,17 +29,25 @@
 [ext_resource type="Resource" uid="uid://busopry1py06d" path="res://resources/enemyData/ante 2/A2D3.tres" id="22_uvxvf"]
 [ext_resource type="Resource" uid="uid://be2gy23cbidlv" path="res://resources/rarities/legendary.tres" id="23_6000c"]
 [ext_resource type="Resource" uid="uid://ce7c42csm2yir" path="res://resources/enemyData/ante 2/BA2.tres" id="23_aotpx"]
+[ext_resource type="Resource" uid="uid://by1u2gs8p40d8" path="res://resources/enemyData/ante 4/A4D1.tres" id="24_0srjh"]
 [ext_resource type="Resource" uid="uid://dsee0m6lbkdqc" path="res://resources/enemyData/ante 3/A3D1.tres" id="24_rclx5"]
+[ext_resource type="Resource" uid="uid://pwqo2y470pkw" path="res://resources/enemyData/ante 4/A4D2.tres" id="25_g1nbn"]
 [ext_resource type="Resource" uid="uid://fasmj3v0ixuo" path="res://resources/cardData/1_diamond_pawn.tres" id="25_twb20"]
 [ext_resource type="Resource" uid="uid://ds720mfm8jbdc" path="res://resources/enemyData/ante 3/A3D2.tres" id="25_whe0b"]
 [ext_resource type="Resource" uid="uid://d1oaanfxh0r2" path="res://resources/enemyData/ante 3/A3D3.tres" id="26_03l8d"]
 [ext_resource type="Resource" uid="uid://bt7u4i3qchld" path="res://resources/cardData/2_heart_pawn.tres" id="26_6juf7"]
+[ext_resource type="Resource" uid="uid://xerf622qclft" path="res://resources/enemyData/ante 4/A4D3.tres" id="26_hwp20"]
+[ext_resource type="Resource" uid="uid://b8egti404nvd3" path="res://resources/enemyData/ante 4/BA4.tres" id="27_086pc"]
 [ext_resource type="Resource" uid="uid://rexnjrot8cpu" path="res://resources/enemyData/ante 3/BA3.tres" id="27_w5rnj"]
 [ext_resource type="Resource" uid="uid://cb5ljb08t7swc" path="res://resources/cardData/3_club_pawn.tres" id="27_x1vfv"]
 [ext_resource type="AudioStream" uid="uid://dt18bcbyb8hgc" path="res://assets/audio/sygil_suda.ogg" id="28_bcam4"]
+[ext_resource type="Resource" uid="uid://co1c8qtw7tpg7" path="res://resources/enemyData/ante 5/A5D1.tres" id="28_q2slt"]
 [ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="28_uu40f"]
+[ext_resource type="Resource" uid="uid://dtrn2srtbq3kn" path="res://resources/enemyData/ante 5/A5D2.tres" id="29_4juhj"]
 [ext_resource type="Resource" uid="uid://cyxdvajquq4n5" path="res://resources/cardData/5_wisp.tres" id="29_5w8ab"]
 [ext_resource type="Resource" uid="uid://mmusc2kxfo1b" path="res://resources/cardData/6_robo-dog.tres" id="30_h1eqs"]
+[ext_resource type="Resource" uid="uid://b255j1uhecmw4" path="res://resources/enemyData/ante 5/A5D3.tres" id="30_yv07b"]
+[ext_resource type="Resource" uid="uid://kqh0mf6ki2oj" path="res://resources/enemyData/ante 5/BA5.tres" id="31_22i45"]
 [ext_resource type="Resource" uid="uid://c21op0lph4uj2" path="res://resources/cardData/7_living_spellbook.tres" id="31_njser"]
 [ext_resource type="Resource" uid="uid://bxtepq81tqx5y" path="res://resources/cardData/8_alchemist.tres" id="32_fdv0k"]
 [ext_resource type="Resource" uid="uid://bycb8ymucbd7h" path="res://resources/cardData/9_crazy_cannoneer.tres" id="33_67doc"]
@@ -115,7 +123,7 @@ color = Color(0, 0, 0, 1)
 [node name="StageManager" type="Node" parent="."]
 script = ExtResource("10_s02d4")
 config = ExtResource("14_ycd5x")
-enemiesData = Array[Object]([ExtResource("16_ag4le"), ExtResource("17_wttq5"), ExtResource("18_cavuf"), ExtResource("19_1vged"), ExtResource("20_nbq1i"), ExtResource("21_of0ag"), ExtResource("22_uvxvf"), ExtResource("23_aotpx"), ExtResource("24_rclx5"), ExtResource("25_whe0b"), ExtResource("26_03l8d"), ExtResource("27_w5rnj")])
+enemiesData = Array[Object]([ExtResource("16_ag4le"), ExtResource("17_wttq5"), ExtResource("18_cavuf"), ExtResource("19_1vged"), ExtResource("20_nbq1i"), ExtResource("21_of0ag"), ExtResource("22_uvxvf"), ExtResource("23_aotpx"), ExtResource("24_rclx5"), ExtResource("25_whe0b"), ExtResource("26_03l8d"), ExtResource("27_w5rnj"), ExtResource("24_0srjh"), ExtResource("25_g1nbn"), ExtResource("26_hwp20"), ExtResource("27_086pc"), ExtResource("28_q2slt"), ExtResource("29_4juhj"), ExtResource("30_yv07b"), ExtResource("31_22i45")])
 
 [node name="CardLookup" type="Node" parent="."]
 script = ExtResource("14_2svbd")

@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_g15n7")
-DisplayName = "Democracy"
+DisplayName = "Vote if sus"
 deck = ExtResource("1_h33b7")
 Difficulty = 1
-IsBoss = false
+IsBoss = true
 metadata/_custom_type_script = "uid://bseo3sf3127a4"

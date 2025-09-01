@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://ds720mfm8jbdc"]
 
 [ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="1_1uwc3"]
-[ext_resource type="Resource" uid="uid://wto2214meexu" path="res://resources/decks/ante3/royalty.tres" id="1_5us2q"]
+[ext_resource type="Resource" uid="uid://lf8j06o7t70y" path="res://resources/decks/ante3/KingPawn.tres" id="1_5us2q"]
 
 [resource]
 script = ExtResource("1_1uwc3")
-DisplayName = "Pax Britannica"
+DisplayName = "Ousama Game"
 deck = ExtResource("1_5us2q")
 Difficulty = 2
 IsBoss = false

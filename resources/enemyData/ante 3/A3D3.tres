@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://d1oaanfxh0r2"]
 
 [ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="1_6o5f4"]
-[ext_resource type="Resource" uid="uid://062p6t1200ll" path="res://resources/decks/ante3/mech_2.tres" id="1_tf0vl"]
+[ext_resource type="Resource" uid="uid://062p6t1200ll" path="res://resources/decks/ante3/royalty.tres" id="1_tf0vl"]
 
 [resource]
 script = ExtResource("1_6o5f4")
-DisplayName = "Hoyo Overseer"
+DisplayName = "Strategy Paradox"
 deck = ExtResource("1_tf0vl")
 Difficulty = 2
 IsBoss = false

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://cxhnusiit3uxw"]
+
+[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="1_i448w"]
+[ext_resource type="Resource" uid="uid://c21op0lph4uj2" path="res://resources/cardData/7_living_spellbook.tres" id="2_wv5ks"]
+[ext_resource type="Resource" uid="uid://dnohqen14mpox" path="res://resources/cardData/27_fisherman.tres" id="3_ev8bw"]
+[ext_resource type="Resource" uid="uid://mmusc2kxfo1b" path="res://resources/cardData/6_robo-dog.tres" id="4_ju4hw"]
+[ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="5_gil5d"]
+
+[resource]
+script = ExtResource("5_gil5d")
+Cards = Array[Object]([ExtResource("1_i448w"), ExtResource("1_i448w"), ExtResource("1_i448w"), ExtResource("1_i448w"), ExtResource("2_wv5ks"), ExtResource("2_wv5ks"), ExtResource("2_wv5ks"), ExtResource("2_wv5ks"), ExtResource("3_ev8bw"), ExtResource("3_ev8bw"), ExtResource("3_ev8bw"), ExtResource("4_ju4hw"), ExtResource("4_ju4hw"), ExtResource("4_ju4hw")])
+metadata/_custom_type_script = "uid://dnh88quxuv4le"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://pwqo2y470pkw"]
+
+[ext_resource type="Resource" uid="uid://c7r2bnaw3tctu" path="res://resources/decks/ante4/fishing.tres" id="1_n8fi5"]
+[ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="2_e7enx"]
+
+[resource]
+script = ExtResource("2_e7enx")
+DisplayName = "Morning! Nice Day for..."
+deck = ExtResource("1_n8fi5")
+Difficulty = 3
+IsBoss = false
+metadata/_custom_type_script = "uid://bseo3sf3127a4"

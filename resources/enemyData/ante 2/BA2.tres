@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://ce7c42csm2yir"]
 
-[ext_resource type="Resource" uid="uid://lf8j06o7t70y" path="res://resources/decks/ante2/KingPawn.tres" id="1_7aa1x"]
+[ext_resource type="Resource" uid="uid://cxhnusiit3uxw" path="res://resources/decks/ante2/showtime.tres" id="1_7aa1x"]
 [ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="1_v48j5"]
 
 [resource]
 script = ExtResource("1_v48j5")
-DisplayName = "Screen Ring Pen King"
+DisplayName = "It's Showtime!"
 deck = ExtResource("1_7aa1x")
 Difficulty = 1
-IsBoss = true
+IsBoss = false
 metadata/_custom_type_script = "uid://bseo3sf3127a4"

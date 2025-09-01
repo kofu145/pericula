@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://dtrn2srtbq3kn"]
+
+[ext_resource type="Resource" uid="uid://blc24qhdg6gku" path="res://resources/decks/ante5/democracy.tres" id="1_i6mel"]
+[ext_resource type="Script" uid="uid://bseo3sf3127a4" path="res://scripts/resources/EnemyData.cs" id="2_w43vg"]
+
+[resource]
+script = ExtResource("2_w43vg")
+DisplayName = "I love Democracy"
+deck = ExtResource("1_i6mel")
+Difficulty = 4
+IsBoss = false
+metadata/_custom_type_script = "uid://bseo3sf3127a4"

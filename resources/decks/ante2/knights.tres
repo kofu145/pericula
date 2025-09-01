@@ -1,9 +1,7 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=10 format=3 uid="uid://b3w7lpos7p2rs"]
+[gd_resource type="Resource" script_class="Deck" load_steps=8 format=3 uid="uid://b3w7lpos7p2rs"]
 
-[ext_resource type="Resource" uid="uid://fasmj3v0ixuo" path="res://resources/cardData/1_diamond_pawn.tres" id="1_7br2u"]
-[ext_resource type="Resource" uid="uid://bt7u4i3qchld" path="res://resources/cardData/2_heart_pawn.tres" id="2_dcsly"]
+[ext_resource type="Resource" uid="uid://bc4rs2h6253da" path="res://resources/cardData/10_Defender.tres" id="1_nh45n"]
 [ext_resource type="Resource" uid="uid://cb8dkayygv0di" path="res://resources/cardData/12_crimson_zealot.tres" id="3_ogta8"]
-[ext_resource type="Resource" uid="uid://cb5ljb08t7swc" path="res://resources/cardData/3_club_pawn.tres" id="4_hu840"]
 [ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="5_7pg56"]
 [ext_resource type="Resource" uid="uid://bycb8ymucbd7h" path="res://resources/cardData/9_crazy_cannoneer.tres" id="6_u37aa"]
 [ext_resource type="Resource" uid="uid://cyxdvajquq4n5" path="res://resources/cardData/5_wisp.tres" id="7_xr3lr"]
@@ -12,5 +10,5 @@
 
 [resource]
 script = ExtResource("9_34omm")
-Cards = Array[Object]([ExtResource("1_7br2u"), ExtResource("1_7br2u"), ExtResource("2_dcsly"), ExtResource("3_ogta8"), ExtResource("4_hu840"), ExtResource("4_hu840"), ExtResource("5_7pg56"), ExtResource("5_7pg56"), ExtResource("6_u37aa"), ExtResource("6_u37aa"), ExtResource("6_u37aa"), ExtResource("7_xr3lr"), ExtResource("7_xr3lr"), ExtResource("8_fu1cr")])
+Cards = Array[Object]([ExtResource("1_nh45n"), ExtResource("1_nh45n"), ExtResource("1_nh45n"), ExtResource("3_ogta8"), ExtResource("3_ogta8"), ExtResource("8_fu1cr"), ExtResource("8_fu1cr"), ExtResource("5_7pg56"), ExtResource("6_u37aa"), ExtResource("6_u37aa"), ExtResource("6_u37aa"), ExtResource("7_xr3lr"), ExtResource("7_xr3lr"), ExtResource("8_fu1cr")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
