@@ -72,7 +72,7 @@ public partial class DeckListView : Control
         Godot.Collections.Array<CardData> source = mode switch
         {
             ViewMode.Deck => dm.PlayerFullDeck,
-            ViewMode.Draw => dm.PlayerDrawPile,
+            ViewMode.Draw => dm.GetOrderedDrawPile(),
             ViewMode.Discard => dm.playerDisc,
             ViewMode.ShopRemove => dm.PlayerFullDeck,
             ViewMode.ShopDuplicate => dm.PlayerFullDeck,

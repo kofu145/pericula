@@ -5,20 +5,20 @@
 
 [resource]
 script = ExtResource("1_v7nrs")
-playerStartingChips = 200
+playerStartingChips = 400
 playerStartingDeck = ExtResource("1_ngmds")
 enemiesPerAnte = 3
 antesPerRun = 3
-EnemyChipsPerAnte = Array[int]([200, 400, 600])
-bossBonusPerAnte = Array[int]([50, 100, 100])
-baseBuyIn = 20
+EnemyChipsPerAnte = Array[int]([400, 650, 1000])
+bossBonusPerAnte = Array[int]([100, 350, 500])
+baseBuyIn = 40
 buyInIncreasePerAnte = 20
-baseRemovalCost = 400
-baseUpgradeCost = 200
-baseCreateRandomCardCost = 300
-baseDuplicateCost = 400
-rerollCost = 20
+baseRemovalCost = 150
+baseUpgradeCost = 150
+baseCreateRandomCardCost = 150
+baseDuplicateCost = 150
+rerollCost = 40
 rerollMultiplierPerUse = 2
-mythicAvailableAtAnte = 2
-LegendaryAvailableAtAnte = 3
+mythicAvailableAtAnte = 1
+LegendaryAvailableAtAnte = 2
 metadata/_custom_type_script = "uid://ca6ooknqy7pvf"

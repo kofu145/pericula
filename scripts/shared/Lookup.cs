@@ -45,7 +45,10 @@ public partial class Lookup : Node
         foreach (var card in lookupList)
         {
             if (card.id == id)
+            {
+                card.Initialize();
                 return card;
+            }
         }
 
         GD.PrintErr("Couldn't find card with ID: " + id);

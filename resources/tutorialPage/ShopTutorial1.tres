@@ -7,7 +7,8 @@
 script = ExtResource("1_jmt1o")
 tutorialImage = ExtResource("2_mtid7")
 pageName = "Buying Units"
-pageDescription = "Click on a card to purchase it using your chips earned during battle.
+pageDescription = "Welcome to Pericula!
+Click on a card to purchase it using your chips earned during battle.
 
 Be careful not to spend too many chips! You'll go negative on the next buy in, and you'll have trouble betting without enough to spare."
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"

@@ -9,7 +9,5 @@ tutorialImage = ExtResource("2_5f35h")
 pageName = "Rarities"
 pageDescription = "Rarities determine how often a card appears in the shop. Green bordered cards are Common, blue bordered cards are Rare, red bordered cards are Mythic, and yellow bordered cards are Legendary.
 
-Mythic cards only start to appear from Ante 2. 
-
-Legendary cards only start to appear from Ante 3 and have a much lower chance of appearing in the shop."
+Legendary cards only start to appear from Ante 2 and have a much lower chance of appearing in the shop."
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"
