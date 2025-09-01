@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Deck" load_steps=3 format=3 uid="uid://dpeu46y1cn0b"]
 
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_b5o20"]
-[ext_resource type="Resource" uid="uid://btubqms6f8qc8" path="res://resources/cardData/35_joker.tres" id="2_l5rg3"]
+[ext_resource type="Resource" uid="uid://bearmqcq46w0g" path="res://resources/cardData/34_soul_collector.tres" id="1_f6udd"]
 
 [resource]
 script = ExtResource("1_b5o20")
-Cards = Array[Object]([ExtResource("2_l5rg3"), ExtResource("2_l5rg3"), ExtResource("2_l5rg3"), ExtResource("2_l5rg3"), ExtResource("2_l5rg3")])
+Cards = Array[Object]([ExtResource("1_f6udd"), ExtResource("1_f6udd"), ExtResource("1_f6udd"), ExtResource("1_f6udd"), ExtResource("1_f6udd")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"

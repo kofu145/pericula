@@ -40,7 +40,7 @@ public partial class BuffOnAllyDeath : EffectTemplate
                         {
                             var targetBuff = lane.GetCardAtIndex(i);
                             targetBuff.Attack += AtkBuff;
-                            targetBuff.Attack += HPBuff;
+                            targetBuff.HP += HPBuff;
                             BuffText(HPBuff, AtkBuff, targetBuff, param);
                             await DoTriggerAnimation(param);
                         }
