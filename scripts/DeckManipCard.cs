@@ -13,16 +13,17 @@ public partial class DeckManipCard : Control
 
     }
     [Export] CardDescription description;
+    [Export] Panel costPanel;
     [Export] Color BoughtColor;
     [Export] TextureRect image;
     [Export] Label cost;
     int _deckManipID;
     bool _disabled = false;
+    bool disableDefaultHoverScale = true;
 
     const float TWEEN_INTENSITY = 1.25f;
     const float TWEEN_DURATION = 0.25f;
     bool _isHovering = false;
-    Shop shop;
 
     public override void _Ready()
     {
@@ -38,10 +39,9 @@ public partial class DeckManipCard : Control
         base._PhysicsProcess(delta);
     }
 
-    public void Initialize(int id, Shop shop)
+    public void Initialize(int id)
     {
         _deckManipID = id;
-        this.shop = shop;
 
         DeckManipData data = Lookup.GetDeckManipByID(_deckManipID);
         GetNode<Label>("CardBorder/CardName").Text = data.DisplayName.ToString();
@@ -50,6 +50,13 @@ public partial class DeckManipCard : Control
         var text = price.ToString();
         cost.Text = text;
         GetNode<CardDescription>("CanvasLayer/CardDescription").Initialize(data);
+    }
+
+    public void CodexInitialize(int id)
+    {
+        Initialize(id);
+        costPanel.Visible = false;
+        disableDefaultHoverScale = false;
     }
 
     void OnInput(InputEvent @event)
@@ -138,7 +145,7 @@ public partial class DeckManipCard : Control
     {
         if (_disabled) return;
         ZIndex = 100;
-        StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION);
+        if (disableDefaultHoverScale) StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION);
         description.Display();
         SoundManager.PlaySE("touchcard");
     }
@@ -147,7 +154,7 @@ public partial class DeckManipCard : Control
     {
         if (_disabled) return;
         ZIndex = 0;
-        StartTween(this, "scale", Vector2.One, TWEEN_DURATION);
+        if (disableDefaultHoverScale) StartTween(this, "scale", Vector2.One, TWEEN_DURATION);
         description.Hide();
     }
 

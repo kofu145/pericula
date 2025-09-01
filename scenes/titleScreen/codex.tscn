@@ -72,3 +72,24 @@ offset_right = 1147.0
 offset_bottom = 62.0
 theme_override_font_sizes/font_size = 30
 text = "Next"
+
+[node name="DeckManipButton" type="Button" parent="."]
+offset_left = 609.0
+offset_top = 2.0
+offset_right = 673.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 20
+text = "Incantations
+"
+
+[node name="CardsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 1.0
+offset_right = 478.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 20
+text = "Cards"
+
+[connection signal="pressed" from="DeckManipButton" to="." method="SwitchToDeckManipPage"]
+[connection signal="pressed" from="CardsButton" to="." method="SwitchToCardPage"]

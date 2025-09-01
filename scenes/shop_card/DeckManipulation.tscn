@@ -27,14 +27,23 @@ shader_parameter/color2 = Color(1, 1, 1, 1)
 shader_parameter/x_target = 0.5
 shader_parameter/y_target = 0.0
 
-[node name="DeckManipulation" type="Control" node_paths=PackedStringArray("description", "image", "cost")]
+[node name="DeckManipulation" type="Control" node_paths=PackedStringArray("description", "costPanel", "image", "cost")]
 custom_minimum_size = Vector2(120, 160)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 100.0
-offset_bottom = 118.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -80.0
+offset_right = 60.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_81fa8")
 description = NodePath("CanvasLayer/CardDescription")
+costPanel = NodePath("Panel")
 BoughtColor = Color(0.14902, 0.14902, 0.14902, 1)
 image = NodePath("CardBorder/Image")
 cost = NodePath("Panel/Cost")

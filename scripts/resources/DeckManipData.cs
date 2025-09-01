@@ -2,12 +2,13 @@ using Godot;
 using Godot.Collections;
 
 [GlobalClass]
-public partial class DeckManipData : Resource
+public partial class DeckManipData : CodexItemData
 {
-    [Export] public int id;
-    [Export] public string DisplayName;
-    [Export(PropertyHint.MultilineText)] public string Description;
     [Export] public int Cost;
-    [Export] public Texture2D Texture;
     [Export] public Color color;
+
+    public override (int a, int b, int c) GetSortKey()
+    {
+        return (Cost, 0, id);
+    }
 }
