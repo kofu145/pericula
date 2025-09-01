@@ -112,13 +112,23 @@ public partial class Lookup : Node
         return cardList;
     }
 
-    public static List<CardData> GetCardLibrary()
+    public static List<CodexItemData> GetCardLibrary()
     {
-        var ordered = lookupList
-        .Where(c => c != null)
-        .OrderBy(c => c.GetSortKey());
+        return lookupList
+            .Where(c => c != null)
+            .OrderBy(c => c.GetSortKey())
+            .Cast<CodexItemData>()
+            .ToList();
 
-        return ordered.ToList();
+    }
+
+    public static List<CodexItemData> GetDeckManipLibrary()
+    {
+        return deckManipList
+            .Where(c => c != null)
+            .OrderBy(c => c.GetSortKey())
+            .Cast<CodexItemData>()
+            .ToList();
     }
 
 }

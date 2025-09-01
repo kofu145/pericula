@@ -17,17 +17,26 @@
 [ext_resource type="Texture2D" uid="uid://c26joxcyfd3xc" path="res://assets/art/wildcard.png" id="7_ulbgr"]
 [ext_resource type="Texture2D" uid="uid://setl0iw1vnf" path="res://assets/cards/death.png" id="8_73mkc"]
 
-[node name="ShopCard" type="Control" node_paths=PackedStringArray("description", "border", "baseCard", "spriteImage", "nameLabel", "healthLabel", "attackLabel", "costLabel")]
+[node name="ShopCard" type="Control" node_paths=PackedStringArray("description", "border", "baseCard", "spriteImage", "costPanel", "nameLabel", "healthLabel", "attackLabel", "costLabel")]
 custom_minimum_size = Vector2(120, 160)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 100.0
-offset_bottom = 118.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -80.0
+offset_right = 60.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_m5bcj")
 description = NodePath("CanvasLayer/CardDescription")
 border = NodePath("Base/Border")
 baseCard = NodePath("Base")
 spriteImage = NodePath("Base/Image")
+costPanel = NodePath("Panel")
 nameLabel = NodePath("Base/CardName")
 healthLabel = NodePath("Base/Health")
 attackLabel = NodePath("Base/Attack")

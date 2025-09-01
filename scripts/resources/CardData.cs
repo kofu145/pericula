@@ -4,11 +4,8 @@ using Godot.Collections;
 public enum Trait { Knight, Arcane, Citizen, Royalty, Mechanical, WildCard, Pawn, Undead };
 
 [GlobalClass]
-public partial class CardData : Resource
+public partial class CardData : CodexItemData
 {
-    [Export] public int id;
-    [Export] public string DisplayName;
-    [Export(PropertyHint.MultilineText)] public string Description;
 
     [Export]
     public Rarity Rarity;

@@ -70,7 +70,7 @@ public partial class Shop : Control
     public void CreateOffer(int id)
     {
         ShopCard card = shopCardScene.Instantiate<ShopCard>();
-        card.Initialize(id, this);
+        card.Initialize(id);
 
         shopChoices.AddChild(card);
     }
@@ -78,7 +78,7 @@ public partial class Shop : Control
     public void CreateDeckManipOffer(int id)
     {
         DeckManipCard card = manipScene.Instantiate<DeckManipCard>();
-        card.Initialize(id, this);
+        card.Initialize(id);
 
         manipChoices.AddChild(card);
     }

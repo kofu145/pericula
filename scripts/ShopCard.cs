@@ -8,6 +8,7 @@ public partial class ShopCard : Control
     [Export] private TextureRect border;
     [Export] private TextureRect baseCard;
     [Export] private TextureRect spriteImage;
+    [Export] private Panel costPanel;
     [Export] private Label nameLabel;
     [Export] private Label healthLabel;
     [Export] private Label attackLabel;
@@ -15,12 +16,12 @@ public partial class ShopCard : Control
     [Export] public Godot.Collections.Array<Texture2D> CardImages;
     int _cardID;
     bool _disabled = false;
+    bool disableDefaultHoverScale = true;       // false to disable card scaling on hover
 
     const float TWEEN_INTENSITY = 1.25f;
     const float TWEEN_DURATION = 0.25f;
     bool _isHovering = false;
     CardData data;
-    Shop shop;
     private Color color;
 
     public override void _Ready()
@@ -37,10 +38,9 @@ public partial class ShopCard : Control
         base._PhysicsProcess(delta);
     }
 
-    public void Initialize(int id, Shop shop)
+    public void Initialize(int id)
     {
         _cardID = id;
-        this.shop = shop;
 
         data = Lookup.GetCardByID(_cardID);
         nameLabel.Text = data.DisplayName;
@@ -56,6 +56,13 @@ public partial class ShopCard : Control
         SetHolo(rarity == RarityType.Mythic || rarity == RarityType.Legendary);
 
         description.Initialize(data);
+    }
+
+    public void CodexInitialize(int id)
+    {
+        Initialize(id);
+        costPanel.Visible = false;
+        disableDefaultHoverScale = false;
     }
 
     void OnInput(InputEvent @event)
@@ -109,7 +116,7 @@ public partial class ShopCard : Control
     {
         if (_disabled) return;
         ZIndex = 100;
-        StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION);
+        if (disableDefaultHoverScale) StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION);
         description.Display();
         SoundManager.PlaySE("touchcard");
     }
@@ -118,7 +125,7 @@ public partial class ShopCard : Control
     {
         if (_disabled) return;
         ZIndex = 0;
-        StartTween(this, "scale", Vector2.One, TWEEN_DURATION);
+        if (disableDefaultHoverScale) StartTween(this, "scale", Vector2.One, TWEEN_DURATION);
         description.Hide();
     }
 
