@@ -44,6 +44,8 @@ public partial class PhaseController : Node
     private int currentTurn = 1;
     private int currentPot = 0;
     private int currentMinimumBuyIn = 0;
+    private int playerContributionThisTurn;
+    private int enemyContributionThisTurn;
 
     // =========================================
     private bool PlayerWon => enemyChips.Balance <= 0;
@@ -97,32 +99,32 @@ public partial class PhaseController : Node
 
     private void StartPrePhase()
     {
-        // increase the buy in
-        if (currentTurn >= turnBuyInIncrease)
-            currentMinimumBuyIn = (int)Math.Ceiling(currentMinimumBuyIn * buyInIncreaseMultiplier);
+        int buyIn = currentMinimumBuyIn;
 
-        // display next turn's buy in
-        nextTurnBuyInLabel.Visible = currentTurn >= turnBuyInIncrease - 1;
-        nextTurnBuyInLabel.Text = $"{(int)Math.Ceiling(currentMinimumBuyIn * buyInIncreaseMultiplier)}";
+        enemyContributionThisTurn = Math.Min(enemyChips.Balance, buyIn);
+        if (enemyContributionThisTurn > 0) enemyChips.Deduct(enemyContributionThisTurn);
 
-        // shw the turn count
-        turnLabel.Text = $"Turn: {currentTurn}";
-        buyInLabel.Text = $"{currentMinimumBuyIn}";
+        if (playerChips.Balance >= buyIn)
+        {
+            playerChips.Deduct(buyIn);
+            playerContributionThisTurn = buyIn;
+        }
+        else
+        {
+            playerChips.BorrowChips(buyIn);
+            playerContributionThisTurn = buyIn;
+        }
 
-        // enemy and player pays the buyIn amount
-        if (enemyChips.Balance < currentMinimumBuyIn) currentMinimumBuyIn = enemyChips.Balance;
+        currentPot = enemyContributionThisTurn + playerContributionThisTurn;
 
-        enemyChips.Deduct(currentMinimumBuyIn);
+        UpdatePot(currentPot);
 
-        playerChips.BorrowChips(currentMinimumBuyIn);
-        if (playerChips.Balance <= 0) negativeBalanceWarningLabel.Text = $"Warning. Losing next Showdown will lose you the run.";
+        if (playerChips.Balance <= 0)
+            negativeBalanceWarningLabel.Text = $"Warning. Losing next Showdown will lose you the run.";
         negativeBalanceWarningLabel.Visible = playerChips.Balance <= 0;
-
-        UpdatePot(currentMinimumBuyIn * 2);
 
         currentPhase = RoundPhase.PreRound;
 
-        // draw starting hand for each lane
         combatManager.StartRound(startingDraw);
         if (enemyChips.Balance == 0 || playerChips.Balance <= 0)
         {
@@ -138,7 +140,14 @@ public partial class PhaseController : Node
         Hide(betPhaseButton);
         currentPhase = RoundPhase.Betting;
         combatManager.StartBetPhase();
-        betController.BeginPhase(currentMinimumBuyIn, enemyChips, currentPot);
+
+        betController.BeginPhase(
+         currentMinimumBuyIn,
+         enemyChips,
+         currentPot,
+         playerContributionThisTurn,
+         enemyContributionThisTurn
+     );
     }
 
     private void EndBetPhase(bool endOnFold)

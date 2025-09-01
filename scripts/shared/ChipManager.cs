@@ -58,13 +58,31 @@ public partial class ChipManager : Node
     }
 
     /// <summary>
-    /// Method to deduct from total balance. 
-    /// With this method, the balance can be negative.
+    /// ensures the player contributes amount and deduct balance if posisble 
+    /// otherwise we borrow for the shortfall and return total contributed 
+    /// then we return actual contributed amount (always == amount)
     /// </summary>
-    public void BorrowChips(int amount)
+    public int BorrowChips(int amount)
     {
-        balance -= amount;
+        if (amount <= 0) return 0;
+
+        if (balance >= amount)
+        {
+            balance -= amount;
+            ChipsUsed += amount;
+            OnChipsChanged?.Invoke(balance);
+            SoundManager.PlaySE("chipsdrop");
+            return amount;
+        }
+
+        // player can't fully pay: borrow the missing part so total contribution == amount
+        int shortfall = amount - balance;
+
+        balance = -shortfall;
+
         ChipsUsed += amount;
         OnChipsChanged?.Invoke(balance);
+        SoundManager.PlaySE("chipsdrop");
+        return amount;
     }
 }

@@ -42,8 +42,9 @@ public partial class EffectTemplate : Resource
     {
         var isPlayer = param.State.GetSide(target).Side == LaneSide.Player;
         var def = isPlayer ? param.State.PlayerDefense : param.State.EnemyDefense;
-        target.HP -= (damage - def);
-        await DamageText(damage, target, param);
+        var takeDamage = damage - def;
+        target.HP -= takeDamage;
+        await DamageText(takeDamage, target, param);
         EventBus.Instance.InvokeTakeDamageEvent(target);
         //await EventBus.Instance.ClearTriggerQueue();
     }

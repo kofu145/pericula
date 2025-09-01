@@ -1,3 +1,4 @@
+
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -20,60 +21,53 @@ public partial class BetController : Node
     [Export] private Button raise5xButton;
 
     [Export] private float opponentDelayAfterPlayerBet = 0.5f;
-
     [Export] public CombatController combatManager;
 
     private int minimumBuyIn;
 
     // public events
-    public Action<BetAction, int, int> OnEnemyAction; // parameters: (action, toCallAmount, raiseAmount)
+    public Action<BetAction, int, int> OnEnemyAction;
     public Action<bool> OnBetPhaseEnd;
-    public Action<int> OnChipsChanged; // parameter: (newChipAmount)
+    public Action<int> OnChipsChanged;
 
     // states
     private Turn turn = Turn.None;
     private BetAction lastEnemyAction = BetAction.None;
     private BetAction lastPlayerAction = BetAction.None;
 
-    // current bet
-    private int currentBet = 0;     // highest amount put in by either side
+    private int currentBet = 0;
     private bool betOpen = false;
 
-    // each side's total bet this round
     private int playerPut = 0;
     private int enemyPut = 0;
-    private int pot = 0;            // total for both sides
+    private int pot = 0;
 
     private EnemyChips enemyChips;
-
     private bool choosingRaiseAmount = false;
-
     private bool endedWithFold = false;
     private bool foldedByPlayer = false;
-
     private ChipManager playerChips;
-
     private int playerHandScore = 0;
     private int enemyHandScore = 0;
-    private int CallChance = 50;
 
-    // ====================================
-    private int PlayerBalance => playerChips.Balance;                               // player's current chip balance
-    private int ToCall => Math.Max(0, currentBet - playerPut);                      // the amount to call the enemy's bet
-    private int AffordableRaise => Math.Max(0, PlayerBalance - ToCall);             // the remaining balance the player has after calling
-    private bool CanCall => ToCall > 0 && PlayerBalance >= ToCall;                  // player has enough chips to call the enemy's bet
-    private bool CanOpenRaise => !betOpen && PlayerBalance >= minimumBuyIn && EnemyBalance >= minimumBuyIn;         // player has enough chips to raise (at least minimumBuyIn) 
-    private bool CanRaiseOverCall => betOpen && AffordableRaise >= minimumBuyIn;    // player has enough chips to call the enemy's bet and raise (at least minimumBuyIn) 
-    private bool CanBet => PlayerBalance >= minimumBuyIn;
+    private bool hasOnlyAnte = false; // NEW: flag to distinguish ante from open bet
+
+    // ==========================
+    private int PlayerBalance => playerChips.Balance;
     private int EnemyBalance => enemyChips.Balance;
-    // ====================================
-
+    private int ToCall => hasOnlyAnte ? 0 : Math.Max(0, Math.Min(currentBet - playerPut, PlayerBalance));
+    private int AffordableRaise => Math.Max(0, PlayerBalance - ToCall);
+    private bool CanCall => ToCall > 0;
+    private bool CanOpenRaise => !betOpen && PlayerBalance >= minimumBuyIn && EnemyBalance >= minimumBuyIn;
+    private bool CanRaiseOverCall => betOpen && AffordableRaise >= minimumBuyIn;
+    private bool CanBet => PlayerBalance >= minimumBuyIn;
+    // ==========================
 
     public override void _Ready()
     {
         playerChips = ChipManager.Instance;
 
-        // wire button handlers
+        // wire buttons
         if (raiseButton != null) raiseButton.Pressed += OnClickPlayerRaise;
         if (callButton != null) callButton.Pressed += OnClickPlayerCall;
         if (checkButton != null) checkButton.Pressed += OnClickPlayerCheck;
@@ -86,40 +80,38 @@ public partial class BetController : Node
         HideAll();
         UpdatePotLabel();
     }
-    public void BeginPhase(int minBuyIn, EnemyChips enemyChips, int startingPot)
-    {
 
+    public void BeginPhase(int minBuyIn, EnemyChips enemyChips,
+        int startingPot, int playerContributes, int enemyContributes)
+    {
         minimumBuyIn = minBuyIn;
         this.enemyChips = enemyChips;
         pot = startingPot;
+        playerPut = playerContributes;
+        enemyPut = enemyContributes;
+
+
+        currentBet = Math.Max(playerPut, enemyPut);
+        betOpen = false; // ante does not count as an open bet
+        hasOnlyAnte = (playerPut > 0 || enemyPut > 0);
+
+        turn = Turn.Player;
+        lastEnemyAction = BetAction.None;
+        lastPlayerAction = BetAction.None;
+        endedWithFold = false;
+        foldedByPlayer = false;
+        choosingRaiseAmount = false;
+
+        CalcScoreAndSetOdds();
 
         if (raise1xButton != null) raise1xButton.Text = $"$ {minimumBuyIn}";
         if (raise2xButton != null) raise2xButton.Text = $"$ {minimumBuyIn * 2}";
         if (raise5xButton != null) raise5xButton.Text = $"$ {minimumBuyIn * 5}";
 
-        // reset states for new bet
-        turn = Turn.Player;
-        lastEnemyAction = BetAction.None;
-        lastPlayerAction = BetAction.None;
-
-        playerPut = 0;
-        enemyPut = 0;
-        currentBet = 0;
-        betOpen = false;
-
-        endedWithFold = false;
-        foldedByPlayer = false;
-
-        choosingRaiseAmount = false;
-        CalcScoreAndSetOdds();
-
         HideAll();
-        Show(checkButton);
-        Show(raiseButton);
         UpdatePotLabel();
         UpdateButtons();
     }
-
 
     // ============ Player Handlers =============
     private void OnClickPlayerRaise()
@@ -218,7 +210,7 @@ public partial class BetController : Node
 
         if (betOpen)
         {
-            UpdateButtons();
+            // UpdateButtons();
             return;
         }
 
@@ -280,148 +272,97 @@ public partial class BetController : Node
         await WaitFor(opponentDelayAfterPlayerBet);
         GD.Print("Player last action: " + lastPlayerAction);
 
+        int amountToCall = Math.Max(0, currentBet - enemyPut);
+
+        // -------------------------
+        // CASE 1: Player went all-in
+        // -------------------------
         if (lastPlayerAction == BetAction.AllIn)
         {
-            // player went all in, enemy must Call or Fold
-            // TODO: Replace with AI logic and not random logic
-            var choice = GetWeightedAction(); // 0 = call, 1 = fold
-
-            if (choice == 0)   // call
+            int spend = Math.Min(amountToCall, EnemyBalance);
+            if (spend >= EnemyBalance)
             {
-                int amountToCall = Math.Max(0, currentBet - enemyPut);
+                spend = EnemyBalance;
+                lastEnemyAction = BetAction.AllIn;
+                OnEnemyAction?.Invoke(BetAction.AllIn, spend, 0);
+            }
+            else
+            {
+                lastEnemyAction = BetAction.Call;
+                OnEnemyAction?.Invoke(BetAction.Call, spend, 0);
+            }
 
-                if (amountToCall >= EnemyBalance)
-                {
-                    // all in
-                    amountToCall = EnemyBalance;
-                    lastEnemyAction = BetAction.AllIn;
-                    OnEnemyAction?.Invoke(BetAction.AllIn, amountToCall, 0);
-                }
-                else
-                {
-                    // regular call
-                    lastEnemyAction = BetAction.Call;
-                    OnEnemyAction?.Invoke(BetAction.Call, amountToCall, 0);
-                }
+            if (!enemyChips.Deduct(spend))
+            {
+                GD.PushError("Enemy does not have enough chips for action.");
+                return;
+            }
 
-                if (!enemyChips.Deduct(amountToCall))
+            enemyPut += spend;
+            pot += spend;
+
+            EndPhase();
+            return;
+        }
+
+        // -------------------------
+        // CASE 2: No open bet, nothing to call → enemy can only check
+        // -------------------------
+        if (!betOpen && amountToCall == 0)
+        {
+            lastEnemyAction = BetAction.Check;
+            OnEnemyAction?.Invoke(BetAction.Check, 0, 0);
+
+            // If both checked, end phase
+            if (lastPlayerAction == BetAction.Check)
+            {
+                EndPhase();
+                return;
+            }
+
+            // back to player
+            turn = Turn.Player;
+            UpdateButtons();
+            return;
+        }
+
+        // -------------------------
+        // CASE 3: Normal betting logic
+        // -------------------------
+        int choice = GetWeightedAction(); // 0 = call, 1 = fold, 2 = raise
+        if (!CanBet) choice = 0;          // cannot raise? force call or fold
+
+        switch (choice)
+        {
+            case 0: // Call
+                int callAmount = Math.Min(amountToCall, EnemyBalance);
+                lastEnemyAction = callAmount >= EnemyBalance ? BetAction.AllIn : BetAction.Call;
+                OnEnemyAction?.Invoke(lastEnemyAction, callAmount, 0);
+
+                if (!enemyChips.Deduct(callAmount))
                 {
                     GD.PushError("Enemy does not have enough chips for action.");
                     return;
                 }
 
-                pot += amountToCall;
-                enemyPut += amountToCall;
+                enemyPut += callAmount;
+                pot += callAmount;
 
-            }
-            else if (choice == 1)  // fold
-            {
+                EndPhase();
+                break;
+
+            case 1: // Fold
                 lastEnemyAction = BetAction.Fold;
                 OnEnemyAction?.Invoke(BetAction.Fold, 0, 0);
-
                 endedWithFold = true;
                 foldedByPlayer = false;
-            }
+                EndPhase();
+                break;
 
-            EndPhase();
-            return;
-        }
-
-        else if (!betOpen)
-        {
-            // TODO: Replace with AI logic and not random logic
-            // No open bet -> enemy randomly Check or Raise(open)
-
-            // TODO: replace implementation when player has <= 0 chips
-            // if player cannot call or raise (if PlayerBalance <= 0)
-            // then the player will check, no other options
-            var choice = GetWeightedAction(); // 1 = Check, 0 = Raise
-
-            if (!CanBet) choice = 0;    // force a check, because player cannot afford any bet
-
-            if (choice == 1)    // check
-            {
-                GD.Print("Enemy Checked");
-                lastEnemyAction = BetAction.Check;
-                OnEnemyAction?.Invoke(BetAction.Check, 0, 0);
-
-                // Both checked -> end
-                if (lastPlayerAction == BetAction.Check)
-                {
-                    EndPhase();
-                    return;
-                }
-
-                turn = Turn.Player;
-                UpdateButtons();
-            }
-            else    // raise 
-            {
-                int amount = EnemyPickRaiseAmount();
-                ApplyEnemyRaise(amount);
-            }
-            UpdatePotLabel();
-            return;
-        }
-        // TODO: replace implementation when player has <= 0 chips
-        // if player cannot call or raise (if PlayerBalance <= 0)
-
-        int r = 0;
-        if (CanBet)
-        {
-            // 0=Call, 1=Fold, 2=Raise
-            int action = GetWeightedAction();
-            if (action == 0)
-            {
-                action = PercentChance(50) ? 0 : 2;
-            }
-            r = action;
-
-        }
-        else if (!CanBet) r = GetWeightedAction(); // 0=Call, 1=Fold
-
-        if (r == 0)
-        {
-            int amountToCall = Math.Max(0, currentBet - enemyPut);
-
-            if (amountToCall >= EnemyBalance)
-            {
-                // all in
-                amountToCall = EnemyBalance;
-                lastEnemyAction = BetAction.AllIn;
-                OnEnemyAction?.Invoke(BetAction.AllIn, amountToCall, 0);
-
-            }
-            else
-            {
-                // regular call
-                lastEnemyAction = BetAction.Call;
-                OnEnemyAction?.Invoke(BetAction.Call, amountToCall, 0);
-            }
-
-            if (!enemyChips.Deduct(amountToCall))   // over here, the balance is not deducted
-            {
-                GD.PushError("Enemy does not have enough chips for action.");
-                return;
-            }
-            enemyPut += amountToCall;
-            pot += amountToCall;
-
-            EndPhase(); // matched -> start battle
-        }
-        else if (r == 1)    // if fold
-        {
-            lastEnemyAction = BetAction.Fold;
-            OnEnemyAction?.Invoke(BetAction.Fold, 0, 0);
-
-            endedWithFold = true;
-            foldedByPlayer = false;
-            EndPhase();
-        }
-        else    // if raise
-        {
-            int amount = EnemyPickRaiseAmount();
-            ApplyEnemyRaise(amount);
+            case 2: // Raise
+                int raiseAmount = EnemyPickRaiseAmount();
+                ApplyEnemyRaise(raiseAmount);
+                break;
         }
     }
 
@@ -505,45 +446,63 @@ public partial class BetController : Node
     private void UpdateButtons()
     {
         HideAll();
-        switch (turn)
+        if (turn == Turn.Player)
         {
-            case Turn.Player:
-                if (allInButton != null)
-                {
-                    allInButton.Text = $"All-In ($ {Math.Max(0, Math.Min(PlayerBalance, EnemyBalance + ToCall))})";
-                    if (CanBet) Show(allInButton);
-                }
-                if (choosingRaiseAmount)
-                {
-                    if (AffordableRaise >= minimumBuyIn && EnemyBalance >= minimumBuyIn) Show(raise1xButton);
-                    if (AffordableRaise >= minimumBuyIn * 2 && EnemyBalance >= minimumBuyIn * 2) Show(raise2xButton);
-                    if (AffordableRaise >= minimumBuyIn * 5 && EnemyBalance >= minimumBuyIn * 5) Show(raise5xButton);
-                }
-                else if (betOpen)
-                {
-                    if (CanCall && ToCall != PlayerBalance)
-                    {
-                        Show(callButton);
-                        callButton.Text = $"Call ($ {ToCall})";
-                    }
-                    if (CanRaiseOverCall) Show(raiseButton);
-                    if (CanBet) Show(foldButton);
-                }
-                else
-                {
-                    Show(checkButton);
-                    if (CanOpenRaise) Show(raiseButton);
-                }
-                break;
+            if (allInButton != null)
+            {
+                allInButton.Text = $"All-In ($ {Math.Max(0, Math.Min(PlayerBalance, EnemyBalance + ToCall))})";
+                if (CanBet) Show(allInButton);
+            }
 
-            case Turn.Enemy:
+            if (choosingRaiseAmount)
+            {
+                // Show only raise multiplier buttons
+                if (AffordableRaise >= minimumBuyIn && EnemyBalance >= minimumBuyIn) Show(raise1xButton);
+                if (AffordableRaise >= minimumBuyIn * 2 && EnemyBalance >= minimumBuyIn * 2) Show(raise2xButton);
+                if (AffordableRaise >= minimumBuyIn * 5 && EnemyBalance >= minimumBuyIn * 5) Show(raise5xButton);
 
-                break;
-            case Turn.None:
-                break;
+                // Hide main raise and fold buttons while choosing amount
+                Hide(raiseButton);
+                Hide(foldButton);
+                Hide(checkButton);
+                Hide(callButton);
+            }
+            else if (betOpen)
+            {
+                // Player facing an open bet
+                if (CanCall && ToCall > 0)
+                {
+                    Show(callButton);
+                    callButton.Text = $"Call ($ {ToCall})";
+                }
+
+                if (CanRaiseOverCall)
+                {
+                    Show(raiseButton);
+                }
+
+                // Show fold if there is a bet to respond to
+                if (CanBet) Show(foldButton);
+
+                // Hide check button when there's an open bet
+                Hide(checkButton);
+            }
+            else
+            {
+                // No bet open, player can check or open raise
+                Show(checkButton);
+
+                if (CanOpenRaise)
+                {
+                    Show(raiseButton);
+                }
+
+                // Hide call/fold buttons when nothing to call
+                Hide(callButton);
+                Hide(foldButton);
+            }
         }
     }
-
     // chance to call 
     // 0 = call, 1 = fold - flipped false 
     // 0 = check, 1= raise - flipped true 
