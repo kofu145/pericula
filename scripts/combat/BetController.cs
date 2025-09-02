@@ -429,11 +429,15 @@ public partial class BetController : Node
         {
             if (!foldedByPlayer)
             {
-                playerChips.AddChips(pot);
+                int difference = Math.Max(0, enemyPut - playerPut);
+                playerChips.AddChips(pot - difference);
+                enemyChips.AddChips(difference);
             }
             else
             {
-                enemyChips.AddChips(pot);
+                int difference = Math.Max(0, playerPut - enemyPut);
+                enemyChips.AddChips(pot - difference);
+                 playerChips.AddChips(difference);
             }
         }
 

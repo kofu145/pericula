@@ -108,7 +108,7 @@ public partial class PhaseController : Node
             nextTurnBuyInLabel.Visible = true;
             nextTurnBuyInLabel.Text = $"{(int)(currentMinimumBuyIn * buyInIncreaseMultiplier)}";
         }
-        
+
         turnLabel.Text = $"Turn: {currentTurn}";
         buyInLabel.Text = $"{currentMinimumBuyIn}";
 
@@ -182,7 +182,10 @@ public partial class PhaseController : Node
         // should check which button to show, start next turn or go to shop
         if (playerWonCombat)
         {
-            playerChips.AddChips(currentPot);
+            int enemyDeserves = Math.Max(0, enemyContributionThisTurn - playerContributionThisTurn);
+            playerChips.AddChips(currentPot - enemyDeserves);
+            enemyChips.AddChips(enemyDeserves);
+
             if (PlayerLost)
             {
                 Show(endEncounterButton);
@@ -197,7 +200,10 @@ public partial class PhaseController : Node
         }
         else
         {
-            enemyChips.AddChips(currentPot);
+            int playerDeserves = Math.Max(0, playerContributionThisTurn - enemyContributionThisTurn);
+            enemyChips.AddChips(currentPot - playerDeserves);
+            playerChips.AddChips(playerDeserves);
+
             if (PlayerLost)
             {
                 Show(endEncounterButton);
