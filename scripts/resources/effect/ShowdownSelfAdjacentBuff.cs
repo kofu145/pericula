@@ -29,15 +29,15 @@ public partial class ShowdownSelfAdjacentBuff : EffectTemplate
                         if (i - 1 >= 0 && (lane.GetCardAtIndex(i - 1).Trait == TraitToBuffSelf || lane.GetCardAtIndex(i - 1).Trait == Trait.WildCard))
                         {
                             target = lane.GetCardAtIndex(i - 1);
-                            totalHPBuff += target.HP;
-                            totalAtkBuff += target.Attack;
+                            totalHPBuff += target.BaseHP;
+                            totalAtkBuff += target.BaseAttack;
 
                         }
                         if (i + 1 < lane.CardCount && (lane.GetCardAtIndex(i + 1).Trait == TraitToBuffSelf || lane.GetCardAtIndex(i + 1).Trait == Trait.WildCard))
                         {
                             target = lane.GetCardAtIndex(i + 1);
-                            totalHPBuff += target.HP;
-                            totalAtkBuff += target.Attack;
+                            totalHPBuff += target.BaseHP;
+                            totalAtkBuff += target.BaseAttack;
                         }
 
                     }

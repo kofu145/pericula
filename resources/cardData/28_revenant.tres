@@ -25,14 +25,15 @@ metadata/_custom_type_script = "uid://bvdys8i4a0dm0"
 
 [resource]
 script = ExtResource("2_mhh55")
-id = 28
-DisplayName = "Revenant"
-Description = "Final Wager: All your units gain +3/+3"
 Rarity = ExtResource("2_1rwhr")
 Trait = 7
+AIPriority = 0
 BaseAttack = 4
 BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_8j53s")])
 Passives = Array[Object]([SubResource("Resource_y6hyo")])
 Keywords = Array[ExtResource("1_boare")]([ExtResource("2_4lmf0")])
+id = 28
+DisplayName = "Revenant"
+Description = "Final Wager: All your units gain +3/+3"
 metadata/_custom_type_script = "uid://clner77n1ff5a"
