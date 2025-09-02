@@ -7,7 +7,7 @@ public partial class PhaseController : Node
     [Export] private int startingDraw = 5;
     // buy in config
     [Export] private int turnBuyInIncrease = 4;
-    [Export] private float buyInIncreaseMultiplier = 2;
+    // [Export] private float buyInIncreaseMultiplier = 2;
 
     // Scene refs
     [Export] private CombatController combatManager;
@@ -101,12 +101,12 @@ public partial class PhaseController : Node
     private void StartPrePhase()
     {
 
-        currentMinimumBuyIn = currentTurn >= turnBuyInIncrease ? (int)(currentMinimumBuyIn * buyInIncreaseMultiplier) : currentMinimumBuyIn;
+        currentMinimumBuyIn = currentTurn >= turnBuyInIncrease ? currentMinimumBuyIn + StageManager.Instance.GetCurrentBuyIn() : currentMinimumBuyIn;
 
         if (currentTurn >= turnBuyInIncrease - 1)
         {
             nextTurnBuyInLabel.Visible = true;
-            nextTurnBuyInLabel.Text = $"{(int)(currentMinimumBuyIn * buyInIncreaseMultiplier)}";
+            nextTurnBuyInLabel.Text = $"{currentMinimumBuyIn + StageManager.Instance.GetCurrentBuyIn()}";
         }
 
         turnLabel.Text = $"Turn: {currentTurn}";
