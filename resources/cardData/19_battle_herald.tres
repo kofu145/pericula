@@ -25,14 +25,15 @@ metadata/_custom_type_script = "uid://bvdys8i4a0dm0"
 
 [resource]
 script = ExtResource("2_mn4cd")
-id = 19
-DisplayName = "Battle Herald"
-Description = "Final Wager: All your units gain +3 attack"
 Rarity = ExtResource("2_vv8fo")
 Trait = 0
+AIPriority = 0
 BaseAttack = 7
 BaseHP = 10
 OnUse = Array[Object]([SubResource("Resource_k07xk")])
 Passives = Array[Object]([SubResource("Resource_3m8ua")])
 Keywords = Array[ExtResource("1_het11")]([ExtResource("2_hy21x")])
+id = 19
+DisplayName = "Battle Herald"
+Description = "Final Wager: All your units gain +3 attack"
 metadata/_custom_type_script = "uid://clner77n1ff5a"
