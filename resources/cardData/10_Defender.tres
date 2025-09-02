@@ -20,9 +20,6 @@ metadata/_custom_type_script = "uid://b1wp3na60tlfv"
 
 [resource]
 script = ExtResource("1_gm3lb")
-id = 10
-DisplayName = "Defender"
-Description = "Intercept"
 Rarity = ExtResource("4_47uaf")
 Trait = 0
 AIPriority = 3
@@ -31,4 +28,7 @@ BaseHP = 17
 OnUse = Array[Object]([SubResource("Resource_uk07d")])
 Passives = Array[Object]([SubResource("Resource_24syo")])
 Keywords = Array[ExtResource("1_i1jle")]([ExtResource("1_8ienh")])
+id = 10
+DisplayName = "Defender"
+Description = "Intercept"
 metadata/_custom_type_script = "uid://clner77n1ff5a"

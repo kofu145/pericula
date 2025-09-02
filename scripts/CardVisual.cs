@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class CardVisual : Control
 {
@@ -63,10 +64,24 @@ public partial class CardVisual : Control
         NameLabel.Text = data.DisplayName;
         cardBorder.Modulate = data.Rarity.RarityColor;
 
+        cardBase.OnHoverEntered += (CardBase cBase) =>
+        {
+            cBase.Visual.cardBack.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            if (cBase.IsPlayer)
+            {
+                cBase.Visual.cardBack.Modulate = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+            }
+        };
+
+        cardBase.OnHoverExited += (CardBase cBase) =>
+        {
+            cBase.Visual.cardBack.Modulate = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        };
+
         this.FollowSpeed = FollowSpeed;
         this.ScaleSpeed = ScaleSpeed;
 
-        if (lockIntoPositionWhenInstantiated) Position = cardBase.Position; 
+        if (lockIntoPositionWhenInstantiated) Position = cardBase.Position;
 
         if (cardBase != null)
         {

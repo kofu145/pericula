@@ -23,15 +23,17 @@ metadata/_custom_type_script = "uid://dgdrml3ghdm8w"
 
 [resource]
 script = ExtResource("2_tbvo2")
-id = 4
-DisplayName = "Spade Pawn"
-Description = "Showdown: If there is another Spade Pawn played with this card, gain +2/+2"
 Rarity = ExtResource("2_yckig")
 Trait = 6
+AIPriority = 2
 BaseAttack = 4
 BaseHP = 7
 Texture = ExtResource("6_0xk5f")
 OnUse = Array[Object]([SubResource("Resource_ueg7s")])
 Passives = Array[Object]([SubResource("Resource_ydhds")])
 Keywords = Array[ExtResource("1_e4op3")]([ExtResource("2_rx01b")])
+id = 4
+DisplayName = "Spade Pawn"
+Description = "Showdown: If there is another Spade Pawn played with this card, gain +2/+2"
+Texture = ExtResource("6_0xk5f")
 metadata/_custom_type_script = "uid://clner77n1ff5a"

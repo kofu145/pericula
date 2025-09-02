@@ -21,14 +21,15 @@ metadata/_custom_type_script = "uid://cnsjtealaq0p8"
 
 [resource]
 script = ExtResource("1_yigjs")
-id = 24
-DisplayName = "Watchful Eye"
-Description = "Advantage: Deal 3 damage to a random enemy"
 Rarity = ExtResource("3_q0m42")
 Trait = 4
+AIPriority = 2
 BaseAttack = 8
 BaseHP = 2
 OnUse = Array[Object]([SubResource("Resource_g2os7")])
 Passives = Array[Object]([SubResource("Resource_h6jdp")])
 Keywords = Array[ExtResource("1_q0m42")]([ExtResource("1_ar8uq")])
+id = 24
+DisplayName = "Watchful Eye"
+Description = "Advantage: Deal 3 damage to a random enemy"
 metadata/_custom_type_script = "uid://clner77n1ff5a"

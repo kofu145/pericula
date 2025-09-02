@@ -31,14 +31,15 @@ metadata/_custom_type_script = "uid://cvvvuo6t34yji"
 
 [resource]
 script = ExtResource("2_7er5x")
-id = 23
-DisplayName = "King of Diamonds"
-Description = "Showdown: Knights gain +2/+2. Pawns gain +5/+5."
 Rarity = ExtResource("5_j0get")
 Trait = 3
+AIPriority = 2
 BaseAttack = 9
 BaseHP = 9
 OnUse = Array[Object]([SubResource("Resource_448td")])
 Passives = Array[Object]([SubResource("Resource_n6qha"), SubResource("Resource_8f7yi")])
 Keywords = Array[ExtResource("1_tb7t8")]([ExtResource("2_dlr1v")])
+id = 23
+DisplayName = "King of Diamonds"
+Description = "Showdown: Knights gain +2/+2. Pawns gain +5/+5."
 metadata/_custom_type_script = "uid://clner77n1ff5a"

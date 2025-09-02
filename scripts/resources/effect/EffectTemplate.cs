@@ -45,6 +45,7 @@ public partial class EffectTemplate : Resource
         var takeDamage = damage - def;
         target.HP -= takeDamage;
         await DamageText(takeDamage, target, param);
+        param.State.UpdateLabels();
         EventBus.Instance.InvokeTakeDamageEvent(target);
         //await EventBus.Instance.ClearTriggerQueue();
     }
@@ -60,7 +61,7 @@ public partial class EffectTemplate : Resource
         var damagePos = cardBase.GlobalPosition;
         PopupText.Instance.ShowText(damagePos + new Vector2(40, 100), $"-{damage}");
         cardBase.hitParticle.Emitting = true;
-        cardBase.Visual.UpdateLabels();
+        param.State.UpdateLabels();
         SoundManager.PlaySE("hit");
     }
 
@@ -73,7 +74,6 @@ public partial class EffectTemplate : Resource
         await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.05), Timer.SignalName.Timeout);
         var damagePos = cardBase.GlobalPosition;
         PopupText.Instance.ShowText(damagePos + new Vector2(0, 40), $"+{Attack}/+{HP}");
-        cardBase.Visual.UpdateLabels();
         SoundManager.PlaySE("buff");
     }
 

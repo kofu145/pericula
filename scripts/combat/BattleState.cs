@@ -86,6 +86,18 @@ public partial class BattleState : Node
         return null;
     }
 
+    public void UpdateLabels()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            var targetLane = i == 0 ? PlayerLane : EnemyLane;
+            for (int j = 0; j < targetLane.CardCount; j++)
+            {
+                targetLane.GetBaseAtIndex(j).Visual.UpdateLabels();
+            }
+        }
+    }
+
     public CardLane OpposingLane(CardData card) => GetSide(card).Side == LaneSide.Player ? EnemyLane : PlayerLane;
 
     public async Task PopTriggerQueue()

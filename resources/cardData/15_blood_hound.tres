@@ -22,9 +22,6 @@ metadata/_custom_type_script = "uid://dadm7j54m2eaw"
 
 [resource]
 script = ExtResource("2_xrjd6")
-id = 15
-DisplayName = "Blood Hound"
-Description = "Whenever an Ally dies, gain +2/+0"
 Rarity = ExtResource("2_erenc")
 Trait = 7
 AIPriority = 5
@@ -33,4 +30,7 @@ BaseHP = 12
 OnUse = Array[Object]([SubResource("Resource_q5end")])
 Passives = Array[Object]([SubResource("Resource_4ocq7")])
 Keywords = Array[ExtResource("1_q5end")]([])
+id = 15
+DisplayName = "Blood Hound"
+Description = "Whenever an Ally dies, gain +2/+0"
 metadata/_custom_type_script = "uid://clner77n1ff5a"

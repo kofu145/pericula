@@ -25,9 +25,6 @@ metadata/_custom_type_script = "uid://bvdys8i4a0dm0"
 
 [resource]
 script = ExtResource("2_bceid")
-id = 14
-DisplayName = "Young Prince"
-Description = "Final Wager: Knights gain +2/+2 for the rest of this encounter"
 Rarity = ExtResource("2_taq0o")
 Trait = 3
 AIPriority = 0
@@ -36,4 +33,7 @@ BaseHP = 4
 OnUse = Array[Object]([SubResource("Resource_q5toe")])
 Passives = Array[Object]([SubResource("Resource_obwej")])
 Keywords = Array[ExtResource("1_pdqq2")]([ExtResource("2_j6vx2")])
+id = 14
+DisplayName = "Young Prince"
+Description = "Final Wager: Knights gain +2/+2 for the rest of this encounter"
 metadata/_custom_type_script = "uid://clner77n1ff5a"

@@ -36,5 +36,5 @@ Passives = Array[Object]([SubResource("Resource_urcmn"), SubResource("Resource_g
 Keywords = Array[ExtResource("1_yfsq6")]([ExtResource("1_p00nx")])
 id = 20
 DisplayName = "Ruin Guard"
-Description = "Intercept. Other Allies take -1 Damage from direct attacks for this round."
+Description = "Intercept. Other Allies take -1 Damage from attacks for this round."
 metadata/_custom_type_script = "uid://clner77n1ff5a"

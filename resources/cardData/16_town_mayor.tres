@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_t41lx"]
 [ext_resource type="Script" uid="uid://c1wgjmexvhyqo" path="res://TraitBuffSelf.cs" id="3_ppsyo"]
 [ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/Intercept.tres" id="3_usx0b"]
-[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="4_kogii"]
+[ext_resource type="Resource" uid="uid://7opqktnpgetk" path="res://resources/rarities/rare.tres" id="6_kogii"]
 
 [sub_resource type="Resource" id="Resource_usx0b"]
 script = ExtResource("2_t41lx")
@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 [sub_resource type="Resource" id="Resource_qeqew"]
 script = ExtResource("3_ppsyo")
 HPBuff = 5
-DamageBuff = 5
+DamageBuff = 8
 TraitToBuff = 2
 InterceptThreshold = 2
 name = ""
@@ -25,10 +25,7 @@ metadata/_custom_type_script = "uid://c1wgjmexvhyqo"
 
 [resource]
 script = ExtResource("2_8qhce")
-id = 16
-DisplayName = "Town Mayor"
-Description = "Showdown: If there are 2+ other friendly Citizens, gain +5/+5 and Intercept."
-Rarity = ExtResource("4_kogii")
+Rarity = ExtResource("6_kogii")
 Trait = 2
 AIPriority = 3
 BaseAttack = 4
@@ -36,4 +33,7 @@ BaseHP = 10
 OnUse = Array[Object]([SubResource("Resource_usx0b")])
 Passives = Array[Object]([SubResource("Resource_qeqew")])
 Keywords = Array[ExtResource("1_kogii")]([ExtResource("2_kogii"), ExtResource("3_usx0b")])
+id = 16
+DisplayName = "Town Mayor"
+Description = "Showdown: If there are 2+ other friendly Citizens, gain +5/+8 and Intercept."
 metadata/_custom_type_script = "uid://clner77n1ff5a"

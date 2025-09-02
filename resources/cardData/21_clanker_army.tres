@@ -15,8 +15,8 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 
 [sub_resource type="Resource" id="Resource_bvdu2"]
 script = ExtResource("3_p4pdu")
-HPBuff = 2
-DamageBuff = 2
+HPBuff = 1
+DamageBuff = 1
 TraitToBuff = 4
 SpeciesRequirement = 2
 name = ""
@@ -34,5 +34,5 @@ Passives = Array[Object]([SubResource("Resource_bvdu2")])
 Keywords = Array[ExtResource("1_p4pdu")]([ExtResource("1_wl6a2")])
 id = 21
 DisplayName = "Clanker Army"
-Description = "Showdown: If 2+ Mechanical units, all mech units gain +2/+2 for each mech unit"
+Description = "Showdown: If 2+ Mechanical units, all mech units gain +1/+1 for each mech unit"
 metadata/_custom_type_script = "uid://clner77n1ff5a"

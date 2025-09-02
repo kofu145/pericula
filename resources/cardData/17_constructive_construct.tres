@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://c16xmx086gm2h"]
+[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://c16xmx086gm2h"]
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_1msrd"]
+[ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_8kgfy"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_8s8rn"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_hw5eu"]
 [ext_resource type="Script" uid="uid://bw2gawneo3xxw" path="res://scripts/resources/effect/ShowdownSelfAdjacentBuff.cs" id="3_8kgfy"]
@@ -20,14 +21,15 @@ metadata/_custom_type_script = "uid://bw2gawneo3xxw"
 
 [resource]
 script = ExtResource("2_8s8rn")
-id = 17
-DisplayName = "Con. Construct"
-Description = "Gains the Base Attack and Base HP of all adjacent mech units."
 Rarity = ExtResource("4_gkmhi")
 Trait = 4
+AIPriority = 2
 BaseAttack = 4
 BaseHP = 4
 OnUse = Array[Object]([SubResource("Resource_jpi5d")])
 Passives = Array[Object]([SubResource("Resource_kqeyt")])
-Keywords = Array[ExtResource("1_1msrd")]([])
+Keywords = Array[ExtResource("1_1msrd")]([ExtResource("2_8kgfy")])
+id = 17
+DisplayName = "Con. Construct"
+Description = "Showdown: Gains the Base Attack and Base HP of all adjacent mech units."
 metadata/_custom_type_script = "uid://clner77n1ff5a"

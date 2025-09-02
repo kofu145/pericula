@@ -330,7 +330,12 @@ public partial class BetController : Node
         // CASE 3: Normal betting logic
         // -------------------------
         int choice = GetWeightedAction(); // 0 = call, 1 = fold, 2 = raise
-        if (!CanBet) choice = 0;          // cannot raise? force call or fold
+        if (choice == 0)
+        {
+            var doCall = PercentChance(50);
+            choice = doCall ? 0 : 2;
+        }
+        if (!CanBet) choice = GetWeightedAction();          // cannot raise? force call or fold
 
         switch (choice)
         {
@@ -437,7 +442,7 @@ public partial class BetController : Node
             {
                 int difference = Math.Max(0, playerPut - enemyPut);
                 enemyChips.AddChips(pot - difference);
-                 playerChips.AddChips(difference);
+                playerChips.AddChips(difference);
             }
         }
 

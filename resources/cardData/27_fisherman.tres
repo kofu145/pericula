@@ -21,9 +21,6 @@ metadata/_custom_type_script = "uid://d2clmun5x6veo"
 
 [resource]
 script = ExtResource("2_k4u6a")
-id = 27
-DisplayName = "Fisherman"
-Description = "Showdown: Swap leftmost foe with foe that has lowest HP."
 Rarity = ExtResource("4_c20ne")
 Trait = 2
 AIPriority = 2
@@ -32,4 +29,7 @@ BaseHP = 5
 OnUse = Array[Object]([SubResource("Resource_sb5wi")])
 Passives = Array[Object]([SubResource("Resource_c20ne")])
 Keywords = Array[ExtResource("1_g5fe8")]([ExtResource("2_1xdk5")])
+id = 27
+DisplayName = "Fisherman"
+Description = "Showdown: Swap leftmost foe with foe that has lowest HP."
 metadata/_custom_type_script = "uid://clner77n1ff5a"
