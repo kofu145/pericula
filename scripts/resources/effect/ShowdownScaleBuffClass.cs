@@ -22,7 +22,7 @@ public partial class ShowdownScaleBuffClass : EffectTemplate
                 for (int i = 0; i < lane.CardCount; i++)
                 {
                     var card = lane.GetCardAtIndex(i);
-                    if ((card.Trait == TraitToBuff || card.Trait == Trait.WildCard))
+                    if (card.IsTargetTrait(TraitToBuff))
                     {
                         count++;
                     }
@@ -34,7 +34,7 @@ public partial class ShowdownScaleBuffClass : EffectTemplate
                     for (int i = 0; i < lane.CardCount; i++)
                     {
                         var member = lane.GetCardAtIndex(i);
-                        if (member.Trait == TraitToBuff)
+                        if (member.IsTargetTrait(TraitToBuff))
                         {
                             member.HP += HPBuff * count;
                             member.Attack += DamageBuff * count;

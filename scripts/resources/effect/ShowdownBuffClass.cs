@@ -20,7 +20,7 @@ public partial class ShowdownBuffClass : EffectTemplate
                 for (int i = 0; i < lane.CardCount; i++)
                 {
                     var card = lane.GetCardAtIndex(i);
-                    if ((card.Trait == TraitToBuff || card.Trait == Trait.WildCard) && card != param.Self)
+                    if (card.IsTargetTrait(TraitToBuff) && card != param.Self)
                     {
                         card.HP += HPBuff;
                         card.Attack += DamageBuff;

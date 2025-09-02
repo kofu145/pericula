@@ -82,8 +82,20 @@ public partial class CardData : CodexItemData
             _ => int.MaxValue
         };
     }
-        public (int rarity, int trait, int id) GetSortKey()
+
+    // returns the default sorting order of cards
+    public (int rarity, int trait, int id) GetSortKey()
     {
         return ((int)Rarity.RarityType, GetTraitOrder(), id);
+    }
+
+    /// <summary>
+    /// checks if the targetTrait shares the same trait as the card
+    /// </summary>
+    /// <param name="targetTrait">The trait to compare to</param>
+    /// <returns></returns>
+    public bool IsTargetTrait(Trait targetTrait)
+    {
+        return (Trait == targetTrait || Trait == Trait.WildCard);
     }
 }

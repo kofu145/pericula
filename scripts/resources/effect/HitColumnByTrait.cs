@@ -26,7 +26,7 @@ public partial class HitColumnByTrait : EffectTemplate
                 for (int i = 0; i < lane.CardCount; i++)
                 {
                     var card = lane.GetCardAtIndex(i);
-                    if ((card.Trait == BuffTrait || card.Trait == Trait.WildCard))
+                    if (card.IsTargetTrait(BuffTrait))
                     {
                         count++;
                     }

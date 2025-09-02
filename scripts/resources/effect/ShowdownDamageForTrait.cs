@@ -21,7 +21,7 @@ public partial class ShowdownDamageForTrait : EffectTemplate
                 for (int i = 0; i < lane.CardCount; i++)
                 {
                     var card = lane.GetCardAtIndex(i);
-                    if (card.Trait == TargetTrait || card.Trait == Trait.WildCard)
+                    if (card.IsTargetTrait(TargetTrait))
                     {
                         count++;
                     }
