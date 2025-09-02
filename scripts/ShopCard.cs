@@ -151,6 +151,7 @@ public partial class ShopCard : Control
             shaderMat.SetShaderParameter("green", color.G);
             baseCard.Material = shaderMat;
             border.Material = shaderMat;
+            spriteImage.Material = shaderMat;
         }
         else
         {
