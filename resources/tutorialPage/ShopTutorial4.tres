@@ -7,7 +7,7 @@
 script = ExtResource("1_mlo17")
 tutorialImage = ExtResource("2_5f35h")
 pageName = "Rarities"
-pageDescription = "Rarities determine how often a card appears in the shop. Green bordered cards are Common, blue bordered cards are Rare, red bordered cards are Mythic, and yellow bordered cards are Legendary.
+pageDescription = "Rarities determine how often a card appears in the shop. Green cards are Common, blue cards are Rare, red cards are Mythic, and yellow cards are Legendary.
 
-Legendary cards only start to appear from Ante 2 and have a much lower chance of appearing in the shop."
+Mythic cards start to appear in the shop in Act 2"
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"
