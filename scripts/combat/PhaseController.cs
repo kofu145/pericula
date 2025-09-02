@@ -83,6 +83,7 @@ public partial class PhaseController : Node
         UpdatePot(0);
         enemyChipsLabel.Text = enemyChips.Balance.ToString();
         playerChipsLabel.Text = playerChips.Balance.ToString();
+        nextTurnBuyInLabel.Visible = false;
 
         StartCombatEncounter();
     }
@@ -99,34 +100,39 @@ public partial class PhaseController : Node
 
     private void StartPrePhase()
     {
-        int buyIn = currentMinimumBuyIn;
 
-        enemyContributionThisTurn = Math.Min(enemyChips.Balance, buyIn);
+        currentMinimumBuyIn = currentTurn >= turnBuyInIncrease ? (int)(currentMinimumBuyIn * buyInIncreaseMultiplier) : currentMinimumBuyIn;
+
+        if (currentTurn >= turnBuyInIncrease - 1)
+        {
+            nextTurnBuyInLabel.Visible = true;
+            nextTurnBuyInLabel.Text = $"{(int)(currentMinimumBuyIn * buyInIncreaseMultiplier)}";
+        }
+        
+        turnLabel.Text = $"Turn: {currentTurn}";
+        buyInLabel.Text = $"{currentMinimumBuyIn}";
+
+
+        enemyContributionThisTurn = Math.Min(enemyChips.Balance, currentMinimumBuyIn);
         if (enemyContributionThisTurn > 0) enemyChips.Deduct(enemyContributionThisTurn);
 
-        if (playerChips.Balance >= buyIn)
+        if (playerChips.Balance >= currentMinimumBuyIn)
         {
-            playerChips.Deduct(buyIn);
-            playerContributionThisTurn = buyIn;
+            playerChips.Deduct(currentMinimumBuyIn);
+            playerContributionThisTurn = currentMinimumBuyIn;
         }
         else
         {
-            playerChips.BorrowChips(buyIn);
-            playerContributionThisTurn = buyIn;
+            playerChips.BorrowChips(currentMinimumBuyIn);
+            playerContributionThisTurn = currentMinimumBuyIn;
         }
 
         currentPot = enemyContributionThisTurn + playerContributionThisTurn;
 
         UpdatePot(currentPot);
-        turnLabel.Text = $"Turn: {currentTurn}";
-        buyInLabel.Text = $"{currentMinimumBuyIn}";
-        nextTurnBuyInLabel.Visible = currentTurn >= turnBuyInIncrease - 1;
-
-
-        nextTurnBuyInLabel.Text = $"{(int)Math.Ceiling(currentMinimumBuyIn * buyInIncreaseMultiplier)}";
 
         if (playerChips.Balance <= 0)
-            negativeBalanceWarningLabel.Text = $"Warning. Losing next Showdown will lose you the run.";
+            negativeBalanceWarningLabel.Text = $"Warning. Losing Showdown will lose you the run.";
         negativeBalanceWarningLabel.Visible = playerChips.Balance <= 0;
 
         currentPhase = RoundPhase.PreRound;

@@ -27,6 +27,7 @@ public partial class ShopManager : Node
         rerollsUsed = 0;
     }
 
+    // TODO: update with the prices for the deckManipData.cost
     public int GetUpgradeCost() => config.baseUpgradeCost;
     public int GetRemovalCost() => config.baseRemovalCost;
     public int GetCreateRandomCardCost() => config.baseCreateRandomCardCost;
