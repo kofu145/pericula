@@ -8,14 +8,16 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ci5ev"]
 bg_color = Color(0.08, 0.08, 0.08, 0.94902)
 
-[node name="TutorialCavnas" type="CanvasLayer" node_paths=PackedStringArray("texture", "header", "description", "nextPageButton")]
+[node name="TutorialCavnas" type="CanvasLayer" node_paths=PackedStringArray("texture", "header", "description", "backPageButton", "nextPageButton", "TutorialPageNumber")]
 layer = 128
 follow_viewport_enabled = true
 script = ExtResource("1_ci5ev")
 texture = NodePath("Panel/TextureRect")
 header = NodePath("Panel/Title")
 description = NodePath("Panel/Description")
-nextPageButton = NodePath("Panel/Button")
+backPageButton = NodePath("Panel/BackButton")
+nextPageButton = NodePath("Panel/NextButton")
+TutorialPageNumber = NodePath("Panel/TutorialPageNumber")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -62,9 +64,28 @@ text = "Description"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="TutorialPageNumber" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -265.0
+offset_top = 240.0
+offset_right = 305.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ebau5")
+theme_override_font_sizes/font_size = 32
+text = "Tutorial: 1 / 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButton" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 995.0
+offset_left = 946.0
 offset_top = 564.0
 offset_right = 1108.0
 offset_bottom = 627.0
@@ -72,3 +93,14 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("3_ebau5")
 theme_override_font_sizes/font_size = 24
 text = "Next"
+
+[node name="BackButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 564.0
+offset_right = 209.0
+offset_bottom = 627.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_ebau5")
+theme_override_font_sizes/font_size = 24
+text = "Back"

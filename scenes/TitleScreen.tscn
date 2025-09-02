@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b876nkswrot5m"]
 
-[ext_resource type="Shader" uid="uid://cr6cjrhii7xb1" path="res://scripts/shaders/diamond.gdshader" id="1_3ej01"]
+[ext_resource type="Shader" path="res://scripts/shaders/diamond.gdshader" id="1_3ej01"]
 [ext_resource type="Script" uid="uid://nrlv13nr5v60" path="res://scripts/TitleScreen.cs" id="2_w20ru"]
 [ext_resource type="Resource" uid="uid://ck2dnlghav1xg" path="res://resources/RunConfig.tres" id="3_1vfo2"]
 [ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="4_hjcsb"]

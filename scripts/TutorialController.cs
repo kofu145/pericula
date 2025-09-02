@@ -3,11 +3,16 @@ using System;
 
 public partial class TutorialController : CanvasLayer
 {
+    // page info
     [Export] private TextureRect texture;
     [Export] private Label header;
     [Export] private Label description;
+
+    // page number
     [Export] private Godot.Collections.Array<TutorialPage> tutorials;
+    [Export] private Button backPageButton;
     [Export] private Button nextPageButton;
+    [Export] private Label TutorialPageNumber;
 
     [Export] private string tutorialKey = "CombatTutorial";
 
@@ -32,8 +37,8 @@ public partial class TutorialController : CanvasLayer
         if (tutorials.Count > 0)
             InitializePage(currentPage);
 
-        if (nextPageButton != null)
-            nextPageButton.Pressed += OnNextPressed;
+        if (nextPageButton != null) nextPageButton.Pressed += OnNextPressed;
+        if (backPageButton != null) backPageButton.Pressed += OnBackPressed;
     }
 
     private void OnNextPressed()
@@ -48,12 +53,24 @@ public partial class TutorialController : CanvasLayer
         InitializePage(currentPage);
     }
 
+    private void OnBackPressed()
+    {
+        currentPage--;
+        InitializePage(currentPage);
+    }
+
     private void InitializePage(int index)
     {
+        if (index < 0 || index == tutorials.Count) return;  // abort if index out of bounds
+
         var currentTutorial = tutorials[index];
         if (texture != null) texture.Texture = currentTutorial.tutorialImage;
         if (header != null) header.Text = currentTutorial.pageName;
         if (description != null) description.Text = currentTutorial.pageDescription;
+
+        if (TutorialPageNumber != null) TutorialPageNumber.Text = $"Tutorial: {index + 1} / {tutorials.Count}";
+        if (backPageButton != null) backPageButton.Visible = index != 0;
+        if (nextPageButton != null) nextPageButton.Text = index == tutorials.Count - 1 ? "Complete" : "Next";
     }
 
     private void FinishTutorial()
@@ -74,7 +91,7 @@ public partial class TutorialController : CanvasLayer
     private void SetTutorialCompleted()
     {
         var cfg = new ConfigFile();
-        cfg.Load(SavePath); 
+        cfg.Load(SavePath);
         cfg.SetValue(Section, tutorialKey, true);
         cfg.Save(SavePath);
     }
