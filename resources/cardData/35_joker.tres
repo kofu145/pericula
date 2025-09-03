@@ -21,5 +21,5 @@ Passives = Array[Object]([SubResource("Resource_whedi")])
 Keywords = []
 id = 35
 DisplayName = "Joker"
-Description = "Copies the stats and effect of the unit on its left. Cannot copy another Joker. Wild card counts as any Trait."
+Description = "Copies the stats and effect of the unit on its left. Cannot copy another Joker. Wild Cards counts as any Trait."
 metadata/_custom_type_script = "uid://clner77n1ff5a"
