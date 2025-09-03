@@ -74,6 +74,7 @@ public partial class EffectTemplate : Resource
         await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.05), Timer.SignalName.Timeout);
         var damagePos = cardBase.GlobalPosition;
         PopupText.Instance.ShowText(damagePos + new Vector2(0, 40), $"+{Attack}/+{HP}");
+        param.State.UpdateLabels();
         SoundManager.PlaySE("buff");
     }
 

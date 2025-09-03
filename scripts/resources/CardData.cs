@@ -22,6 +22,7 @@ public partial class CardData : CodexItemData
     public int BaseHpAfterCombatBuffs;
 
     public bool ObscureChar = false;
+    public CardData baseCardData = null;
 
     // base stats
     [Export] public int BaseAttack;

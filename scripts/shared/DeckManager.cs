@@ -126,12 +126,8 @@ public partial class DeckManager : Node
         var targetList = isPlayer ? Hand : EnemyHand;
         var targetDeck = isPlayer ? playerBattleDeck : enemyBattleDeck;
         var targetDisc = isPlayer ? playerDisc : enemyDisc;
-        if (n > targetDeck.Count)
-        {
-            RecycleDiscardIntoDraw(isPlayer);
-        }
-        if (n > targetDeck.Count)
-            n = targetDeck.Count;
+        if (n > targetDeck.Count + targetDisc.Count)
+            n = targetDeck.Count + targetDisc.Count;
 
         for (int i = 0; i < n; i++)
         {
@@ -276,6 +272,7 @@ public partial class DeckManager : Node
         foreach (var card in list)
         {
             var cardToAdd = (CardData)card.Duplicate(true);
+            cardToAdd.baseCardData = card;
             cardToAdd.ResetForEncounter();
             targetList.Add(cardToAdd);
             cardToAdd.Initialize();
