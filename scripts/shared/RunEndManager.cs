@@ -6,6 +6,14 @@ public partial class RunEndManager : Node
     public static RunEndManager Instance { get; private set; }
     [Export] private RunEndPanel runEndPanel;
 
+    // runtime refs
+    public int BetsLost = 0;
+    public int BetsWon = 0;
+    // public int RemovalUsed = 0;
+    // public int DuplicatesUsed = 0;
+    // public int UpgradesUsed = 0;
+    // public int ConjureUsed = 0;
+
     public override void _Ready()
     {
         if (Instance == null) Instance = this;
@@ -22,5 +30,22 @@ public partial class RunEndManager : Node
     {
         runEndPanel.Visible = true;
         runEndPanel.InitializeWin();
+    }
+
+    public void PlayerLostBet() => BetsLost++;
+    public void PlayerWonBet() => BetsWon++;
+    // public void PlayerUsedRemoval() => RemovalUsed++;
+    // public void PlayerUsedDuplicate() => DuplicatesUsed++;
+    // public void PlayerUsedUpgrade() => UpgradesUsed++;
+    // public void PlayerUsedConjure() => ConjureUsed++;
+
+    public void Reset()
+    {
+        BetsLost = 0;
+        BetsWon = 0;
+        // RemovalUsed = 0;
+        // DuplicatesUsed = 0;
+        // UpgradesUsed = 0;
+        // ConjureUsed = 0;
     }
 }

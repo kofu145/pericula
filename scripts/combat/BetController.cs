@@ -432,14 +432,16 @@ public partial class BetController : Node
 
         if (endedWithFold)
         {
-            if (!foldedByPlayer)
+            if (!foldedByPlayer)    // player win
             {
+                RunEndManager.Instance.PlayerWonBet();
                 int difference = Math.Max(0, enemyPut - playerPut);
                 playerChips.AddChips(pot - difference);
                 enemyChips.AddChips(difference);
             }
-            else
+            else    // player loss
             {
+                RunEndManager.Instance.PlayerLostBet();
                 int difference = Math.Max(0, playerPut - enemyPut);
                 enemyChips.AddChips(pot - difference);
                 playerChips.AddChips(difference);
