@@ -96,6 +96,6 @@ public partial class CardData : CodexItemData
     /// <returns></returns>
     public bool IsTargetTrait(Trait targetTrait)
     {
-        return (Trait == targetTrait || Trait == Trait.WildCard);
+        return Trait == targetTrait || Trait == Trait.WildCard;
     }
 }
