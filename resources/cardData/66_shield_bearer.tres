@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://b1wp3na60tlfv"
 [resource]
 script = ExtResource("2_khskk")
 Rarity = ExtResource("5_6bp10")
-Trait = 0
+Trait = 6
 AIPriority = 2
 BaseAttack = 0
 BaseHP = 13
@@ -29,7 +29,7 @@ OnUse = Array[Object]([SubResource("Resource_jctb8")])
 Passives = Array[Object]([SubResource("Resource_v1uyt")])
 Keywords = Array[ExtResource("1_vsd3c")]([ExtResource("2_vsd3c")])
 id = 66
-DisplayName = "Shield Bearer"
+DisplayName = "Pawn Defender"
 Description = "Intercept
 "
 metadata/_custom_type_script = "uid://clner77n1ff5a"
