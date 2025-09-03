@@ -89,7 +89,10 @@ public partial class CardDescription : Control
         if (traitColors.TryGetValue(data.Trait, out var selfColor))
         {
             string selfHex = selfColor.ToHtml(true);
-            Class.Text = $"[color={selfHex}]{data.Trait}[/color]";
+            string spaced = Regex.Replace(data.Trait.ToString(), "(\\B[A-Z])", " $1");
+
+            if (spaced.ToLower() == "wild card") spaced = $"[wave][rainbow freq=0.2 sat=10 val=20]{spaced}[/rainbow][/wave]";
+            Class.Text = $"[color={selfHex}]{spaced}[/color]";
         }
         else
         {
@@ -98,7 +101,8 @@ public partial class CardDescription : Control
 
         // replace trait to trait color in description
         var traitNames = Enum.GetNames(typeof(Trait));
-        var escaped = Array.ConvertAll(traitNames, Regex.Escape);
+        var escaped = Array.ConvertAll(traitNames, AddSpacePattern);
+
         string pattern = $@"\b({string.Join("|", escaped)})(es|s)?\b";
 
         desc = Regex.Replace(
@@ -109,11 +113,14 @@ public partial class CardDescription : Control
                        string baseWord = m.Groups[1].Value;
                        string suffix = m.Groups[2].Success ? m.Groups[2].Value : "";
 
-                       if (Enum.TryParse<Trait>(baseWord, out var trait)
+                       string traitName = Regex.Replace(baseWord, @"[\s_-]+", "");
+                       if (Enum.TryParse<Trait>(traitName, out var trait)
                            && traitColors.TryGetValue(trait, out var color))
                        {
+                           string spaced = Regex.Replace(baseWord + suffix, "(\\B[A-Z])", " $1");   // adds a space between wild and card
                            string hex = color.ToHtml(true);
-                           return $"[color={hex}]{baseWord + suffix}[/color]";
+                           if (trait.ToString().ToLower() == "wildcard") spaced = $"[rainbow freq=0.2 sat=10 val=20]{spaced}[/rainbow]";
+                           return $"[color={hex}]{spaced}[/color]";
                        }
 
                        return m.Value; // fallback
@@ -182,7 +189,7 @@ public partial class CardDescription : Control
             m => $"[color={rarityWordColor.ToHtml(true)}]{m.Value}[/color]",
             RegexOptions.IgnoreCase | RegexOptions.CultureInvariant
         );
-        
+
         if (rarities != null && rarities.Count > 0)
         {
             foreach (var r in rarities)
@@ -264,5 +271,11 @@ public partial class CardDescription : Control
             { Trait.Pawn, PawnColor },
             { Trait.Undead, UndeadColor },
         };
+    }
+
+    private string AddSpacePattern(string name)
+    {
+        // Escape enum name and allow optional spaces before uppercase letters
+        return Regex.Replace(Regex.Escape(name), "(\\B[A-Z])", @"\s*$1");
     }
 }

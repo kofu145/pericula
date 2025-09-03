@@ -12,8 +12,8 @@
 [ext_resource type="Resource" uid="uid://x6q04ojt20wv" path="res://resources/keywords/advantage.tres" id="9_68m7r"]
 [ext_resource type="Resource" uid="uid://da0mnxj3qgg1p" path="res://resources/keywords/cleave.tres" id="10_0a6e3"]
 [ext_resource type="Resource" uid="uid://dyb56i12g80ky" path="res://resources/keywords/final_wager.tres" id="11_w7ax0"]
-[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/Intercept.tres" id="12_oblq0"]
-[ext_resource type="Resource" uid="uid://b4hxbmioyuby2" path="res://resources/keywords/Obscured.tres" id="13_57fcd"]
+[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/intercept.tres" id="12_oblq0"]
+[ext_resource type="Resource" uid="uid://b4hxbmioyuby2" path="res://resources/keywords/obscured.tres" id="13_57fcd"]
 [ext_resource type="Resource" uid="uid://cgdc6mqkues3w" path="res://resources/keywords/on_use.tres" id="14_0yn5c"]
 [ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="15_oadtf"]
 [ext_resource type="Resource" uid="uid://be7kxoyeabiix" path="res://resources/keywords/wild_card.tres" id="16_thqs2"]
@@ -54,6 +54,7 @@ ArcaneColor = Color(0, 0.45098, 0.521569, 1)
 CitizenColor = Color(2.88785e-07, 0.923872, 0.400955, 1)
 RoyaltyColor = Color(0.814196, 0.509477, 7.70092e-07, 1)
 MechanicalColor = Color(0.66, 0.59301, 0.5214, 1)
+WildCardColor = Color(1, 0.17, 0.17, 1)
 PawnColor = Color(0.74, 0.507393, 0.3996, 1)
 UndeadColor = Color(0.265045, 0.605748, 0.390767, 1)
 
