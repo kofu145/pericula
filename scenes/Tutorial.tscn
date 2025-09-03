@@ -8,14 +8,16 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ci5ev"]
 bg_color = Color(0.08, 0.08, 0.08, 0.94902)
 
-[node name="TutorialCavnas" type="CanvasLayer" node_paths=PackedStringArray("texture", "header", "description", "nextPageButton")]
+[node name="TutorialCavnas" type="CanvasLayer" node_paths=PackedStringArray("texture", "header", "description", "backPageButton", "nextPageButton", "TutorialPageNumber")]
 layer = 128
 follow_viewport_enabled = true
 script = ExtResource("1_ci5ev")
 texture = NodePath("Panel/TextureRect")
 header = NodePath("Panel/Title")
 description = NodePath("Panel/Description")
+backPageButton = NodePath("Panel/BackButton")
 nextPageButton = NodePath("Panel/NextButton")
+TutorialPageNumber = NodePath("Panel/TutorialPageNumber")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
