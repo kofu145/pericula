@@ -29,7 +29,24 @@ public partial class ShowdownDamageForTrait : EffectTemplate
                 var enemies = param.State.OpposingLane(param.Self);
                 for (int i = 0; i < count; i++)
                 {
-                    var enemy = enemies.GetCardAtIndex(DeckManager.Instance.RndGen.Next(enemies.CardCount));
+                    CardData enemy = null;
+                    bool aliveCheck = false;
+                    for (int ci = 0; ci < enemies.CardCount; ci++)
+                    {
+                        if (enemies.GetCardAtIndex(ci).HP > 0)
+                        {
+                            aliveCheck = true;
+                        }
+                    }
+                    if (!aliveCheck)
+                        break;
+                    while (aliveCheck)
+                    {
+                        enemy = enemies.GetCardAtIndex(DeckManager.Instance.RndGen.Next(enemies.CardCount));
+                        if (enemy.HP > 0)
+                            break;
+
+                    }
                     DealDamage(Damage, enemy, param);
                     await DoTriggerAnimation(param);
                 }

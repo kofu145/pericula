@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://bvy2xdtdh4lf"]
+[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://b6nvsadc8ut57"]
 
 [ext_resource type="Resource" uid="uid://fasmj3v0ixuo" path="res://resources/cardData/1_diamond_pawn.tres" id="1_an4hp"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
