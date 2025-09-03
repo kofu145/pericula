@@ -10,7 +10,7 @@ bg_color = Color(0.890196, 0.862745, 0.721569, 1)
 [sub_resource type="ButtonGroup" id="ButtonGroup_0by5f"]
 
 [node name="Codex" type="Panel" node_paths=PackedStringArray("headerLabel", "pageCount", "prevButton", "nextButton", "returnHomeButton", "cardTabButton", "incantationTabButton", "leftGrid", "rightGrid")]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 84.0
@@ -192,3 +192,14 @@ theme_override_font_sizes/font_size = 20
 toggle_mode = true
 button_group = SubResource("ButtonGroup_0by5f")
 text = "Incantations"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 39.0
+offset_right = 607.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0by5f")
+theme_override_font_sizes/font_size = 20
+text = "Work in progress UI"
