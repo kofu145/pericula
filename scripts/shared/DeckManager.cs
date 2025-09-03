@@ -272,6 +272,7 @@ public partial class DeckManager : Node
         foreach (var card in list)
         {
             var cardToAdd = (CardData)card.Duplicate(true);
+            cardToAdd.baseCardData = card;
             cardToAdd.ResetForEncounter();
             targetList.Add(cardToAdd);
             cardToAdd.Initialize();
