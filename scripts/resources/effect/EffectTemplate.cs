@@ -70,11 +70,11 @@ public partial class EffectTemplate : Resource
     /// </summary>
     protected async Task BuffText(int HP, int Attack, CardData target, EffectParam param)
     {
+        param.State.UpdateLabels();
         var cardBase = param.State.GetSide(target).GetCardBaseByData(target);
         await ToSignal(DeckManager.Instance.GetTree().CreateTimer(.05), Timer.SignalName.Timeout);
         var damagePos = cardBase.GlobalPosition;
         PopupText.Instance.ShowText(damagePos + new Vector2(0, 40), $"+{Attack}/+{HP}");
-        param.State.UpdateLabels();
         SoundManager.PlaySE("buff");
     }
 
