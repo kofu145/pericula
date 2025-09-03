@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b1u60b8lcqaqm" path="res://scripts/Codex.cs" id="1_0by5f"]
 [ext_resource type="PackedScene" uid="uid://dgymledqft3m0" path="res://scenes/titleScreen/CodexEntry.tscn" id="1_2wfme"]
+[ext_resource type="Texture2D" uid="uid://dewekg57p3426" path="res://assets/UI/codex.png" id="1_to8ux"]
 [ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="2_0by5f"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8pmk"]
-bg_color = Color(0.890196, 0.862745, 0.721569, 1)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_0by5f"]
 
-[node name="Codex" type="Panel" node_paths=PackedStringArray("headerLabel", "pageCount", "prevButton", "nextButton", "returnHomeButton", "cardTabButton", "incantationTabButton", "leftGrid", "rightGrid")]
+[node name="Codex" type="NinePatchRect" node_paths=PackedStringArray("headerLabel", "pageCount", "prevButton", "nextButton", "returnHomeButton", "cardTabButton", "incantationTabButton", "leftGrid", "rightGrid")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,7 +17,11 @@ offset_right = -50.0
 offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t8pmk")
+texture = ExtResource("1_to8ux")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 script = ExtResource("1_0by5f")
 headerLabel = NodePath("HeaderTypeLabel")
 pageCount = NodePath("PageCount")
