@@ -3,6 +3,7 @@ using Godot;
 public partial class TitleScreen : Panel
 {
     [Export] private Button startGameButton;
+    [Export] private Button codexButton;
 
     // game config
     [Export] private RunConfig runConfig;
@@ -11,6 +12,7 @@ public partial class TitleScreen : Panel
     public override void _Ready()
     {
         startGameButton.Pressed += StartNewRun;
+        codexButton.Pressed += OpenCodex;
         animation.Play("Start");
     }
 
@@ -20,6 +22,12 @@ public partial class TitleScreen : Panel
         ResetManagers();
         startGameButton.Pressed -= StartNewRun;
         SceneManager.ChangeSceneToFile("Shop");
+        SoundManager.PlaySE("click");
+    }
+
+    private void OpenCodex()
+    {
+        SceneManager.ChangeSceneToFile("Codex");
         SoundManager.PlaySE("click");
     }
 

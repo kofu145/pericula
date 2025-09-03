@@ -19,7 +19,7 @@ public partial class DeckManipCard : Control
     [Export] Label cost;
     int _deckManipID;
     bool _disabled = false;
-    bool disableDefaultHoverScale = true;
+    bool disableInteraction = false; // disables all hover and click interactions but displays tooltip
 
     const float TWEEN_INTENSITY = 1.25f;
     const float TWEEN_DURATION = 0.25f;
@@ -56,7 +56,7 @@ public partial class DeckManipCard : Control
     {
         Initialize(id);
         costPanel.Visible = false;
-        disableDefaultHoverScale = false;
+        disableInteraction = true;
     }
 
     void OnInput(InputEvent @event)
@@ -70,7 +70,7 @@ public partial class DeckManipCard : Control
 
     private void OnPressed()
     {
-        if (_disabled)
+        if (_disabled || disableInteraction)
         {
             return;
         }
@@ -145,7 +145,7 @@ public partial class DeckManipCard : Control
     {
         if (_disabled) return;
         ZIndex = 100;
-        if (disableDefaultHoverScale) StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION);
+        if (!disableInteraction) StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION);
         description.Display();
         SoundManager.PlaySE("touchcard");
     }
@@ -154,7 +154,7 @@ public partial class DeckManipCard : Control
     {
         if (_disabled) return;
         ZIndex = 0;
-        if (disableDefaultHoverScale) StartTween(this, "scale", Vector2.One, TWEEN_DURATION);
+        if (!disableInteraction) StartTween(this, "scale", Vector2.One, TWEEN_DURATION);
         description.Hide();
     }
 

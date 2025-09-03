@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class UiOverlay : CanvasLayer
 {
@@ -8,6 +9,9 @@ public partial class UiOverlay : CanvasLayer
     [Export] private Button deckButton;
     [Export] private DeckListView deckListView;
 
+    [Export] private Godot.Collections.Array<string> hideOnScenes;
+    [Export] private Godot.Collections.Array<string> hideChipsOnScenes;
+
     public static UiOverlay Instance { get; private set; }
 
     public override void _Ready()
@@ -15,11 +19,23 @@ public partial class UiOverlay : CanvasLayer
         if (Instance == null) Instance = this;
         else if (Instance != this) { QueueFree(); return; }
 
-        if (GetTree().CurrentScene?.Name == "TitleScreen") Visible = false;
+        if (hideOnScenes.Contains(GetTree().CurrentScene?.Name)) Visible = false;
 
         ChipManager.Instance.OnChipsChanged += UpdateChipsUI;
 
         deckButton.Pressed += deckListView.OpenDeck;
+
+        // get the full path
+        for (int i = 0; i < hideOnScenes.Count; i++)
+        {
+            var scene = hideOnScenes[i];
+            hideOnScenes[i] = $"scenes/{scene}.tscn";
+        }
+        for (int i = 0; i < hideChipsOnScenes.Count; i++)
+        {
+            var scene = hideChipsOnScenes[i];
+            hideChipsOnScenes[i] = $"scenes/{scene}.tscn";
+        }
     }
 
     public void BindDraw(Button button) => button.Pressed += deckListView.OpenDraw;
@@ -46,8 +62,8 @@ public partial class UiOverlay : CanvasLayer
 
     public void Refresh(string sceneName)
     {
-        Visible = sceneName != "scenes/TitleScreen.tscn";
-        chips.Visible = sceneName != "scenes/Combat.tscn";
+        Visible = !hideOnScenes.Contains(sceneName);
+        chips.Visible = !hideChipsOnScenes.Contains(sceneName);
     }
 
     private void UpdateChipsUI(int newAmount)

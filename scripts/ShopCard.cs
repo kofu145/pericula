@@ -16,7 +16,7 @@ public partial class ShopCard : Control
     [Export] public Godot.Collections.Array<Texture2D> CardImages;
     int _cardID;
     bool _disabled = false;
-    bool disableDefaultHoverScale = true;       // false to disable card scaling on hover
+    bool disableInteraction = false;       // true to disable card scaling on hover and on click
 
     const float TWEEN_INTENSITY = 1.25f;
     const float TWEEN_DURATION = 0.25f;
@@ -62,7 +62,7 @@ public partial class ShopCard : Control
     {
         Initialize(id);
         costPanel.Visible = false;
-        disableDefaultHoverScale = false;
+        disableInteraction = true;
     }
 
     void OnInput(InputEvent @event)
@@ -76,7 +76,7 @@ public partial class ShopCard : Control
 
     private void OnPressed()
     {
-        if (_disabled)
+        if (_disabled || disableInteraction)
         {
             return;
         }
@@ -116,7 +116,7 @@ public partial class ShopCard : Control
     {
         if (_disabled) return;
         ZIndex = 100;
-        if (disableDefaultHoverScale) StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION);
+        if (!disableInteraction) StartTween(this, "scale", Vector2.One * TWEEN_INTENSITY, TWEEN_DURATION);
         description.Display();
         SoundManager.PlaySE("touchcard");
     }
@@ -125,7 +125,7 @@ public partial class ShopCard : Control
     {
         if (_disabled) return;
         ZIndex = 0;
-        if (disableDefaultHoverScale) StartTween(this, "scale", Vector2.One, TWEEN_DURATION);
+        if (!disableInteraction) StartTween(this, "scale", Vector2.One, TWEEN_DURATION);
         description.Hide();
     }
 

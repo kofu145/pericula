@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgymledqft3m0"]
+[gd_scene load_steps=5 format=3 uid="uid://dgymledqft3m0"]
 
 [ext_resource type="Texture2D" uid="uid://b3dg7h8i42hs2" path="res://assets/UI/codex_slot.png" id="1_yy7sv"]
 [ext_resource type="Script" uid="uid://d4nd465x5wciw" path="res://scripts/CodexEntry.cs" id="2_dmc64"]
-[ext_resource type="PackedScene" uid="uid://djkgyuhdqygsw" path="res://scenes/card/Card.tscn" id="3_io4u1"]
 [ext_resource type="PackedScene" uid="uid://bki587v31okuf" path="res://scenes/shop_card/ShopCard.tscn" id="3_lpeif"]
 [ext_resource type="PackedScene" uid="uid://nniabjsgwor0" path="res://scenes/shop_card/DeckManipulation.tscn" id="4_io4u1"]
 
@@ -16,10 +15,3 @@ stretch_mode = 5
 script = ExtResource("2_dmc64")
 cardScene = ExtResource("3_lpeif")
 deckManipScene = ExtResource("4_io4u1")
-
-[node name="Card" parent="." instance=ExtResource("3_io4u1")]
-visible = false
-layout_mode = 1
-HoverScale = 1.0
-FollowSpeed = 99999.0
-ScaleSpeed = 99999.0

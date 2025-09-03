@@ -5,32 +5,61 @@ using System.Collections.Generic;
 public partial class Codex : Control
 {
     // scenes
-    [Export] private PackedScene codexSlot;
+    // [Export] private PackedScene codexSlot;
 
     // UI refs
+    [Export] private Label headerLabel;
+    [Export] private Label pageCount;
     [Export] private Button prevButton;
     [Export] private Button nextButton;
+    [Export] private Button returnHomeButton;
+    // button refs for the tabs
+    [Export] private Button cardTabButton;
+    [Export] private Button incantationTabButton;
 
     // scene refs
     [Export] private GridContainer leftGrid;
     [Export] private GridContainer rightGrid;
 
-    // consts
-    const int CARDS_PER_PAGE = 18;
-
     // runtime refs
+    private List<CodexEntry> codexSlots = new();
     private List<CodexItemData> codexDataList = new();
     private int currentPage = 0;
     private int maxPage = 0;
-    private List<Node> spawned = new();
+    private int slotCount;
+    private ButtonGroup tabGroup = new();
 
 
     public override void _Ready()
     {
+        for (int i = 0; i < leftGrid.GetChildCount(); i++)
+        {
+            if (leftGrid.GetChild(i) is CodexEntry slot)
+            {
+                codexSlots.Add(slot);
+            }
+        }
+        for (int i = 0; i < rightGrid.GetChildCount(); i++)
+        {
+            if (rightGrid.GetChild(i) is CodexEntry slot)
+            {
+                codexSlots.Add(slot);
+            }
+        }
+        slotCount = codexSlots.Count;
+
         SwitchToCardPage();
 
         prevButton.Pressed += SwitchToPreviousPage;
         nextButton.Pressed += SwitchToNextPage;
+        returnHomeButton.Pressed += ReturnToTitleScreen;
+
+        // tab handlers
+        cardTabButton.Pressed += SwitchToCardPage;
+        incantationTabButton.Pressed += SwitchToDeckManipPage;
+
+        cardTabButton.ButtonGroup = tabGroup;
+        incantationTabButton.ButtonGroup = tabGroup;
     }
 
 
@@ -51,28 +80,42 @@ public partial class Codex : Control
 
     private void SwitchToDeckManipPage()
     {
+        headerLabel.Text = "Incantations";
         codexDataList = Lookup.GetDeckManipLibrary();
         InitializePage();
+
+        // disable itself, enable all others in group
+        foreach (var button in tabGroup.GetButtons()) button.Disabled = false;
+        incantationTabButton.Disabled = true;
     }
 
     private void SwitchToCardPage()
     {
+        headerLabel.Text = "Cards";
         codexDataList = Lookup.GetCardLibrary();
         InitializePage();
+        foreach (var button in tabGroup.GetButtons()) button.Disabled = false;
+        cardTabButton.Disabled = true;
+    }
+
+    private void ReturnToTitleScreen()
+    {
+        SceneManager.ChangeSceneToFile("TitleScreen");
     }
 
     private void PopulatePage()
     {
         ClearPage();
 
-        int startIndex = CARDS_PER_PAGE * currentPage;
-        for (int i = 0; i < CARDS_PER_PAGE; i++)
+        int startIndex = slotCount * currentPage;
+        for (int i = 0; i < slotCount; i++)
         {
-            var card = startIndex + i < codexDataList.Count ? codexDataList[startIndex + i] : null;
-            // card.Initialize()
-            bool spawnLeftGrid = i < CARDS_PER_PAGE / 2;
-            Spawn(card, spawnLeftGrid);
+            int currentIndex = startIndex + i;
+            var card = currentIndex < codexDataList.Count ? codexDataList[currentIndex] : null;
+
+            codexSlots[i].Initialize(card);
         }
+        pageCount.Text = $"{currentPage + 1} / {maxPage + 1}";
     }
 
 
@@ -80,7 +123,7 @@ public partial class Codex : Control
     private void InitializePage()
     {
         currentPage = 0;
-        maxPage = (int)Math.Ceiling((double)codexDataList.Count / CARDS_PER_PAGE) - 1;
+        maxPage = (int)Math.Ceiling((double)codexDataList.Count / slotCount) - 1;
 
         PopulatePage();
         UpdateButtons();
@@ -88,21 +131,8 @@ public partial class Codex : Control
 
     private void ClearPage()
     {
-        foreach (var spawn in spawned) spawn.QueueFree();
-        spawned.Clear();
+        foreach (var slot in codexSlots) slot.Clear();
     }
-    private void Spawn(CodexItemData data, bool spawnLeftGrid)
-    {
-        var slot = codexSlot.Instantiate<CodexEntry>();
-
-        if (spawnLeftGrid) leftGrid.AddChild(slot);
-        else rightGrid.AddChild(slot);
-
-        if (data != null) slot.Initialize(data);
-
-        spawned.Add(slot);
-    }
-
     private void UpdateButtons()
     {
         prevButton.Visible = currentPage != 0;
