@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ibxg7th6h5c6"]
+[gd_scene load_steps=10 format=3 uid="uid://ibxg7th6h5c6"]
 
 [ext_resource type="PackedScene" uid="uid://4bvri2crpxyv" path="res://scenes/DeckListView.tscn" id="1_cj1pm"]
 [ext_resource type="Script" uid="uid://csmcdyn34vwy2" path="res://scripts/UiOverlay.cs" id="1_ridxj"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="4_r3r3p"]
 [ext_resource type="PackedScene" uid="uid://coyntyyf64no0" path="res://scenes/Settings.tscn" id="4_xviqy"]
 [ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="5_ddc24"]
+[ext_resource type="PackedScene" uid="uid://bghbw6y16qa1m" path="res://scenes/BugReport.tscn" id="9_lkato"]
 
 [node name="UIOverlay" type="CanvasLayer" node_paths=PackedStringArray("chips", "chipsCountLabel", "deckButton", "deckListView", "setting")]
 layer = 120
@@ -66,7 +67,19 @@ visible = false
 layer = 128
 follow_viewport_enabled = true
 
-[node name="Settings" parent="CanvasLayer" instance=ExtResource("4_xviqy")]
+[node name="Settings" parent="CanvasLayer" node_paths=PackedStringArray("bugReport") instance=ExtResource("4_xviqy")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -470.0
+offset_top = -255.0
+offset_right = 470.0
+offset_bottom = 255.0
+bugReport = NodePath("../BugReport")
+
+[node name="BugReport" parent="CanvasLayer" instance=ExtResource("9_lkato")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

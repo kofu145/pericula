@@ -1,0 +1,123 @@
+[gd_scene load_steps=5 format=3 uid="uid://bghbw6y16qa1m"]
+
+[ext_resource type="Script" uid="uid://dnvpvr7y8wrgl" path="res://scripts/BugReport.cs" id="1_05wjl"]
+[ext_resource type="PackedScene" uid="uid://cmm60sbt32kxb" path="res://scenes/BugReportResponse.tscn" id="2_7edfm"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="2_pdkg5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4ih8"]
+bg_color = Color(0.06, 0.06, 0.06, 0.901961)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="BugReport" type="Panel" node_paths=PackedStringArray("bugDescription", "severity")]
+clip_contents = true
+custom_minimum_size = Vector2(940, 510)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -212.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4ih8")
+script = ExtResource("1_05wjl")
+bugDescription = NodePath("MarginContainer/VBoxContainer/TextEdit")
+severity = NodePath("MarginContainer/VBoxContainer/SeverityInput/HSlider")
+reponsePanel = ExtResource("2_7edfm")
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.5
+offset_top = 24.0
+offset_right = 174.5
+offset_bottom = 79.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_pdkg5")
+theme_override_font_sizes/font_size = 40
+text = "Report Bug"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 96
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 96
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pdkg5")
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Describe the bug"
+wrap_mode = 1
+
+[node name="SeverityLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pdkg5")
+theme_override_font_sizes/font_size = 30
+text = "Severity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SeverityInput" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="MildLabel" type="Label" parent="MarginContainer/VBoxContainer/SeverityInput"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pdkg5")
+text = "Mild"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SeverityInput"]
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="SevereLabel" type="Label" parent="MarginContainer/VBoxContainer/SeverityInput"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pdkg5")
+text = "Severe"
+
+[node name="SubmitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_pdkg5")
+text = "Submit"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 156.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_pdkg5")
+text = "Back To Game"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SubmitButton" to="." method="ButtonClick"]
+[connection signal="pressed" from="BackButton" to="." method="Close"]

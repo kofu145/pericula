@@ -1,7 +1,4 @@
 using Godot;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
 
 public partial class Settings : Panel
 {
@@ -10,10 +7,7 @@ public partial class Settings : Panel
     [Export] private Button restartRunButton;
     [Export] private Godot.Collections.Array<string> hideTitleScreenButtonOn;
     [Export] private Godot.Collections.Array<string> hiderestartRunButtonOn;
-    // report form
-    private string formUrl = "https://docs.google.com/forms/d/1uW1gZqDA6q-Ujmqwc_kVSTrZm0VpNmajWwDCQHfETjU/formResponse";
-    private string bugEntryId = "entry.1413594413";
-    // private string severityEntryId = "entry.1028849403_sentinel";
+    [Export] private BugReport bugReport;
 
 
     public override void _Ready()
@@ -34,10 +28,16 @@ public partial class Settings : Panel
             ToggleSettings();
         }
     }
-
     public void ToggleSettings()
     {
         Visible = !Visible;
+        bugReport.Visible = false;
+    }
+
+    public void SwitchToBugReport()
+    {
+        bugReport.Visible = true;
+        Visible = false;
     }
 
     public void ReturnToTitleScreen()
@@ -59,57 +59,4 @@ public partial class Settings : Panel
         if (titleScreenButton != null) titleScreenButton.Visible = !hideTitleScreenButtonOn.Contains(scene);
         if (restartRunButton != null) restartRunButton.Visible = !hiderestartRunButtonOn.Contains(scene);
     }
-
-    // public void SubmitBugReport(string report)
-    // {
-    //     if (string.IsNullOrEmpty(report))
-    //     {
-    //         GD.PushWarning("Bug report is empty. Please provide a report before submitting.");
-    //         return;
-    //     }
-
-    //     if (Send(report).IsCompletedSuccessfully)
-    //     {
-    //         GD.Print("Bug report submitted successfully.");
-    //         // update text to show bug has been reported
-    //     }
-    //     else
-    //     {
-    //         GD.PushWarning("Failed to submit bug report.");
-    //     }
-    // }
-
-    // private async System.Threading.Tasks.Task<bool> Send(string report)
-    // {
-    //     var formData = new Dictionary<string, string>()
-    //     {
-    //         { bugEntryId, report},
-    //         // { severityEntryId, selectedSeverity.ToString() },
-    //     };
-
-    //     try
-    //     {
-    //         using (Godot.HttpClient httpClient = new Godot.HttpClient())
-    //         {
-    //             var content = new FormUrlEncodedContent(formData);
-
-    //             HttpResponseMessage response = await httpClient.PostAsync(formUrl, content);
-    //             if (response.IsSuccessStatusCode)
-    //             {
-    //                 GD.Print("Bug report submitted successfully.");
-    //                 return true;
-    //             }
-    //             else
-    //             {
-    //                 GD.PushWarning($"Failed to submit bug report. Status code: {response.StatusCode}");
-    //                 return false;
-    //             }
-    //         }
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         GD.PushWarning($"Exception occurred while submitting bug report: {e.Message}");
-    //         return false;
-    //     }
-    // }
 }

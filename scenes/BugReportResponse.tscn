@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmm60sbt32kxb"]
+
+[ext_resource type="Script" uid="uid://vvvr1hu1u3mm" path="res://scripts/BugReportResponse.cs" id="1_d4g70"]
+[ext_resource type="FontFile" uid="uid://byeg57bn1oyp3" path="res://assets/yoster-island/yoster.ttf" id="2_soe72"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4ih8"]
+bg_color = Color(0.06, 0.06, 0.06, 0.901961)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="BugReportResponse" type="Panel" node_paths=PackedStringArray("responseLabel")]
+clip_contents = true
+custom_minimum_size = Vector2(500, 200)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -100.0
+offset_right = 254.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4ih8")
+script = ExtResource("1_d4g70")
+responseLabel = NodePath("Header")
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 152.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_soe72")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = 52.0
+offset_right = 30.5
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_soe72")
+theme_override_font_sizes/font_size = 24
+text = "Return"
+
+[connection signal="pressed" from="Button" to="." method="Close"]

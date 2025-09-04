@@ -110,14 +110,7 @@ offset_left = 64.0
 offset_top = 455.0
 offset_right = 866.0
 offset_bottom = 495.0
-theme_override_constants/separation = 40
-
-[node name="BackButton" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_fonts/font = ExtResource("3_46duy")
-text = "Back To Game"
+theme_override_constants/separation = 120
 
 [node name="TitleScreenButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
@@ -141,9 +134,20 @@ offset_right = 920.0
 offset_bottom = 47.0
 text = "Report Bug"
 
+[node name="BackButton" type="Button" parent="."]
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 156.0
+offset_bottom = 58.0
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_46duy")
+text = "Back To Game"
+
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Music/MusicSlider" to="MarginContainer/VBoxContainer/Music" method="OnValueChanged"]
 [connection signal="drag_ended" from="MarginContainer/VBoxContainer/SoundEffects/SoundSlider" to="MarginContainer/VBoxContainer/SoundEffects" method="SoundFinishedChanging"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SoundEffects/SoundSlider" to="MarginContainer/VBoxContainer/SoundEffects" method="OnValueChanged"]
-[connection signal="pressed" from="HBoxContainer/BackButton" to="." method="ToggleSettings"]
 [connection signal="pressed" from="HBoxContainer/TitleScreenButton" to="." method="ReturnToTitleScreen"]
 [connection signal="pressed" from="HBoxContainer/RestartButton" to="." method="RestartRun"]
+[connection signal="pressed" from="BugReportButton" to="." method="SwitchToBugReport"]
+[connection signal="pressed" from="BackButton" to="." method="ToggleSettings"]
