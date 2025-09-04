@@ -117,15 +117,21 @@ public partial class CardLane : Node
 
         fromCard.Visual.ToggleLerp(true);
         toCard.Visual.ToggleLerp(true);
+        var fromPos = fromCard.Visual.GlobalPosition;
+        var toPos = toCard.Visual.GlobalPosition;
 
         fromCard.Reparent(_slots[to]);
         toCard.Reparent(_slots[from]);
+        fromCard.Visual.SetOffset(fromPos);
+        toCard.Visual.SetOffset(toPos);
+        fromCard.Visual.GlobalPosition = fromPos;
+        toCard.Visual.GlobalPosition = toPos;
+        await ToSignal(GetTree().CreateTimer(duration), Timer.SignalName.Timeout);
         (_cards[from], _cards[to]) = (_cards[to], _cards[from]);
 
         fromCard.Visual.ToggleLerp(false);
         toCard.Visual.ToggleLerp(false);
 
-        await ToSignal(GetTree().CreateTimer(duration), "timeout");
     }
 
     public List<CardData> GetAllCardData()

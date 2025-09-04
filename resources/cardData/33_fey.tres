@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://c2ersb1fprdw3"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_xr7v2"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_0vq8u"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_t24w4"]
+[ext_resource type="Script" uid="uid://cvvvuo6t34yji" path="res://scripts/resources/effect/ShowdownBuffClass.cs" id="3_hj3l3"]
+[ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="4_dfb1f"]
+
+[sub_resource type="Resource" id="Resource_ykida"]
+script = ExtResource("2_t24w4")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_41mes"]
+script = ExtResource("3_hj3l3")
+HPBuff = 1
+DamageBuff = 1
+TraitToBuff = 1
+CanTargetSelf = true
+name = ""
+metadata/_custom_type_script = "uid://cvvvuo6t34yji"
+
+[resource]
+script = ExtResource("2_0vq8u")
+Rarity = ExtResource("4_dfb1f")
+Trait = 1
+AIPriority = 2
+BaseAttack = 6
+BaseHP = 7
+OnUse = Array[Object]([SubResource("Resource_ykida")])
+Passives = Array[Object]([SubResource("Resource_41mes")])
+Keywords = Array[ExtResource("1_xr7v2")]([])
+id = 33
+DisplayName = "Fey"
+Description = "Showdown: Give all ally Arcane units +1/+1."
+metadata/_custom_type_script = "uid://clner77n1ff5a"

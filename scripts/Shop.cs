@@ -40,8 +40,6 @@ public partial class Shop : Control
         {
             var rarity = ShopManager.Instance.GenRarity();
             var target = Lookup.GetCardsByRarity(rarity);
-            GD.Print(target);
-            GD.Print(rarity);
             _upgradeID = target[DeckManager.Instance.RndGen.Next(target.Count)].id;
 
 

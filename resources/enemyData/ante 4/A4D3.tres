@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_bvunj")
-DisplayName = "Fundam Kit"
+DisplayName = "Hoyo Overseer"
 deck = ExtResource("1_nres6")
 Difficulty = 3
 IsBoss = false

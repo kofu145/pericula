@@ -16,8 +16,8 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 
 [sub_resource type="Resource" id="Resource_qeqew"]
 script = ExtResource("3_ppsyo")
-HPBuff = 5
-DamageBuff = 8
+HPBuff = 8
+DamageBuff = 5
 TraitToBuff = 2
 InterceptThreshold = 2
 name = ""

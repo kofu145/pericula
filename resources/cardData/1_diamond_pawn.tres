@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://fasmj3v0ixuo"]
+[gd_resource type="Resource" script_class="CardData" load_steps=7 format=3 uid="uid://fasmj3v0ixuo"]
 
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_8yvsh"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_jfe0q"]
 [ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="3_wdioa"]
 [ext_resource type="Texture2D" uid="uid://c58o6pf7u2c2y" path="res://assets/cards/knight.png" id="4_faipj"]
@@ -23,7 +24,7 @@ BaseHP = 7
 Texture = ExtResource("4_faipj")
 OnUse = Array[Object]([SubResource("Resource_mjdb7")])
 Passives = Array[Object]([])
-Keywords = []
+Keywords = Array[ExtResource("1_8yvsh")]([])
 id = 1
 DisplayName = "Diamond Pawn"
 Description = ""

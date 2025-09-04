@@ -26,6 +26,11 @@ public partial class CopyLeft : EffectTemplate
                 param.Self.Attack = copyBase.BaseAttack;
                 param.Self.HP = copyBase.BaseHP;
             }
+
+            for (int i = 1; i < param.Self.Passives.Count; i++)
+            {
+                param.Self.Passives[i].PreInit(param);
+            }
         }
         catch (System.Exception ex)
         {

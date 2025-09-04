@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 
 [sub_resource type="Resource" id="Resource_c20ne"]
 script = ExtResource("4_5rhdv")
-swapDuration = 0.5
+swapDuration = 0.25
 name = ""
 metadata/_custom_type_script = "uid://d2clmun5x6veo"
 
@@ -31,5 +31,5 @@ Passives = Array[Object]([SubResource("Resource_c20ne")])
 Keywords = Array[ExtResource("1_g5fe8")]([ExtResource("2_1xdk5")])
 id = 27
 DisplayName = "Fisherman"
-Description = "Showdown: Swap leftmost foe with foe that has lowest HP."
+Description = "Showdown: Swap leftmost foe with foe that has lowest HP. Gains the stats of the hooked foe."
 metadata/_custom_type_script = "uid://clner77n1ff5a"

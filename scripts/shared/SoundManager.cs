@@ -11,7 +11,7 @@ public partial class SoundManager : Node
     {
         if (GetCurrentBGMClip().Equals(bgm)) return;
         BGMPlayer.Set("parameters/switch_to_clip", bgm);
-        
+
         if (!BGMPlayer.Playing)
         {
             BGMPlayer.Play();
@@ -33,10 +33,10 @@ public partial class SoundManager : Node
 
     }
 
-    public static void PlaySE(string se)
+    public static void PlaySE(string se, float pitch = 1)
     {
         AudioStreamPlaybackPolyphonic audio = (AudioStreamPlaybackPolyphonic)SEPlayer.GetStreamPlayback();
-        audio.PlayStream(GD.Load<AudioStream>($"res://assets/audio/{se}.ogg"));
+        audio.PlayStream(GD.Load<AudioStream>($"res://assets/audio/{se}.ogg"), 0, 0, pitch);
     }
 
     public override void _Ready()

@@ -146,7 +146,7 @@ public partial class CardVisual : Control
             Shader shader = GD.Load<Shader>("res://scripts/shaders/movingrainbow.gdshader");
             ShaderMaterial shaderMat = new();
             shaderMat.Shader = shader;
-            shaderMat.SetShaderParameter("strength", 0.12);
+            shaderMat.SetShaderParameter("strength", 0.15);
             shaderMat.SetShaderParameter("speed", 0.3);
             shaderMat.SetShaderParameter("angle", 45);
             shaderMat.SetShaderParameter("red", color.R);
@@ -154,7 +154,17 @@ public partial class CardVisual : Control
             shaderMat.SetShaderParameter("green", color.G);
             Material = shaderMat;
             cardBorder.Material = shaderMat;
-            cardBase.CardImage.Material = shaderMat;
+
+            ShaderMaterial imageMat = new();
+            imageMat.Shader = shader;
+            imageMat.SetShaderParameter("strength", 0.13);
+            imageMat.SetShaderParameter("speed", 0.3);
+            imageMat.SetShaderParameter("angle", 45);
+            imageMat.SetShaderParameter("red", 1);
+            imageMat.SetShaderParameter("blue", 1);
+            imageMat.SetShaderParameter("green", 1);
+
+            cardBase.CardImage.Material = imageMat;
         }
         else
         {
@@ -163,8 +173,8 @@ public partial class CardVisual : Control
         }
     }
 
-    public void PlayInfoTriggerSound()
+    public void PlayInfoTriggerSound(float pitch = 1)
     {
-        SoundManager.PlaySE("info");
+        SoundManager.PlaySE("info", pitch);
     }
 }

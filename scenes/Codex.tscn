@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnscemdv51ua2"]
+[gd_scene load_steps=6 format=3 uid="uid://3pgpdg4mx3c8"]
 
 [ext_resource type="Script" uid="uid://b1u60b8lcqaqm" path="res://scripts/Codex.cs" id="1_0by5f"]
 [ext_resource type="PackedScene" uid="uid://dgymledqft3m0" path="res://scenes/titleScreen/CodexEntry.tscn" id="1_2wfme"]

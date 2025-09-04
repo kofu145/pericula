@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_1uwc3")
-DisplayName = "Ousama Game"
+DisplayName = "Strategy Paradox"
 deck = ExtResource("1_5us2q")
 Difficulty = 2
 IsBoss = false

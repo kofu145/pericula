@@ -7,6 +7,8 @@ public partial class ShowdownAdjacentBuff : EffectTemplate
 {
     [Export] public int HPBuff = 2;
     [Export] public int DamageBuff = 2;
+    [Export] public bool BuffLeft = true;
+    [Export] public bool BuffRight = true;
 
     public override void Initialize(EffectParam param)
     {
@@ -23,7 +25,7 @@ public partial class ShowdownAdjacentBuff : EffectTemplate
                     if (card == param.Self)
                     {
                         CardData target;
-                        if (i - 1 >= 0)
+                        if (i - 1 >= 0 && BuffLeft)
                         {
                             target = lane.GetCardAtIndex(i - 1);
                             target.HP += HPBuff;
@@ -32,7 +34,7 @@ public partial class ShowdownAdjacentBuff : EffectTemplate
 
                             await DoTriggerAnimation(param);
                         }
-                        if (i + 1 < lane.CardCount)
+                        if (i + 1 < lane.CardCount && BuffRight)
                         {
                             target = lane.GetCardAtIndex(i + 1);
                             target.HP += HPBuff;
