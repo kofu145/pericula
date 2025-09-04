@@ -68,24 +68,6 @@ layer = 128
 follow_viewport_enabled = true
 
 [node name="Settings" parent="CanvasLayer" node_paths=PackedStringArray("bugReport") instance=ExtResource("4_xviqy")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -470.0
-offset_top = -255.0
-offset_right = 470.0
-offset_bottom = 255.0
 bugReport = NodePath("../BugReport")
 
 [node name="BugReport" parent="CanvasLayer" instance=ExtResource("9_lkato")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -470.0
-offset_top = -255.0
-offset_right = 470.0
-offset_bottom = 255.0

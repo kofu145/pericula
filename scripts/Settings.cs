@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Settings : Panel
+public partial class Settings : Control
 {
     // UI refs
     [Export] private Button titleScreenButton;

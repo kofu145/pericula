@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-public partial class BugReport : Panel
+public partial class BugReport : Control
 {
     // UI refs
     [Export] private TextEdit bugDescription;

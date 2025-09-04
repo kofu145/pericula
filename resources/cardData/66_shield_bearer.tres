@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_vsd3c"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_khskk"]
-[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/Intercept.tres" id="2_vsd3c"]
+[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/intercept.tres" id="2_vsd3c"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_i5gol"]
 [ext_resource type="Script" uid="uid://b1wp3na60tlfv" path="res://scripts/resources/effect/InterceptEffect.cs" id="4_e03ek"]
 [ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="5_6bp10"]

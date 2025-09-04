@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class BugReportResponse : Panel
+public partial class BugReportResponse : Control
 {
     [Export] private Label responseLabel;
 
