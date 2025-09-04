@@ -146,4 +146,20 @@ public partial class Lookup : Node
             .ToList();
     }
 
+    public static List<DeckManipData> GetMostUsedManip()
+    {
+        List<DeckManipData> chosen = new() { deckManipList[0] };
+        foreach (var manip in deckManipList)
+        {
+            if (manip.TimesUsed < chosen[0].TimesUsed)
+            {
+                chosen.Clear();
+                chosen.Add(manip);
+            }
+            else if (manip.TimesUsed == chosen[0].TimesUsed) chosen.Add(manip);
+        }
+
+        return chosen;
+    }
+
 }

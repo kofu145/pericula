@@ -25,6 +25,8 @@ public partial class DeckManipCard : Control
     const float TWEEN_DURATION = 0.25f;
     bool _isHovering = false;
 
+    private DeckManipData data;
+
     public override void _Ready()
     {
         base._Ready();
@@ -43,7 +45,7 @@ public partial class DeckManipCard : Control
     {
         _deckManipID = id;
 
-        DeckManipData data = Lookup.GetDeckManipByID(_deckManipID);
+        data = Lookup.GetDeckManipByID(_deckManipID);
         GetNode<Label>("CardBorder/CardName").Text = data.DisplayName.ToString();
         var instance = ShopManager.Instance;
         var price = instance.GetManipPrice(id);
@@ -77,6 +79,14 @@ public partial class DeckManipCard : Control
         else if (ChipManager.Instance.Deduct(ShopManager.Instance.GetManipPrice(_deckManipID)))
         {
             Buy();
+            // TODO: REMOVE AFTER TESTS
+            string returnString = "";
+            foreach (var manip in Lookup.GetMostUsedManip())
+            {
+                returnString += $"You used {manip.DisplayName} {manip.TimesUsed} times\n";
+            }
+
+            GD.Print(returnString);
         }
         else
         {
@@ -87,6 +97,7 @@ public partial class DeckManipCard : Control
 
     private void Buy()
     {
+        var rm = RunEndManager.Instance;
         switch (_deckManipID)
         {
             case (int)Incantation.Remove:
@@ -108,6 +119,7 @@ public partial class DeckManipCard : Control
                 break;
         }
 
+        data.Use();
         PopupText.Instance.ShowText(GlobalPosition, "Purchased!");
         SoundManager.PlaySE("bought_item");
         RemoveFromShop();
