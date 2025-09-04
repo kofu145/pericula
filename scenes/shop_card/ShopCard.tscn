@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bki587v31okuf"]
+[gd_scene load_steps=18 format=3 uid="uid://bki587v31okuf"]
 
 [ext_resource type="Script" uid="uid://d2ajyw3o0u05g" path="res://scripts/ShopCard.cs" id="1_m5bcj"]
 [ext_resource type="Texture2D" uid="uid://b5txekkfra7y6" path="res://assets/card_alt_borderless.png" id="2_lkv26"]
@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://c1g82x6mbsiht" path="res://assets/Minercraftory.ttf" id="6_sk3ko"]
 [ext_resource type="Texture2D" uid="uid://bp5w4tpv3xtfh" path="res://assets/cardback.png" id="7_sk3ko"]
 [ext_resource type="Texture2D" uid="uid://c26joxcyfd3xc" path="res://assets/art/wildcard.png" id="7_ulbgr"]
+[ext_resource type="Texture2D" uid="uid://bfbjj72gfgh0j" path="res://assets/art/pawn.png" id="8_4i4wy"]
 [ext_resource type="Texture2D" uid="uid://setl0iw1vnf" path="res://assets/cards/death.png" id="8_73mkc"]
 
 [node name="ShopCard" type="Control" node_paths=PackedStringArray("description", "border", "baseCard", "spriteImage", "costPanel", "nameLabel", "healthLabel", "attackLabel", "costLabel")]
@@ -41,7 +42,7 @@ nameLabel = NodePath("Base/CardName")
 healthLabel = NodePath("Base/Health")
 attackLabel = NodePath("Base/Attack")
 costLabel = NodePath("Panel/Cost")
-CardImages = Array[Texture2D]([ExtResource("2_unhab"), ExtResource("3_4i4wy"), ExtResource("4_i0d2a"), ExtResource("5_x6xx0"), ExtResource("6_kh7c6"), ExtResource("7_ulbgr"), ExtResource("8_73mkc"), ExtResource("8_73mkc")])
+CardImages = Array[Texture2D]([ExtResource("2_unhab"), ExtResource("3_4i4wy"), ExtResource("4_i0d2a"), ExtResource("5_x6xx0"), ExtResource("6_kh7c6"), ExtResource("7_ulbgr"), ExtResource("8_4i4wy"), ExtResource("8_73mkc")])
 
 [node name="Base" type="TextureRect" parent="."]
 layout_mode = 1
