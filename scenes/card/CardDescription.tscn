@@ -19,7 +19,7 @@
 [ext_resource type="Resource" uid="uid://be7kxoyeabiix" path="res://resources/keywords/wild_card.tres" id="16_thqs2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r66ow"]
-bg_color = Color(0.197937, 0.197937, 0.197937, 1)
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.784314)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
