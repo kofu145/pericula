@@ -214,15 +214,36 @@ public partial class DeckManager : Node
     {
         int roll = RndGen.Next(100);
         RarityType target = roll < 5 ? RarityType.Legendary : RarityType.Mythic;
+        var traits = GetTraitsInDeck();
+        Godot.Collections.Array<CardData> filterTraits = new();
+        foreach (var trait in traits)
+        {
+            filterTraits.AddRange(Lookup.GetCardsByTrait(trait));
+        }
         var targets = Lookup.GetCardsByRarity(target);
+        var filtered =
+            FilterList(targets, filterTraits);
 
-        var conjuredCard = targets[RndGen.Next(targets.Count)];
+        var conjureList = filtered.Count > 0 ? filtered : targets;
+        var conjuredCard = conjureList[RndGen.Next(conjureList.Count)];
         conjuredCard.Initialize();
         PlayerDeck.Cards.Add(conjuredCard);
     }
 
     // public void Discard(CardData c) => _discard.Add(c);
     // public void DiscardRange(IEnumerable<CardData> cards) => _discard.AddRange(cards);
+
+    // filters the given list for only the entries that exist in the filterlist 
+    public Godot.Collections.Array<CardData> FilterList(Godot.Collections.Array<CardData> list, Godot.Collections.Array<CardData> filterList)
+    {
+        Godot.Collections.Array<CardData> result = new();
+        foreach (var card in list)
+        {
+            if (filterList.Contains(card))
+                result.Add(card);
+        }
+        return result;
+    }
 
     public Godot.Collections.Array<CardData> GetOrderedDrawPile()
     {
@@ -260,6 +281,20 @@ public partial class DeckManager : Node
         var sorted = copyArr.OrderBy(e => e.AIPriority).ToList();
 
         for (int ci = 0; ci < EnemyHand.Count; ci++) EnemyHand[ci] = sorted[ci];
+    }
+
+    public Godot.Collections.Array<Trait> GetTraitsInDeck()
+    {
+        Godot.Collections.Array<Trait> traits = new();
+        foreach (var card in PlayerDeck.Cards)
+        {
+            if (!traits.Contains(card.Trait))
+            {
+                traits.Add(card.Trait);
+            }
+        }
+
+        return traits;
     }
 
     public void PrintData()

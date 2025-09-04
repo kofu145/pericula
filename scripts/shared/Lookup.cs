@@ -70,6 +70,21 @@ public partial class Lookup : Node
         return result;
     }
 
+    public static Godot.Collections.Array<CardData> GetCardsByTrait(Trait trait)
+    {
+
+        Godot.Collections.Array<CardData> result = new();
+        foreach (var card in lookupList)
+        {
+            if (card.Trait == trait)
+            {
+                result.Add(card);
+            }
+        }
+
+        return result;
+    }
+
     public static DeckManipData GetDeckManipByID(int id)
     {
 

@@ -12,7 +12,8 @@ public partial class CombatController : Node
     [Export] private CardLane enemyLane;
 
     public Action<bool> OnShowdownEndPlayerWin;
-
+    public float AnimSpeed => animSpeed;
+    private float animSpeed = 1;
     private BattleState battleState = new();
 
     public void Initialize()
@@ -218,13 +219,42 @@ public partial class CombatController : Node
         }
     }
 
-    public async Task ClearActionQueue()
+    public void SetAnimationSpeeds(float value = -1)
+    {
+        if (value == -1)
+            value = animSpeed;
+        for (int i = 0; i < 2; i++)
+        {
+            var targetLane = i == 0 ? playerLane : enemyLane;
+            for (int j = 0; j < targetLane.CardCount; j++)
+            {
+                targetLane.GetBaseAtIndex(j).animation.SpeedScale = value;
+            }
+        }
+    }
+    public void SpeedUpAnim()
+    {
+        float value = 1.05f;
+        animSpeed *= value;
+
+        animSpeed = Math.Clamp(animSpeed, 1, 3.5f);
+    }
+
+    public void ResetAnimSpeed()
+    {
+        animSpeed = 1;
+    }
+
+    public async Task ClearActionQueue(bool ResetAnimSpeed = false)
     {
         int count = battleState.QueueCount;
         for (int i = 0; i < count; i++)
         {
             await battleState.PopTriggerQueue();
+
         }
+        if (ResetAnimSpeed)
+            animSpeed = 1;
 
     }
 
@@ -251,7 +281,7 @@ public partial class CombatController : Node
 
         }
 
-        await ClearActionQueue();
+        await ClearActionQueue(!player);
         //GD.Print(DeckManager.Instance.EnemyHand);
         foreach (var remCard in toRemove)
         {

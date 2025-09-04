@@ -163,8 +163,8 @@ public partial class CardVisual : Control
         }
     }
 
-    public void PlayInfoTriggerSound()
+    public void PlayInfoTriggerSound(float pitch = 1)
     {
-        SoundManager.PlaySE("info");
+        SoundManager.PlaySE("info", pitch);
     }
 }

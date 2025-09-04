@@ -35,8 +35,11 @@ public partial class DoBuffEffect : EffectTemplate
                     card.BaseHpAfterCombatBuffs += HPBuff;
                     card.BaseAttackAfterCombatBuffs += AtkBuff;
                 }
-                BuffText(HPBuff, AtkBuff, card, param);
+                await BuffText(HPBuff, AtkBuff, card, param);
+
             }
         }
+        param.Self.HP -= 1;
+        await DamageText(1, param.Self, param);
     }
 }

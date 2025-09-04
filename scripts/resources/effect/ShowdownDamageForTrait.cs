@@ -39,7 +39,8 @@ public partial class ShowdownDamageForTrait : EffectTemplate
                         }
                     }
                     if (!aliveCheck)
-                        break;
+
+                        enemy = enemies.GetCardAtIndex(DeckManager.Instance.RndGen.Next(enemies.CardCount));
                     while (aliveCheck)
                     {
                         enemy = enemies.GetCardAtIndex(DeckManager.Instance.RndGen.Next(enemies.CardCount));

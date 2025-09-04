@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Deck" load_steps=8 format=3 uid="uid://cuxnn03kg47cn"]
 
 [ext_resource type="Resource" uid="uid://d3ilv4qyfm13l" path="res://resources/cardData/14_young_prince.tres" id="1_fj1ri"]
-[ext_resource type="Resource" uid="uid://bc4rs2h6253da" path="res://resources/cardData/10_Defender.tres" id="2_sqa8n"]
-[ext_resource type="Resource" uid="uid://bnwbl7yvql0kc" path="res://resources/cardData/11_Flagbearer.tres" id="3_e5moc"]
-[ext_resource type="Resource" uid="uid://btwwat5io72d2" path="res://resources/cardData/19_battle_herald.tres" id="4_ub8hj"]
+[ext_resource type="Resource" uid="uid://bhfplsl3brrel" path="res://resources/cardData/66_shield_bearer.tres" id="2_fj1ri"]
+[ext_resource type="Resource" uid="uid://b4cv5p0cgkkxc" path="res://resources/cardData/4_spade_pawn.tres" id="3_fj1ri"]
+[ext_resource type="Resource" uid="uid://btubqms6f8qc8" path="res://resources/cardData/35_joker.tres" id="5_fj1ri"]
 [ext_resource type="Resource" uid="uid://cahubma6ql5v1" path="res://resources/cardData/23_King_of_diamonds.tres" id="5_ksg66"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="6_7qv04"]
 [ext_resource type="Resource" uid="uid://dsv5c3btghldg" path="res://resources/cardData/37_divine_executioner.tres" id="6_w7m8b"]
 
 [resource]
 script = ExtResource("6_7qv04")
-Cards = Array[Object]([ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("2_sqa8n"), ExtResource("2_sqa8n"), ExtResource("2_sqa8n"), ExtResource("3_e5moc"), ExtResource("3_e5moc"), ExtResource("3_e5moc"), ExtResource("4_ub8hj"), ExtResource("4_ub8hj"), ExtResource("4_ub8hj"), ExtResource("5_ksg66"), ExtResource("5_ksg66"), ExtResource("5_ksg66"), ExtResource("6_w7m8b")])
+Cards = Array[Object]([ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("2_fj1ri"), ExtResource("2_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("5_ksg66"), ExtResource("5_ksg66"), ExtResource("5_ksg66"), ExtResource("5_fj1ri"), ExtResource("6_w7m8b")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"

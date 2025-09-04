@@ -42,7 +42,7 @@ public partial class EffectTemplate : Resource
     {
         var isPlayer = param.State.GetSide(target).Side == LaneSide.Player;
         var def = isPlayer ? param.State.PlayerDefense : param.State.EnemyDefense;
-        var takeDamage = damage - def;
+        var takeDamage = damage - def >= 0 ? damage - def : 0; // clamp dmg to 0
         target.HP -= takeDamage;
         await DamageText(takeDamage, target, param);
         param.State.UpdateLabels();
@@ -98,6 +98,8 @@ public partial class EffectTemplate : Resource
     /// </summary>
     protected async Task DoAttackAnimation(EffectParam param)
     {
+        EventBus.Instance.CombatManager.ResetAnimSpeed();
+        EventBus.Instance.CombatManager.SetAnimationSpeeds();
         var currLane = param.State.GetSide(param.Self);
         var animName = currLane.Side == LaneSide.Player ? "MoveUpAction" : "MoveDownAction";
         var parent = currLane.GetCardBaseByData(param.Self);
@@ -122,6 +124,9 @@ public partial class EffectTemplate : Resource
         await ToSignal(parent.animation, AnimationPlayer.SignalName.AnimationFinished);
         param.State.ToggleLerp(true);
         ResetAnimation(parent.animation);
+        EventBus.Instance.CombatManager.SpeedUpAnim();
+        parent.Visual.PlayInfoTriggerSound(EventBus.Instance.CombatManager.AnimSpeed);
+        EventBus.Instance.CombatManager.SetAnimationSpeeds();
     }
 
     private void ResetAnimation(AnimationPlayer anim)

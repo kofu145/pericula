@@ -51,11 +51,15 @@ public partial class CardData : CodexItemData
     {
         HP = BaseHpAfterCombatBuffs;
         Attack = BaseAttackAfterCombatBuffs;
-        foreach (var effect in OnUse)
+
+        var onUseSnapshot = OnUse.Duplicate(true);
+        var passivesSnapshot = Passives.Duplicate(true);
+
+        foreach (var effect in onUseSnapshot)
         {
             effect.Reset();
         }
-        foreach (var effect in Passives)
+        foreach (var effect in passivesSnapshot)
         {
             effect.Reset();
         }

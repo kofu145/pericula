@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://co34qtv6hk1p3"]
+
+[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_pg0gp"]
+[ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_4uvp2"]
+[ext_resource type="Script" uid="uid://bqloor13dhidv" path="res://scripts/resources/effect/RetriggerSameTrait.cs" id="3_x4plt"]
+[ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="4_kpxn1"]
+[ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="5_ukgil"]
+
+[sub_resource type="Resource" id="Resource_n7fir"]
+script = ExtResource("2_4uvp2")
+hitCount = 1
+name = ""
+metadata/_custom_type_script = "uid://bwshk6hkqmscd"
+
+[sub_resource type="Resource" id="Resource_uk2yq"]
+script = ExtResource("3_x4plt")
+TraitToRetrigger = 1
+name = ""
+metadata/_custom_type_script = "uid://bqloor13dhidv"
+
+[resource]
+script = ExtResource("5_ukgil")
+Rarity = ExtResource("4_kpxn1")
+Trait = 1
+AIPriority = 2
+BaseAttack = 9
+BaseHP = 9
+OnUse = Array[Object]([SubResource("Resource_n7fir")])
+Passives = Array[Object]([SubResource("Resource_uk2yq")])
+Keywords = Array[ExtResource("1_pg0gp")]([])
+id = 32
+DisplayName = "Spellcaster"
+Description = "Copies the effect of all played Arcane cards."
+metadata/_custom_type_script = "uid://clner77n1ff5a"

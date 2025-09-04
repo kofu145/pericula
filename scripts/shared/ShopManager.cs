@@ -77,7 +77,7 @@ public partial class ShopManager : Node
             candidates.Add((r, r.Weights));
         }
 
-        foreach (var candidate in candidates) GD.Print($"{candidate.rarity} weight: {candidate.weight}");
+        // foreach (var candidate in candidates) GD.Print($"{candidate.rarity} weight: {candidate.weight}");
 
         // Safety: no eligible rarities
         if (candidates.Count == 0)
