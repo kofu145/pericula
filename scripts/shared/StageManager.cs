@@ -63,7 +63,7 @@ public partial class StageManager : Node
             if (AnteCount - 1 == CurrentAnte)
             {
                 // Completed Game
-                RunEndManager.Instance.WinRun();
+                RunManager.Instance.WinRun();
                 return;
             }
 

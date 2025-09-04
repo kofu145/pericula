@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=83 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -19,7 +19,7 @@
 [ext_resource type="Resource" uid="uid://bmm7ctknsusy" path="res://resources/enemyData/ante 1/A1D2.tres" id="17_wttq5"]
 [ext_resource type="Resource" uid="uid://bbjxo6auppqn3" path="res://resources/enemyData/ante 1/A1D3.tres" id="18_cavuf"]
 [ext_resource type="Resource" uid="uid://b6yn2t6uy7nu2" path="res://resources/enemyData/ante 1/BA1.tres" id="19_1vged"]
-[ext_resource type="Script" uid="uid://dxymik5n3bcgn" path="res://scripts/shared/RunEndManager.cs" id="19_4o0wa"]
+[ext_resource type="Script" uid="uid://dxymik5n3bcgn" path="res://scripts/shared/RunManager.cs" id="19_4o0wa"]
 [ext_resource type="Resource" uid="uid://c085wma2ghi7d" path="res://resources/rarities/common.tres" id="20_5lwj7"]
 [ext_resource type="PackedScene" uid="uid://cp02nsp5tkfuj" path="res://scenes/RunEndPanel.tscn" id="20_8mbio"]
 [ext_resource type="Resource" uid="uid://ch4aetq6thpd4" path="res://resources/enemyData/ante 2/A2D1.tres" id="20_nbq1i"]
@@ -79,6 +79,7 @@
 [ext_resource type="Resource" uid="uid://dndl7tmaw71me" path="res://resources/deckManipData/remove.tres" id="60_67doc"]
 [ext_resource type="Resource" uid="uid://bpiwrppijrs8" path="res://resources/deckManipData/transmogify.tres" id="61_eb70u"]
 [ext_resource type="Resource" uid="uid://bhfplsl3brrel" path="res://resources/cardData/66_shield_bearer.tres" id="65_g1nbn"]
+[ext_resource type="Script" uid="uid://csomvc22gyf1k" path="res://scripts/resources/DeckManipData.cs" id="69_q2slt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7a67w"]
 shader = ExtResource("10_ivlop")
@@ -88,6 +89,14 @@ shader_parameter/diamondPixelSize = 32.0
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_2rbph"]
 
 [node name="GlobalManager" type="Node2D"]
+
+[node name="RunManager" type="Node" parent="." node_paths=PackedStringArray("runEndPanel")]
+script = ExtResource("19_4o0wa")
+runEndPanel = NodePath("RunEndPanel")
+runConfig = ExtResource("14_ycd5x")
+
+[node name="RunEndPanel" parent="RunManager" instance=ExtResource("20_8mbio")]
+visible = false
 
 [node name="ChipManager" type="Node" parent="."]
 script = ExtResource("1_kacr6")
@@ -129,11 +138,9 @@ enemiesData = Array[Object]([ExtResource("16_ag4le"), ExtResource("17_wttq5"), E
 [node name="CardLookup" type="Node" parent="."]
 script = ExtResource("14_2svbd")
 table = [ExtResource("25_twb20"), ExtResource("26_6juf7"), ExtResource("27_x1vfv"), ExtResource("28_uu40f"), ExtResource("29_5w8ab"), ExtResource("30_h1eqs"), ExtResource("31_njser"), ExtResource("32_fdv0k"), ExtResource("33_67doc"), ExtResource("34_eb70u"), ExtResource("35_yvfio"), ExtResource("36_f646v"), ExtResource("37_0srjh"), ExtResource("38_g1nbn"), ExtResource("39_hwp20"), ExtResource("40_086pc"), ExtResource("41_q2slt"), ExtResource("42_4juhj"), ExtResource("43_yv07b"), ExtResource("44_22i45"), ExtResource("45_vjlfu"), ExtResource("46_o8d0u"), ExtResource("47_xn6fi"), ExtResource("48_tsenr"), ExtResource("49_dpwcq"), ExtResource("50_h1eqs"), ExtResource("51_w7r4l"), ExtResource("52_j5ow4"), ExtResource("53_t01kv"), ExtResource("54_xer8t"), ExtResource("55_mfs4r"), ExtResource("56_eseo6"), ExtResource("65_g1nbn")]
-deckmanipData = [ExtResource("58_njser"), ExtResource("59_fdv0k"), ExtResource("60_67doc"), ExtResource("61_eb70u")]
+deckmanipData = Array[ExtResource("69_q2slt")]([ExtResource("58_njser"), ExtResource("59_fdv0k"), ExtResource("60_67doc"), ExtResource("61_eb70u")])
 
 [node name="UIOverlay" parent="." instance=ExtResource("15_2rbph")]
-hideOnScenes = Array[String](["TitleScreen", "Codex"])
-hideChipsOnScenes = Array[String](["Combat"])
 
 [node name="ShopManager" type="Node" parent="."]
 script = ExtResource("16_2svbd")
@@ -152,10 +159,3 @@ bus = &"BGM"
 stream = SubResource("AudioStreamPolyphonic_2rbph")
 volume_db = -6.0
 bus = &"SE"
-
-[node name="RunEndManager" type="Node" parent="." node_paths=PackedStringArray("runEndPanel")]
-script = ExtResource("19_4o0wa")
-runEndPanel = NodePath("RunEndPanel")
-
-[node name="RunEndPanel" parent="RunEndManager" instance=ExtResource("20_8mbio")]
-visible = false

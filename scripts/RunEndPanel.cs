@@ -24,7 +24,7 @@ public partial class RunEndPanel : CanvasLayer
 
     private void FormatDescription()
     {
-        var rm = RunEndManager.Instance;
+        var rm = RunManager.Instance;
         var deckManips = Lookup.GetMostUsedManip();
         string deckManipString = "";
 
@@ -53,7 +53,7 @@ public partial class RunEndPanel : CanvasLayer
     {
         SceneManager.ChangeSceneToFile("TitleScreen");
         Visible = false;
-        RunEndManager.Instance.Reset();
+        RunManager.Instance.Reset();
         // reset usage for deckManips
         foreach (var manip in Lookup.GetDeckManipLibrary())
             if (manip is DeckManipData manipData) manipData.Reset();

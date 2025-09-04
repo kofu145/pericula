@@ -97,7 +97,7 @@ public partial class DeckManipCard : Control
 
     private void Buy()
     {
-        var rm = RunEndManager.Instance;
+        var rm = RunManager.Instance;
         switch (_deckManipID)
         {
             case (int)Incantation.Remove:

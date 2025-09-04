@@ -19,9 +19,8 @@ public partial class TitleScreen : Panel
     private void StartNewRun()
     {
         // reset globalManagers
-        ResetManagers();
+        RunManager.Instance.StartRun();
         startGameButton.Pressed -= StartNewRun;
-        SceneManager.ChangeSceneToFile("Shop");
         SoundManager.PlaySE("click");
     }
 
@@ -31,12 +30,4 @@ public partial class TitleScreen : Panel
         SoundManager.PlaySE("click");
     }
 
-    private void ResetManagers()
-    {
-        // deck and chips arent being disposed of
-        ChipManager.Instance.StartNewRun(runConfig.playerStartingChips);
-        StageManager.Instance.StartNewRun();
-        DeckManager.Instance.StartNewRun(runConfig.playerStartingDeck);
-        ShopManager.Instance.StartNewRun();
-    }
 }

@@ -11,7 +11,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[node name="Settings" type="Panel"]
+[node name="Settings" type="Panel" node_paths=PackedStringArray("titleScreenButton", "restartRunButton")]
 clip_contents = true
 custom_minimum_size = Vector2(940, 510)
 anchors_preset = 15
@@ -23,6 +23,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v4ih8")
 script = ExtResource("1_i47rn")
+titleScreenButton = NodePath("HBoxContainer/TitleScreenButton")
+restartRunButton = NodePath("HBoxContainer/RestartButton")
+hideTitleScreenButtonOn = Array[String](["TitleScreen", "Codex"])
+hiderestartRunButtonOn = Array[String](["TitleScreen", "Codex"])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -100,21 +104,46 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = -71.0
-offset_right = 155.0
-offset_bottom = -10.0
-grow_vertical = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 455.0
+offset_right = 866.0
+offset_bottom = 495.0
+theme_override_constants/separation = 40
+
+[node name="BackButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_46duy")
-text = "Back"
+text = "Back To Game"
+
+[node name="TitleScreenButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_46duy")
+text = "Back to Title Screen"
+
+[node name="RestartButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_46duy")
+text = "Restart Run"
+
+[node name="BugReportButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 825.0
+offset_top = 16.0
+offset_right = 920.0
+offset_bottom = 47.0
+text = "Report Bug"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Music/MusicSlider" to="MarginContainer/VBoxContainer/Music" method="OnValueChanged"]
 [connection signal="drag_ended" from="MarginContainer/VBoxContainer/SoundEffects/SoundSlider" to="MarginContainer/VBoxContainer/SoundEffects" method="SoundFinishedChanging"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SoundEffects/SoundSlider" to="MarginContainer/VBoxContainer/SoundEffects" method="OnValueChanged"]
-[connection signal="pressed" from="Button" to="." method="ToggleSettings"]
+[connection signal="pressed" from="HBoxContainer/BackButton" to="." method="ToggleSettings"]
+[connection signal="pressed" from="HBoxContainer/TitleScreenButton" to="." method="ReturnToTitleScreen"]
+[connection signal="pressed" from="HBoxContainer/RestartButton" to="." method="RestartRun"]

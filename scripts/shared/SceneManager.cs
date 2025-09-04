@@ -61,7 +61,6 @@ public partial class SceneManager : Node
         SceneTransitionAnimationRect.MouseFilter = Control.MouseFilterEnum.Ignore;
         GetTree().ChangeSceneToFile(target);
         UiOverlay.Instance.Refresh(CurrentScene);   // refreshes the UI overlay
-
         await ToSignal(TweenUnfade, "finished");
         ChangingScenes = false;
     }

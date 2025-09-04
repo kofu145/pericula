@@ -1,10 +1,12 @@
 using Godot;
 using System;
 
-public partial class RunEndManager : Node
+public partial class RunManager : Node
 {
-    public static RunEndManager Instance { get; private set; }
+    public static RunManager Instance { get; private set; }
     [Export] private RunEndPanel runEndPanel;
+
+    [Export] private RunConfig runConfig;
 
     // runtime refs
     public int BetsLost = 0;
@@ -18,6 +20,17 @@ public partial class RunEndManager : Node
     {
         if (Instance == null) Instance = this;
         else if (Instance != this) { QueueFree(); return; }
+    }
+
+    public void StartRun()
+    {
+        Reset();
+        ChipManager.Instance.StartNewRun(runConfig.playerStartingChips);
+        StageManager.Instance.StartNewRun();
+        DeckManager.Instance.StartNewRun(runConfig.playerStartingDeck);
+        ShopManager.Instance.StartNewRun();
+
+        SceneManager.ChangeSceneToFile("Shop");
     }
 
     public void LoseRun()

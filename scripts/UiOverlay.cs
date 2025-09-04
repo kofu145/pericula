@@ -8,6 +8,7 @@ public partial class UiOverlay : CanvasLayer
     [Export] private Label chipsCountLabel;
     [Export] private Button deckButton;
     [Export] private DeckListView deckListView;
+    [Export] private Settings setting;
 
     [Export] private Godot.Collections.Array<string> hideOnScenes;
     [Export] private Godot.Collections.Array<string> hideChipsOnScenes;
@@ -64,6 +65,7 @@ public partial class UiOverlay : CanvasLayer
     {
         Visible = !hideOnScenes.Contains(sceneName);
         chips.Visible = !hideChipsOnScenes.Contains(sceneName);
+        setting.Refresh(sceneName);
     }
 
     private void UpdateChipsUI(int newAmount)

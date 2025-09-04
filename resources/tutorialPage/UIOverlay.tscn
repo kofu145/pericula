@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://coyntyyf64no0" path="res://scenes/Settings.tscn" id="4_xviqy"]
 [ext_resource type="StyleBox" uid="uid://jtds5su7c0e6" path="res://assets/stylebox_tex/button_up.tres" id="5_ddc24"]
 
-[node name="UIOverlay" type="CanvasLayer" node_paths=PackedStringArray("chips", "chipsCountLabel", "deckButton", "deckListView")]
+[node name="UIOverlay" type="CanvasLayer" node_paths=PackedStringArray("chips", "chipsCountLabel", "deckButton", "deckListView", "setting")]
 layer = 120
 follow_viewport_enabled = true
 script = ExtResource("1_ridxj")
@@ -17,6 +17,9 @@ chips = NodePath("PlayerChipCount")
 chipsCountLabel = NodePath("PlayerChipCount/Count")
 deckButton = NodePath("Button")
 deckListView = NodePath("DeckListView")
+setting = NodePath("CanvasLayer/Settings")
+hideOnScenes = Array[String](["TitleScreen", "Codex"])
+hideChipsOnScenes = Array[String](["Combat"])
 
 [node name="Button" type="Button" parent="."]
 offset_left = 15.0

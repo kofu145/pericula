@@ -182,7 +182,7 @@ public partial class PhaseController : Node
         // should check which button to show, start next turn or go to shop
         if (playerWonCombat)
         {
-            RunEndManager.Instance.PlayerWonBet();
+            RunManager.Instance.PlayerWonBet();
             int enemyDeserves = Math.Max(0, enemyContributionThisTurn - playerContributionThisTurn);
             playerChips.AddChips(currentPot - enemyDeserves);
             enemyChips.AddChips(enemyDeserves);
@@ -201,7 +201,7 @@ public partial class PhaseController : Node
         }
         else
         {
-             RunEndManager.Instance.PlayerLostBet();
+             RunManager.Instance.PlayerLostBet();
             int playerDeserves = Math.Max(0, playerContributionThisTurn - enemyContributionThisTurn);
             enemyChips.AddChips(currentPot - playerDeserves);
             playerChips.AddChips(playerDeserves);
@@ -251,7 +251,7 @@ public partial class PhaseController : Node
     private void EndCurrentRun()
     {
         UnbindEvents();
-        RunEndManager.Instance.LoseRun();
+        RunManager.Instance.LoseRun();
     }
 
     // win handler
