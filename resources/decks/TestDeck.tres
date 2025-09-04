@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://b6nvsadc8ut57"]
+[gd_resource type="Resource" script_class="Deck" load_steps=5 format=3 uid="uid://b6nvsadc8ut57"]
 
+[ext_resource type="Resource" uid="uid://c2ersb1fprdw3" path="res://resources/cardData/33_fey.tres" id="1_gsb5v"]
 [ext_resource type="Script" uid="uid://dnh88quxuv4le" path="res://scripts/resources/Deck.cs" id="1_qu2sd"]
-[ext_resource type="Resource" uid="uid://5v3if1uo26pq" path="res://resources/cardData/29_bard.tres" id="1_upxyf"]
-[ext_resource type="Resource" uid="uid://rg1flebu43rj" path="res://resources/cardData/16_town_mayor.tres" id="2_5j4nb"]
+[ext_resource type="Resource" uid="uid://dnohqen14mpox" path="res://resources/cardData/27_fisherman.tres" id="1_upxyf"]
 [ext_resource type="Resource" uid="uid://co34qtv6hk1p3" path="res://resources/cardData/32_spellcaster.tres" id="2_gsb5v"]
-[ext_resource type="Resource" uid="uid://btubqms6f8qc8" path="res://resources/cardData/35_joker.tres" id="3_5j4nb"]
 
 [resource]
 script = ExtResource("1_qu2sd")
-Cards = Array[Object]([ExtResource("1_upxyf"), ExtResource("1_upxyf"), ExtResource("2_5j4nb"), ExtResource("3_5j4nb"), ExtResource("2_gsb5v")])
+Cards = Array[Object]([ExtResource("1_upxyf"), ExtResource("1_gsb5v"), ExtResource("1_gsb5v"), ExtResource("2_gsb5v"), ExtResource("2_gsb5v")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
