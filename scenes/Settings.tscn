@@ -11,7 +11,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[node name="Settings" type="Control"]
+[node name="Settings" type="Control" node_paths=PackedStringArray("titleScreenButton", "restartRunButton", "bugReport")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i47rn")
+titleScreenButton = NodePath("Panel/HBoxContainer/TitleScreenButton")
+restartRunButton = NodePath("Panel/HBoxContainer/RestartButton")
+hideTitleScreenButtonOn = Array[String](["TitleScreen", "Codex"])
+hiderestartRunButtonOn = Array[String](["TitleScreen", "Codex"])
+bugReport = NodePath("Panel/BugReportButton")
 
 [node name="Panel" type="Panel" parent="."]
 clip_contents = true
@@ -141,6 +146,7 @@ offset_left = 825.0
 offset_top = 16.0
 offset_right = 920.0
 offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("3_46duy")
 text = "Report Bug"
 
 [node name="BackButton" type="Button" parent="Panel"]
