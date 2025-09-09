@@ -7,7 +7,7 @@
 script = ExtResource("1_rp5bg")
 tutorialImage = ExtResource("2_nf50h")
 pageName = "Rerolling"
-pageDescription = "If you don't like the current selection of cards, you can reroll for a cost. The cost will double from the previous amount.
+pageDescription = "If you don't like the current selection of cards, you can reroll for a cost, starting at 20. The cost will double from the previous amount.
 
 The cost to reroll will be reset back to normal when you enter the next shop."
 metadata/_custom_type_script = "uid://bu7ltq0bt3tjx"

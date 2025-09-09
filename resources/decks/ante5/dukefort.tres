@@ -10,5 +10,5 @@
 
 [resource]
 script = ExtResource("6_7qv04")
-Cards = Array[Object]([ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("2_fj1ri"), ExtResource("2_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("5_ksg66"), ExtResource("5_ksg66"), ExtResource("5_ksg66"), ExtResource("5_fj1ri"), ExtResource("6_w7m8b")])
+Cards = Array[Object]([ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("1_fj1ri"), ExtResource("2_fj1ri"), ExtResource("2_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("3_fj1ri"), ExtResource("5_ksg66"), ExtResource("5_ksg66"), ExtResource("5_ksg66"), ExtResource("5_fj1ri"), ExtResource("6_w7m8b")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
