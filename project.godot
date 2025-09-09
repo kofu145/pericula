@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="pericula"
+config/version="1.1.2"
 run/main_scene="uid://b876nkswrot5m"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"

@@ -104,6 +104,7 @@ public partial class BugReport : Control
     private void Reset()
     {
         bugDescription.Text = "";
+        severity.Value = 1;
         Visible = false;
     }
 }
