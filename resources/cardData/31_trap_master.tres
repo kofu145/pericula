@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="1_1hevp"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="1_6uh8x"]
-[ext_resource type="Resource" uid="uid://b4hxbmioyuby2" path="res://resources/keywords/obscured.tres" id="1_reak8"]
+[ext_resource type="Resource" uid="uid://b4hxbmioyuby2" path="res://resources/keywords/Obscured.tres" id="1_reak8"]
 [ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_skaji"]
 [ext_resource type="Script" uid="uid://cn3q3iyk3ahn1" path="res://scripts/resources/effect/ObscuredSnipeColumn.cs" id="2_reak8"]
 [ext_resource type="Resource" uid="uid://b6wf6wv7umf78" path="res://resources/rarities/mythic.tres" id="3_skaji"]

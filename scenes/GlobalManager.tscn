@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://3ff3v4remkmo"]
+[gd_scene load_steps=84 format=3 uid="uid://3ff3v4remkmo"]
 
 [ext_resource type="Script" uid="uid://bkxmjhmavkhad" path="res://scripts/shared/ChipManager.cs" id="1_kacr6"]
 [ext_resource type="Script" uid="uid://dq7ptxcx4t0ry" path="res://scripts/shared/DeckManager.cs" id="2_kacr6"]
@@ -81,7 +81,6 @@
 [ext_resource type="Resource" uid="uid://bhfplsl3brrel" path="res://resources/cardData/66_shield_bearer.tres" id="65_g1nbn"]
 [ext_resource type="Resource" uid="uid://co34qtv6hk1p3" path="res://resources/cardData/32_spellcaster.tres" id="66_hwp20"]
 [ext_resource type="Resource" uid="uid://c2ersb1fprdw3" path="res://resources/cardData/33_fey.tres" id="68_yv07b"]
-[ext_resource type="Script" uid="uid://csomvc22gyf1k" path="res://scripts/resources/DeckManipData.cs" id="69_q2slt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7a67w"]
 shader = ExtResource("10_ivlop")
@@ -140,7 +139,7 @@ enemiesData = Array[Object]([ExtResource("16_ag4le"), ExtResource("17_wttq5"), E
 [node name="CardLookup" type="Node" parent="."]
 script = ExtResource("14_2svbd")
 table = [ExtResource("25_twb20"), ExtResource("26_6juf7"), ExtResource("27_x1vfv"), ExtResource("28_uu40f"), ExtResource("29_5w8ab"), ExtResource("30_h1eqs"), ExtResource("31_njser"), ExtResource("32_fdv0k"), ExtResource("33_67doc"), ExtResource("34_eb70u"), ExtResource("35_yvfio"), ExtResource("36_f646v"), ExtResource("37_0srjh"), ExtResource("38_g1nbn"), ExtResource("39_hwp20"), ExtResource("40_086pc"), ExtResource("41_q2slt"), ExtResource("42_4juhj"), ExtResource("43_yv07b"), ExtResource("44_22i45"), ExtResource("45_vjlfu"), ExtResource("46_o8d0u"), ExtResource("47_xn6fi"), ExtResource("48_tsenr"), ExtResource("49_dpwcq"), ExtResource("50_h1eqs"), ExtResource("51_w7r4l"), ExtResource("52_j5ow4"), ExtResource("53_t01kv"), ExtResource("54_xer8t"), ExtResource("55_mfs4r"), ExtResource("56_eseo6"), ExtResource("65_g1nbn"), ExtResource("66_hwp20"), ExtResource("68_yv07b")]
-deckmanipData = Array[ExtResource("69_q2slt")]([ExtResource("58_njser"), ExtResource("59_fdv0k"), ExtResource("60_67doc"), ExtResource("61_eb70u")])
+deckmanipData = [ExtResource("58_njser"), ExtResource("59_fdv0k"), ExtResource("60_67doc"), ExtResource("61_eb70u")]
 
 [node name="UIOverlay" parent="." instance=ExtResource("15_2rbph")]
 

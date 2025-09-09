@@ -17,6 +17,8 @@ metadata/_custom_type_script = "uid://bwshk6hkqmscd"
 script = ExtResource("3_ww4wc")
 HPBuff = 2
 DamageBuff = 2
+BuffLeft = true
+BuffRight = true
 name = ""
 metadata/_custom_type_script = "uid://dahvharh5oyel"
 
