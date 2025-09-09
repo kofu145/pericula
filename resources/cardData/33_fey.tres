@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://c2ersb1fprdw3"]
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://c2ersb1fprdw3"]
 
-[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_xr7v2"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_0vq8u"]
 [ext_resource type="Resource" uid="uid://cshg215q640rj" path="res://resources/keywords/showdown.tres" id="2_hj3l3"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="2_t24w4"]
@@ -31,7 +30,7 @@ BaseAttack = 6
 BaseHP = 7
 OnUse = Array[Object]([SubResource("Resource_ykida")])
 Passives = Array[Object]([SubResource("Resource_41mes")])
-Keywords = Array[ExtResource("1_xr7v2")]([ExtResource("2_hj3l3")])
+Keywords = [ExtResource("2_hj3l3")]
 id = 33
 DisplayName = "Fey"
 Description = "Showdown: Give all ally Arcane units +1/+1."

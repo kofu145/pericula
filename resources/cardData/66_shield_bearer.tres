@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=9 format=3 uid="uid://bhfplsl3brrel"]
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://bhfplsl3brrel"]
 
-[ext_resource type="Script" uid="uid://ykohcc4cvglr" path="res://scripts/resources/Keyword.cs" id="1_vsd3c"]
 [ext_resource type="Script" uid="uid://clner77n1ff5a" path="res://scripts/resources/CardData.cs" id="2_khskk"]
-[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/Intercept.tres" id="2_vsd3c"]
+[ext_resource type="Resource" uid="uid://5qk7udynoqn" path="res://resources/keywords/intercept.tres" id="2_vsd3c"]
 [ext_resource type="Script" uid="uid://bwshk6hkqmscd" path="res://scripts/resources/effect/DoDamageEffect.cs" id="3_i5gol"]
 [ext_resource type="Script" uid="uid://b1wp3na60tlfv" path="res://scripts/resources/effect/InterceptEffect.cs" id="4_e03ek"]
 [ext_resource type="Resource" uid="uid://tm2w577qejgy" path="res://resources/rarities/starter.tres" id="5_6bp10"]
@@ -27,7 +26,7 @@ BaseAttack = 0
 BaseHP = 13
 OnUse = Array[Object]([SubResource("Resource_jctb8")])
 Passives = Array[Object]([SubResource("Resource_v1uyt")])
-Keywords = Array[ExtResource("1_vsd3c")]([ExtResource("2_vsd3c")])
+Keywords = [ExtResource("2_vsd3c")]
 id = 66
 DisplayName = "Pawn Defender"
 Description = "Intercept
