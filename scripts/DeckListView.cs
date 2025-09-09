@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 
 public partial class DeckListView : Control
@@ -10,6 +11,7 @@ public partial class DeckListView : Control
 
     // UI refs
     [Export] private Label headerLabel;
+    [Export] private Label cardCountLabel;
     [Export] private ScrollContainer Scroll;
     [Export] private GridContainer Grid;
     [Export] private Button CloseButton;
@@ -34,7 +36,6 @@ public partial class DeckListView : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-
         CloseButton.Pressed += Close;
     }
 
@@ -109,6 +110,7 @@ public partial class DeckListView : Control
     {
         Clear();
         foreach (var data in deck) SpawnCard(data, onClickHandler);
+        cardCountLabel.Text = $"Count: {deck.Count()}";
     }
 
     // add optional parameter on the function

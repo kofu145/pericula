@@ -11,7 +11,7 @@ bg_color = Color(0.05, 0.05, 0.05, 0.901961)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13om8"]
 bg_color = Color(0.04, 0.04, 0.04, 1)
 
-[node name="DeckListView" type="Panel" node_paths=PackedStringArray("headerLabel", "Scroll", "Grid", "CloseButton")]
+[node name="DeckListView" type="Panel" node_paths=PackedStringArray("headerLabel", "cardCountLabel", "Scroll", "Grid", "CloseButton")]
 clip_contents = true
 anchors_preset = -1
 anchor_left = 0.112
@@ -29,6 +29,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jmkb4")
 script = ExtResource("1_ce1bn")
 CardScene = ExtResource("2_jmkb4")
 headerLabel = NodePath("HeaderPanel/Header")
+cardCountLabel = NodePath("HeaderPanel/CardCount")
 Scroll = NodePath("BottomPanel/MarginContainer/ScrollContainer")
 Grid = NodePath("BottomPanel/MarginContainer/ScrollContainer/GridContainer")
 CloseButton = NodePath("HeaderPanel/Button")
@@ -95,3 +96,14 @@ offset_right = 1127.0
 offset_bottom = 73.0
 theme_override_fonts/font = ExtResource("4_jrmyk")
 text = "Back"
+
+[node name="CardCount" type="Label" parent="HeaderPanel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -1.0
+offset_right = 177.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("4_jrmyk")
+theme_override_font_sizes/font_size = 20
+text = "Count: 30"
+vertical_alignment = 1
