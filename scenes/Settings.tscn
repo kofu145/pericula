@@ -11,7 +11,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[node name="Settings" type="Control" node_paths=PackedStringArray("titleScreenButton", "restartRunButton", "bugReport")]
+[node name="Settings" type="Control" node_paths=PackedStringArray("titleScreenButton", "restartRunButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +23,6 @@ titleScreenButton = NodePath("Panel/HBoxContainer/TitleScreenButton")
 restartRunButton = NodePath("Panel/HBoxContainer/RestartButton")
 hideTitleScreenButtonOn = Array[String](["TitleScreen", "Codex"])
 hiderestartRunButtonOn = Array[String](["TitleScreen", "Codex"])
-bugReport = NodePath("Panel/BugReportButton")
 
 [node name="Panel" type="Panel" parent="."]
 clip_contents = true
