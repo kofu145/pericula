@@ -17,7 +17,8 @@ public partial class Settings : Control
         var currentScene = GetTree().CurrentScene.Name;
         GD.Print(currentScene);
         if (titleScreenButton != null) titleScreenButton.Visible = !hideTitleScreenButtonOn.Contains(currentScene);
-        if (restartRunButton != null) restartRunButton.Visible = !hiderestartRunButtonOn.Contains(currentScene);
+        if (restartRunButton != null) restartRunButton.Visible = false; //!hiderestartRunButtonOn.Contains(currentScene);
+        restartRunButton.Visible = false;
     }
 
     public override void _Process(double delta)
