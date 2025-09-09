@@ -12,5 +12,5 @@
 
 [resource]
 script = ExtResource("9_kirtm")
-Cards = Array[Object]([ExtResource("1_pkbgu"), ExtResource("1_pkbgu"), ExtResource("2_pkbgu"), ExtResource("3_wftvl"), ExtResource("3_wftvl"), ExtResource("4_age1b"), ExtResource("4_age1b"), ExtResource("6_rmgwg"), ExtResource("6_rmgwg"), ExtResource("6_rmgwg"), ExtResource("6_qarhw"), ExtResource("8_mxyxu"), ExtResource("1_qarhw"), ExtResource("1_qarhw")])
+Cards = Array[Object]([ExtResource("1_pkbgu"), ExtResource("1_pkbgu"), ExtResource("2_pkbgu"), ExtResource("3_wftvl"), ExtResource("3_wftvl"), ExtResource("4_age1b"), ExtResource("4_age1b"), ExtResource("6_rmgwg"), ExtResource("6_rmgwg"), ExtResource("6_rmgwg"), ExtResource("6_qarhw"), ExtResource("8_mxyxu"), ExtResource("1_qarhw"), ExtResource("1_qarhw"), ExtResource("1_qarhw"), ExtResource("1_qarhw")])
 metadata/_custom_type_script = "uid://dnh88quxuv4le"
