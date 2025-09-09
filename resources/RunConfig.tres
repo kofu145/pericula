@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="RunConfig" load_steps=3 format=3 uid="uid://ck2dnlghav1xg"]
 
-[ext_resource type="Resource" uid="uid://b6nvsadc8ut57" path="res://resources/decks/TestDeck.tres" id="1_ngmds"]
+[ext_resource type="Resource" uid="uid://cw7jun8rlygcr" path="res://resources/decks/StarterDeck.tres" id="1_ngmds"]
 [ext_resource type="Script" uid="uid://ca6ooknqy7pvf" path="res://scripts/resources/RunConfig.cs" id="1_v7nrs"]
 
 [resource]
 script = ExtResource("1_v7nrs")
-playerStartingChips = 400
+playerStartingChips = 800
 playerStartingDeck = ExtResource("1_ngmds")
 enemiesPerAnte = 3
 antesPerRun = 5
@@ -13,10 +13,10 @@ EnemyChipsPerAnte = Array[int]([400, 500, 700, 800, 1000])
 bossBonusPerAnte = Array[int]([100, 200, 250, 300, 1000])
 baseBuyIn = 40
 buyInIncreasePerAnte = 20
-baseRemovalCost = 150
-baseUpgradeCost = 200
-baseCreateRandomCardCost = 450
-baseDuplicateCost = 300
+baseRemovalCost = 100
+baseUpgradeCost = 100
+baseCreateRandomCardCost = 300
+baseDuplicateCost = 250
 rerollCost = 40
 rerollMultiplierPerUse = 2
 mythicAvailableAtAnte = 2
