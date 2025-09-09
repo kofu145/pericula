@@ -10,6 +10,7 @@ public partial class BugReport : Control
     // UI refs
     [Export] private TextEdit bugDescription;
     [Export] private HSlider severity;
+    [Export] private Button bugReportButton;
 
     [Export] private PackedScene reponsePanel;
 
@@ -32,6 +33,7 @@ public partial class BugReport : Control
     {
         if (string.IsNullOrEmpty(bugDescription.Text)) return;
         SubmitBugReport(bugDescription.Text);
+        if (bugReportButton != null) bugReportButton.Disabled = true;
     }
 
     public async Task SubmitBugReport(string report)

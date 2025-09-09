@@ -11,7 +11,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[node name="BugReport" type="Control" node_paths=PackedStringArray("bugDescription", "severity")]
+[node name="BugReport" type="Control" node_paths=PackedStringArray("bugDescription", "severity", "bugReportButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +23,7 @@ size_flags_vertical = 3
 script = ExtResource("1_05wjl")
 bugDescription = NodePath("Panel/MarginContainer/VBoxContainer/BugDescription")
 severity = NodePath("Panel/MarginContainer/VBoxContainer/SeverityInput/HSlider")
+bugReportButton = NodePath("Panel/MarginContainer/VBoxContainer/SubmitButton")
 reponsePanel = ExtResource("2_7edfm")
 
 [node name="Panel" type="Panel" parent="."]
