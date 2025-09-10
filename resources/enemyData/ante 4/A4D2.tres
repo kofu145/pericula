@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_e7enx")
+id = 13
 DisplayName = "Morn'! Nice Day for..."
 deck = ExtResource("1_n8fi5")
 Difficulty = 3

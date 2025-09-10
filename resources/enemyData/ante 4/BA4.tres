@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_8saa4")
+id = 15
 DisplayName = "Mage 101"
 deck = ExtResource("1_g8qu0")
 Difficulty = 3

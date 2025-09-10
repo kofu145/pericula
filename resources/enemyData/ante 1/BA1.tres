@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_klol7")
+id = 3
 DisplayName = "Shadow Wiz $ Gang"
 deck = ExtResource("1_o82gk")
 Difficulty = 0

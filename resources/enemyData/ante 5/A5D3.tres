@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_q14mn")
+id = 18
 DisplayName = "Duke of the North"
 deck = ExtResource("1_1mv23")
 Difficulty = 4

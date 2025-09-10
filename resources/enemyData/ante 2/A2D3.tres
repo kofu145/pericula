@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_7gltm")
+id = 6
 DisplayName = "Giantfall lite"
 deck = ExtResource("1_l5vpf")
 Difficulty = 1

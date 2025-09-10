@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_qimp5")
+id = 5
 DisplayName = "L Shaped"
 deck = ExtResource("1_jwtrf")
 Difficulty = 1

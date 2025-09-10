@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_1uwc3")
+id = 9
 DisplayName = "Strategy Paradox"
 deck = ExtResource("1_5us2q")
 Difficulty = 2

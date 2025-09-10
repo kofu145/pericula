@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_wku21")
+id = 19
 DisplayName = "Armored Clanker X"
 deck = ExtResource("1_gh7qn")
 Difficulty = 4

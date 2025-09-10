@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_qpw38")
+id = 16
 DisplayName = "Left 4 What?"
 deck = ExtResource("1_23isd")
 Difficulty = 4

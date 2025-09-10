@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_tnar6")
+id = 11
 DisplayName = "Natural 20"
 deck = ExtResource("1_dr7ea")
 Difficulty = 2

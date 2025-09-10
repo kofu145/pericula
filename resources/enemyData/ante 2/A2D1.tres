@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_g15n7")
+id = 4
 DisplayName = "I Love Democracy"
 deck = ExtResource("1_h33b7")
 Difficulty = 1

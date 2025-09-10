@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_6hrqs")
+id = 8
 DisplayName = "Plants on Lawn"
 deck = ExtResource("1_rq5k5")
 Difficulty = 2

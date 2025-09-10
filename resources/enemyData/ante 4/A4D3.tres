@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_bvunj")
+id = 14
 DisplayName = "Hoyo Overseer"
 deck = ExtResource("1_nres6")
 Difficulty = 3

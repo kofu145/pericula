@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_ol0ku")
+id = 12
 DisplayName = "Defense Of The A."
 deck = ExtResource("1_vj0e6")
 Difficulty = 3

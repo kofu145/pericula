@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_v48j5")
+id = 7
 DisplayName = "It's Showtime!"
 deck = ExtResource("1_7aa1x")
 Difficulty = 1

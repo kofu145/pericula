@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_fcnhn")
+id = 2
 DisplayName = "NFL Interception"
 deck = ExtResource("1_a41lu")
 Difficulty = 0
