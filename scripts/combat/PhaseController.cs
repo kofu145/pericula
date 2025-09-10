@@ -251,7 +251,7 @@ public partial class PhaseController : Node
     private void EndCurrentRun()
     {
         var enemy = StageManager.Instance.GetCurrentEnemy();
-        AnalyticsManager.Instance.LogEnemyBattle(enemy.id.ToString(), enemy.DisplayName, false, ProjectSettings.GetSetting("application/config/version").AsString());
+        // AnalyticsManager.Instance.LogEnemyBattle(enemy.id.ToString(), enemy.DisplayName, false, ProjectSettings.GetSetting("application/config/version").AsString());
         UnbindEvents();
         RunManager.Instance.LoseRun();
     }
@@ -260,7 +260,7 @@ public partial class PhaseController : Node
     private void DisplaySummary()
     {
         var enemy = StageManager.Instance.GetCurrentEnemy();
-        AnalyticsManager.Instance.LogEnemyBattle(enemy.id.ToString(), enemy.DisplayName, true, ProjectSettings.GetSetting("application/config/version").AsString());
+        // AnalyticsManager.Instance.LogEnemyBattle(enemy.id.ToString(), enemy.DisplayName, true, ProjectSettings.GetSetting("application/config/version").AsString());
         UnbindEvents();
         StageManager.Instance.CompleteStage();
     }
