@@ -201,7 +201,7 @@ public partial class PhaseController : Node
         }
         else
         {
-             RunManager.Instance.PlayerLostBet();
+            RunManager.Instance.PlayerLostBet();
             int playerDeserves = Math.Max(0, playerContributionThisTurn - enemyContributionThisTurn);
             enemyChips.AddChips(currentPot - playerDeserves);
             playerChips.AddChips(playerDeserves);
@@ -250,6 +250,8 @@ public partial class PhaseController : Node
     // loss handler
     private void EndCurrentRun()
     {
+        var enemy = StageManager.Instance.GetCurrentEnemy();
+        AnalyticsManager.Instance.LogEnemyBattle(enemy.id.ToString(), enemy.DisplayName, false, ProjectSettings.GetSetting("application/config/version").AsString());
         UnbindEvents();
         RunManager.Instance.LoseRun();
     }
@@ -257,6 +259,8 @@ public partial class PhaseController : Node
     // win handler
     private void DisplaySummary()
     {
+        var enemy = StageManager.Instance.GetCurrentEnemy();
+        AnalyticsManager.Instance.LogEnemyBattle(enemy.id.ToString(), enemy.DisplayName, true, ProjectSettings.GetSetting("application/config/version").AsString());
         UnbindEvents();
         StageManager.Instance.CompleteStage();
     }

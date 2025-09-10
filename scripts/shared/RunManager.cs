@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class RunManager : Node
 {
@@ -35,12 +36,31 @@ public partial class RunManager : Node
 
     public void LoseRun()
     {
+        Dictionary<int, int> deck = new();
+        foreach (var card in DeckManager.Instance.PlayerDeck.Cards)
+        {
+            if (deck.ContainsKey(card.id)) deck[card.id]++;
+            else deck[card.id] = 1;
+        }
+        var enemy = StageManager.Instance.GetCurrentEnemy().id.ToString();
+        var ver = ProjectSettings.GetSetting("application/config/version").AsString();
+        AnalyticsManager.Instance.LogRun(deck, false, enemy, ver);
+
         runEndPanel.Visible = true;
         runEndPanel.InitializeLoss();
     }
 
     public void WinRun()
     {
+        Dictionary<int, int> deck = new();
+        foreach (var card in DeckManager.Instance.PlayerDeck.Cards)
+        {
+            if (deck.ContainsKey(card.id)) deck[card.id]++;
+            else deck[card.id] = 1;
+        }
+        var ver = ProjectSettings.GetSetting("application/config/version").AsString();
+        AnalyticsManager.Instance.LogRun(deck, true, clientVersion: ver);
+
         runEndPanel.Visible = true;
         runEndPanel.InitializeWin();
     }
